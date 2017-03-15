@@ -1,9 +1,8 @@
 package skeleton;
 
-import iliketrains.RailCenter;
-
-import java.io.IOException;
 import java.util.Scanner;
+
+import iliketrains.RailCenter;
 
 public class Skeleton {
 	private static int tabs=0;

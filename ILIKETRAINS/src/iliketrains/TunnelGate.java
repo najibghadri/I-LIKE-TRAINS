@@ -25,13 +25,13 @@ public class TunnelGate extends TrackComponent implements Controllable {
 	public TrackComponent getNext(TrackComponent previous) {
 		//Kérdés felvetés
 		Skeleton.addIndent();
-		boolean answer=Skeleton.askIN(">Aktív az alagút?(I/N)");
+		boolean answer=Skeleton.askIN("Aktív az alagút?(I/N)");
 		if(answer){
 		Skeleton.write("tunnelGate returns with trackSetByTunnel");
-		return null;
 		}
-		else
+		else{
 			Skeleton.write("tunnelGate returns with nextTrackComponent");
+		}
 		Skeleton.removeIndent();
 		return null;
 	}

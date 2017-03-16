@@ -8,7 +8,8 @@ public class Engine extends Cart {
 	PassengerCart firstPassengerCart;
 	private TrackComponent previous;
 
-	public Engine(TrackComponent c,TrackComponent p){
+	public Engine(RailCenter center,TrackComponent c,TrackComponent p){
+		this.center=center;
 		currentTrack=c;
 		previous=p;
 		Skeleton.write("Engine constructor");
@@ -17,12 +18,25 @@ public class Engine extends Cart {
 	public void move() {
 		Skeleton.addIndent();
 		Skeleton.write("Engine calls getNext('previous')");
-		currentTrack.getNext(previous);
+		TrackComponent next=currentTrack.getNext(previous);
+		previous=currentTrack;
+		Skeleton.write("Engine.move calls Engine.checkCollision()");
+		checkCollison();
+		Skeleton.write("Engine.move calls Cart.moveCart('next')");
+		moveCart(next);
+		Skeleton.write("Engine.move returns");
 		Skeleton.removeIndent();
 	}
 
 	private void checkCollison() {
-		// TODO - implement Engine.checkCollison
+		Skeleton.addIndent();
+		if(Skeleton.askIN("Foglalt a következõ sín?")){
+			Skeleton.write("Ütközés, vesztettél!");
+			Skeleton.write("Engine.checkCollicion calls center.reportCollided()");
+			center.reportCollided();
+		}
+		Skeleton.write("Engine.checkCollision() returns");
+		Skeleton.removeIndent();
 	}
 
 	private void checkStation() {

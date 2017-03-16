@@ -24,11 +24,14 @@ public class TrackComponent {
 	}
 
 	public void putCart(Cart cart) {
-		// TODO - implement TrackComponent.putCart
-	}
+		Skeleton.addIndent();
+		Skeleton.write("TrackComponent.putCart returns");
+		Skeleton.removeIndent();	}
 
 	public void removeCart() {
-		// TODO - implement TrackComponent.removeCart
+		Skeleton.addIndent();
+		Skeleton.write("TrackComponent.removeCart returns");
+		Skeleton.removeIndent();
 	}
 
 	public Cart getCart() {

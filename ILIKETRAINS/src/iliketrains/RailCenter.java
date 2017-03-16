@@ -24,14 +24,16 @@ public class RailCenter {
 	}
 
 	public void reportCollided() {
-		// TODO - implement RailCenter.reportCollided
+		Skeleton.addIndent();
+		Skeleton.write("RailCenter.reportCollided() returns");
+		Skeleton.removeIndent();
 	}
 
 	public void startTest6() {
 		TrackComponent previousTrack=new TrackComponent();
 		TrackComponent trackSetByTunnelTrack=new TrackComponent();
 		TunnelGate actualTrack=new TunnelGate(null);
-		Engine engineObject=new Engine(actualTrack,previousTrack);		
+		Engine engineObject=new Engine(this,actualTrack,previousTrack);		
 		
 		engineObject.move();
 	}

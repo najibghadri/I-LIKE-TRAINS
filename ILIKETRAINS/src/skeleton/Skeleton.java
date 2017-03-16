@@ -2,31 +2,39 @@ package skeleton;
 
 import java.util.Scanner;
 
+import iliketrains.Engine;
 import iliketrains.RailCenter;
+import iliketrains.TrackComponent;
+import iliketrains.TunnelGate;
 
 public class Skeleton {
 	private static int tabs=0;
-	private static Scanner reader = new Scanner(System.in);
+	private static Scanner reader;
 	private static boolean running=true;
 
-	
 	public static void main(String[] args){
+		reader = new Scanner(System.in);
 		while(running){
 			write("Üss be egy számot!");
 			String command=reader.next();
 			switch(command){
 			case "6":
-				testCase6();
+				test6();
 				break;
 			default:
 				break;
 			}
 		}
+		reader.close();
 	}
 
-	private static void testCase6() {
-		RailCenter center=new RailCenter();
-		center.startTest6();
+	private static void test6() {
+		write("Vonat tunnelGate-hez ér");
+		RailCenter center = new RailCenter();
+		TrackComponent trackObject = new TrackComponent();
+		Engine engineObject = new Engine(center,trackObject,trackObject);		
+		
+		engineObject.move();
 	}
 
 	public static void write(String string) {

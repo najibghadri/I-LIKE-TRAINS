@@ -4,8 +4,8 @@ import skeleton.Skeleton;
 
 public class Engine extends Cart {
 
-	RailCenter center;
-	PassengerCart firstPassengerCart;
+	private RailCenter center;
+	private PassengerCart firstPassengerCart;
 	private TrackComponent previous;
 
 	public Engine(RailCenter center,TrackComponent c,TrackComponent p){

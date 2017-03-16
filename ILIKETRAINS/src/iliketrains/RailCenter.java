@@ -13,6 +13,7 @@ public class RailCenter {
 
 	public RailCenter() {
 		Skeleton.write("RailCenter konstruktor");
+		
 	}
 
 	public void moveEngines() {
@@ -27,15 +28,6 @@ public class RailCenter {
 		Skeleton.addIndent();
 		Skeleton.write("RailCenter.reportCollided() returns");
 		Skeleton.removeIndent();
-	}
-
-	public void startTest6() {
-		TrackComponent previousTrack=new TrackComponent();
-		TrackComponent trackSetByTunnelTrack=new TrackComponent();
-		TunnelGate actualTrack=new TunnelGate(null);
-		Engine engineObject=new Engine(this,actualTrack,previousTrack);		
-		
-		engineObject.move();
 	}
 
 }

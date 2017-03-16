@@ -2,6 +2,6 @@ package iliketrains;
 
 public interface Controllable {
 
-	void change();
+	public void change();
 
 }

@@ -7,12 +7,11 @@ public class TunnelGate extends TrackComponent implements Controllable {
 	private Boolean state;
 	private Tunnel tunnel;
 
-	public TunnelGate(TrackComponent next){
+	public TunnelGate(){
 		super();
-		adjacentTracks.add(next);
 		Skeleton.write("TunnelGate constructor");
 	}
-	
+
 	public void change() {
 		// TODO - implement TunnelGate.change
 	}
@@ -33,7 +32,7 @@ public class TunnelGate extends TrackComponent implements Controllable {
 			Skeleton.write("tunnelGate returns with nextTrackComponent");
 		}
 		Skeleton.removeIndent();
-		return null;
+		return this;
 	}
 
 }

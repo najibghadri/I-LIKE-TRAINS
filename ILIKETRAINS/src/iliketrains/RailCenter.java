@@ -21,7 +21,13 @@ public class RailCenter {
 	}
 
 	public void reportArrived() {
-		// TODO - implement RailCenter.reportArrived
+		Skeleton.addIndent();
+		boolean allTrains=Skeleton.askIN("Minden vonat megérkezett?");
+		if(allTrains){
+			Skeleton.write("NYERT!");
+		}
+		Skeleton.write("RailCenter.reportArrived() returns");
+		Skeleton.removeIndent();
 	}
 
 	public void reportCollided() {

@@ -10,11 +10,11 @@ public class TrackComponent {
 	Station station;
 	protected List<TrackComponent> adjacentTracks;
 
-	public TrackComponent(){
-		adjacentTracks=new ArrayList<TrackComponent>();
+	public TrackComponent() {
+		adjacentTracks = new ArrayList<TrackComponent>();
 		Skeleton.write("TrackComponent constructor");
 	}
-	
+
 	public void addAdjacentTrack(TrackComponent track) {
 		// TODO - implement TrackComponent.addAdjacentTrack
 	}
@@ -26,7 +26,8 @@ public class TrackComponent {
 	public void putCart(Cart cart) {
 		Skeleton.addIndent();
 		Skeleton.write("TrackComponent.putCart returns");
-		Skeleton.removeIndent();	}
+		Skeleton.removeIndent();
+	}
 
 	public void removeCart() {
 		Skeleton.addIndent();
@@ -39,8 +40,19 @@ public class TrackComponent {
 	}
 
 	public Station hasStation() {
-		// TODO - implement TrackComponent.hasStation
-		return station;
+		Skeleton.addIndent();
+		boolean stationExist = Skeleton.askIN("Van állomás?");
+		if (stationExist){
+			Skeleton.write("TrackComponent.hasStation returns with station");
+			Skeleton.removeIndent();
+			return station;
+		}
+		else{
+			Skeleton.write("TrackComponent.hasStation returns with null");	
+			Skeleton.removeIndent();
+			return null;
+		}
+
 	}
 
 	public void setStation(Station station) {

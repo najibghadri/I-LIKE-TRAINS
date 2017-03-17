@@ -8,22 +8,32 @@ public class Engine extends Cart {
 	private PassengerCart firstPassengerCart;
 	private TrackComponent previous;
 
-	public Engine(RailCenter center,TrackComponent c,TrackComponent p){
+	public Engine(RailCenter center,TrackComponent curr,TrackComponent prev){
 		this.center=center;
-		currentTrack=c;
-		previous=p;
+		currentTrack=curr;
+		previous=prev;
 		Skeleton.write("Engine constructor");
 	}
 	
+	//A mozdony mozgatása. Elõször megkérdezi az aktuális síntõl, hogy melyik a következõ sín,
+	//majd ütközésellenõriz azon a sínen, és rálép a sínre.
+	//Ha a 7-es teszteset van, akkor ez kimarad (csak ismétlés lenne) és csak az állomás ellenõrzés történik meg
 	public void move() {
 		Skeleton.addIndent();
-		Skeleton.write("Engine calls getNext('previous')");
+		if(Skeleton.getCurrentTest()==7){									//A hetes teszteset
+			Skeleton.write("Engine.move calls Engine.checkStation()");
+			checkStation();
+		}		
+		else{																//A többi teszteset
+		Skeleton.write("Engine.move calls getNext('previous')");
 		TrackComponent next=currentTrack.getNext(previous);
 		previous=currentTrack;
 		Skeleton.write("Engine.move calls Engine.checkCollision()");
 		checkCollison();
 		Skeleton.write("Engine.move calls Cart.moveCart('next')");
-		moveCart(next);
+		moveCart(next);		
+		}
+		
 		Skeleton.write("Engine.move returns");
 		Skeleton.removeIndent();
 	}
@@ -31,7 +41,7 @@ public class Engine extends Cart {
 	private void checkCollison() {
 		Skeleton.addIndent();
 		if(Skeleton.askIN("Foglalt a következõ sín?")){
-			Skeleton.write("Ütközés, vesztettél!");
+			Skeleton.write("Ütközés, VESZTETTÉL!");
 			Skeleton.write("Engine.checkCollicion calls center.reportCollided()");
 			center.reportCollided();
 		}
@@ -40,11 +50,25 @@ public class Engine extends Cart {
 	}
 
 	private void checkStation() {
-		// TODO - implement Engine.checkStation
+		Skeleton.addIndent();
+		Station s=currentTrack.hasStation();
+		if(s!=null){
+			Skeleton.write("Engine.checkStation calls station.getColor()");
+			s.getColor();
+			Skeleton.write("Engine.checkStation calls firstPassengerCart.popPassengers(color)");
+			firstPassengerCart.popPassengers(null);
+			boolean finished=Skeleton.askIN("Minden kocsi üres?");
+			if(finished){
+				Skeleton.write("Engine.checkStation calls center.reportArrived()");
+				center.reportArrived();
+			}
+		}		
+		Skeleton.write("Engine.checkStation() returns");
+		Skeleton.removeIndent();
 	}
 
 	public void addNext(PassengerCart pCart) {
-		// TODO - implement Engine.addNext
+		firstPassengerCart=pCart;
 	}
 
 }

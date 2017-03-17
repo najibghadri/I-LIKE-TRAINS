@@ -12,7 +12,17 @@ public class Switch extends TrackComponent implements Controllable {
 	}
 
 	public void change() {
-		// TODO - implement Switch.change
+		Skeleton.addIndent();
+		if(Skeleton.askIN("Van-e rajta vonat?")){
+			Skeleton.write("Switch.change returns with no changes");
+		}else{
+			if(Skeleton.askIN("Melyik irányba áll a váltó? (I-TrackObj2, N-TrackObj3)")){
+				Skeleton.write("Switch.change returns with changes state to TrackObj3");
+			}else{
+				Skeleton.write("Switch.change returns with changes state to TrackObj2");
+			}
+		}
+		Skeleton.removeIndent();
 	}
 
 	/**

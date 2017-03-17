@@ -9,6 +9,7 @@ import iliketrains.RailCenter;
 import iliketrains.Station;
 import iliketrains.Switch;
 import iliketrains.TrackComponent;
+import iliketrains.Tunnel;
 import iliketrains.TunnelGate;
 
 public class Skeleton {
@@ -23,14 +24,23 @@ public class Skeleton {
 			write("Üss be egy számot!");
 			String command=reader.next();
 			switch(command){
+			case "1":
+				test1();
+				break;
+			case "2":
+				test2();
+				break;
+			case "3":
+				write("Kilépés a játékból");
+				break;
+			case "4":
+				test4();
+				break;
 			case "5":
 				test5();
 				break;
 			case "6":
 				test6();
-				break;
-			case "3":
-				write("Kilépés a játékból");
 				break;
 			case "7":
 				test7();
@@ -40,6 +50,34 @@ public class Skeleton {
 			}
 		}
 		reader.close();
+	}
+	
+	private static void test1(){
+		currentTest=1;
+		write("Váltót állít");
+		RailCenter center = new RailCenter();
+		Switch switchObject = new Switch();
+		TrackComponent trackObj2= new TrackComponent();
+		TrackComponent trackObj3= new TrackComponent();
+		switchObject.change();
+	}
+	
+	private static void test2(){
+		currentTest=2;
+		write("TunnelGate-t állít");
+		RailCenter center = new RailCenter();
+		Tunnel tunnelObject = new Tunnel();
+		TunnelGate tunnelGateObject = new TunnelGate(tunnelObject);
+		tunnelGateObject.change();
+	}
+	
+	private static void test4(){
+		currentTest=4;
+		write("Vonat következõ pályaelemre lép");
+		RailCenter center = new RailCenter();
+		TrackComponent trackObject= new TrackComponent();
+		Engine engineObject = new Engine(center, trackObject, trackObject);
+		engineObject.move();
 	}
 
 	private static void test5() {
@@ -88,10 +126,21 @@ public class Skeleton {
 		System.out.print(">");
 		write(string);
 		writeIdent();
-		String a=reader.next();
-		if(a.equals("I"))
-		return true;
-		else return false;
+		while(true){
+			String a=reader.next();
+			if(a.equals("I") || a.equals("i"))
+				return true;
+			else if(a.equals("N") || a.equals("n"))
+				return false;
+			//EXIT feature
+			else if(a.equals("e"))
+				System.exit(-1);
+			else{
+				System.out.print(">");
+				write("Nem megfelelõ bemenet! (I/N) Újra: ");
+				writeIdent();
+				}
+		}
 	}
 	
 	

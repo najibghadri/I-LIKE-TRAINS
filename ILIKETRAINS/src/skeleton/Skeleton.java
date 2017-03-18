@@ -12,6 +12,8 @@ import iliketrains.TrackComponent;
 import iliketrains.Tunnel;
 import iliketrains.TunnelGate;
 
+
+
 public class Skeleton {
 	private static int tabs=0;
 	private static Scanner reader;
@@ -30,7 +32,7 @@ public class Skeleton {
 			case "2":
 				test2();
 				break;
-			case "3":
+			case "3":	/*Ez az egyetlen teszteset ami egyszerûségébõl fakadóan nincs külön függvényben implementálva*/
 				write("Kilépés a játékból");
 				break;
 			case "4":
@@ -52,6 +54,10 @@ public class Skeleton {
 		reader.close();
 	}
 	
+	/**
+	 * 1. tesztesetet megvalósító függvény
+	 * Ez a teszteset a Switch (váltó) átállításának folyamatát szemlélteti
+	 */
 	private static void test1(){
 		currentTest=1;
 		write("Váltót állít");
@@ -62,6 +68,10 @@ public class Skeleton {
 		switchObject.change();
 	}
 	
+	/**
+	 * 2. tesztesetet megvalósító függvény
+	 * Ez a teszteset a TunnelGate (alagútszáj) aktiválásának folyamatát szemlélteti
+	 */
 	private static void test2(){
 		currentTest=2;
 		write("TunnelGate-t állít");
@@ -71,6 +81,10 @@ public class Skeleton {
 		tunnelGateObject.change();
 	}
 	
+	/**
+	 * 4. tesztesetet megvalósító függvény
+	 * Ez a teszteset a vonat a következõ pályaelemre való lépésének folyamatát szemlélteti
+	 */
 	private static void test4(){
 		currentTest=4;
 		write("Vonat következõ pályaelemre lép");
@@ -80,6 +94,11 @@ public class Skeleton {
 		engineObject.move();
 	}
 
+
+	/**
+	 * 5. tesztesetet megvalósító függvény
+	 * Ez a teszteset azt szemlélteti, ahogy a vonat egy Switch-hez (váltó) ér, és azon áthalad
+	 */
 	private static void test5() {
 		currentTest=5;
 		write("Vonat váltóhoz ér");	
@@ -89,6 +108,11 @@ public class Skeleton {
 		engineObject.move();
 	}
 
+	/**
+	 * 6. tesztesetet megvalósító függvény
+	 * Ez a teszteset azt szemlélteti amint a vonat egy TunnelGate-hez (alagútszáj) ér, 
+	 * és azon áthalad (nem feltétlenül megy be!)
+	 */
 	private static void test6() {
 		currentTest=6;
 		write("Vonat tunnelGate-hez ér");
@@ -98,6 +122,11 @@ public class Skeleton {
 		engineObject.move();
 	}
 	
+	/**
+	 * 7. tesztesetet megvalósító függvény
+	 * Ez a teszteset szemlélteti azoknak a játéklogikai lépéseknek a végrehajtását, 
+	 * amikor a vonat egy állomáshoz ér
+	 */
 	private static void test7(){
 		currentTest=7;
 		write("Vonat állomáshoz ér");
@@ -111,17 +140,31 @@ public class Skeleton {
 		engineObject.move();
 	}
 
+	/**
+	 * Kiírófüggvény ami a jobb áttekinthetõség érdekében a bekezdés számnak megfelelõ 
+	 * tabulátor után írja ki a paraméteréül kapott stringet
+	 * @param string Kiírandó szöveg
+	 */
 	public static void write(String string) {
 		writeIdent();
 		System.out.println(string);
 	}
 
+	/**
+	 * A bekezdés számának megfelelõ tabulátor kiíratása az áttekinthetõség érdekében
+	 */
 	private static void writeIdent() {
 		for(int i=0;i<tabs;i++){
 			System.out.print("\t");
 		}
 	}
 
+	/**
+	 * A tesztelõ felhasználóval való kommunikációt megvalósító függvény,
+	 * a paraméterként kapott eldöntendõ kérdésekre vár választ
+	 * @param string Ez a string egy kérdés a tesztelõ felhasználó felé, a standard kimenetre íródik ki
+	 * @return boolean A tesztelõ felhasználó válasza a feltett kérdésre
+	 */
 	public static boolean askIN(String string) {
 		System.out.print(">");
 		write(string);
@@ -145,14 +188,23 @@ public class Skeleton {
 	
 	
 
+	/**
+	 * @return int Az éppen futó teszteset száma
+	 */
 	public static int getCurrentTest() {
 		return currentTest;
 	}
 
+	/**
+	 * A bekezdés számot növeli egyel
+	 */
 	public static void addIndent() {
 		tabs++;
 	}
 	
+	/**
+	 * A bekezdés számot csökkenti egyel
+	 */
 	public static void removeIndent() {
 		tabs--;
 	}

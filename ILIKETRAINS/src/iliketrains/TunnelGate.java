@@ -2,9 +2,14 @@ package iliketrains;
 
 import skeleton.Skeleton;
 
+/**
+ * 
+ * @author Najib
+ *
+ */
 public class TunnelGate extends TrackComponent implements Controllable {
 
-	private Boolean state;
+	private Boolean state;  //Meg van nyomva vagy nem
 	private Tunnel tunnel;
 
 	/**
@@ -35,7 +40,8 @@ public class TunnelGate extends TrackComponent implements Controllable {
 		}else{
 			if(Skeleton.askIN("Aktív a tunnelGate?")){
 				if(Skeleton.askIN("Van-e másik aktív tunnelGate?")){
-					removeTunnelTrack();
+					tunnel.disconnect(this);
+						removeTunnel(); //Nem itt a helye, a disconnect hívja ha van másik aktív
 				}else{
 					tunnel.disconnect(this);
 				}
@@ -48,11 +54,12 @@ public class TunnelGate extends TrackComponent implements Controllable {
 					Skeleton.removeIndent();
 					Skeleton.write("TunnelGate.change() changes nothing");
 				}
-				else{
+				else {
 					Skeleton.write("TunnelGate.change() calls tunnel.register(this)");
 					Skeleton.addIndent();
 					tunnel.register(this);
 					Skeleton.removeIndent();
+					Skeleton.write("TunnelGate.change() connected this gate");
 				}
 			}
 		}
@@ -64,12 +71,10 @@ public class TunnelGate extends TrackComponent implements Controllable {
 	 * A jelenlegi alagútszáj "kikapcsolása" a hozzá tartozó alagútból
 	 * (meghívja az alagút megfelelõ függvényét)
 	 */
-	public void removeTunnelTrack() {
-		Skeleton.write("TunnelGate.removeTunnelTrack() calls tunnel.disconnect(this)");
+	public void removeTunnel() {
 		Skeleton.addIndent();
-		tunnel.disconnect(this);
+		Skeleton.write("TunnelGate.removeTunnelTrack()");
 		Skeleton.removeIndent();
-		Skeleton.write("TunnelGate.removeTunnelTrack() sets trackSetByTunnel to null");
 	}
 
 	/* (non-Javadoc)
@@ -79,11 +84,11 @@ public class TunnelGate extends TrackComponent implements Controllable {
 	public TrackComponent getNext(TrackComponent previous) {
 		//Kérdés felvetés
 		Skeleton.addIndent();
-		boolean answer=Skeleton.askIN("Aktív az alagút?(I/N)");
+		boolean answer = Skeleton.askIN("Aktív az alagút?(I/N)");
 		if(answer){
 		Skeleton.write("tunnelGate returns with trackSetByTunnel");
 		}
-		else{
+		else {
 			Skeleton.write("tunnelGate returns with nextTrackComponent");
 		}
 		Skeleton.removeIndent();

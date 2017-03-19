@@ -4,6 +4,11 @@ import java.util.*;
 
 import skeleton.Skeleton;
 
+/**
+ * 
+ * @author Najib
+ *
+ */
 public class Tunnel {
 
 	Collection<TunnelGate> activeGates;
@@ -11,7 +16,7 @@ public class Tunnel {
 	/**
 	 * konstruktor
 	 */
-	public Tunnel(){
+	private Tunnel(){
 		Skeleton.write("Tunnel constructor");
 	}
 
@@ -20,8 +25,10 @@ public class Tunnel {
 	 * @return Tunnel Az alagút referenciája
 	 */
 	public static Tunnel getInstance() {
-		Skeleton.write("Tunnel.getInstance() returns references to tunnel");
+		Skeleton.write("Tunnel.getInstance() returns reference to singleton tunnel object");
 		return new Tunnel();
+		//TODO: Ez így még nem singleton: El kell menteni hogy készítettünk-e korábban, ha igen akkor azt kell visszaadni, 
+		//ha nem csak akkor new
 	}
 
 	/**
@@ -29,8 +36,9 @@ public class Tunnel {
 	 * @param gate A kikapcsolandó alagútszáj
 	 */
 	public void disconnect(TunnelGate gate) {
-		Skeleton.write("Tunnel.disconnect(TunnelGate t) calls activeGate.remove(gate)");
+		Skeleton.write("Tunnel.disconnect(TunnelGate t) calls activeGate.removeTunnel()");
 		//TODO: implement closing tunnel
+		//TODO: Ha van másik aktív akkor azt disconnektálni kell
 	}
 
 	/**
@@ -43,7 +51,6 @@ public class Tunnel {
 			return false;
 		}
 		else{
-			Skeleton.write("Tunnel.register(TunnelGate g) calls activeGates.add(g)");
 			if(Skeleton.askIN("Van-e másik aktív tunnelGate?")){
 				Skeleton.write("Tunnel.register(TunnelGate g) calls createTunnel(TunnelGate in, TunnelGate out)");
 				Skeleton.addIndent();

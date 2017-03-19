@@ -76,7 +76,7 @@ public class Skeleton {
 		currentTest=2;
 		write("TunnelGate-t állít");
 		RailCenter center = new RailCenter();
-		Tunnel tunnelObject = new Tunnel();
+		Tunnel tunnelObject = Tunnel.getInstance();
 		TunnelGate tunnelGateObject = new TunnelGate(tunnelObject);
 		tunnelGateObject.change();
 	}

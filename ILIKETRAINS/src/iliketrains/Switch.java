@@ -14,8 +14,8 @@ public class Switch extends TrackComponent implements Controllable {
 		Skeleton.write("Switch konstruktor");
 	}
 
-	/* (non-Javadoc)
-	 * @see iliketrains.Controllable#change()
+	/**
+	 * A váltó állapotát megfordítja, amennyiben nincsen rajta vonat
 	 */
 	public void change() {
 		Skeleton.addIndent();

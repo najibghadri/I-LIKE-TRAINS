@@ -7,17 +7,27 @@ public class TunnelGate extends TrackComponent implements Controllable {
 	private Boolean state;
 	private Tunnel tunnel;
 
+	/**
+	 * konstruktor
+	 * @param t Annak az alagútnak a referenciája, amihez az alagútszájunkat a létrehozás pillanatában kapcsolni szeretnénk
+	 */
 	public TunnelGate(Tunnel t){
 		super();
 		Skeleton.write("TunnelGate constructor");
 		tunnel = t;
 	}
 	
+	/**
+	 * konstruktor
+	 */
 	public TunnelGate(){
 		super();
 		Skeleton.write("TunnelGate constructor");
 	}
 
+	/* (non-Javadoc)
+	 * @see iliketrains.Controllable#change()
+	 */
 	public void change() {
 		Skeleton.addIndent();
 		if(Skeleton.askIN("Van-e rajta vonat?")){
@@ -50,6 +60,10 @@ public class TunnelGate extends TrackComponent implements Controllable {
 		Skeleton.removeIndent();
 	}
 
+	/**
+	 * A jelenlegi alagútszáj "kikapcsolása" a hozzá tartozó alagútból
+	 * (meghívja az alagút megfelelõ függvényét)
+	 */
 	public void removeTunnelTrack() {
 		Skeleton.write("TunnelGate.removeTunnelTrack() calls tunnel.disconnect(this)");
 		Skeleton.addIndent();
@@ -58,6 +72,9 @@ public class TunnelGate extends TrackComponent implements Controllable {
 		Skeleton.write("TunnelGate.removeTunnelTrack() sets trackSetByTunnel to null");
 	}
 
+	/* (non-Javadoc)
+	 * @see iliketrains.TrackComponent#getNext(iliketrains.TrackComponent)
+	 */
 	@Override
 	public TrackComponent getNext(TrackComponent previous) {
 		//Kérdés felvetés

@@ -8,16 +8,28 @@ public class PassengerCart extends Cart {
 	private Color color;
 	private boolean passengers;
 
+	/**
+	 * konstruktor
+	 */
 	public PassengerCart(){
 		super();
 		Skeleton.write("PassengerCart konstruktor");
 	}
 	
+	/**
+	 * Az utaskocsi színét visszaadó függvény
+	 * @return color Az utaskocsi színe
+	 */
 	public Color getColor() {
 		return this.color;
 	}
 
 
+	/**
+	 * Az utasok leszállítása.
+	 * @param color Az adott szín, amilyen utasokat leszállítani kívánunk
+	 * @return Az kocsi referenciája
+	 */
 	public Cart popPassengers(Color color) {
 		Skeleton.addIndent();
 		boolean empty=Skeleton.askIN("Üres már a kocsi?");
@@ -38,6 +50,10 @@ public class PassengerCart extends Cart {
 	}
 
 
+	/**
+	 * Utaskocsi hozzákapcsolása ehhez a kocsihoz
+	 * @param pCart A kapcsolandó utaskocsi referenciája
+	 */
 	public void addNext(PassengerCart pCart) {
 	}
 

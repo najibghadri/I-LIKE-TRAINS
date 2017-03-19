@@ -6,11 +6,17 @@ public class Switch extends TrackComponent implements Controllable {
 
 	private Boolean state;
 
+	/**
+	 * konstruktor
+	 */
 	public Switch() {
 		super();
 		Skeleton.write("Switch konstruktor");
 	}
 
+	/* (non-Javadoc)
+	 * @see iliketrains.Controllable#change()
+	 */
 	public void change() {
 		Skeleton.addIndent();
 		if(Skeleton.askIN("Van-e rajta vonat?")){
@@ -26,8 +32,9 @@ public class Switch extends TrackComponent implements Controllable {
 	}
 
 	/**
-	 * 
-	 * @param previous
+	 * A következõ pályaelem lekérdezésére szolgáló függvény (vagyis amerre tovább fogunk haladni), 
+	 * amennyiben a paraméterként megadott pályaelem irányából közelítünk a váltó felé
+	 * @param previous Annak a pályaelemnek a referenciája ahonnan közelítünk a váltó felé
 	 */
 	@Override
 	public TrackComponent getNext(TrackComponent previous) {

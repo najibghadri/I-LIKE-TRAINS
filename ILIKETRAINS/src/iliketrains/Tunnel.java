@@ -8,18 +8,25 @@ public class Tunnel {
 
 	Collection<TunnelGate> activeGates;
 	
+	/**
+	 * konstruktor
+	 */
 	public Tunnel(){
 		Skeleton.write("Tunnel constructor");
 	}
 
+	/**
+	 * Az alagút referenciájának lekérdezése
+	 * @return Tunnel Az alagút referenciája
+	 */
 	public static Tunnel getInstance() {
 		Skeleton.write("Tunnel.getInstance() returns references to tunnel");
 		return new Tunnel();
 	}
 
 	/**
-	 * 
-	 * @param gate
+	 * A paraméterként kapott alagútszájat "kikapcsoló" függvény
+	 * @param gate A kikapcsolandó alagútszáj
 	 */
 	public void disconnect(TunnelGate gate) {
 		Skeleton.write("Tunnel.disconnect(TunnelGate t) calls activeGate.remove(gate)");
@@ -27,8 +34,8 @@ public class Tunnel {
 	}
 
 	/**
-	 * 
-	 * @param gate
+	 * A paraméterként kapott alagútszájat "bekapcsoló" függvény
+	 * @param gate A bekapcsolandó alagútszáj
 	 */
 	public boolean register(TunnelGate gate) {
 		if(gate == null){
@@ -49,9 +56,9 @@ public class Tunnel {
 	}
 
 	/**
-	 * 
-	 * @param in
-	 * @param out
+	 * Alagút létesítõ függvény
+	 * @param in Az egyik alagútszáj
+	 * @param out A másik alagútszáj
 	 */
 	private void createTunnel(TunnelGate in, TunnelGate out) {
 		Skeleton.write("Tunnel.createTunnel(TunnelGate g1, TunnelGate g2) creates tunnel");

@@ -17,8 +17,8 @@ public class PassengerCart extends Cart {
 	}
 	
 	/**
-	 * Az utaskocsi szÌnÈt visszaadÛ f¸ggvÈny
-	 * @return color Az utaskocsi szÌne
+	 * Az utaskocsi sz√≠n√©t visszaad√≥ f√ºggv√©ny
+	 * @return color Az utaskocsi sz√≠ne
 	 */
 	public Color getColor() {
 		return this.color;
@@ -26,15 +26,15 @@ public class PassengerCart extends Cart {
 
 
 	/**
-	 * Az utasok lesz·llÌt·sa.
-	 * @param color Az adott szÌn, amilyen utasokat lesz·llÌtani kÌv·nunk
-	 * @return Az kocsi referenci·ja
+	 * Az utasok lesz√°ll√≠t√°sa.
+	 * @param color Az adott sz√≠n, amilyen utasokat lesz√°ll√≠tani k√≠v√°nunk
+	 * @return Az kocsi referenci√°ja
 	 */
 	public Cart popPassengers(Color color) {
 		Skeleton.addIndent();
-		boolean empty=Skeleton.askIN("‹res m·r a kocsi?");
+		boolean empty=Skeleton.askIN("√úres m√°r a kocsi?");
 		if(empty){
-			boolean allEmpty=Skeleton.askIN("Ez az utolsÛ kocsi?");
+			boolean allEmpty=Skeleton.askIN("Ez az utols√≥ kocsi?");
 			if(allEmpty){
 				
 			}else{
@@ -43,7 +43,7 @@ public class PassengerCart extends Cart {
 			}
 		}
 		else{
-			Skeleton.askIN("Egyezik a szÌn?");
+			Skeleton.askIN("Egyezik a sz√≠n?");
 		}
 		Skeleton.removeIndent();
 		return this;
@@ -51,8 +51,8 @@ public class PassengerCart extends Cart {
 
 
 	/**
-	 * Utaskocsi hozz·kapcsol·sa ehhez a kocsihoz
-	 * @param pCart A kapcsolandÛ utaskocsi referenci·ja
+	 * Utaskocsi hozz√°kapcsol√°sa ehhez a kocsihoz
+	 * @param pCart A kapcsoland√≥ utaskocsi referenci√°ja
 	 */
 	public void addNext(PassengerCart pCart) {
 	}

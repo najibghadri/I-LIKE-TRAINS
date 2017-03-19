@@ -20,19 +20,19 @@ public class RailCenter {
 	}
 
 	/**
-	 * Az Engineket (mozdony), és ezáltal a vonatokat mozgató fv.
+	 * Az Engineket (mozdony), Ã©s ezÃ¡ltal a vonatokat mozgatÃ³ fv.
 	 */
 	public void moveEngines() {
 		// TODO - implement RailCenter.moveEngines
 	}
 
 	/**
-	 * Azt ellenõrzi, hogy minden vonat megérkezett-e (vagyis leszállították az összes utast).
-	 * Amennyiben igen, úgy a játékos nyert.
+	 * Azt ellenÃµrzi, hogy minden vonat megÃ©rkezett-e (vagyis leszÃ¡llÃ­tottÃ¡k az Ã¶sszes utast).
+	 * Amennyiben igen, Ãºgy a jÃ¡tÃ©kos nyert.
 	 */
 	public void reportArrived() {
 		Skeleton.addIndent();
-		boolean allTrains=Skeleton.askIN("Minden vonat megérkezett?");
+		boolean allTrains=Skeleton.askIN("Minden vonat megÃ©rkezett?");
 		if(allTrains){
 			Skeleton.write("NYERT!");
 		}
@@ -41,7 +41,7 @@ public class RailCenter {
 	}
 
 	/**
-	 * Ütközés megtörténtének jelzésére szolgáló függvény
+	 * ÃœtkÃ¶zÃ©s megtÃ¶rtÃ©ntÃ©nek jelzÃ©sÃ©re szolgÃ¡lÃ³ fÃ¼ggvÃ©ny
 	 */
 	public void reportCollided() {
 		Skeleton.addIndent();

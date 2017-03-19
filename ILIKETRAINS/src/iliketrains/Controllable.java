@@ -3,7 +3,7 @@ package iliketrains;
 public interface Controllable {
 
 	/**
-	 * Általános változtatás (control-funkcionalitás) absztrakt függvénye
+	 * ÃltalÃ¡nos vÃ¡ltoztatÃ¡s (control-funkcionalitÃ¡s) absztrakt fÃ¼ggvÃ©nye
 	 */
 	public void change();
 

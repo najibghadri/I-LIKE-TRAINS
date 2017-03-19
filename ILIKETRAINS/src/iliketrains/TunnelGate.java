@@ -14,7 +14,7 @@ public class TunnelGate extends TrackComponent implements Controllable {
 
 	/**
 	 * konstruktor
-	 * @param t Annak az alagútnak a referenciája, amihez az alagútszájunkat a létrehozás pillanatában kapcsolni szeretnénk
+	 * @param t Annak az alagÃºtnak a referenciÃ¡ja, amihez az alagÃºtszÃ¡junkat a lÃ©trehozÃ¡s pillanatÃ¡ban kapcsolni szeretnÃ©nk
 	 */
 	public TunnelGate(Tunnel t){
 		super();
@@ -38,16 +38,16 @@ public class TunnelGate extends TrackComponent implements Controllable {
 		if(Skeleton.askIN("Van-e rajta vonat?")){
 			Skeleton.write("TunnelGate.change() changes nothing");
 		}else{
-			if(Skeleton.askIN("Aktív a tunnelGate?")){
-				if(Skeleton.askIN("Van-e másik aktív tunnelGate?")){
+			if(Skeleton.askIN("AktÃ­v a tunnelGate?")){
+				if(Skeleton.askIN("Van-e mÃ¡sik aktÃ­v tunnelGate?")){
 					tunnel.disconnect(this);
-						removeTunnel(); //Nem itt a helye, a disconnect hívja ha van másik aktív
+						removeTunnel(); //Nem itt a helye, a disconnect hÃ­vja ha van mÃ¡sik aktÃ­v
 				}else{
 					tunnel.disconnect(this);
 				}
 			}
 			else{
-				if(Skeleton.askIN("Van-e másik kettõ aktív tunnelGate?")){
+				if(Skeleton.askIN("Van-e mÃ¡sik kettÃµ aktÃ­v tunnelGate?")){
 					Skeleton.write("TunnelGate.change() calls tunnel.register(this)");
 					Skeleton.addIndent();
 					tunnel.register(null);
@@ -68,8 +68,8 @@ public class TunnelGate extends TrackComponent implements Controllable {
 	}
 
 	/**
-	 * A jelenlegi alagútszáj "kikapcsolása" a hozzá tartozó alagútból
-	 * (meghívja az alagút megfelelõ függvényét)
+	 * A jelenlegi alagÃºtszÃ¡j "kikapcsolÃ¡sa" a hozzÃ¡ tartozÃ³ alagÃºtbÃ³l
+	 * (meghÃ­vja az alagÃºt megfelelÃµ fÃ¼ggvÃ©nyÃ©t)
 	 */
 	public void removeTunnel() {
 		Skeleton.addIndent();
@@ -82,9 +82,9 @@ public class TunnelGate extends TrackComponent implements Controllable {
 	 */
 	@Override
 	public TrackComponent getNext(TrackComponent previous) {
-		//Kérdés felvetés
+		//KÃ©rdÃ©s felvetÃ©s
 		Skeleton.addIndent();
-		boolean answer = Skeleton.askIN("Aktív az alagút?(I/N)");
+		boolean answer = Skeleton.askIN("AktÃ­v az alagÃºt?(I/N)");
 		if(answer){
 		Skeleton.write("tunnelGate returns with trackSetByTunnel");
 		}

@@ -19,27 +19,27 @@ public class TrackComponent {
 	}
 
 	/**
-	 * Szomszédos pályaelem hozzákapcsolása ehhez
-	 * @param track A szomszédos pályaelem referenciája
+	 * SzomszÃ©dos pÃ¡lyaelem hozzÃ¡kapcsolÃ¡sa ehhez
+	 * @param track A szomszÃ©dos pÃ¡lyaelem referenciÃ¡ja
 	 */
 	public void addAdjacentTrack(TrackComponent track) {
 		// TODO - implement TrackComponent.addAdjacentTrack
 	}
 
 	/**
-	 * A következõ pályaelem lekérdezésére szolgáló függvény 
-	 * (vagyis amerre tovább fogunk haladni),
-	 * amennyiben a paraméterként megadott pályaelem irányából közelítünk
-	 * @param previous Annak a pályaelemnek a referenciája amerrõl közelítünk
-	 * @return TrackComponent A következõ pályaelem referenciája
+	 * A kÃ¶vetkezÃµ pÃ¡lyaelem lekÃ©rdezÃ©sÃ©re szolgÃ¡lÃ³ fÃ¼ggvÃ©ny 
+	 * (vagyis amerre tovÃ¡bb fogunk haladni),
+	 * amennyiben a paramÃ©terkÃ©nt megadott pÃ¡lyaelem irÃ¡nyÃ¡bÃ³l kÃ¶zelÃ­tÃ¼nk
+	 * @param previous Annak a pÃ¡lyaelemnek a referenciÃ¡ja amerrÃµl kÃ¶zelÃ­tÃ¼nk
+	 * @return TrackComponent A kÃ¶vetkezÃµ pÃ¡lyaelem referenciÃ¡ja
 	 */
 	public TrackComponent getNext(TrackComponent previous) {
 		return this;
 	}
 
 	/**
-	 * A paraméterként megadott kocsi ráhelyezése a pályaelemre
-	 * @param cart Annak a kocsinak a referenciája amit erre a pályaelemre kívánunk helyezni
+	 * A paramÃ©terkÃ©nt megadott kocsi rÃ¡helyezÃ©se a pÃ¡lyaelemre
+	 * @param cart Annak a kocsinak a referenciÃ¡ja amit erre a pÃ¡lyaelemre kÃ­vÃ¡nunk helyezni
 	 */
 	public void putCart(Cart cart) {
 		Skeleton.addIndent();
@@ -48,7 +48,7 @@ public class TrackComponent {
 	}
 
 	/**
-	 * A pályaelemen lévõ kocsi eltávolítása
+	 * A pÃ¡lyaelemen lÃ©vÃµ kocsi eltÃ¡volÃ­tÃ¡sa
 	 */
 	public void removeCart() {
 		Skeleton.addIndent();
@@ -57,20 +57,20 @@ public class TrackComponent {
 	}
 
 	/**
-	 * A pályaelemen lévõ kocsi referenciájának lekérdezése
-	 * @return Cart A pályaelemen lévõ kocsi referenciája
+	 * A pÃ¡lyaelemen lÃ©vÃµ kocsi referenciÃ¡jÃ¡nak lekÃ©rdezÃ©se
+	 * @return Cart A pÃ¡lyaelemen lÃ©vÃµ kocsi referenciÃ¡ja
 	 */
 	public Cart getCart() {
 		return this.cart;
 	}
 
 	/**
-	 * Annak a lekérdezése, hogy ehhez a pályaelemhez tartozik-e állomás
-	 * @return Station Az állomás referenciája (ha van)
+	 * Annak a lekÃ©rdezÃ©se, hogy ehhez a pÃ¡lyaelemhez tartozik-e Ã¡llomÃ¡s
+	 * @return Station Az Ã¡llomÃ¡s referenciÃ¡ja (ha van)
 	 */
 	public Station hasStation() {
 		Skeleton.addIndent();
-		boolean stationExist = Skeleton.askIN("Van állomás?");
+		boolean stationExist = Skeleton.askIN("Van Ã¡llomÃ¡s?");
 		if (stationExist){
 			Skeleton.write("TrackComponent.hasStation returns with station");
 			Skeleton.removeIndent();
@@ -85,8 +85,8 @@ public class TrackComponent {
 	}
 
 	/**
-	 * Állomás hozzárendelése ehhez a pályaelemhez
-	 * @param station A hozzárendelendõ állomás referenciája
+	 * ÃllomÃ¡s hozzÃ¡rendelÃ©se ehhez a pÃ¡lyaelemhez
+	 * @param station A hozzÃ¡rendelendÃµ Ã¡llomÃ¡s referenciÃ¡ja
 	 */
 	public void setStation(Station station) {
 		this.station = station;

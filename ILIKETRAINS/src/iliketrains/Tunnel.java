@@ -21,29 +21,29 @@ public class Tunnel {
 	}
 
 	/**
-	 * Az alagút referenciájának lekérdezése
-	 * @return Tunnel Az alagút referenciája
+	 * Az alagÃºt referenciÃ¡jÃ¡nak lekÃ©rdezÃ©se
+	 * @return Tunnel Az alagÃºt referenciÃ¡ja
 	 */
 	public static Tunnel getInstance() {
 		Skeleton.write("Tunnel.getInstance() returns reference to singleton tunnel object");
 		return new Tunnel();
-		//TODO: Ez így még nem singleton: El kell menteni hogy készítettünk-e korábban, ha igen akkor azt kell visszaadni, 
+		//TODO: Ez Ã­gy mÃ©g nem singleton: El kell menteni hogy kÃ©szÃ­tettÃ¼nk-e korÃ¡bban, ha igen akkor azt kell visszaadni, 
 		//ha nem csak akkor new
 	}
 
 	/**
-	 * A paraméterként kapott alagútszájat "kikapcsoló" függvény
-	 * @param gate A kikapcsolandó alagútszáj
+	 * A paramÃ©terkÃ©nt kapott alagÃºtszÃ¡jat "kikapcsolÃ³" fÃ¼ggvÃ©ny
+	 * @param gate A kikapcsolandÃ³ alagÃºtszÃ¡j
 	 */
 	public void disconnect(TunnelGate gate) {
 		Skeleton.write("Tunnel.disconnect(TunnelGate t) calls activeGate.removeTunnel()");
 		//TODO: implement closing tunnel
-		//TODO: Ha van másik aktív akkor azt disconnektálni kell
+		//TODO: Ha van mÃ¡sik aktÃ­v akkor azt disconnektÃ¡lni kell
 	}
 
 	/**
-	 * A paraméterként kapott alagútszájat "bekapcsoló" függvény
-	 * @param gate A bekapcsolandó alagútszáj
+	 * A paramÃ©terkÃ©nt kapott alagÃºtszÃ¡jat "bekapcsolÃ³" fÃ¼ggvÃ©ny
+	 * @param gate A bekapcsolandÃ³ alagÃºtszÃ¡j
 	 */
 	public boolean register(TunnelGate gate) {
 		if(gate == null){
@@ -51,7 +51,7 @@ public class Tunnel {
 			return false;
 		}
 		else{
-			if(Skeleton.askIN("Van-e másik aktív tunnelGate?")){
+			if(Skeleton.askIN("Van-e mÃ¡sik aktÃ­v tunnelGate?")){
 				Skeleton.write("Tunnel.register(TunnelGate g) calls createTunnel(TunnelGate in, TunnelGate out)");
 				Skeleton.addIndent();
 				createTunnel(null,null);
@@ -63,9 +63,9 @@ public class Tunnel {
 	}
 
 	/**
-	 * Alagút létesítõ függvény
-	 * @param in Az egyik alagútszáj
-	 * @param out A másik alagútszáj
+	 * AlagÃºt lÃ©tesÃ­tÃµ fÃ¼ggvÃ©ny
+	 * @param in Az egyik alagÃºtszÃ¡j
+	 * @param out A mÃ¡sik alagÃºtszÃ¡j
 	 */
 	private void createTunnel(TunnelGate in, TunnelGate out) {
 		Skeleton.write("Tunnel.createTunnel(TunnelGate g1, TunnelGate g2) creates tunnel");

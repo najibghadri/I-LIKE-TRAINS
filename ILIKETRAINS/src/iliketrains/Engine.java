@@ -10,9 +10,9 @@ public class Engine extends Cart {
 
 	/**
 	 * konstruktor
-	 * @param center A pályához tartozó RailCenter referenciája
-	 * @param curr A jelenlegi pályaelem amin az Engine (mozdony) tartózkodik
-	 * @param prev Az elõzõ mozgási esemény során elhagyott pályaelem
+	 * @param center A pÃ¡lyÃ¡hoz tartozÃ³ RailCenter referenciÃ¡ja
+	 * @param curr A jelenlegi pÃ¡lyaelem amin az Engine (mozdony) tartÃ³zkodik
+	 * @param prev Az elÃµzÃµ mozgÃ¡si esemÃ©ny sorÃ¡n elhagyott pÃ¡lyaelem
 	 */
 	public Engine(RailCenter center,TrackComponent curr,TrackComponent prev){
 		this.center=center;
@@ -22,9 +22,9 @@ public class Engine extends Cart {
 	}
 	
 	/**
-	 * A mozdony mozgatása. Elõször megkérdezi az aktuális síntõl, hogy melyik a következõ sín,
-	 * majd ütközésellenõriz azon a sínen, és rálép a sínre.
-	 * Ha a 7-es teszteset van, akkor ez kimarad (csak ismétlés lenne) és csak az állomás ellenõrzés történik meg
+	 * A mozdony mozgatÃ¡sa. ElÃµszÃ¶r megkÃ©rdezi az aktuÃ¡lis sÃ­ntÃµl, hogy melyik a kÃ¶vetkezÃµ sÃ­n,
+	 * majd Ã¼tkÃ¶zÃ©sellenÃµriz azon a sÃ­nen, Ã©s rÃ¡lÃ©p a sÃ­nre.
+	 * Ha a 7-es teszteset van, akkor ez kimarad (csak ismÃ©tlÃ©s lenne) Ã©s csak az Ã¡llomÃ¡s ellenÃµrzÃ©s tÃ¶rtÃ©nik meg
 	 */
 	public void move() {
 		Skeleton.addIndent();
@@ -32,7 +32,7 @@ public class Engine extends Cart {
 			Skeleton.write("Engine.move calls Engine.checkStation()");
 			checkStation();
 		}		
-		else{																//A többi teszteset
+		else{																//A tÃ¶bbi teszteset
 			Skeleton.write("Engine.move calls getNext('previous')");
 			TrackComponent next=currentTrack.getNext(previous);
 			previous=currentTrack;
@@ -48,14 +48,14 @@ public class Engine extends Cart {
 	}
 
 	/**
-	 * Ütközésellenõrzés. Az Engine (mozdony) halad elõre, emiatt csak ez a kocsi mehet bele valamibe,
-	 * ígyhát ennek az osztálynak a felelõssége az ütközések detektálása
+	 * ÃœtkÃ¶zÃ©sellenÃµrzÃ©s. Az Engine (mozdony) halad elÃµre, emiatt csak ez a kocsi mehet bele valamibe,
+	 * Ã­gyhÃ¡t ennek az osztÃ¡lynak a felelÃµssÃ©ge az Ã¼tkÃ¶zÃ©sek detektÃ¡lÃ¡sa
 	 * @return
 	 */
 	private boolean checkCollison() {
 		Skeleton.addIndent();
-		if(Skeleton.askIN("Foglalt a következõ sín?")){
-			Skeleton.write("Ütközés, VESZTETTÉL!");
+		if(Skeleton.askIN("Foglalt a kÃ¶vetkezÃµ sÃ­n?")){
+			Skeleton.write("ÃœtkÃ¶zÃ©s, VESZTETTÃ‰L!");
 			Skeleton.write("Engine.checkCollicion calls center.reportCollided()");
 			center.reportCollided();
 			Skeleton.removeIndent();
@@ -68,8 +68,8 @@ public class Engine extends Cart {
 	}
 
 	/**
-	 * Állomásdetektálás. Ellenõrzi, hogy a vonat éppen állomáson halad-e át, és amennyiben igen,
-	 * leszállítja az utasokat a specifikációnak megfelelõen. Ha minden kocsi üres, azt jelzi a RailCenter felé
+	 * ÃllomÃ¡sdetektÃ¡lÃ¡s. EllenÃµrzi, hogy a vonat Ã©ppen Ã¡llomÃ¡son halad-e Ã¡t, Ã©s amennyiben igen,
+	 * leszÃ¡llÃ­tja az utasokat a specifikÃ¡ciÃ³nak megfelelÃµen. Ha minden kocsi Ã¼res, azt jelzi a RailCenter felÃ©
 	 */
 	private void checkStation() {
 		Skeleton.addIndent();
@@ -79,7 +79,7 @@ public class Engine extends Cart {
 			s.getColor();
 			Skeleton.write("Engine.checkStation calls firstPassengerCart.popPassengers(color)");
 			firstPassengerCart.popPassengers(null);
-			boolean finished=Skeleton.askIN("Minden kocsi üres?");
+			boolean finished=Skeleton.askIN("Minden kocsi Ã¼res?");
 			if(finished){
 				Skeleton.write("Engine.checkStation calls center.reportArrived()");
 				center.reportArrived();
@@ -90,8 +90,8 @@ public class Engine extends Cart {
 	}
 
 	/**
-	 * Utaskocsi hozzákapcsolása az Engine-hez (mozdony).
-	 * @param pCart A kapcsolandó utaskocsi referenciája
+	 * Utaskocsi hozzÃ¡kapcsolÃ¡sa az Engine-hez (mozdony).
+	 * @param pCart A kapcsolandÃ³ utaskocsi referenciÃ¡ja
 	 */
 	public void addNext(PassengerCart pCart) {
 		firstPassengerCart=pCart;

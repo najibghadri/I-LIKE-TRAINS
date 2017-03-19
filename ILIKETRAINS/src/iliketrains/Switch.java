@@ -15,14 +15,14 @@ public class Switch extends TrackComponent implements Controllable {
 	}
 
 	/**
-	 * A váltó állapotát megfordítja, amennyiben nincsen rajta vonat
+	 * A vÃ¡ltÃ³ Ã¡llapotÃ¡t megfordÃ­tja, amennyiben nincsen rajta vonat
 	 */
 	public void change() {
 		Skeleton.addIndent();
 		if(Skeleton.askIN("Van-e rajta vonat?")){
 			Skeleton.write("Switch.change returns with no changes");
 		}else{
-			if(Skeleton.askIN("Melyik irányba áll a váltó? (I-TrackObj2, N-TrackObj3)")){
+			if(Skeleton.askIN("Melyik irÃ¡nyba Ã¡ll a vÃ¡ltÃ³? (I-TrackObj2, N-TrackObj3)")){
 				Skeleton.write("Switch.change returns with changes state to TrackObj2");
 			}else{
 				Skeleton.write("Switch.change returns with changes state to TrackObj3");
@@ -32,17 +32,17 @@ public class Switch extends TrackComponent implements Controllable {
 	}
 
 	/**
-	 * A következõ pályaelem lekérdezésére szolgáló függvény (vagyis amerre tovább fogunk haladni), 
-	 * amennyiben a paraméterként megadott pályaelem irányából közelítünk a váltó felé
-	 * @param previous Annak a pályaelemnek a referenciája ahonnan közelítünk a váltó felé
+	 * A kÃ¶vetkezÃµ pÃ¡lyaelem lekÃ©rdezÃ©sÃ©re szolgÃ¡lÃ³ fÃ¼ggvÃ©ny (vagyis amerre tovÃ¡bb fogunk haladni), 
+	 * amennyiben a paramÃ©terkÃ©nt megadott pÃ¡lyaelem irÃ¡nyÃ¡bÃ³l kÃ¶zelÃ­tÃ¼nk a vÃ¡ltÃ³ felÃ©
+	 * @param previous Annak a pÃ¡lyaelemnek a referenciÃ¡ja ahonnan kÃ¶zelÃ­tÃ¼nk a vÃ¡ltÃ³ felÃ©
 	 */
 	@Override
 	public TrackComponent getNext(TrackComponent previous) {
-		// Kérdés felvetés
+		// KÃ©rdÃ©s felvetÃ©s
 		Skeleton.addIndent();
-		boolean answer = Skeleton.askIN("Váltási irányból?(I/N)");
+		boolean answer = Skeleton.askIN("VÃ¡ltÃ¡si irÃ¡nybÃ³l?(I/N)");
 		if (answer) {
-			boolean switchChoice = Skeleton.askIN("Balra áll a váltó?(I/N)");
+			boolean switchChoice = Skeleton.askIN("Balra Ã¡ll a vÃ¡ltÃ³?(I/N)");
 			if(switchChoice)
 			Skeleton.write("switch returns with leftTrackComponent");
 			else

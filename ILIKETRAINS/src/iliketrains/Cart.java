@@ -7,8 +7,8 @@ public class Cart {
 	protected TrackComponent currentTrack;
 
 	/**
-	 * A vonatkocsit mozgató függvény, a paraméteréül kapott objektumra mozgat
-	 * @param whereTo Pályaelem amire a kocsit mozgatni kívánjuk
+	 * A vonatkocsit mozgatÃ³ fÃ¼ggvÃ©ny, a paramÃ©terÃ©Ã¼l kapott objektumra mozgat
+	 * @param whereTo PÃ¡lyaelem amire a kocsit mozgatni kÃ­vÃ¡njuk
 	 */
 	public void moveCart(TrackComponent whereTo) {
 		Skeleton.addIndent();

@@ -23,7 +23,7 @@ public class Skeleton {
 	public static void main(String[] args){
 		reader = new Scanner(System.in);
 		while(running){
-			write("Üss be egy számot!");
+			write("Ãœss be egy szÃ¡mot!");
 			String command=reader.next();
 			switch(command){
 			case "1":
@@ -32,8 +32,8 @@ public class Skeleton {
 			case "2":
 				test2();
 				break;
-			case "3":	/*Ez az egyetlen teszteset ami egyszerûségébõl fakadóan nincs külön függvényben implementálva*/
-				write("Kilépés a játékból");
+			case "3":	/*Ez az egyetlen teszteset ami egyszerÃ»sÃ©gÃ©bÃµl fakadÃ³an nincs kÃ¼lÃ¶n fÃ¼ggvÃ©nyben implementÃ¡lva*/
+				write("KilÃ©pÃ©s a jÃ¡tÃ©kbÃ³l");
 				break;
 			case "4":
 				test4();
@@ -55,12 +55,12 @@ public class Skeleton {
 	}
 	
 	/**
-	 * 1. tesztesetet megvalósító függvény
-	 * Ez a teszteset a Switch (váltó) átállításának folyamatát szemlélteti
+	 * 1. tesztesetet megvalÃ³sÃ­tÃ³ fÃ¼ggvÃ©ny
+	 * Ez a teszteset a Switch (vÃ¡ltÃ³) Ã¡tÃ¡llÃ­tÃ¡sÃ¡nak folyamatÃ¡t szemlÃ©lteti
 	 */
 	private static void test1(){
 		currentTest=1;
-		write("Váltót állít");
+		write("VÃ¡ltÃ³t Ã¡llÃ­t");
 		RailCenter center = new RailCenter();
 		Switch switchObject = new Switch();
 		TrackComponent trackObj2= new TrackComponent();
@@ -69,12 +69,12 @@ public class Skeleton {
 	}
 	
 	/**
-	 * 2. tesztesetet megvalósító függvény
-	 * Ez a teszteset a TunnelGate (alagútszáj) aktiválásának folyamatát szemlélteti
+	 * 2. tesztesetet megvalÃ³sÃ­tÃ³ fÃ¼ggvÃ©ny
+	 * Ez a teszteset a TunnelGate (alagÃºtszÃ¡j) aktivÃ¡lÃ¡sÃ¡nak folyamatÃ¡t szemlÃ©lteti
 	 */
 	private static void test2(){
 		currentTest=2;
-		write("TunnelGate-t állít");
+		write("TunnelGate-t Ã¡llÃ­t");
 		RailCenter center = new RailCenter();
 		Tunnel tunnelObject = Tunnel.getInstance();
 		TunnelGate tunnelGateObject = new TunnelGate(tunnelObject);
@@ -82,12 +82,12 @@ public class Skeleton {
 	}
 	
 	/**
-	 * 4. tesztesetet megvalósító függvény
-	 * Ez a teszteset a vonat a következõ pályaelemre való lépésének folyamatát szemlélteti
+	 * 4. tesztesetet megvalÃ³sÃ­tÃ³ fÃ¼ggvÃ©ny
+	 * Ez a teszteset a vonat a kÃ¶vetkezÃµ pÃ¡lyaelemre valÃ³ lÃ©pÃ©sÃ©nek folyamatÃ¡t szemlÃ©lteti
 	 */
 	private static void test4(){
 		currentTest=4;
-		write("Vonat következõ pályaelemre lép");
+		write("Vonat kÃ¶vetkezÃµ pÃ¡lyaelemre lÃ©p");
 		RailCenter center = new RailCenter();
 		TrackComponent trackObject= new TrackComponent();
 		Engine engineObject = new Engine(center, trackObject, trackObject);
@@ -96,12 +96,12 @@ public class Skeleton {
 
 
 	/**
-	 * 5. tesztesetet megvalósító függvény
-	 * Ez a teszteset azt szemlélteti, ahogy a vonat egy Switch-hez (váltó) ér, és azon áthalad
+	 * 5. tesztesetet megvalÃ³sÃ­tÃ³ fÃ¼ggvÃ©ny
+	 * Ez a teszteset azt szemlÃ©lteti, ahogy a vonat egy Switch-hez (vÃ¡ltÃ³) Ã©r, Ã©s azon Ã¡thalad
 	 */
 	private static void test5() {
 		currentTest=5;
-		write("Vonat váltóhoz ér");	
+		write("Vonat vÃ¡ltÃ³hoz Ã©r");	
 		RailCenter center = new RailCenter();
 		Switch switchObject=new Switch();
 		Engine engineObject = new Engine(center,switchObject,switchObject);	
@@ -109,13 +109,13 @@ public class Skeleton {
 	}
 
 	/**
-	 * 6. tesztesetet megvalósító függvény
-	 * Ez a teszteset azt szemlélteti amint a vonat egy TunnelGate-hez (alagútszáj) ér, 
-	 * és azon áthalad (nem feltétlenül megy be!)
+	 * 6. tesztesetet megvalÃ³sÃ­tÃ³ fÃ¼ggvÃ©ny
+	 * Ez a teszteset azt szemlÃ©lteti amint a vonat egy TunnelGate-hez (alagÃºtszÃ¡j) Ã©r, 
+	 * Ã©s azon Ã¡thalad (nem feltÃ©tlenÃ¼l megy be!)
 	 */
 	private static void test6() {
 		currentTest=6;
-		write("Vonat tunnelGate-hez ér");
+		write("Vonat tunnelGate-hez Ã©r");
 		RailCenter center = new RailCenter();
 		TunnelGate tunnelGateObject = new TunnelGate();
 		Engine engineObject = new Engine(center,tunnelGateObject,tunnelGateObject);				
@@ -123,13 +123,13 @@ public class Skeleton {
 	}
 	
 	/**
-	 * 7. tesztesetet megvalósító függvény
-	 * Ez a teszteset szemlélteti azoknak a játéklogikai lépéseknek a végrehajtását, 
-	 * amikor a vonat egy állomáshoz ér
+	 * 7. tesztesetet megvalÃ³sÃ­tÃ³ fÃ¼ggvÃ©ny
+	 * Ez a teszteset szemlÃ©lteti azoknak a jÃ¡tÃ©klogikai lÃ©pÃ©seknek a vÃ©grehajtÃ¡sÃ¡t, 
+	 * amikor a vonat egy Ã¡llomÃ¡shoz Ã©r
 	 */
 	private static void test7(){
 		currentTest=7;
-		write("Vonat állomáshoz ér");
+		write("Vonat Ã¡llomÃ¡shoz Ã©r");
 		RailCenter center = new RailCenter();
 		TrackComponent trackObject= new TrackComponent();
 		Station stationObject=new Station();
@@ -141,9 +141,9 @@ public class Skeleton {
 	}
 
 	/**
-	 * Kiírófüggvény ami a jobb áttekinthetõség érdekében a bekezdés számnak megfelelõ 
-	 * tabulátor után írja ki a paraméteréül kapott stringet
-	 * @param string Kiírandó szöveg
+	 * KiÃ­rÃ³fÃ¼ggvÃ©ny ami a jobb Ã¡ttekinthetÃµsÃ©g Ã©rdekÃ©ben a bekezdÃ©s szÃ¡mnak megfelelÃµ 
+	 * tabulÃ¡tor utÃ¡n Ã­rja ki a paramÃ©terÃ©Ã¼l kapott stringet
+	 * @param string KiÃ­randÃ³ szÃ¶veg
 	 */
 	public static void write(String string) {
 		writeIdent();
@@ -151,7 +151,7 @@ public class Skeleton {
 	}
 
 	/**
-	 * A bekezdés számának megfelelõ tabulátor kiíratása az áttekinthetõség érdekében
+	 * A bekezdÃ©s szÃ¡mÃ¡nak megfelelÃµ tabulÃ¡tor kiÃ­ratÃ¡sa az Ã¡ttekinthetÃµsÃ©g Ã©rdekÃ©ben
 	 */
 	private static void writeIdent() {
 		for(int i=0;i<tabs;i++){
@@ -160,10 +160,10 @@ public class Skeleton {
 	}
 
 	/**
-	 * A tesztelõ felhasználóval való kommunikációt megvalósító függvény,
-	 * a paraméterként kapott eldöntendõ kérdésekre vár választ
-	 * @param string Ez a string egy kérdés a tesztelõ felhasználó felé, a standard kimenetre íródik ki
-	 * @return boolean A tesztelõ felhasználó válasza a feltett kérdésre
+	 * A tesztelÃµ felhasznÃ¡lÃ³val valÃ³ kommunikÃ¡ciÃ³t megvalÃ³sÃ­tÃ³ fÃ¼ggvÃ©ny,
+	 * a paramÃ©terkÃ©nt kapott eldÃ¶ntendÃµ kÃ©rdÃ©sekre vÃ¡r vÃ¡laszt
+	 * @param string Ez a string egy kÃ©rdÃ©s a tesztelÃµ felhasznÃ¡lÃ³ felÃ©, a standard kimenetre Ã­rÃ³dik ki
+	 * @return boolean A tesztelÃµ felhasznÃ¡lÃ³ vÃ¡lasza a feltett kÃ©rdÃ©sre
 	 */
 	public static boolean askIN(String string) {
 		System.out.print(">");
@@ -180,7 +180,7 @@ public class Skeleton {
 				System.exit(-1);
 			else{
 				System.out.print(">");
-				write("Nem megfelelõ bemenet! (I/N) Újra: ");
+				write("Nem megfelelÃµ bemenet! (I/N) Ãšjra: ");
 				writeIdent();
 				}
 		}
@@ -189,21 +189,21 @@ public class Skeleton {
 	
 
 	/**
-	 * @return int Az éppen futó teszteset száma
+	 * @return int Az Ã©ppen futÃ³ teszteset szÃ¡ma
 	 */
 	public static int getCurrentTest() {
 		return currentTest;
 	}
 
 	/**
-	 * A bekezdés számot növeli egyel
+	 * A bekezdÃ©s szÃ¡mot nÃ¶veli egyel
 	 */
 	public static void addIndent() {
 		tabs++;
 	}
 	
 	/**
-	 * A bekezdés számot csökkenti egyel
+	 * A bekezdÃ©s szÃ¡mot csÃ¶kkenti egyel
 	 */
 	public static void removeIndent() {
 		tabs--;

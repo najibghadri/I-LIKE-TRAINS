@@ -10,8 +10,8 @@ public class Station {
 	}
 
 	/**
-	 * Az állomás színének lekérdezésére szolgáló fv.
-	 * @return Color Az állomás színe
+	 * Az Ã¡llomÃ¡s szÃ­nÃ©nek lekÃ©rdezÃ©sÃ©re szolgÃ¡lÃ³ fv.
+	 * @return Color Az Ã¡llomÃ¡s szÃ­ne
 	 */
 	public Color getColor() {
 		Skeleton.addIndent();

@@ -35,11 +35,11 @@ public class TunnelGate extends TrackComponent implements Controllable {
 	 */
 	public void change() {
 		Skeleton.addIndent();
-		if(Skeleton.askIN("Van-e rajta vonat?")){
+		if(Skeleton.askIN("Van-e rajta vonat? (I/N)")){
 			Skeleton.write("TunnelGate.change() changes nothing");
 		}else{
-			if(Skeleton.askIN("Aktív a tunnelGate?")){
-				if(Skeleton.askIN("Van-e másik aktív tunnelGate?")){
+			if(Skeleton.askIN("Aktív a tunnelGate? (I/N)")){
+				if(Skeleton.askIN("Van-e másik aktív tunnelGate? (I/N)")){
 					tunnel.disconnect(this);
 						removeTunnel(); //Nem itt a helye, a disconnect hívja ha van másik aktív
 				}else{
@@ -47,7 +47,7 @@ public class TunnelGate extends TrackComponent implements Controllable {
 				}
 			}
 			else{
-				if(Skeleton.askIN("Van-e másik kettõ aktív tunnelGate?")){
+				if(Skeleton.askIN("Van-e másik kettõ aktív tunnelGate? (I/N)")){
 					Skeleton.write("TunnelGate.change() calls tunnel.register(this)");
 					Skeleton.addIndent();
 					tunnel.register(null);

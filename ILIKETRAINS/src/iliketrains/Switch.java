@@ -19,10 +19,10 @@ public class Switch extends TrackComponent implements Controllable {
 	 */
 	public void change() {
 		Skeleton.addIndent();
-		if(Skeleton.askIN("Van-e rajta vonat?")){
+		if(Skeleton.askIN("Van-e rajta vonat? (I/N)")){
 			Skeleton.write("Switch.change returns with no changes");
 		}else{
-			if(Skeleton.askIN("Melyik irányba áll a váltó? (I-TrackObj2, N-TrackObj3)")){
+			if(Skeleton.askIN("Melyik irányba áll a váltó? (I-TrackObj2/N-TrackObj3)")){
 				Skeleton.write("Switch.change returns with changes state to TrackObj2");
 			}else{
 				Skeleton.write("Switch.change returns with changes state to TrackObj3");

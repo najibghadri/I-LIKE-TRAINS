@@ -36,9 +36,10 @@ public class Tunnel {
 	 * @param gate A kikapcsolandó alagútszáj
 	 */
 	public void disconnect(TunnelGate gate) {
-		Skeleton.write("Tunnel.disconnect(TunnelGate t) calls activeGate.removeTunnel()");
-		//TODO: implement closing tunnel
-		//TODO: Ha van másik aktív akkor azt disconnektálni kell
+		Skeleton.write("Tunnel.disconnect(TunnelGate t) calls t.removeTunnel()");
+		Skeleton.addIndent();
+		gate.removeTunnel();
+		Skeleton.removeIndent();
 	}
 
 	/**
@@ -69,7 +70,11 @@ public class Tunnel {
 	 */
 	private void createTunnel(TunnelGate in, TunnelGate out) {
 		Skeleton.write("Tunnel.createTunnel(TunnelGate g1, TunnelGate g2) creates tunnel");
-		// TODO - implement create track from random number of TrackComponents 
+		Skeleton.addIndent();
+		TrackComponent trackObj2= new TrackComponent();
+		trackObj2.addAdjacentTrack(in);
+		trackObj2.addAdjacentTrack(out);
+		Skeleton.removeIndent();
 	}
 
 }

@@ -23,7 +23,8 @@ public class TrackComponent {
 	 * @param track A szomszédos pályaelem referenciája
 	 */
 	public void addAdjacentTrack(TrackComponent track) {
-		// TODO - implement TrackComponent.addAdjacentTrack
+		Skeleton.write("TrackComponent.addAdjacentTrack(TrackComponent track) add track to adjacentTracks collection ");
+		Skeleton.write("TrackComponent.addAdjacentTrack(TrackComponent track) returns");
 	}
 
 	/**

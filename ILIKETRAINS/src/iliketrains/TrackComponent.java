@@ -94,19 +94,27 @@ public class TrackComponent {
 	 * Visszaadja a típusát a konzolra íratáshoz
 	 * @return
 	 */
-	public String getType(){
-		return "TrackComponent";
+	public String getDescription(){
+		return "TrackComponent "+id;
 	}
 	
+	
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
 	/**
 	 * A konzolra a pálya kiíráshoz szükséges függvény 
 	 */
 	public void print(){
 		if(station!=null)
-			Game.log(getType()+" "+id+": "+"\n"+"    "+station.print());
+			Game.log(getDescription()+": "+"\n"+"    "+station.print());
 		else 
-			Game.log(getType()+" "+id);
-		
+			Game.log(getDescription());
+				
 		//TODO - szomszédok printeltetése
 	}
 
@@ -122,13 +130,12 @@ public class TrackComponent {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
 		TrackComponent other = (TrackComponent) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
+
 	
 	
 

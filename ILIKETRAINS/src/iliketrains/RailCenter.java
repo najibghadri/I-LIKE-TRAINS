@@ -9,7 +9,7 @@ public class RailCenter {
 	Collection<Engine> engines;
 	private Boolean collided;
 	private int numberOfArrived;
-	private int entryPoints;
+	private List<TrackComponent> entryPoints;
 
 	/**
 	 * konstruktor

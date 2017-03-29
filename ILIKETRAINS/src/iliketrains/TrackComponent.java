@@ -2,10 +2,12 @@ package iliketrains;
 
 import java.util.*;
 
+import skeleton.Game;
 import skeleton.Skeleton;
 
 public class TrackComponent {
 
+	private int id;
 	Cart cart;
 	Station station;
 	protected List<TrackComponent> adjacentTracks;
@@ -17,25 +19,36 @@ public class TrackComponent {
 		adjacentTracks = new ArrayList<TrackComponent>();
 		Skeleton.write("TrackComponent constructor");
 	}
+	
+	public TrackComponent(int id){
+		adjacentTracks = new ArrayList<TrackComponent>();
+		this.id=id;
+	}
 
 	/**
 	 * Szomszédos pályaelem hozzákapcsolása ehhez
 	 * @param track A szomszédos pályaelem referenciája
 	 */
 	public void addAdjacentTrack(TrackComponent track) {
-		Skeleton.write("TrackComponent.addAdjacentTrack(TrackComponent track) add track to adjacentTracks collection ");
-		Skeleton.write("TrackComponent.addAdjacentTrack(TrackComponent track) returns");
+		adjacentTracks.add(track);
 	}
 
 	/**
 	 * A következõ pályaelem lekérdezésére szolgáló függvény 
 	 * (vagyis amerre tovább fogunk haladni),
-	 * amennyiben a paraméterként megadott pályaelem irányából közelítünk
+	 * A paraméterként megadott pályaelem irányából közelítünk.
+	 * Ha a szomszédos sínek száma 1, akkor mindenképpen azt adja vissza,
+	 * különben azt, amelyik szomszéddal nem azonos a paraméter
 	 * @param previous Annak a pályaelemnek a referenciája amerrõl közelítünk
 	 * @return TrackComponent A következõ pályaelem referenciája
 	 */
 	public TrackComponent getNext(TrackComponent previous) {
-		return this;
+		if(adjacentTracks.size()==1)
+			return adjacentTracks.get(0);
+		if(previous.equals(adjacentTracks.get(0)))
+			return adjacentTracks.get(1);
+		else
+			return adjacentTracks.get(0);
 	}
 
 	/**
@@ -43,18 +56,14 @@ public class TrackComponent {
 	 * @param cart Annak a kocsinak a referenciája amit erre a pályaelemre kívánunk helyezni
 	 */
 	public void putCart(Cart cart) {
-		Skeleton.addIndent();
-		Skeleton.write("TrackComponent.putCart returns");
-		Skeleton.removeIndent();
+		this.cart=cart;
 	}
 
 	/**
 	 * A pályaelemen lévõ kocsi eltávolítása
 	 */
 	public void removeCart() {
-		Skeleton.addIndent();
-		Skeleton.write("TrackComponent.removeCart returns");
-		Skeleton.removeIndent();
+		this.cart=null;
 	}
 
 	/**
@@ -70,19 +79,7 @@ public class TrackComponent {
 	 * @return Station Az állomás referenciája (ha van)
 	 */
 	public Station hasStation() {
-		Skeleton.addIndent();
-		boolean stationExist = Skeleton.askIN("Van állomás?");
-		if (stationExist){
-			Skeleton.write("TrackComponent.hasStation returns with station");
-			Skeleton.removeIndent();
-			return station;
-		}
-		else{
-			Skeleton.write("TrackComponent.hasStation returns with null");	
-			Skeleton.removeIndent();
-			return null;
-		}
-
+		return station;
 	}
 
 	/**
@@ -92,5 +89,47 @@ public class TrackComponent {
 	public void setStation(Station station) {
 		this.station = station;
 	}
+	
+	/**
+	 * Visszaadja a típusát a konzolra íratáshoz
+	 * @return
+	 */
+	public String getType(){
+		return "TrackComponent";
+	}
+	
+	/**
+	 * A konzolra a pálya kiíráshoz szükséges függvény 
+	 */
+	public void print(){
+		if(station!=null)
+			Game.log(getType()+" "+id+": "+"\n"+"    "+station.print());
+		else 
+			Game.log(getType()+" "+id);
+		
+		//TODO - szomszédok printeltetése
+	}
+
+	/**
+	 * A paraméterül kapott sínnel hasonlítja magát. Ha az id, vagy a referencia egyezik, akkor 
+	 * igaz értékkel tér vissza, különben hamissal
+	 * @param obj A másik sín referenciája
+	 * &return boolean visszatérés igazzal ha azonosak
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TrackComponent other = (TrackComponent) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+	
+	
 
 }

@@ -3,10 +3,14 @@ package iliketrains;
 import skeleton.Skeleton;
 
 public class Station {
-	Color color;
+	private Color color;
+	private boolean passengers;
 	
-	public Station(){
-		Skeleton.write("Station konstruktor");
+	public Station(){}
+	
+	public Station(Color color,boolean passengers){
+		this.color=color;
+		this.passengers=passengers;
 	}
 
 	/**
@@ -14,10 +18,23 @@ public class Station {
 	 * @return Color Az állomás színe
 	 */
 	public Color getColor() {
-		Skeleton.addIndent();
-		Skeleton.write("Station returns with color");
-		Skeleton.removeIndent();
 		return color;
+	}
+	
+	public boolean getPassangers(){
+		return passengers;
+	}
+	
+	public void popPassengers(){
+		passengers=false;
+	}
+
+	public String print() {
+		//TODO - színt a stationtól kérni
+		if(passengers)
+			return "Station: "+"blue"+" has passengers";
+		else
+			return "Station: "+"blue"+ " no passengers";
 	}
 
 }

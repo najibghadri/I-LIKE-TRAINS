@@ -9,8 +9,10 @@ public class Switch extends TrackComponent implements Controllable {
 	/**
 	 * konstruktor
 	 */
-	public Switch() {
-		super();
+	public Switch(int id,String state) {
+		super(id);
+		if(state.equals(1))
+			this.state=true;
 		Skeleton.write("Switch konstruktor");
 	}
 

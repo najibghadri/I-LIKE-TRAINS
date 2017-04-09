@@ -2,6 +2,7 @@ package iliketrains;
 
 import java.util.*;
 
+import skeleton.Controller;
 import skeleton.Game;
 import skeleton.Skeleton;
 

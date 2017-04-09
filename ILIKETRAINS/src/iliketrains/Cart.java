@@ -5,6 +5,12 @@ import skeleton.Skeleton;
 public class Cart {
 
 	protected TrackComponent currentTrack;
+	private int id;
+	private Cart next;
+	
+	protected Cart(int id){
+		this.id=id;
+	}
 
 	/**
 	 * A vonatkocsit mozgató függvény, a paraméteréül kapott objektumra mozgat
@@ -18,6 +24,10 @@ public class Cart {
 		whereTo.putCart(this);
 		Skeleton.write("Cart.moveCart returns");
 		Skeleton.removeIndent();
+	}
+	
+	public void setNextCart(Cart c){
+
 	}
 
 }

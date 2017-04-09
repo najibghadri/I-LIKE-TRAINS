@@ -10,16 +10,14 @@ import skeleton.Skeleton;
 public class TunnelGate extends TrackComponent implements Controllable {
 
 	private Boolean state;  //Meg van nyomva vagy nem
-	private Tunnel tunnel;
 
 	/**
 	 * konstruktor
 	 * @param t Annak az alagútnak a referenciája, amihez az alagútszájunkat a létrehozás pillanatában kapcsolni szeretnénk
 	 */
-	public TunnelGate(Tunnel t){
+	public TunnelGate(int id){
 		super();
 		Skeleton.write("TunnelGate constructor");
-		tunnel = t;
 	}
 	
 	/**
@@ -34,6 +32,7 @@ public class TunnelGate extends TrackComponent implements Controllable {
 	 * @see iliketrains.Controllable#change()
 	 */
 	public void change() {
+		Tunnel tunnel=Tunnel.getInstance();
 		Skeleton.addIndent();
 		if(Skeleton.askIN("Van-e rajta vonat? (I/N)")){
 			Skeleton.write("TunnelGate.change() changes nothing");

@@ -11,8 +11,8 @@ public class PassengerCart extends Cart {
 	/**
 	 * konstruktor
 	 */
-	public PassengerCart(){
-		super();
+	public PassengerCart(int id,String passengers,String color){
+		super(id);
 		Skeleton.write("PassengerCart konstruktor");
 	}
 	

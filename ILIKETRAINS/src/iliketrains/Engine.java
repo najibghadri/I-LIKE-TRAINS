@@ -14,7 +14,8 @@ public class Engine extends Cart {
 	 * @param curr A jelenlegi pályaelem amin az Engine (mozdony) tartózkodik
 	 * @param prev Az elõzõ mozgási esemény során elhagyott pályaelem
 	 */
-	public Engine(RailCenter center,TrackComponent curr,TrackComponent prev){
+	public Engine(int id,RailCenter center,TrackComponent curr,TrackComponent prev){
+		super(id);
 		this.center=center;
 		currentTrack=curr;
 		previous=prev;
@@ -72,21 +73,7 @@ public class Engine extends Cart {
 	 * leszállítja az utasokat a specifikációnak megfelelõen. Ha minden kocsi üres, azt jelzi a RailCenter felé
 	 */
 	private void checkStation() {
-		Skeleton.addIndent();
-		Station s=currentTrack.hasStation();
-		if(s!=null){
-			Skeleton.write("Engine.checkStation calls station.getColor()");
-			s.getColor();
-			Skeleton.write("Engine.checkStation calls firstPassengerCart.popPassengers(color)");
-			firstPassengerCart.popPassengers(null);
-			boolean finished=Skeleton.askIN("Minden kocsi üres?");
-			if(finished){
-				Skeleton.write("Engine.checkStation calls center.reportArrived()");
-				center.reportArrived();
-			}
-		}		
-		Skeleton.write("Engine.checkStation() returns");
-		Skeleton.removeIndent();
+
 	}
 
 	/**

@@ -62,7 +62,7 @@ public class Skeleton {
 		currentTest=1;
 		write("Váltót állít");
 		RailCenter center = new RailCenter();
-		Switch switchObject = new Switch();
+		Switch switchObject = new Switch(0,"0");
 		TrackComponent trackObj2= new TrackComponent();
 		TrackComponent trackObj3= new TrackComponent();
 		switchObject.change();
@@ -77,7 +77,7 @@ public class Skeleton {
 		write("TunnelGate-t állít");
 		RailCenter center = new RailCenter();
 		Tunnel tunnelObject = Tunnel.getInstance();
-		TunnelGate tunnelGateObject = new TunnelGate(tunnelObject);
+		TunnelGate tunnelGateObject = new TunnelGate(0);
 		tunnelGateObject.change();
 	}
 	
@@ -90,7 +90,7 @@ public class Skeleton {
 		write("Vonat következõ pályaelemre lép");
 		RailCenter center = new RailCenter();
 		TrackComponent trackObject= new TrackComponent();
-		Engine engineObject = new Engine(center, trackObject, trackObject);
+		Engine engineObject = new Engine(1,center, trackObject, trackObject);
 		engineObject.move();
 	}
 
@@ -103,8 +103,8 @@ public class Skeleton {
 		currentTest=5;
 		write("Vonat váltóhoz ér");	
 		RailCenter center = new RailCenter();
-		Switch switchObject=new Switch();
-		Engine engineObject = new Engine(center,switchObject,switchObject);	
+		Switch switchObject=new Switch(0,"0");
+		Engine engineObject = new Engine(1,center,switchObject,switchObject);	
 		engineObject.move();
 	}
 
@@ -118,7 +118,7 @@ public class Skeleton {
 		write("Vonat tunnelGate-hez ér");
 		RailCenter center = new RailCenter();
 		TunnelGate tunnelGateObject = new TunnelGate();
-		Engine engineObject = new Engine(center,tunnelGateObject,tunnelGateObject);				
+		Engine engineObject = new Engine(1,center,tunnelGateObject,tunnelGateObject);				
 		engineObject.move();
 	}
 	
@@ -134,8 +134,8 @@ public class Skeleton {
 		TrackComponent trackObject= new TrackComponent();
 		Station stationObject=new Station();
 		trackObject.setStation(stationObject);
-		Engine engineObject = new Engine(center,trackObject,trackObject);
-		PassengerCart passengerCartObject=new PassengerCart();
+		Engine engineObject = new Engine(1,center,trackObject,trackObject);
+		PassengerCart passengerCartObject=new PassengerCart(1,"","");
 		engineObject.addNext(passengerCartObject);
 		engineObject.move();
 	}

@@ -10,7 +10,6 @@ import skeleton.Skeleton;
  * @author Najib
  */
 public class Tunnel {
-
 	private List<TunnelGate> activeGates;
 	private List<TrackComponent> tunnelTracks; //ha nem csak 1 hosszú lesz akkor szét kell választani őket
 	private static int firstID;
@@ -24,18 +23,16 @@ public class Tunnel {
 		this.firstID = firstID;
 		activeGates = new ArrayList<TunnelGate>();
 		tunnelTracks = new ArrayList<TrackComponent>();
-		Skeleton.write("Tunnel constructor");
 	}
 
 	/**
 	 * Az alagút referenciájának lekérdezése
-	 * Egyetlen Tunnel elem létrehozását engedélyezi, aminek firstID a kezdő száma
-	 * firstID a további alagút elemek id-ja innen kezdődik
+	 * Egyetlen Tunnel elem létrehozását engedélyezi, aminek a legmagasabb sín ID a kezdő száma
 	 * @return Tunnel Az alagút referenciája
 	 */
 	public static Tunnel getInstance() {
 		if(singleton == null)
-			singleton = new Tunnel(firstID);
+			singleton = new Tunnel(RailCenter.getHighestTrackId());
 		return singleton;
 	}
 

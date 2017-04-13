@@ -20,7 +20,6 @@ public class TunnelGate extends TrackComponent implements Controllable {
 	public TunnelGate(int id){
 		super(id);
 		active = false;
-		Skeleton.write("TunnelGate constructor");
 	}
 
 	/**

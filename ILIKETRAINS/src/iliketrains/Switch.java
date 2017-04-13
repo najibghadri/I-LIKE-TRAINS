@@ -18,7 +18,6 @@ public class Switch extends TrackComponent implements Controllable {
 	public Switch(int id) {
 		super(id);
 		this.direction=false;
-		Skeleton.write("Switch konstruktor");
 	}
 
 	/**

@@ -16,7 +16,7 @@ public class RailCenter {
 	private List<Station> stations;
 	private List<EntryPoint> entryPoints;
 	private boolean collided=false;
-	private int highestTrackId=1;
+	private static int highestTrackId=1;
 	private int highestCartId=1;
 
 	/**
@@ -167,7 +167,7 @@ public class RailCenter {
 
 	private void createSwitch(List<TrackComponent> list, String currentLine) {
 		String[] commandParts=currentLine.split(",");
-		Switch sw=new Switch(highestTrackId,commandParts[commandParts.length-1]);
+		Switch sw=new Switch(highestTrackId);
 		if(commandParts[0].equals("1")){
 			Station s=new Station(highestTrackId,commandParts[1],commandParts[2]);
 			sw.setStation(s);
@@ -315,6 +315,10 @@ public class RailCenter {
 				ex.printStackTrace();				
 			}
 		}
+	}
+
+	public static int getHighestTrackId() {
+		return highestTrackId;
 	}
 
 }

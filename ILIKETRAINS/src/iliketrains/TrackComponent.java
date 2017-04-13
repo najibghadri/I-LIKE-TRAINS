@@ -26,7 +26,6 @@ public class TrackComponent {
     public TrackComponent(int id){
 		adjacentTracks = new ArrayList<TrackComponent>();
 		this.id=id;
-        Skeleton.write("TrackComponent constructor");
 	}
 
 	/**
@@ -173,7 +172,6 @@ public class TrackComponent {
      * Loggolás a konzolra
      */
     public void print(){
-
         Game.log(toString());
     }
 }

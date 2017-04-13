@@ -3,95 +3,81 @@ package iliketrains;
 import skeleton.Skeleton;
 
 /**
- * 
+ * TunnelGate
+ * Alagútszájat megvalósító típus
  * @author Najib
- *
  */
 public class TunnelGate extends TrackComponent implements Controllable {
 
-	private Boolean state;  //Meg van nyomva vagy nem
+	private boolean active;  //Meg van nyomva vagy nem
+    private TrackComponent tunnelTrack;
 
 	/**
-	 * konstruktor
-	 * @param t Annak az alagútnak a referenciája, amihez az alagútszájunkat a létrehozás pillanatában kapcsolni szeretnénk
+	 * Constructor
+	 * Létrehoz egy alagútszájat azonosítóval
+	 * @param id
 	 */
 	public TunnelGate(int id){
-		super();
-		Skeleton.write("TunnelGate constructor");
-	}
-	
-	/**
-	 * konstruktor
-	 */
-	public TunnelGate(){
-		super();
+		super(id);
+		active = false;
 		Skeleton.write("TunnelGate constructor");
 	}
 
-	/* (non-Javadoc)
+	/**
+     * Az alagútszáj státuszát állítja
+     * Az alagútszájak állása alapján jön létre és szűnik meg az alagút
 	 * @see iliketrains.Controllable#change()
 	 */
 	public void change() {
 		Tunnel tunnel=Tunnel.getInstance();
-		Skeleton.addIndent();
-		if(Skeleton.askIN("Van-e rajta vonat? (I/N)")){
-			Skeleton.write("TunnelGate.change() changes nothing");
+		if(carts.size()!=0){
+            return;
 		}else{
-			if(Skeleton.askIN("Aktív a tunnelGate? (I/N)")){
-				if(Skeleton.askIN("Van-e másik aktív tunnelGate? (I/N)")){
-					tunnel.disconnect(this);
-						removeTunnel(); //Nem itt a helye, a disconnect hívja ha van másik aktív
-				}else{
-					tunnel.disconnect(this);
-				}
+			if(active){
+				tunnel.disconnect(this);
+				active = false;
 			}
 			else{
-				if(Skeleton.askIN("Van-e másik kettõ aktív tunnelGate? (I/N)")){
-					Skeleton.write("TunnelGate.change() calls tunnel.register(this)");
-					Skeleton.addIndent();
-					tunnel.register(null);
-					Skeleton.removeIndent();
-					Skeleton.write("TunnelGate.change() changes nothing");
-				}
-				else {
-					Skeleton.write("TunnelGate.change() calls tunnel.register(this)");
-					Skeleton.addIndent();
-					tunnel.register(this);
-					Skeleton.removeIndent();
-					Skeleton.write("TunnelGate.change() connected this gate");
-				}
+				active = tunnel.register(this); //Ha van másik kettő akkor nem fog sikerülni!
 			}
 		}
-		Skeleton.write("TunnelGate.change() returns");
-		Skeleton.removeIndent();
 	}
 
-	/**
-	 * A jelenlegi alagútszáj "kikapcsolása" a hozzá tartozó alagútból
-	 * (meghívja az alagút megfelelõ függvényét)
-	 */
-	public void removeTunnel() {
-		Skeleton.addIndent();
-		Skeleton.write("TunnelGate.removeTunnelTrack()");
-		Skeleton.removeIndent();
-	}
+    /**
+     * Az alagútba mutató utat állítja be. Felcsatlakozik az alagútra.
+     * @param track Alagútra mutató sín elem referenciája
+     */
+    public void setTunnelTrack(TrackComponent track) {
+        tunnelTrack = track;
+        addAdjacentTrack(track);
+    }
 
-	/* (non-Javadoc)
-	 * @see iliketrains.TrackComponent#getNext(iliketrains.TrackComponent)
-	 */
-	@Override
-	public TrackComponent getNext(TrackComponent previous) {
-		//Kérdés felvetés
-		Skeleton.addIndent();
-		boolean answer = Skeleton.askIN("Aktív az alagút?(I/N)");
-		if(answer){
-		Skeleton.write("tunnelGate returns with trackSetByTunnel");
-		}
-		else {
-			Skeleton.write("tunnelGate returns with nextTrackComponent");
-		}
-		Skeleton.removeIndent();
-		return this;
-	}
+    /**
+     * Lecsatlakoztatja magát az alagútról
+     */
+    public void removeTunnelTrack() {
+        removeAdjacentTrack(tunnelTrack);
+        tunnelTrack = null;
+    }
+
+    /**
+     * Leírást ad magáról
+     * @return
+     */
+    @Override
+    public String getInfo() {
+        String ret = "";
+        ret +=  active ? "active, set to" + tunnelTrack.getType() + " " + tunnelTrack.getId() : "inactive" ;
+        return  ret + ", ";
+    }
+
+    /**
+     * Saját típusát sztringben
+     * @return "TunnelGate"
+     */
+    @Override
+    public String getType(){
+        return "TunnelGate";
+    }
 
 }

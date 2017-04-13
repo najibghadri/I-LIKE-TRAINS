@@ -12,9 +12,9 @@ import iliketrains.Station;
 import iliketrains.TrackComponent;
 
 public class Controller {
-	private static List<Controllable> controllables;
-	private static RailCenter railCenter;
-	private static Scanner reader = new Scanner(System.in);
+	private List<Controllable> controllables;
+	private RailCenter railCenter;
+	private Scanner reader = new Scanner(System.in);
 	
 	/**
 	 * A kontroll szál, bemenetet olvassa, amíg meg nem szakítják

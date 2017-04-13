@@ -54,6 +54,7 @@ public class Engine extends Cart {
 	 * @return
 	 */
 	private boolean checkCollison() {
+		//TODO Kell ellenőriznui hogy null-e a kövi sín (zsákutca bárhol lehet).
 		Skeleton.addIndent();
 		if(Skeleton.askIN("Foglalt a következõ sín?")){
 			Skeleton.write("Ütközés, VESZTETTÉL!");

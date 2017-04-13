@@ -2,6 +2,7 @@ package skeleton;
 
 public class Game {
 
+	//TODO gondolom így nincs kész
 	public static void main(String args[]) throws InterruptedException{
 		Controller controller=new Controller();
 		controller.startGame();

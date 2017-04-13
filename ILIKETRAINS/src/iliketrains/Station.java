@@ -1,7 +1,8 @@
 package iliketrains;
 
-import skeleton.Skeleton;
-
+/**
+ *
+ */
 public class Station {
 	private Color color;
 	private boolean passengers;
@@ -34,8 +35,13 @@ public class Station {
 		passengers=false;
 	}
 
-	public String print() {
-		//TODO - színt a stationtól kérni
+	/**
+	 * Leírást ad magáról
+	 * @return
+	 */
+	@Override
+	public String toString() {
+		//TODO - ez így nem jó
 		if(passengers)
 			return "Station: "+"blue"+" has passengers";
 		else

@@ -1,5 +1,5 @@
 package iliketrains;
 
-public class Color {
-
+public enum Color {
+    Red, Green, Blue, Yellow, Brown
 }

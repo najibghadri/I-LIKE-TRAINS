@@ -5,76 +5,88 @@ import java.util.*;
 import skeleton.Skeleton;
 
 /**
- * 
+ * Tunnel
+ * Alagútkezelő típus
  * @author Najib
- *
  */
 public class Tunnel {
 
-	Collection<TunnelGate> activeGates;
-	
+	private List<TunnelGate> activeGates;
+	private List<TrackComponent> tunnelTracks; //ha nem csak 1 hosszú lesz akkor szét kell választani őket
+	private static int firstID;
+	private static Tunnel singleton;
+
 	/**
-	 * konstruktor
+	 * Constructor
+	 * Létrehoz egy tunnel elemet
 	 */
-	private Tunnel(){
+	private Tunnel(int firstID){
+		this.firstID = firstID;
+		activeGates = new ArrayList<TunnelGate>();
+		tunnelTracks = new ArrayList<TrackComponent>();
 		Skeleton.write("Tunnel constructor");
 	}
 
 	/**
 	 * Az alagút referenciájának lekérdezése
+	 * Egyetlen Tunnel elem létrehozását engedélyezi, aminek firstID a kezdő száma
+	 * firstID a további alagút elemek id-ja innen kezdődik
 	 * @return Tunnel Az alagút referenciája
 	 */
 	public static Tunnel getInstance() {
-		Skeleton.write("Tunnel.getInstance() returns reference to singleton tunnel object");
-		return new Tunnel();
-		//TODO: Ez így még nem singleton: El kell menteni hogy készítettünk-e korábban, ha igen akkor azt kell visszaadni, 
-		//ha nem csak akkor new
+		if(singleton == null)
+			singleton = new Tunnel(firstID);
+		return singleton;
 	}
 
 	/**
-	 * A paraméterként kapott alagútszájat "kikapcsoló" függvény
-	 * @param gate A kikapcsolandó alagútszáj
+	 * A paraméterként kapott alagútszájat leregisztrálja és leválasztja az alagútról
+	 * Ha csak ő van regisztrálva akkor csak leregisztrál
+	 * @param gate A leválasztandó alagútszáj
 	 */
 	public void disconnect(TunnelGate gate) {
-		Skeleton.write("Tunnel.disconnect(TunnelGate t) calls t.removeTunnel()");
-		Skeleton.addIndent();
-		gate.removeTunnel();
-		Skeleton.removeIndent();
+		if(activeGates.size()==2) { //can not be more
+			activeGates.get(0).removeTunnelTrack();
+			activeGates.get(1).removeTunnelTrack();
+			//TODO ha nem csak egy hosszú az alagút, akkor itt szedjük szét
+		}
+		activeGates.remove(gate);
 	}
 
 	/**
-	 * A paraméterként kapott alagútszájat "bekapcsoló" függvény
-	 * @param gate A bekapcsolandó alagútszáj
+	 * A paraméterként kapott alagútszájat csatlakozásra regisztrálja
+	 * @param gate alagútszáj
+	 * @return Sikerült e a regisztrálás
 	 */
 	public boolean register(TunnelGate gate) {
-		if(gate == null){
-			Skeleton.write("Tunnel.register(TunnelGate g) returns false");
-			return false;
-		}
-		else{
-			if(Skeleton.askIN("Van-e másik aktív tunnelGate?")){
-				Skeleton.write("Tunnel.register(TunnelGate g) calls createTunnel(TunnelGate in, TunnelGate out)");
-				Skeleton.addIndent();
-				createTunnel(null,null);
-				Skeleton.removeIndent();
-			}
-			Skeleton.write("Tunnel.register(TunnelGate g) returns true");
+		if(activeGates.size()==	0){
+			activeGates.add(gate);
 			return true;
 		}
+		else if(activeGates.size() == 1){
+			activeGates.add(gate);
+			createTunnel(activeGates.get(0),activeGates.get(1));
+			return true;
+		} else
+			return false;
 	}
 
 	/**
-	 * Alagút létesítõ függvény
+	 * Alagút létrehzozó függvény
 	 * @param in Az egyik alagútszáj
 	 * @param out A másik alagútszáj
 	 */
 	private void createTunnel(TunnelGate in, TunnelGate out) {
-		Skeleton.write("Tunnel.createTunnel(TunnelGate g1, TunnelGate g2) creates tunnel");
-		Skeleton.addIndent();
-		TrackComponent trackObj2= new TrackComponent();
+		//TODO Csak egy hosszú lesz?
+
+		TrackComponent trackObj2= new TrackComponent(firstID);
+		tunnelTracks.add(trackObj2);
+
 		trackObj2.addAdjacentTrack(in);
 		trackObj2.addAdjacentTrack(out);
-		Skeleton.removeIndent();
+
+		in.setTunnelTrack(trackObj2);
+		out.setTunnelTrack(trackObj2);
 	}
 
 }

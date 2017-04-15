@@ -14,4 +14,14 @@ public class Game {
 	public static void log(String s){
 		System.out.println(s);
 	}
+	
+	/**
+	 * A teszteset stdoutputra logolt részét egy fájlbaírja és összehasonlítja 
+	 * az előredefiniált helyes működést leíró outputtal.
+	 * Ha minden egyezik, kiírja a stdoutputra az egyezést és a teszteset sikeres lefutását.
+	 * Jöhet a következő teszteset.
+	 */
+	public static void outputCompare(){
+		
+	}
 }

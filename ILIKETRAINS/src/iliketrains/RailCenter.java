@@ -8,7 +8,6 @@ import java.util.*;
 
 import skeleton.Game;
 
-// TODO: Auto-generated Javadoc
 /**
  * A RailCentert megvalósító osztály.
  */
@@ -60,7 +59,9 @@ public class RailCenter {
 	 * Az Engineket (mozdony), és ezáltal a vonatokat mozgató fv.
 	 */
 	public void moveEngines() {
-		// TODO - implement RailCenter.moveEngines
+		for(Engine e : engines){
+			e.move();
+		}
 	}
 	
 	/**
@@ -68,8 +69,22 @@ public class RailCenter {
 	 * @return the all empty status
 	 */
 	public boolean getAllEmptyStatus(){
-		//TODO - implement 
-		return false;
+		boolean emptyness = true;
+		//állomások ellenőrzése
+		for(Station s : stations){
+			if(s.getPassangers() || !emptyness){
+				emptyness = false;
+				break;
+			}
+		}
+		//vonatok ellenőrzése
+		for(Engine e : engines){
+			if(e.checkEmpty() || !emptyness){
+				emptyness = false;
+				break;
+			}
+		}
+		return emptyness;
 	}
 	
 	/**
@@ -77,6 +92,7 @@ public class RailCenter {
 	 * @return collided attribútummal tér vissza
 	 */
 	public boolean getAnyCollided(){
+		checkAllCollision(); //TODO ez nem biztos, hogy kell ide, de van értelme
 		return collided;
 	}
 	
@@ -84,13 +100,16 @@ public class RailCenter {
 	 * A vonatkoktól kéri hogy ellenőrizzék ütköztek-e.
 	 */
 	public void checkAllCollision(){
-		//TODO - implement
+		for(Engine e : engines){
+			e.checkCollison();
+		}
 	}
 
 	/**
 	 * Ütközés megtörténtének jelzésére szolgáló függvény.
 	 */
 	public void reportCollided() {
+		collided = true;
 	}
 	
 	/**

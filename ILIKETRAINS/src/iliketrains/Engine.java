@@ -1,21 +1,24 @@
 package iliketrains;
 
+// TODO: Auto-generated Javadoc
 /**
- * Mozdony osztály
+ * Mozdony osztály.
  */
 public class Engine extends Cart {
 
-	/** RailCenter referenciáját tárolja */
+	/**  RailCenter referenciáját tárolja. */
 	private RailCenter center;
 	
-	/** Első utaskocsi referenciáját tárolja */
+	/**  Első utaskocsi referenciáját tárolja. */
 	private PassengerCart firstPassengerCart;
 	
-	/** A korábbi sínelem referneciáját tárolja az előrehaladás miatt */
+	/**  A korábbi sínelem referneciáját tárolja az előrehaladás miatt. */
 	private TrackComponent previous;
 
 	/**
-	 * konstruktor
+	 * konstruktor.
+	 *
+	 * @param id the id
 	 * @param center A pályához tartozó RailCenter referenciája
 	 * @param curr A jelenlegi pályaelem amin az Engine (mozdony) tartózkodik
 	 * @param prev Az elõzõ mozgási esemény során elhagyott pályaelem
@@ -34,16 +37,15 @@ public class Engine extends Cart {
 	 * Ha a 7-es teszteset van, akkor ez kimarad (csak ismétlés lenne) és csak az állomás ellenõrzés történik meg
 	 */
 	public void move() {
+		//TODO
 	}
 
 	/**
 	 * Ütközésellenõrzés. Az Engine (mozdony) halad elõre, emiatt csak ez a kocsi mehet bele valamibe,
 	 * ígyhát ennek az osztálynak a felelõssége az ütközések detektálása
-	 * @return
 	 */
-	private boolean checkCollison() {
-		//TODO Kell ellenőrizni hogy null-e a kövi sín (zsákutca bárhol lehet).
-		return true;
+	public void checkCollison() {
+		//TODO - ha történt ütközés, akkor a railcenter.reportCollided fgv-jét kell meghívni
 	}
 
 	/**
@@ -51,7 +53,7 @@ public class Engine extends Cart {
 	 * leszállítja az utasokat a specifikációnak megfelelõen. Ha minden kocsi üres, azt jelzi a RailCenter felé
 	 */
 	private void checkStation() {
-
+		//TODO
 	}
 
 	/**
@@ -60,6 +62,16 @@ public class Engine extends Cart {
 	 */
 	public void addNext(PassengerCart pCart) {
 		firstPassengerCart=pCart;
+	}
+
+	/**
+	 * Ellenőrzi, hogy a mozdonyhoz kapcsolódó vonatkocsik üresek-e
+	 * Ha igen, akkor igazzal tér vissza, egyébként hamissal
+	 * @return bool érték a fentiek szerint
+	 */
+	public boolean checkEmpty() {
+		// TODO 
+		return false;
 	}
 
 }

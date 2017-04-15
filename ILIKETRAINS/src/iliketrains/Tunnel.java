@@ -2,8 +2,6 @@ package iliketrains;
 
 import java.util.*;
 
-import skeleton.Skeleton;
-
 /**
  * Tunnel
  * Alagútkezelő típus

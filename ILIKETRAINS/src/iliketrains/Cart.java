@@ -1,7 +1,5 @@
 package iliketrains;
 
-import skeleton.Skeleton;
-
 /**
  * A vonatkocsi ősosztály
  * Nem absztrakt, mert a származtatott osztályok közös része itt kerül megvalósításra
@@ -30,13 +28,11 @@ public class Cart {
 	 * @param whereTo Pályaelem amire a kocsit mozgatni kívánjuk
 	 */
 	public void moveCart(TrackComponent whereTo) {
-		Skeleton.addIndent();
-		Skeleton.write("Cart.moveCart calls currentTrack.removeCart()");
+		//Skeleton.write("Cart.moveCart calls currentTrack.removeCart()");
 		currentTrack.removeCart(this);
-		Skeleton.write("Cart.moveCart calls whereTo.putCart()");
+		//Skeleton.write("Cart.moveCart calls whereTo.putCart()");
 		whereTo.putCart(this);
-		Skeleton.write("Cart.moveCart returns");
-		Skeleton.removeIndent();
+		//Skeleton.write("Cart.moveCart returns");
 	}
 	
 

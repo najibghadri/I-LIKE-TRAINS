@@ -1,7 +1,5 @@
 package iliketrains;
 
-import skeleton.Skeleton;
-
 /**
  * TunnelGate
  * Alagútszájat megvalósító típus

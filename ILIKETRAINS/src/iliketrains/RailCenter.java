@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.*;
 
 import skeleton.Game;
-import skeleton.Skeleton;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -92,9 +91,6 @@ public class RailCenter {
 	 * Ütközés megtörténtének jelzésére szolgáló függvény.
 	 */
 	public void reportCollided() {
-		Skeleton.addIndent();
-		Skeleton.write("RailCenter.reportCollided() returns");
-		Skeleton.removeIndent();
 	}
 	
 	/**

@@ -1,7 +1,5 @@
 package iliketrains;
 
-import skeleton.Skeleton;
-
 /**
  * Mozdony osztály
  */
@@ -27,7 +25,7 @@ public class Engine extends Cart {
 		this.center=center;
 		currentTrack=curr;
 		previous=prev;
-		Skeleton.write("Engine constructor");
+		//Skeleton.write("Engine constructor");
 	}
 	
 	/**
@@ -36,24 +34,6 @@ public class Engine extends Cart {
 	 * Ha a 7-es teszteset van, akkor ez kimarad (csak ismétlés lenne) és csak az állomás ellenõrzés történik meg
 	 */
 	public void move() {
-		Skeleton.addIndent();
-		if(Skeleton.getCurrentTest()==7){									//A hetes teszteset
-			Skeleton.write("Engine.move calls Engine.checkStation()");
-			checkStation();
-		}		
-		else{																//A többi teszteset
-			Skeleton.write("Engine.move calls getNext('previous')");
-			TrackComponent next=currentTrack.getNext(previous);
-			previous=currentTrack;
-			Skeleton.write("Engine.move calls Engine.checkCollision()");
-			if(!checkCollison()){
-			Skeleton.write("Engine.move calls Cart.moveCart('next')");
-			moveCart(next);	
-			}	
-		}
-		
-		Skeleton.write("Engine.move returns");
-		Skeleton.removeIndent();
 	}
 
 	/**
@@ -62,19 +42,8 @@ public class Engine extends Cart {
 	 * @return
 	 */
 	private boolean checkCollison() {
-		//TODO Kell ellenőriznui hogy null-e a kövi sín (zsákutca bárhol lehet).
-		Skeleton.addIndent();
-		if(Skeleton.askIN("Foglalt a következõ sín?")){
-			Skeleton.write("Ütközés, VESZTETTÉL!");
-			Skeleton.write("Engine.checkCollicion calls center.reportCollided()");
-			center.reportCollided();
-			Skeleton.removeIndent();
-			return true;
-		}else{
-			Skeleton.write("Engine.checkCollision() returns false");
-			Skeleton.removeIndent();
-			return false;
-		}
+		//TODO Kell ellenőrizni hogy null-e a kövi sín (zsákutca bárhol lehet).
+		return true;
 	}
 
 	/**

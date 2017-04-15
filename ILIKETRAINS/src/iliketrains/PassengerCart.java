@@ -1,7 +1,5 @@
 package iliketrains;
 
-import skeleton.Skeleton;
-
 /**
  * Utaskocsi osztály
  */
@@ -25,7 +23,7 @@ public class PassengerCart extends Cart {
 	 */
 	public PassengerCart(int id,String passengers,String color){
 		super(id);
-		Skeleton.write("PassengerCart konstruktor");
+		//Skeleton.write("PassengerCart konstruktor");
 	}
 	
 	/**
@@ -43,7 +41,7 @@ public class PassengerCart extends Cart {
 	 * @return Az kocsi referenciája
 	 */
 	public Cart popPassengers(Color color) {
-		Skeleton.addIndent();
+		/*Skeleton.addIndent();
 		boolean empty=Skeleton.askIN("Üres már a kocsi?");
 		if(empty){
 			boolean allEmpty=Skeleton.askIN("Ez az utolsó kocsi?");
@@ -57,7 +55,7 @@ public class PassengerCart extends Cart {
 		else{
 			Skeleton.askIN("Egyezik a szín?");
 		}
-		Skeleton.removeIndent();
+		Skeleton.removeIndent();*/
 		return this;
 	}
 

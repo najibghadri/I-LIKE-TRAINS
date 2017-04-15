@@ -1,7 +1,5 @@
 package iliketrains;
 
-import skeleton.Skeleton;
-
 /**
  * Switch
  * Váltó osztálya

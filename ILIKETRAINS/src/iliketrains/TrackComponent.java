@@ -1,6 +1,7 @@
 package iliketrains;
 
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import skeleton.Game;
 import skeleton.Skeleton;
@@ -31,6 +32,7 @@ public class TrackComponent {
      */
     public TrackComponent(int id){
 		adjacentTracks = new ArrayList<TrackComponent>();
+		carts=new ArrayList<Cart>();
 		this.id=id;
 	}
 

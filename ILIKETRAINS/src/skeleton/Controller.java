@@ -66,6 +66,7 @@ public class Controller {
 				break;
 			case "loadmap":
 				railCenter.loadMap(commandpart[1]);
+				controllables=railCenter.getControllables();
 				break;
 			case "loadtrain":
 				railCenter.loadTrain(commandpart[1]);
@@ -76,12 +77,16 @@ public class Controller {
 	}
 
 	/**
-	 * A paraméterben megkapott sorszámú elem change függvényét hívja meg
-	 *
-	 * @param string Szövegként megkapott sorszám, ami a controllables listára vonatkozik
+	 * A paraméterben megkapott id-jú elem change függvényét hívja meg
+	 * Megkeresi a listában a megfelelő id-jú elemet
+	 * @param string Szövegként megkapott sorszám
 	 */
 	private void change(String string) {
 		int id = Integer.parseInt(string);
-		controllables.get(id-1).change(); //Azért id-1, mert a számozás 1-től kezdjük a felületen, míg a lista 0-tól
+		for(int i=0;i<controllables.size();i++){
+			if(controllables.get(i).getId()==id){
+				controllables.get(i).change();
+			}
+		}
 	}
 }

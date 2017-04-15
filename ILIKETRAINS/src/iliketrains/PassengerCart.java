@@ -2,14 +2,26 @@ package iliketrains;
 
 import skeleton.Skeleton;
 
+/**
+ * Utaskocsi osztály
+ */
 public class PassengerCart extends Cart {
 
+	/** A következő kocsi referenciája */
 	PassengerCart nextCart;
+	
+	/** Az utaskocsi színe */
 	private Color color;
+	
+	/** Utaznak-e utasok a kocsin */
 	private boolean passengers;
 
 	/**
-	 * konstruktor
+	 * Konstruktor.
+	 * A kapott paramétereket inicializálja
+	 * @param id Utaskocsi azonosítója
+	 * @param passengers Utasok meghatározásához szükséges input string
+	 * @param color Az utaskocsi színe
 	 */
 	public PassengerCart(int id,String passengers,String color){
 		super(id);

@@ -9,11 +9,14 @@ import skeleton.Skeleton;
  */
 public class TunnelGate extends TrackComponent implements Controllable {
 
-	private boolean active;  //Meg van nyomva vagy nem
+	/** Tárolja, hogy aktív-e vagy nem az alagútbejárat */
+	private boolean active;
+    
+    /** Az alagútba vezető sínelem referenciája */
     private TrackComponent tunnelTrack;
 
 	/**
-	 * Constructor
+	 * Konstruktor
 	 * Létrehoz egy alagútszájat azonosítóval
 	 * @param id
 	 */

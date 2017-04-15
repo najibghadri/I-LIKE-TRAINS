@@ -11,14 +11,21 @@ import iliketrains.RailCenter;
 import iliketrains.Station;
 import iliketrains.TrackComponent;
 
+/**
+ * A Kontroller osztály valósítja meg az kapcsolható elemek kapcsolhatóságát
+ */
 public class Controller {
+	
+	/** Az állítható elemek listája */
 	private List<Controllable> controllables;
+	
+	/** A RailCenter referenciája. */
 	private RailCenter railCenter;
+	
+	/** A beolvasáshoz szükséges objektum */
 	private Scanner reader = new Scanner(System.in);
 	
-	/**
-	 * A kontroll szál, bemenetet olvassa, amíg meg nem szakítják
-	 */
+	/** A kontroll szál, bemenetet olvassa, amíg meg nem szakítják. */
 	final Thread controlThread = new Thread(new Runnable() {
 		  public void run() {
 		    while (!Thread.interrupted()) {
@@ -29,8 +36,9 @@ public class Controller {
 		});
 	
 	/**
-	 * A kontroll szálat indítja el
-	 * @throws InterruptedException
+	 * A kontroll szálat indítja el.
+	 *
+	 * @throws InterruptedException the interrupted exception
 	 */
 	public void startGame() throws InterruptedException{
 		railCenter=new RailCenter();
@@ -39,7 +47,7 @@ public class Controller {
 	
 	
 	/**
-	 * Beolvassa a bemenetet és a megfelelő parancsra megfelelő függvényt hív
+	 * Beolvassa a bemenetet és a megfelelő parancsra megfelelő függvényt hív.
 	 */
 	private void readInput() {
 			String command=reader.nextLine();
@@ -67,8 +75,13 @@ public class Controller {
 			}
 	}
 
+	/**
+	 * A paraméterben megkapott sorszámú elem change függvényét hívja meg
+	 *
+	 * @param string Szövegként megkapott sorszám, ami a controllables listára vonatkozik
+	 */
 	private void change(String string) {
-		// TODO Auto-generated method stub
-		
+		int id = Integer.parseInt(string);
+		controllables.get(id-1).change(); //Azért id-1, mert a számozás 1-től kezdjük a felületen, míg a lista 0-tól
 	}
 }

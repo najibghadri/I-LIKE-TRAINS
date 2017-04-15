@@ -12,16 +12,22 @@ import skeleton.Skeleton;
  */
 public class TrackComponent {
 
+	/** Sínelem azonosítója */
 	private int id;
+	
+	/** Rajta lévő állomás referenciája */
 	private Station station;
 
+    /** Rajta lévő vonatkocsik listája */
     protected List<Cart> carts;
+	
+	/** Hozzákötődő sínelemek listája */
 	protected List<TrackComponent> adjacentTracks;
 
     /**
-     * Constructor
+     * Konstructor
      * Létrehoz egy sínt azonosítóval.
-     * @param id
+     * @param id Sínelem azonosítója
      */
     public TrackComponent(int id){
 		adjacentTracks = new ArrayList<TrackComponent>();
@@ -162,7 +168,7 @@ public class TrackComponent {
     }
 
     /**
-     * @return the id
+     * @return Visszatér a sínelem azonsítójával
      */
     public int getId() {
         return id;

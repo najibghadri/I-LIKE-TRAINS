@@ -2,10 +2,18 @@ package iliketrains;
 
 import skeleton.Skeleton;
 
+/**
+ * Mozdony osztály
+ */
 public class Engine extends Cart {
 
+	/** RailCenter referenciáját tárolja */
 	private RailCenter center;
+	
+	/** Első utaskocsi referenciáját tárolja */
 	private PassengerCart firstPassengerCart;
+	
+	/** A korábbi sínelem referneciáját tárolja az előrehaladás miatt */
 	private TrackComponent previous;
 
 	/**

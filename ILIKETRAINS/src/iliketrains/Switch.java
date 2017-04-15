@@ -9,10 +9,11 @@ import skeleton.Skeleton;
  */
 public class Switch extends TrackComponent implements Controllable {
 
+	/** Merre áll a váltó */
 	private boolean direction;
 
 	/**
-	 * Constructor
+	 * Konstructor
 	 * Azonosítóval létrehozza a switch-et
 	 */
 	public Switch(int id) {

@@ -10,7 +10,11 @@ import skeleton.Skeleton;
  * @author Najib
  */
 public class Tunnel {
+	
+	/** Az aktív alagútbejárator listája */
 	private List<TunnelGate> activeGates;
+	
+	/** Az alagútat alkotó sínelemek listája */
 	private List<TrackComponent> tunnelTracks; //ha nem csak 1 hosszú lesz akkor szét kell választani őket
 	private static int firstID;
 	private static Tunnel singleton;

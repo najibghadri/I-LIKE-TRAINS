@@ -1,7 +1,15 @@
 package iliketrains;
 
+/**
+ * A vonatok belépési pontját megvalósító osztály.
+ */
 public class EntryPoint extends TrackComponent{
 
+	/**
+	 * Konstruktor
+	 * A pályaelem azonosítóját inicializálja
+	 * @param id Pályaelem azonosítója
+	 */
 	public EntryPoint(int id){
 		super(id);
 	}

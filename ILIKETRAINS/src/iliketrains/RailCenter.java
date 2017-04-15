@@ -9,18 +9,36 @@ import java.util.*;
 import skeleton.Game;
 import skeleton.Skeleton;
 
+// TODO: Auto-generated Javadoc
+/**
+ * A RailCentert megvalósító osztály.
+ */
 public class RailCenter {
 
+	/**  A mozdonyok listája. */
 	private List<Engine> engines;
+	
+	/**  A kapcsolható pályaelemek listája. */
 	private List<Controllable> controllableList;
+	
+	/**  Az állomások listája. */
 	private List<Station> stations;
+	
+	/**  A belépési pontok listája. */
 	private List<EntryPoint> entryPoints;
+	
+	/**  Az ütközés tároló attributum. */
 	private boolean collided=false;
+	
+	/** A legnagyobb pályaelem azonosító sorszáma */
 	private static int highestTrackId=1;
+	
+	/** A legnagyobb vonatkocsi azonosító sorszáma */
 	private int highestCartId=1;
 
 	/**
-	 * konstruktor
+	 * Konstruktor
+	 * Memóriaterületet foglal a listáknak.
 	 */
 	public RailCenter() {
 		controllableList=new ArrayList<Controllable>();
@@ -31,6 +49,8 @@ public class RailCenter {
 	
 	
 	/**
+	 * Visszaadja a állítható elemek listáját
+	 *
 	 * @return List<Controllable> visszatér a listával
 	 */
 	public List<Controllable> getControllables(){
@@ -45,7 +65,8 @@ public class RailCenter {
 	}
 	
 	/**
-	 * Ellenőrzi, hogy minden vonat és állomás kiürült-e
+	 * Ellenőrzi, hogy minden vonat és állomás kiürült-e.
+	 * @return the all empty status
 	 */
 	public boolean getAllEmptyStatus(){
 		//TODO - implement 
@@ -53,7 +74,7 @@ public class RailCenter {
 	}
 	
 	/**
-	 * Ellenőrzi, hogy volt-e ütközés
+	 * Ellenőrzi, hogy volt-e ütközés.
 	 * @return collided attribútummal tér vissza
 	 */
 	public boolean getAnyCollided(){
@@ -61,14 +82,14 @@ public class RailCenter {
 	}
 	
 	/**
-	 * A vonatkoktól kéri hogy ellenőrizzék ütköztek-e
+	 * A vonatkoktól kéri hogy ellenőrizzék ütköztek-e.
 	 */
 	public void checkAllCollision(){
 		//TODO - implement
 	}
 
 	/**
-	 * Ütközés megtörténtének jelzésére szolgáló függvény
+	 * Ütközés megtörténtének jelzésére szolgáló függvény.
 	 */
 	public void reportCollided() {
 		Skeleton.addIndent();
@@ -79,7 +100,7 @@ public class RailCenter {
 	/**
 	 * A paraméter egy fájl neve, a megfelelő térképet tölti be.
 	 * Létrehozza az összes objektumot és a listákba elhelyezi.
-	 * @param name
+	 * @param name the name
 	 */
 	public void loadMap(String name){
 		String FILENAME = generateFilename(name);		
@@ -139,6 +160,12 @@ public class RailCenter {
 		}
 	}
 
+	/**
+	 * Létrehozza a kapcsolatokat az egyes elemek között
+	 *
+	 * @param list A pályaelem lista
+	 * @param currentLine Az aktuálisan beolvasott kapcsolatot tartalmazó input string
+	 */
 	private void createConnections(List<TrackComponent> list, String currentLine) {
 		String[] connectionParts=currentLine.split(",");
 		int[] connectionPartNumbers = null;
@@ -165,6 +192,12 @@ public class RailCenter {
 	}
 
 
+	/**
+	 * Létrehozza a váltókat
+	 *
+	 * @param list Pályaelem lista
+	 * @param currentLine Az aktuálisan beolvasott váltó adatait tartalmazó input string
+	 */
 	private void createSwitch(List<TrackComponent> list, String currentLine) {
 		String[] commandParts=currentLine.split(",");
 		Switch sw=new Switch(highestTrackId);
@@ -178,6 +211,12 @@ public class RailCenter {
 	}
 
 
+	/**
+	 * Létrehozza a TrackComponenteket
+	 *
+	 * @param list Pályaelem lista 
+	 * @param currentLine Az aktuálisan beolvasott pályaelem adatait tartalmazó input string
+	 */
 	private void createTrackComponent(List<TrackComponent> list,
 			String currentLine) {
 		TrackComponent t=new TrackComponent(highestTrackId);
@@ -190,6 +229,12 @@ public class RailCenter {
 		highestTrackId++;
 	}
 	
+	/**
+	 * Létrehozza a kereszteződéseket
+	 *
+	 * @param list Pályaelem lista 
+	 * @param currentLine Az aktuálisan beolvasott kereszteződés adatait tartalmazó input string
+	 */
 	private void createCross(List<TrackComponent> list,
 			String currentLine) {
 		Cross t=new Cross(highestTrackId);
@@ -202,6 +247,12 @@ public class RailCenter {
 		highestTrackId++;
 	}
 	
+	/**
+	 * Létrehozza a belépési pontokat
+	 *
+	 * @param list Pályaelem lista 
+	 * @param currentLine Az aktuálisan beolvasott belépési pont adatait tartalmazó input string
+	 */
 	private void createEntryPoint(List<TrackComponent> list,
 			String currentLine) {
 		EntryPoint t=new EntryPoint(highestTrackId);
@@ -215,6 +266,12 @@ public class RailCenter {
 		highestTrackId++;
 	}
 	
+	/**
+	 * Létrehozza a alagútszájakat
+	 *
+	 * @param list Pályaelem lista 
+	 * @param currentLine Az aktuálisan beolvasott alagútszáj adatait tartalmazó input string
+	 */
 	private void createTunnelGate(List<TrackComponent> list,
 			String currentLine) {
 		TunnelGate t=new TunnelGate(highestTrackId);
@@ -228,6 +285,12 @@ public class RailCenter {
 		highestTrackId++;
 	}
 
+	/**
+	 * Generate filename.
+	 *
+	 * @param name the name
+	 * @return the string
+	 */
 	//Fájlnévhez hozzáfűzi a jelenlegi elérési utat és a mappa nevét
 	private String generateFilename(String name) {
 		String FILENAME =System.getProperty("user.dir");
@@ -241,8 +304,9 @@ public class RailCenter {
 	
 	/**
 	 * A vonatfájlt tölti be, és hozza létre őket, 
-	 * majd felhelyezi a kezdősínekre, és az Engines listába
-	 * @param name
+	 * majd felhelyezi a kezdősínekre, és az Engines listába.
+	 *
+	 * @param name the name
 	 */
 	public void loadTrain(String name){
 		String FILENAME = generateFilename(name);		
@@ -317,6 +381,9 @@ public class RailCenter {
 		}
 	}
 
+	/**
+	 * @return Visszaadja a legmagasabb pályaelem azonosítót.
+	 */
 	public static int getHighestTrackId() {
 		return highestTrackId;
 	}

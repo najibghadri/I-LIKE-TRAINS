@@ -1,5 +1,8 @@
 package skeleton;
 
+/**
+ * Game, keretosztály a játék működéséhez, stdout logoláshoz a teszteléshez
+ */
 public class Game {
 
 	//TODO gondolom így nincs kész

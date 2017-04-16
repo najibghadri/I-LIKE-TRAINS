@@ -2,6 +2,7 @@ package iliketrains;
 
 /**
  * Utaskocsi osztály
+ * @author Imi
  */
 public class PassengerCart extends Cart {
 
@@ -21,50 +22,55 @@ public class PassengerCart extends Cart {
 	 * @param passengers Utasok meghatározásához szükséges input string
 	 * @param color Az utaskocsi színe
 	 */
-	public PassengerCart(int id,String passengers,String color){
+	public PassengerCart(int id, String passengers, String color){
 		super(id);
-		//Skeleton.write("PassengerCart konstruktor");
-	}
+		if(passengers.equals(0))
+			this.passengers=false;
+		else if (passengers.equals(1))
+			this.passengers=true;
+
+		this.color=iliketrains.Color.valueOf(color);
+		}
 	
 	/**
 	 * Az utaskocsi színét visszaadó függvény
 	 * @return color Az utaskocsi színe
 	 */
-	public Color getColor() {
+	public final Color getColor() {
 		return this.color;
 	}
 
-
 	/**
-	 * Az utasok leszállítása.
-	 * @param color Az adott szín, amilyen utasokat leszállítani kívánunk
-	 * @return Az kocsi referenciája
+	 * Az utasok felszállítása
 	 */
-	public Cart popPassengers(Color color) {
-		/*Skeleton.addIndent();
-		boolean empty=Skeleton.askIN("Üres már a kocsi?");
-		if(empty){
-			boolean allEmpty=Skeleton.askIN("Ez az utolsó kocsi?");
-			if(allEmpty){
-				
-			}else{
-				Skeleton.write("Cart.popPassenger calls nextCart.popPassengers(color)");
-				this.popPassengers(color);
-			}
-		}
-		else{
-			Skeleton.askIN("Egyezik a szín?");
-		}
-		Skeleton.removeIndent();*/
-		return this;
+	public void addPassengers(){
+		passengers=true;
 	}
-
+	
+	/**
+	 * Az utasok leszállítása
+	 */
+	public void popPassengers() {
+		passengers=false;
+	}
+	
+	/**
+	 * Annak a lekérdezése, hogy vannak-e utasok a kocsiban
+	 * @return a leírás szerinti logikai érték
+	 */
+	public final boolean isNotEmpty(){
+		return passengers;
+	}
 
 	/**
 	 * Utaskocsi hozzákapcsolása ehhez a kocsihoz
 	 * @param pCart A kapcsolandó utaskocsi referenciája
 	 */
 	public void addNext(PassengerCart pCart) {
+		if(pCart.equals(this))	//ha önmagát akarnánk megnevezni, mint a következő utaskocsi
+			throw new RuntimeException("Can't link next PassangerCart to self");
+		else
+			nextCart=pCart;
 	}
 
 }

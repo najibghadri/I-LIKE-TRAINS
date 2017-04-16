@@ -1,8 +1,11 @@
 package iliketrains;
 
+import javax.management.RuntimeErrorException;
+
 // TODO: Auto-generated Javadoc
 /**
  * Mozdony osztály.
+ * @author Imi
  */
 public class Engine extends Cart {
 
@@ -26,9 +29,15 @@ public class Engine extends Cart {
 	public Engine(int id,RailCenter center,TrackComponent curr,TrackComponent prev){
 		super(id);
 		this.center=center;
-		currentTrack=curr;
+		if(curr==null)
+			throw new RuntimeException("Current TrackComponent can't be null");
+		else{
+			if(!curr.getType().equals("EntryPoint"))	//ha nem EntryPoint-on hoznánk létre (DE! ha a játékot be lehet tölteni mentésből, ez gond lehet)
+				throw new RuntimeException("Engine not instantiated on EntryPoint");
+			else
+				currentTrack=curr;
+		}
 		previous=prev;
-		//Skeleton.write("Engine constructor");
 	}
 	
 	/**
@@ -37,7 +46,14 @@ public class Engine extends Cart {
 	 * Ha a 7-es teszteset van, akkor ez kimarad (csak ismétlés lenne) és csak az állomás ellenõrzés történik meg
 	 */
 	public void move() {
-		//TODO
+		TrackComponent nextTrack= currentTrack.getNext(previous);
+		if(nextTrack==null)	//ha nincs tovább, vagyis zsákutcába kerültünk
+			center.reportCollided();
+		else{
+			checkCollison();
+			moveCart(nextTrack);	//engine (és ezáltal az egész szerelvény) mozgatása a következő pályaelemre
+			checkStation();
+		}
 	}
 
 	/**
@@ -45,7 +61,8 @@ public class Engine extends Cart {
 	 * ígyhát ennek az osztálynak a felelõssége az ütközések detektálása
 	 */
 	public void checkCollison() {
-		//TODO - ha történt ütközés, akkor a railcenter.reportCollided fgv-jét kell meghívni
+		if(!currentTrack.getNext(previous).carts.isEmpty()) //ha a következő pályaelemen van kocsi, ütközés lesz
+			center.reportCollided();
 	}
 
 	/**
@@ -53,7 +70,37 @@ public class Engine extends Cart {
 	 * leszállítja az utasokat a specifikációnak megfelelõen. Ha minden kocsi üres, azt jelzi a RailCenter felé
 	 */
 	private void checkStation() {
-		//TODO
+		if(currentTrack.getNext(previous).hasStation()==null)		//ha nem halad át állomáson
+			return;
+		else{														//ha igen
+			Station s=currentTrack.getNext(previous).hasStation();
+			
+			/*leszállítás*/
+			PassengerCart current= firstPassengerCart;
+			while(current!=null){	//amíg van kocsi
+				if(current.isNotEmpty()){	//ha nem üres a vizsgált
+					if(current.getColor().equals(s.getColor())){	//ha egyezik a szín az állomáséval
+						current.popPassengers();							//leszállnak (nincs előtte teli kocsi)
+					}
+					break;	//ha megtaláltuk az első nem üres kocsit, biztosan be kell fejeznünk a keresést (színtől függetlenül)
+				}
+				current=current.nextCart;	//egyébként vizsgáljuk a következőt
+			}
+			/*felszállítás*/
+			if(s.getPassengers()==true){	//ha vannak az állomáson várakozó utasok
+				current= firstPassengerCart;
+				while(current!=null){	//amíg van kocsi
+					if(!current.isNotEmpty())	//ha ÜRES a kocsi
+						if(current.getColor().equals(s.getColor())){	//ha egyezik a szín
+							current.addPassengers();							//felszállnak
+							s.popPassengers();									//az állomásról pedig eltűnnek
+						}
+					current=current.nextCart;	//egyébként vizsgáljuk a következőt
+				}
+			}
+			if(checkEmpty())
+				center.reportArrived();
+		}
 	}
 
 	/**
@@ -61,7 +108,7 @@ public class Engine extends Cart {
 	 * @param pCart A kapcsolandó utaskocsi referenciája
 	 */
 	public void addNext(PassengerCart pCart) {
-		firstPassengerCart=pCart;
+			firstPassengerCart=pCart;
 	}
 
 	/**
@@ -70,8 +117,13 @@ public class Engine extends Cart {
 	 * @return bool érték a fentiek szerint
 	 */
 	public boolean checkEmpty() {
-		// TODO 
-		return false;
+		PassengerCart current=firstPassengerCart;
+		while(current!=null){	//utaskocsik végigiterálása
+			if(current.isNotEmpty())	//ha találtunk egy teli utaskocsit
+				return false;
+			else
+				current=current.nextCart;
+		}
+		return true;
 	}
-
 }

@@ -2,6 +2,7 @@ package iliketrains;
 
 /**
  * Az állomás osztálya
+ * @author Imi
  */
 public class Station {
 	
@@ -14,7 +15,6 @@ public class Station {
 	/** Állomás azonosítója */
 	private int id;
 	
-	public Station(){}
 	
 	/**
 	 * Konstruktor
@@ -25,18 +25,19 @@ public class Station {
 	 */
 	public Station(int id,String color,String passengers){
 		this.id=id;
-		//TODO-assign color based on string
-		if(passengers.equals(1))
-			this.passengers=true;
-		else
+		if(passengers.equals(0))
 			this.passengers=false;
+		else if (passengers.equals(1))
+			this.passengers=true;
+
+		this.color=iliketrains.Color.valueOf(color);
 	}
 
 	/**
 	 * Az állomás színének lekérdezésére szolgáló fv.
 	 * @return Color Az állomás színe
 	 */
-	public Color getColor() {
+	public final Color getColor() {
 		return color;
 	}
 	
@@ -44,7 +45,7 @@ public class Station {
 	 * Lekérdezi, hogy van-e utas az állomáson
 	 * @return Van-e utas az állomáson
 	 */
-	public boolean getPassangers(){
+	public final boolean getPassengers(){
 		return passengers;
 	}
 	
@@ -61,11 +62,14 @@ public class Station {
 	 */
 	@Override
 	public String toString() {
-		//TODO - ez így nem jó
+		String temp= new String("Station: ");
+		temp+=getColor().toString();
+		temp+=", ";
 		if(passengers)
-			return "Station: "+"blue"+" has passengers";
+			temp+="Has passengers";
 		else
-			return "Station: "+"blue"+ " no passengers";
+			temp+="Has no passengers";
+		return temp;
 	}
 
 }

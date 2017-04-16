@@ -37,10 +37,20 @@ public class Cart {
 	 * @param whereTo Pályaelem amire a kocsit mozgatni kívánjuk
 	 */
 	public void moveCart(TrackComponent whereTo) {
+		if(whereTo==null){
+			return;
+		}
+		//Ha ez még pályán kívül volt akkor a következőt nem próbálja üres helyre rakni
+		if(currentTrack==null){
+			whereTo.putCart(this);		
+			currentTrack=whereTo;
+			return;
+		}
 		currentTrack.removeCart(this);
-		whereTo.putCart(this);
+		whereTo.putCart(this);		
 		if(next!=null)	//ha nem utolsó kocsiról van szó
 			next.moveCart(currentTrack);	//következő kocsi mozgatása
+		currentTrack=whereTo;
 	}
 	
 	/**

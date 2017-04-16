@@ -1,8 +1,18 @@
 package skeleton;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
 import javax.swing.text.ChangedCharSetException;
 
 import iliketrains.Color;
@@ -30,19 +40,6 @@ public class Controller {
 		  public void run() {
 		    while (!Thread.interrupted()) {
 		      readInput();
-		      if(railCenter.getAnyCollided()){
-				  System.out.println("You Lost");
-				  //TODO pálya/train neve
-				  railCenter.loadMap("NextMap");
-				  railCenter.loadTrain("NewTrain");
-			  }
-			  if(railCenter.getAllEmptyStatus()){
-				  System.out.println("You Won");
-				  //TODO pálya/train neve
-				  railCenter.loadMap("NextMap");
-				  railCenter.loadTrain("NewTrain");
-			  }
-
 		    }
 		    System.out.println("ControlThread 1 stopped!");
 		  }
@@ -55,7 +52,7 @@ public class Controller {
 	 */
 	public void startGame() throws InterruptedException{
 		railCenter=new RailCenter();
-		controlThread.start();
+		testOrGame();
 	}
 	
 	
@@ -73,9 +70,133 @@ public class Controller {
 			case "change":
 				change(commandpart[1]);
 				break;
-			case "start":
-				//Useless :D
-				//na jó, Timer indítás, de loadmap után kéne, ez rossz volt eddig szerintem
+			case "loadmap":
+				railCenter.loadMap(commandpart[1]);
+				controllables=railCenter.getControllables();
+				break;
+			case "loadtrain":
+				railCenter.loadTrain(commandpart[1]);
+				break;
+			case "moveengines":
+				gameTick();
+			default:
+				break;
+			}
+	}
+	
+	private void gameTick() {
+		railCenter.moveEngines();
+	      if(railCenter.getAnyCollided()){
+			  System.out.println("You Lost");
+			  //TODO pálya/train neve
+			  railCenter.loadMap("NextMap");
+			  railCenter.loadTrain("NewTrain");
+		  }
+		  if(railCenter.getAllEmptyStatus()){
+			  System.out.println("You Won");
+			  //TODO pálya/train neve
+			  railCenter.loadMap("NextMap");
+			  railCenter.loadTrain("NewTrain");
+		  }
+	}
+	
+	private void testOrGame(){
+	System.out.println("Játék vagy teszt? (1|2)");
+	String line = null;
+
+	line = reader.nextLine();
+	
+	//Elindítja a játékot
+	if(line.equals("1")){
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			  @Override
+			  public void run() {
+				  gameTick();
+			  }
+			}, 3000);
+	}
+	//Ha nem indítunk, akkor tesztfájlt választunk
+	else{
+		System.out.println("1. teszt)");
+		System.out.println("2. teszt)");
+		System.out.println("3. teszt)");
+		System.out.println("4. teszt)");
+		System.out.println("5. teszt)");
+		System.out.println("6. teszt)");
+		System.out.println("7. teszt)");
+		System.out.println("8. teszt)");
+		line = reader.nextLine();
+		File file = null;
+		String filename="";
+			switch (line){
+				case "1":
+					filename=Game.generateFilename("elso.txt");
+					file = new File(filename);
+					break;
+				case "2":
+					file = new File("file.txt");
+					break;
+				case "3":
+					file = new File("file.txt");
+					break;
+				case "4":
+					file = new File("file.txt");
+					break;
+				case "5":
+					file = new File("file.txt");
+					break;
+				case "6":
+					file = new File("file.txt");
+					break;
+				case "7":
+					file = new File("file.txt");
+					break;
+				case "8":
+					file = new File("file.txt");
+					break;
+				default:
+					break;
+			}
+		//Beolvassa a tesztparancsokat
+		BufferedReader br = null;
+		ArrayList<String> commands = new ArrayList<String>();
+		try {
+			br = new BufferedReader(new FileReader(file));
+			String text = null;
+			while ((text = br.readLine()) != null) {
+				commands.add(text);
+			}
+		} catch (Exception e) {
+
+		} finally {
+			if (br != null) {
+					try {
+						br.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+			}
+		}
+		
+		//A kontroll szálat elindítja
+		controlThread.start();
+		//Beadja a tesztbemeneteket
+		//Nem rossz ötlet, de nem sikerült működésre bírnom ezt a módszerts
+//		InputStream stdin = System.in;
+//		for (String in: commands) {
+//			try {
+//			  System.setIn(new ByteArrayInputStream(in.getBytes()));
+//			  reader=new Scanner(System.in);
+//			} finally {
+//			  System.setIn(stdin);
+//			}
+//		}
+		for(String in:commands){
+			String[] commandpart=in.split(" ");
+			switch (commandpart[0]) {
+			case "change":
+				change(commandpart[1]);
 				break;
 			case "loadmap":
 				railCenter.loadMap(commandpart[1]);
@@ -84,10 +205,15 @@ public class Controller {
 			case "loadtrain":
 				railCenter.loadTrain(commandpart[1]);
 				break;
+			case "moveengines":
+				gameTick();
 			default:
 				break;
 			}
+		}
 	}
+	}
+
 
 	/**
 	 * A paraméterben megkapott id-jú elem change függvényét hívja meg
@@ -102,4 +228,6 @@ public class Controller {
 			}
 		}
 	}
+	
+	
 }

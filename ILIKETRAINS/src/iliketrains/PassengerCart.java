@@ -7,7 +7,7 @@ package iliketrains;
 public class PassengerCart extends Cart {
 
 	/** A következő kocsi referenciája */
-	PassengerCart nextCart;
+	 PassengerCart nextCart;
 	
 	/** Az utaskocsi színe */
 	private Color color;
@@ -24,12 +24,12 @@ public class PassengerCart extends Cart {
 	 */
 	public PassengerCart(int id, String passengers, String color){
 		super(id);
-		if(passengers.equals(0))
+		if(passengers.equals("0"))
 			this.passengers=false;
-		else if (passengers.equals(1))
+		else if (passengers.equals("1"))
 			this.passengers=true;
 
-		this.color=iliketrains.Color.valueOf(color);
+		this.color=Color.values()[Integer.parseInt(color)];
 		}
 	
 	/**

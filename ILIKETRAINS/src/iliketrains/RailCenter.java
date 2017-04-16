@@ -72,18 +72,21 @@ public class RailCenter {
 		boolean emptyness = true;
 		//állomások ellenőrzése
 		for(Station s : stations){
-			if(s.getPassangers() || !emptyness){
+			if(s.getPassengers() || !emptyness){
 				emptyness = false;
 				break;
 			}
 		}
 		//vonatok ellenőrzése
-		for(Engine e : engines){
-			if(e.checkEmpty() || !emptyness){
-				emptyness = false;
-				break;
-			}
+		for(int i=0;i<engines.size();i++){
+			if(!engines.get(i).checkEmpty())
+				emptyness=false;
 		}
+//		for(Engine e : engines){
+//			if(e.checkEmpty()){
+//				emptyness = false;
+//				}
+//		}
 		return emptyness;
 	}
 	
@@ -92,7 +95,6 @@ public class RailCenter {
 	 * @return collided attribútummal tér vissza
 	 */
 	public boolean getAnyCollided(){
-		checkAllCollision(); //TODO ez nem biztos, hogy kell ide, de van értelme
 		return collided;
 	}
 	
@@ -350,8 +352,9 @@ public class RailCenter {
 				
 				//Megkeresi azt az EntryPointot ahova a mozdony kerül
 				for(EntryPoint entry : entryPoints ){
-					if(entry.getId()==Integer.parseInt(trainPart[0]))
+					if(entry.getId()==Integer.parseInt(trainPart[0])){
 						e=entry;
+					}
 				}
 				
 				//Létrehoz mozdonyt, listákhoz adja

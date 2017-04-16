@@ -22,6 +22,9 @@ public class EntryPoint extends TrackComponent{
 	 */
 	@Override
 	public TrackComponent getNext(TrackComponent previous){
+		if(previous==null){
+			return adjacentTracks.get(0);
+		}
 		if(previous.equals(adjacentTracks.get(0))){
 			return adjacentTracks.get(1);
 		}

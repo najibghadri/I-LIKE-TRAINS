@@ -92,8 +92,8 @@ public class TrackComponent {
 	 * A pályaelemen lévõ kocsi referenciájának lekérdezése
 	 * @return Cart A pályaelemen lévõ kocsi referenciája
 	 */
-	public Cart getCart() {
-		return carts.get(0);
+	public List<Cart> getCarts() {
+		return carts;
 	}
 
 	/**

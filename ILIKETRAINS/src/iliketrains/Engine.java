@@ -29,14 +29,7 @@ public class Engine extends Cart {
 	public Engine(int id,RailCenter center,TrackComponent curr,TrackComponent prev){
 		super(id);
 		this.center=center;
-		if(curr==null)
-			throw new RuntimeException("Current TrackComponent can't be null");
-		else{
-			if(!curr.getType().equals("EntryPoint"))	//ha nem EntryPoint-on hoznánk létre (DE! ha a játékot be lehet tölteni mentésből, ez gond lehet)
-				throw new RuntimeException("Engine not instantiated on EntryPoint");
-			else
-				currentTrack=curr;
-		}
+		currentTrack=curr;
 		previous=prev;
 	}
 	
@@ -46,12 +39,14 @@ public class Engine extends Cart {
 	 * Ha a 7-es teszteset van, akkor ez kimarad (csak ismétlés lenne) és csak az állomás ellenõrzés történik meg
 	 */
 	public void move() {
+		TrackComponent newPrev=currentTrack;
 		TrackComponent nextTrack= currentTrack.getNext(previous);
 		if(nextTrack==null)	//ha nincs tovább, vagyis zsákutcába kerültünk
 			center.reportCollided();
 		else{
 			checkCollison();
 			moveCart(nextTrack);	//engine (és ezáltal az egész szerelvény) mozgatása a következő pályaelemre
+			previous=newPrev;
 			checkStation();
 		}
 	}
@@ -61,16 +56,16 @@ public class Engine extends Cart {
 	 * ígyhát ennek az osztálynak a felelõssége az ütközések detektálása
 	 */
 	public void checkCollison() {
-		if(!currentTrack.getNext(previous).carts.isEmpty()) //ha a következő pályaelemen van kocsi, ütközés lesz
+		if(currentTrack.getCarts().size()>1) //ha a következő pályaelemen van kocsi, ütközés lesz
 			center.reportCollided();
 	}
 
 	/**
 	 * Állomásdetektálás. Ellenõrzi, hogy a vonat éppen állomáson halad-e át, és amennyiben igen,
-	 * leszállítja az utasokat a specifikációnak megfelelõen. Ha minden kocsi üres, azt jelzi a RailCenter felé
+	 * leszállítja az utasokat a specifikációnak megfelelõen.
 	 */
 	private void checkStation() {
-		if(currentTrack.getNext(previous).hasStation()==null)		//ha nem halad át állomáson
+		if(currentTrack.hasStation()==null)		//ha nem halad át állomáson
 			return;
 		else{														//ha igen
 			Station s=currentTrack.getNext(previous).hasStation();
@@ -98,8 +93,6 @@ public class Engine extends Cart {
 					current=current.nextCart;	//egyébként vizsgáljuk a következőt
 				}
 			}
-			if(checkEmpty())
-				center.reportArrived();
 		}
 	}
 

@@ -30,6 +30,19 @@ public class Controller {
 		  public void run() {
 		    while (!Thread.interrupted()) {
 		      readInput();
+		      if(railCenter.getAnyCollided()){
+				  System.out.println("You Lost");
+				  //TODO pálya/train neve
+				  railCenter.loadMap("NextMap");
+				  railCenter.loadTrain("NewTrain");
+			  }
+			  if(railCenter.getAllEmptyStatus()){
+				  System.out.println("You Won");
+				  //TODO pálya/train neve
+				  railCenter.loadMap("NextMap");
+				  railCenter.loadTrain("NewTrain");
+			  }
+
 		    }
 		    System.out.println("ControlThread 1 stopped!");
 		  }

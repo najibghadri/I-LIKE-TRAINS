@@ -72,7 +72,7 @@ public class RailCenter {
 		boolean emptyness = true;
 		//állomások ellenőrzése
 		for(Station s : stations){
-			if(s.getPassangers() || !emptyness){
+			if(s.getPassengers() || !emptyness){
 				emptyness = false;
 				break;
 			}

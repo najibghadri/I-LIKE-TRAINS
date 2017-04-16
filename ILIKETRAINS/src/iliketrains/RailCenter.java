@@ -159,7 +159,11 @@ public class RailCenter {
 					break;
 				}
 				}
-			}			
+			}
+
+			//Set the highest track ID to the TC generating tunnel
+			Tunnel.setFirstID(highestTrackId);
+
 		} catch (IOException e) {			
 			e.printStackTrace();			
 		} finally {			
@@ -394,13 +398,6 @@ public class RailCenter {
 				ex.printStackTrace();				
 			}
 		}
-	}
-
-	/**
-	 * @return Visszaadja a legmagasabb pályaelem azonosítót.
-	 */
-	public static int getHighestTrackId() {
-		return highestTrackId;
 	}
 
 }

@@ -1,4 +1,4 @@
-package iliketrains;
+﻿	package iliketrains;
 
 import java.util.*;
 
@@ -17,12 +17,12 @@ public class Tunnel {
 	private static int firstID;
 	private static Tunnel singleton;
 
+	
 	/**
 	 * Constructor
 	 * Létrehoz egy tunnel elemet
 	 */
-	private Tunnel(int firstID){
-		this.firstID = firstID;
+	private Tunnel(){
 		activeGates = new ArrayList<TunnelGate>();
 		tunnelTracks = new ArrayList<TrackComponent>();
 	}
@@ -34,8 +34,16 @@ public class Tunnel {
 	 */
 	public static Tunnel getInstance() {
 		if(singleton == null)
-			singleton = new Tunnel(RailCenter.getHighestTrackId());
+			singleton = new Tunnel();
 		return singleton;
+	}
+
+	/**
+ 	 * firstID-t állítja be, ami a tunnel által generált trackComponent-eket azonosítja	
+	 * @param firstID
+	 */
+	public static void setFirstID( int firstID ) {
+		Tunnel.firstID = firstID;
 	}
 
 	/**

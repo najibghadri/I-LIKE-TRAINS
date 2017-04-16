@@ -1,4 +1,4 @@
-package iliketrains;
+﻿package iliketrains;
 
 import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -44,7 +44,8 @@ public class TrackComponent {
 	}
 
     /**
-     * Megszűnteti az alagúthoz való csatlakozást
+     * Megszűnteti az a sínhez való csatlakozást
+     * @param track A szomszédos pályaelem referenciája
      */
     public void removeAdjacentTrack(TrackComponent tunnelTrack) {
         adjacentTracks.remove(tunnelTrack);

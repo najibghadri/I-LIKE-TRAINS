@@ -1,0 +1,4 @@
+loadmap 6
+loadtrain 6-1
+loadtrain 6-2
+moveengines

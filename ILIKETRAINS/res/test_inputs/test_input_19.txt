@@ -1,0 +1,10 @@
+loadmap 9
+loadtrain 9-1
+loadtrain 9-2
+change 5
+change 6
+moveengines
+moveengines
+moveengines
+moveengines
+moveengines

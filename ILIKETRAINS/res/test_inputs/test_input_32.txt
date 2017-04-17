@@ -1,0 +1,5 @@
+loadmap StationTestMap1.txt
+loadtrain StationTestTrain8.txt
+moveengines
+moveengines
+print

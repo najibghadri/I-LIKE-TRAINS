@@ -1,0 +1,10 @@
+loadmap StationTestMap2.txt success
+loadtrain StationTestTrain9.txt success
+Engine(1): moves to TrackComponent(1)
+Engine(1): moves to TrackComponent(2)
+passengers got off Cart(2) at Green Station (2)
+passengers got on Cart(2) at Green Station (2)
+next-> null
+| ENGI:1  |@ TrackComponent (2)
+| GREN:1  |@ TrackComponent (1)
+| YLLW:0  |@ EntryPoint (3)

@@ -1,0 +1,18 @@
+loadmap 9 success
+loadtrain 9-1 success
+loadtrain 9-2 success
+TunnelGate(5): registered
+TunnelGate(6): registered
+Tunnel: created Tunnel
+Engine(1): moves to TunnelGate(6)
+Engine(3): moves to TrackComponent(1)
+Engine(1): moves to TrackComponent(11)
+Engine(3): moves to TrackComponent(2)
+Engine(1): moves to TrackComponent(10)
+Engine(3): moves to TrackComponent(3)
+Engine(1): moves to TrackComponent(9)
+Engine(3): moves to TrackComponent(4)
+Engine(1): moves to TunnelGate(5)
+Engine(3): moves to TunnelGate(5)
+Engine(1): collides with Engine(3) at TunnelGate(5)
+GAME OVER, YOU LOST!

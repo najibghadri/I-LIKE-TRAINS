@@ -1,0 +1,8 @@
+loadmap 11 success
+loadtrain 11-1 success
+Engine(1): moves to Switch(3)
+Engine(1): moves to TrackComponent(1)
+Engine(1): moves to TrackComponent(2)
+Engine(1): moves to Switch(3)
+Engine(1): collides with CoalCart(4) at Switch(3)
+GAME OVER, YOU LOST!

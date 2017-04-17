@@ -1,0 +1,5 @@
+loadmap 8 success
+loadtrain 8-1 success
+Engine(1): moves to TunnelGate(1)
+Engine(1): collides with deadend at TunnelGate(1)
+GAME OVER, YOU LOST!

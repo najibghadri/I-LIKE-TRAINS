@@ -132,10 +132,10 @@ public class Controller {
 			  if(numberOfMap>2){
 				  System.out.println("Nincs több pálya");
 				  numberOfMap=1;
+                  System.out.println("Nyomj ENTER-t!");
 			  }
 			  else{ 
 				  startAutomataGame();
-			  System.out.println("Nyomj ENTER-t!");
 			  }
 		  }
 	}
@@ -156,13 +156,14 @@ public class Controller {
 
 		//Ha nem indítunk, akkor tesztfájlt választunk
 		if(line.equals("2")){			
-			System.out.println("Válassz 1-33-ig:");
-
-
-
+            
             //olvassuk a teszt számát
-			line = reader.nextLine();
-			testNum = Integer.parseInt(line);
+            testNum = 0;
+            while(testNum < 1 || testNum > 33 ){
+                System.out.println("Válassz 1-33-ig:");
+                line = reader.nextLine();
+                testNum = Integer.parseInt(line);
+            }
 
             //töröljük a meglévő teszt fileOutputját
             Game.clearOutput();

@@ -1,0 +1,4 @@
+loadmap 12
+loadtrain 12-1
+loadtrain 12-2
+moveengines

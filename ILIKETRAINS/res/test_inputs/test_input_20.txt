@@ -1,0 +1,8 @@
+loadmap 10
+loadtrain 10-1
+loadtrain 10-2
+change 2
+change 3
+moveengines
+moveengines
+moveengines

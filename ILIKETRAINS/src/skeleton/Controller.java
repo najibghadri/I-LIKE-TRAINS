@@ -149,7 +149,7 @@ public class Controller {
 		}
 
 		//Ha nem indítunk, akkor tesztfájlt választunk
-		else{			
+		if(line.equals("2")){			
 			System.out.println("Válassz 1-33-ig:");
 			
 			line = reader.nextLine();
@@ -207,6 +207,8 @@ public class Controller {
 			}
 			Game.outputCompare(testNum);
 		}
+		else
+			System.out.println("Nincs ilyen parancs");
 	}
 
 

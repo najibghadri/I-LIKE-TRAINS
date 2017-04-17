@@ -5,7 +5,7 @@ trackcomponent
 switch
 0,0
 
-entrypoints
+entrypoint
 0
 0
 0

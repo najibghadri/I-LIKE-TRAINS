@@ -44,8 +44,6 @@ public class Switch extends TrackComponent implements Controllable {
 	 */
 	@Override
 	public TrackComponent getNext(TrackComponent previous) {
-        //TODO mindig lesz 3 csatlakoztatva? Ha nem akkor a listából nem lehet többet indexelni mint ami van!
-        //TODO Ezért lehet hogy nem lista kell hanem annyi TC elem amennyi kell (itt is, T.G.-nál és T.C.-nál is)
 	    if(adjacentTracks.size()<3){
 	        return null;
         }
@@ -61,20 +59,6 @@ public class Switch extends TrackComponent implements Controllable {
 			return adjacentTracks.get(0);
 		}
 	}
-
-    /**
-     * Leírást ad magáról
-     * @return
-     */
-    @Override
-    public String getInfo() {
-        String ret = "set to ";
-        if(direction)
-            ret +=  "right: " + adjacentTracks.get(2).getType() + " " + adjacentTracks.get(2).getId();
-        else
-            ret += "left: " + adjacentTracks.get(1).getType() + " " + adjacentTracks.get(1).getId();
-        return  ret + ", ";
-    }
 
     /**
      * Saját típusát sztringben
@@ -96,5 +80,4 @@ public class Switch extends TrackComponent implements Controllable {
     	else
     		return adjacentTracks.get(1);
     }
-
 }

@@ -11,7 +11,6 @@ public interface Controllable {
 	 */
 	void change();
 	
-	
 	/**
 	 * Az azonosító függvényt abszrakt verziója
 	 */

@@ -2,8 +2,6 @@ package iliketrains;
 
 import java.util.*;
 
-import skeleton.Game;
-
 /**
  * TrackComponent
  * Álalános sín elem
@@ -129,37 +127,6 @@ public class TrackComponent {
     }
 
     /**
-     * Leírást ad magáról
-     * @return
-     */
-    @Override
-    public String toString() {
-        String str = "";
-        str += getType() + " " + getId() + ": ";
-
-        str += getInfo();
-
-        //Állomásról infó
-        if(station!=null)
-            str += station.toString();
-
-        //Szomszédok kiírása
-        str += ", connections: ";
-        for (TrackComponent t: adjacentTracks) {
-            str += t.getType() + " " + t.getId() + ", ";
-        }
-        return str;
-    }
-
-    /**
-     * Egyéb információk, leszármazottak használják
-     * @return
-     */
-    public String getInfo(){
-        return "";
-    }
-
-    /**
      * Saját típusát sztringben
      * @return "TrackComponent"
      */
@@ -172,12 +139,5 @@ public class TrackComponent {
      */
     public int getId() {
         return id;
-    }
-
-    /**
-     * Loggolás a konzolra
-     */
-    public void print(){
-        Game.log(toString());
     }
 }

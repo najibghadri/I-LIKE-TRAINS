@@ -1,0 +1,4 @@
+loadmap 4 success
+loadtrain 4-1 success
+TunnelGate(3): registered
+TunnelGate(3): disconnected

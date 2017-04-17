@@ -7,7 +7,7 @@ tunnelgate
 0
 0
 
-entrypoints
+entrypoint
 0
 
 connections

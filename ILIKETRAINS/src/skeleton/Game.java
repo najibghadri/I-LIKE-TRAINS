@@ -115,7 +115,7 @@ public class Game {
 		try {
 			String FILENAME = System.getProperty("user.dir");
 			List<String> f1 = Files.readAllLines(Paths.get(FILENAME+"\\res\\test_logs\\output.txt"));
-			List<String> f2 = Files.readAllLines(Paths.get(FILENAME+"\\res\\test_expected_logs\\test"+testNum+".txt"));
+			List<String> f2 = Files.readAllLines(Paths.get(FILENAME+"\\res\\test_expected_logs\\test_log_"+testNum+".txt"));
 			
 			boolean flag = true;
 			if(f1.size() != f2.size())

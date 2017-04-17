@@ -67,7 +67,9 @@ public class Game {
 		System.out.println(s);
 		
 		try {
+
 			String FILENAME = System.getProperty("user.dir");
+            new File(FILENAME+"\\res\\test_logs").mkdir();
 			File file = new File(FILENAME+"\\res\\test_logs\\test_log_"+testNum+".txt");
 
 			if (!file.exists()) {
@@ -102,6 +104,7 @@ public class Game {
 
 		try {
 			String FILENAME = System.getProperty("user.dir");
+            new File(FILENAME+"\\res\\test_logs").mkdir();
 			File file = new File(FILENAME+"\\res\\test_logs\\test_log_"+testNum+".txt");
 			PrintWriter writer = new PrintWriter(file);
 			writer.print("");

@@ -144,7 +144,7 @@ public class Game {
 			boolean flag = true;
 			for(int i=0;i<f1.size();i++){
 				if(f1.get(i) != f2.get(i)){
-					System.out.println("ERROR line: "+f1.get(i));
+					System.out.println("ERROR line: "+f1.get(i)+" vs "+f2.get(i));
 					flag = false;
 					break;
 				}

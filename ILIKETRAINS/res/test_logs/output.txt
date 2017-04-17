@@ -1,6 +1,4 @@
-loadmap game1 success
-loadtrain train1 success
-Engine(1): moves to TunnelGate(6)
-loadmap game2 success
-loadtrain train2 success
-Engine(1): moves to TunnelGate(6)
+loadmap 5 success
+loadtrain 5-1 success
+loadmap 2 failed
+Engine(1): moves to TrackComponent(1)

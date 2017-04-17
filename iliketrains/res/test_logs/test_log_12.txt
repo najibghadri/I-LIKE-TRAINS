@@ -1,6 +1,0 @@
-loadmap 4 success
-TunnelGate(3): registered
-TunnelGate(4): registered
-Tunnel: created Tunnel
-TunnelGate(3): disconnected
-Tunnel: destroyed Tunnel

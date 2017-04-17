@@ -15,15 +15,16 @@ import java.util.List;
  */
 public class Game {
 	
-	/** The file writer. */
+	/** Filebaíráshoz szükséges objektum */
 	static FileWriter fileWriter;
     
-    /** The buffered writer. */
+    /** Filebaíráshoz szükséges objektum */
     static BufferedWriter bufferedWriter;
     
-    /** The file out. */
+    /** Filebaíráshoz szükséges objektum */
     static PrintWriter fileOut;
 
+    /** Controller referencia */
     static Controller controller;
 
 	/**

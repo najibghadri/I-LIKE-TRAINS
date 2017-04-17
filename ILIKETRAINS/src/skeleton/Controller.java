@@ -36,13 +36,16 @@ public class Controller {
     /** Aktuális tesztszám */
     private int testNum;
 
+    /**
+     * Teszt számát visszaadó függvény
+     *
+     * @return tesztszám
+     */
     public int getTestNum() {
         return testNum;
     }
 
-    /**
-	 * Jelenlegi térkép fájl
-	 */
+    /** Jelenlegi térkép fájl*/
 	private int numberOfMap=1;
 	
 	/** A kontroll szál, bemenetet olvassa, amíg meg nem szakítják. */
@@ -96,7 +99,7 @@ public class Controller {
 	}
 	
 	/**
-	 * Játékban működő időzítőt valósítja meg
+	 * Tesztrészbenban működő időzítőt valósítja meg (parancsonként halad)
 	 */
 	private void gameManualTick() {
 		railCenter.moveEngines();
@@ -109,6 +112,9 @@ public class Controller {
 		  }
 	}
 	
+	/**
+	 * Tesztrészben működő időzítőt valósítja meg (bizonyos időközönként lép)
+	 */
 	private void gameAutoTick() {
 		railCenter.moveEngines();
 		

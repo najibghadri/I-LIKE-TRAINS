@@ -1,4 +1,0 @@
-loadmap 3 success
-loadtrain 3-1 success
-Engine(1): moves to Cross(3)
-Engine(1): moves to TrackComponent(2)

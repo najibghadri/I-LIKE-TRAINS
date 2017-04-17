@@ -1,9 +1,0 @@
-loadmap 10 success
-loadtrain 10-1 success
-loadtrain 10-2 success
-TunnelGate(2): registered
-Engine(1): moves to TunnelGate(1)
-Engine(3): moves to TunnelGate(2)
-Engine(1): collides with deadend at TunnelGate(1)
-Engine(3): collides with deadend at TunnelGate(2)
-GAME OVER, YOU LOST!

@@ -200,6 +200,7 @@ public class Controller {
 						railCenter.loadTrain(commandpart[1]);
 						break;
 					case "moveengines":
+						if(!railCenter.getAnyCollided())
 						gameManualTick();
 					default:
 						break;

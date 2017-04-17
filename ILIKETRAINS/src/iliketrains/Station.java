@@ -1,10 +1,7 @@
 package iliketrains;
 
-// TODO: Auto-generated Javadoc
 /**
  * Az állomás osztálya.
- *
- * @author Imi
  */
 public class Station {
 	
@@ -19,7 +16,7 @@ public class Station {
 	
 	
 	/**
-	 * Konstruktor.
+	 * Konstruktor
 	 *
 	 * @param id Az állomás azonsoítója
 	 * @param color Az állomás színe
@@ -52,7 +49,6 @@ public class Station {
 	
 	/**
 	 * Lekérdezi, hogy van-e utas az állomáson.
-	 *
 	 * @return Van-e utas az állomáson
 	 */
 	public final boolean getPassengers(){
@@ -68,7 +64,6 @@ public class Station {
 
 	/**
 	 * Leírást ad magáról.
-	 *
 	 * @return the string
 	 */
 	@Override

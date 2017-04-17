@@ -1,25 +1,17 @@
 package skeleton;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
-import javax.swing.text.ChangedCharSetException;
-
-import iliketrains.Color;
 import iliketrains.Controllable;
 import iliketrains.RailCenter;
-import iliketrains.Station;
-import iliketrains.TrackComponent;
 
 /**
  * A Kontroller osztály valósítja meg az kapcsolható elemek kapcsolhatóságát

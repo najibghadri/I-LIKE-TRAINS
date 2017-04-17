@@ -143,7 +143,8 @@ public class Controller {
 						file = new File(filename);
 						break;
 					case "3":
-						file = new File("file.txt");
+						filename=Game.generateFilename("harmadik.txt");
+						file = new File(filename);				
 						break;
 					case "4":
 						file = new File("file.txt");

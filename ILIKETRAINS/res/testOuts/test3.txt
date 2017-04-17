@@ -1,0 +1,5 @@
+loadmap 3 success
+loadtrain 3-1 success
+Engine(1): moves to TrackComponent(1)
+Engine(1): moves to TrackComponent(2)
+passengers got off Cart(2) at GreenStation (2)

@@ -413,8 +413,11 @@ public class RailCenter {
 	 */
 	public void printStatus(){
         for(Engine e : engines){
-            Game.log("next-> "+e.currentTrack.getNext(e.getPrevious()).getType()+
-                    " ("+e.currentTrack.getNext(e.getPrevious()).getId()+")");
+        	if(e.currentTrack.getNext(e.getPrevious()) == null)
+        		Game.log("next-> "+e.currentTrack.getNext(e.getPrevious()));
+        	else
+        		Game.log("next-> "+e.currentTrack.getNext(e.getPrevious()).getType()+
+        				" ("+e.currentTrack.getNext(e.getPrevious()).getId()+")");
             Cart temp = e;
             do{
                 if(temp.currentTrack == null)

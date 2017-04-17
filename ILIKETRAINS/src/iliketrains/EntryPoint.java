@@ -14,8 +14,13 @@ public class EntryPoint extends TrackComponent{
 		super(id);
 	}
 	
-	@Override
-    public String getType() {
+
+	/**
+     * Saját típusát sztringben
+     * @return "EntryPoint"
+     */
+    @Override
+    public String getType(){
         return "EntryPoint";
     }
 	

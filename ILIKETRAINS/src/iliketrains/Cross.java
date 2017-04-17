@@ -13,6 +13,15 @@ public class Cross extends TrackComponent{
 		super(id);
 	}
 	
+	/**
+     * Saját típusát sztringben
+     * @return "Cross"
+     */
+    @Override
+    public String getType(){
+        return "Cross";
+    }
+	
 	
 	/**
 	 * A haladási irány szerinti következő pálya elemet adja vissza.

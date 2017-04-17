@@ -124,7 +124,7 @@ public class RailCenter {
 
 		resetGame();
 		
-		String FILENAME = generateFilename(name);		
+		String FILENAME = generateFilename("map",name);		
 		BufferedReader br = null;
 		FileReader fr = null;
 		List<TrackComponent> list=new ArrayList<TrackComponent>();
@@ -331,13 +331,13 @@ public class RailCenter {
 	 * @return the string
 	 */
 	//Fájlnévhez hozzáfűzi a jelenlegi elérési utat és a mappa nevét
-	private String generateFilename(String name) {
+	private String generateFilename(String dir,String name) {
 		String FILENAME =System.getProperty("user.dir");
 		if(name.contains(".txt")){
-			FILENAME=FILENAME+"\\res\\"+name;
+			FILENAME=FILENAME+"\\res\\"+dir+"\\"+name;
 		}
 		else
-			FILENAME=FILENAME+"\\res\\"+name+".txt";
+			FILENAME=FILENAME+"\\res\\"+dir+"\\"+name+".txt";
 		return FILENAME;
 	}
 	
@@ -348,7 +348,7 @@ public class RailCenter {
 	 * @param name the name
 	 */
 	public void loadTrain(String name){
-		String FILENAME = generateFilename(name);		
+		String FILENAME = generateFilename("train",name);		
 		BufferedReader br = null;
 		FileReader fr = null;
 		

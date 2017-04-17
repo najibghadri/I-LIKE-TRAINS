@@ -1,0 +1,6 @@
+loadmap 1
+loadtrain 1-1
+moveengines
+print
+moveengines
+moveengines

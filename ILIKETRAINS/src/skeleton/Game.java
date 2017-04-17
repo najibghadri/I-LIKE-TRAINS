@@ -47,10 +47,10 @@ public class Game {
 	public static String generateFilename(String name) {
 		String FILENAME =System.getProperty("user.dir");
 		if(name.contains(".txt")){
-			FILENAME=FILENAME+"\\res\\"+name;
+			FILENAME=FILENAME+"\\res\\testIn\\"+name;
 		}
 		else
-			FILENAME=FILENAME+"\\res\\"+name+".txt";
+			FILENAME=FILENAME+"\\res\\testIn\\"+name+".txt";
 		return FILENAME;
 	}
 	

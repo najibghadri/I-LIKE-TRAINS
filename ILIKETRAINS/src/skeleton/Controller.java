@@ -141,51 +141,17 @@ public class Controller {
 
 		//Ha nem indítunk, akkor tesztfájlt választunk
 		else{			
-			System.out.println("1. teszt)");
-			System.out.println("2. teszt)");
-			System.out.println("3. teszt)");
-			System.out.println("4. teszt)");
-			System.out.println("5. teszt)");
-			System.out.println("6. teszt)");
-			System.out.println("7. teszt)");
-			System.out.println("8. teszt)");
+			System.out.println("Válassz 1-33-ig:");
 			
 			line = reader.nextLine();
 			int testNum = Integer.parseInt(line);
 			
 			File file = null;
 			String filename="";
-				switch (line){
-					case "1":
-						filename=Game.generateFilename("elso.txt");
-						file = new File(filename);
-						break;
-					case "2":
-						filename=Game.generateFilename("masodik.txt");
-						file = new File(filename);
-						break;
-					case "3":
-						filename=Game.generateFilename("harmadik.txt");
-						file = new File(filename);				
-						break;
-					case "4":
-						file = new File("file.txt");
-						break;
-					case "5":
-						file = new File("file.txt");
-						break;
-					case "6":
-						file = new File("file.txt");
-						break;
-					case "7":
-						file = new File("file.txt");
-						break;
-					case "8":
-						file = new File("file.txt");
-						break;
-					default:
-						break;
-				}
+			filename=Game.generateFilename("test_input_"+line+".txt");
+			System.out.println(filename);
+			file = new File(filename);
+
 			//Beolvassa a tesztparancsokat
 			BufferedReader reader = null;
 			ArrayList<String> commands = new ArrayList<String>();

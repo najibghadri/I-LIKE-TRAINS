@@ -23,9 +23,9 @@ public class Station {
 	 */
 	public Station(int id,String color,String passengers){
 		this.id=id;
-		if(passengers.equals(0))
+		if(passengers.equals("0"))
 			this.passengers=false;
-		else if (passengers.equals(1))
+		else if (passengers.equals("1"))
 			this.passengers=true;
 
 		this.color=Color.values()[Integer.parseInt(color)];	}

@@ -86,7 +86,18 @@ public class Controller {
 	/**
 	 * Játékban működő időzítőt valósítja meg
 	 */
-	private void gameTick() {
+	private void gameManualTick() {
+		railCenter.moveEngines();
+		
+	      if(railCenter.getAnyCollided()){
+			  System.out.println("GAME OVER, YOU LOST!");
+		  }
+		  if(railCenter.getAllEmptyStatus()){
+			  System.out.println("SUCCESS, YOU WON!");
+		  }
+	}
+	
+	private void gameAutoTick() {
 		railCenter.moveEngines();
 		
 	      if(railCenter.getAnyCollided()){
@@ -214,7 +225,7 @@ public class Controller {
 						railCenter.loadTrain(commandpart[1]);
 						break;
 					case "moveengines":
-						gameTick();
+						gameManualTick();
 					default:
 						break;
 				}
@@ -237,7 +248,7 @@ public class Controller {
 		timer.schedule(new TimerTask() {
 			  @Override
 			  public void run() {
-				  gameTick();
+				  gameAutoTick();
 			  }
 			}, 0,1000);
 	}

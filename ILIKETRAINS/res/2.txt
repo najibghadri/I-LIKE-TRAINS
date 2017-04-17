@@ -1,15 +1,18 @@
-ch trackcomponent
+trackcomponent
 0
 0
 0
 0
-ch tunnelgate
+
+tunnelgate
 0
 0
-ch entrypoint
+
+entrypoint
 0
 0
-ch connections
+
+connections
 1,2,8
 2,1,3
 3,2,4

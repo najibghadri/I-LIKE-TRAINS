@@ -1,9 +1,11 @@
-ch trackcomponent
+trackcomponent
 0
 0
-ch entrypoint
+
+entrypoint
 0
-ch connections
+
+connections
 1,2,3
 2,1,null
 3,1,null,null

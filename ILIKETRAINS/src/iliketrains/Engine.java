@@ -74,7 +74,7 @@ public class Engine extends Cart {
 		if(currentTrack.hasStation()==null)		//ha nem halad át állomáson
 			return;
 		else{														//ha igen
-			Station s=currentTrack.getNext(previous).hasStation();
+			Station s=currentTrack.hasStation();
 			
 			/*leszállítás*/
 			PassengerCart current= firstPassengerCart;
@@ -82,7 +82,7 @@ public class Engine extends Cart {
 				if(current.isNotEmpty()){	//ha nem üres a vizsgált
 					if(current.getColor().equals(s.getColor())){	//ha egyezik a szín az állomáséval
 						current.popPassengers();							//leszállnak (nincs előtte teli kocsi)
-						Game.log("passengers got off Cart("+current.getId()+") at "+s.getColor()+"Station ("+s.getId()+")");
+						Game.log("passengers got off Cart("+current.getId()+") at "+s.getColor()+" Station ("+s.getId()+")");
 					}
 					break;	//ha megtaláltuk az első nem üres kocsit, biztosan be kell fejeznünk a keresést (színtől függetlenül)
 				}
@@ -96,7 +96,7 @@ public class Engine extends Cart {
 						if(current.getColor().equals(s.getColor())){	//ha egyezik a szín
 							current.addPassengers();							//felszállnak
 							s.popPassengers();									//az állomásról pedig eltűnnek
-							Game.log("passengers got on Cart("+current.getId()+") at "+s.getColor()+"Station ("+s.getId()+")");
+							Game.log("passengers got on Cart("+current.getId()+") at "+s.getColor()+" Station ("+s.getId()+")");
 						}
 					current=current.nextCart;	//egyébként vizsgáljuk a következőt
 				}

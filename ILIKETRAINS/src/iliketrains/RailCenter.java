@@ -247,7 +247,7 @@ public class RailCenter {
 		String[] commandParts=currentLine.split(",");
 		Switch sw=new Switch(highestTrackId);
 		if(commandParts[0].equals("1")){
-			Station s=new Station(highestTrackId,commandParts[1],commandParts[2]);
+			Station s=new Station(highestTrackId,commandParts[2],commandParts[1]);
 			sw.setStation(s);
 		}
 		list.add(sw);
@@ -267,7 +267,7 @@ public class RailCenter {
 		TrackComponent t=new TrackComponent(highestTrackId);
 		String[] station=currentLine.split(",");
 		if(station[0].equals("1")){
-			Station s=new Station(highestTrackId,station[1],station[2]);
+			Station s=new Station(highestTrackId,station[2],station[1]);
 			t.setStation(s);
 		}
 		list.add(t);
@@ -285,7 +285,7 @@ public class RailCenter {
 		Cross t=new Cross(highestTrackId);
 		String[] station=currentLine.split(",");
 		if(station[0].equals("1")){
-			Station s=new Station(highestTrackId,station[1],station[2]);
+			Station s=new Station(highestTrackId,station[2],station[1]);
 			t.setStation(s);
 		}
 		list.add(t);
@@ -303,7 +303,7 @@ public class RailCenter {
 		EntryPoint t=new EntryPoint(highestTrackId);
 		String[] station=currentLine.split(",");
 		if(station[0].equals("1")){
-			Station s=new Station(highestTrackId,station[1],station[2]);
+			Station s=new Station(highestTrackId,station[2],station[1]);
 			t.setStation(s);
 		}
 		list.add(t);
@@ -322,7 +322,7 @@ public class RailCenter {
 		TunnelGate t=new TunnelGate(highestTrackId);
 		String[] station=currentLine.split(",");
 		if(station[0].equals("1")){
-			Station s=new Station(highestTrackId,station[1],station[2]);
+			Station s=new Station(highestTrackId,station[2],station[1]);
 			t.setStation(s);
 		}
 		list.add(t);

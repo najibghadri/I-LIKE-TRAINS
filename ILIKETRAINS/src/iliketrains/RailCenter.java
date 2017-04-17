@@ -168,16 +168,16 @@ public class RailCenter {
 
 			//Set the highest track ID to the TC generating tunnel
 			Tunnel.setFirstID(highestTrackId);
-
+			Game.log("loadmap "+name+" success");
 		} catch (IOException e) {			
-			e.printStackTrace();			
+			e.printStackTrace();
+			Game.log("loadmap "+name+" failed");
 		} finally {			
 			try {				
 				if (br != null)
 					br.close();				
 				if (fr != null)
 					fr.close();
-				Game.log("loadmap "+name+" success");
 			} catch (IOException ex) {				
 				ex.printStackTrace();				
 			}
@@ -390,16 +390,18 @@ public class RailCenter {
 					}
 					highestCartId++;
 				}
-			}			
+			}	
+			Game.log("loadtrain "+name+" success");
 		} catch (IOException e) {			
-			e.printStackTrace();			
+			e.printStackTrace();
+			Game.log("loadmap "+name+" failed");
 		} finally {			
 			try {				
 				if (br != null)
 					br.close();				
 				if (fr != null)
 					fr.close();
-				Game.log("loadtrain "+name+" success");
+				
 			} catch (IOException ex) {				
 				ex.printStackTrace();				
 			}
@@ -410,15 +412,19 @@ public class RailCenter {
 	 * Kiírja a vonatok állapotát a log outputjaira
 	 */
 	public void printStatus(){
-		for(Engine e : engines){
-			Game.log("next-> "+e.currentTrack.getNext(e.getPrevious()));
-			Cart temp = e;
-			do{
-			Game.log("| "+getPrintStyleName(temp)+" |@ "+temp.currentTrack.getType()+ " ("+temp.currentTrack.getId()+"");
-			temp = temp.getNext();
-			}while(temp != null);
-		}
-	}
+        for(Engine e : engines){
+            Game.log("next-> "+e.currentTrack.getNext(e.getPrevious()).getType()+
+                    " ("+e.currentTrack.getNext(e.getPrevious()).getId()+")");
+            Cart temp = e;
+            do{
+                if(temp.currentTrack == null)
+                    Game.log("| "+getPrintStyleName(temp)+" |@ null");
+                else
+                    Game.log("| "+getPrintStyleName(temp)+" |@ "+temp.currentTrack.getType()+ " ("+temp.currentTrack.getId()+")");
+                temp = temp.getNext();
+            }while(temp != null);
+        }
+    }
 	
 	/**
 	 * A printStatus függvényhez szükséges formátumú kocsi nevekkel tér vissza

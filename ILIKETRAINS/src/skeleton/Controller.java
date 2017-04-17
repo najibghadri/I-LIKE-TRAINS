@@ -140,7 +140,8 @@ public class Controller {
 					file = new File(filename);
 					break;
 				case "2":
-					file = new File("file.txt");
+					filename=Game.generateFilename("masodik.txt");
+					file = new File(filename);
 					break;
 				case "3":
 					file = new File("file.txt");
@@ -200,6 +201,9 @@ public class Controller {
 		for(String in:commands){
 			String[] commandpart=in.split(" ");
 			switch (commandpart[0]) {
+			case "print":
+				railCenter.printStatus();
+				break;
 			case "change":
 				change(commandpart[1]);
 				break;

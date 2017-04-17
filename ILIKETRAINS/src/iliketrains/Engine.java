@@ -59,15 +59,14 @@ public class Engine extends Cart {
 	 * Ütközésellenõrzés. Az Engine (mozdony) halad elõre, emiatt csak ez a kocsi mehet bele valamibe,
 	 * ígyhát ennek az osztálynak a felelõssége az ütközések detektálása
 	 */
-	public void checkCollison() {
-		TrackComponent nextTrack = currentTrack.getNext(previous);
-		
-		if(currentTrack.getCarts().size()>1) //ha a következő pályaelemen van kocsi, ütközés lesz
+	public void checkCollison() {	
+		if(currentTrack.getCarts().size()>1){ //ha a következő pályaelemen van kocsi, ütközés lesz
 			//A log fix-en a track-en lévők kocsik közül a listában lévő legelsőt írja ütközésnek
 			Game.log("Engine("+this.getId()+"): collides with "
-					+nextTrack.getCarts().get(0).getType() +"("+nextTrack.getCarts().get(0).getId()+") at "
-					+nextTrack.getType()+"("+nextTrack.getId()+")");
+					+currentTrack.getCarts().get(0).getType() +"("+currentTrack.getCarts().get(0).getId()+") at "
+					+currentTrack.getType()+"("+currentTrack.getId()+")");
 			center.reportCollided();
+		}
 	}
 
 	/**

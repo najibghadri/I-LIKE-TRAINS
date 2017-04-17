@@ -1,0 +1,7 @@
+loadmap 6 success
+loadtrain 6-1 success
+loadtrain 6-2 success
+Engine(1): moves to Switch(1)
+Engine(3): moves to Switch(1)
+Engine(1): collides with Engine(3) at Switch(1)
+GAME OVER, YOU LOST!

@@ -170,7 +170,6 @@ public class Controller {
 			File file = null;
 			String filename="";
 			filename=Game.generateFilename("test_input_"+line+".txt");
-			System.out.println(filename);
 			file = new File(filename);
 
 			//Beolvassa a tesztparancsokat

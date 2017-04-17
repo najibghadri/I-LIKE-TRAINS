@@ -110,32 +110,8 @@ public class Game {
 	 * az előredefiniált helyes működést leíró outputtal.
 	 * Ha minden egyezik, kiírja a stdoutputra az egyezést és a teszteset sikeres lefutását.
 	 * Jöhet a következő teszteset.
-	 */
+	 */	
 	public static void outputCompare(int testNum){
-		try {
-			String FILENAME = System.getProperty("user.dir");
-			byte[] f1 = Files.readAllBytes(Paths.get(FILENAME+"\\res\\output.txt"));
-			byte[] f2 = Files.readAllBytes(Paths.get(FILENAME+"\\res\\testOuts\\test"+testNum+".txt"));
-			
-			boolean flag = true;
-			for(int i=0;i<f1.length;i++){
-				if(f1[i] != f2[i]){
-					flag = false;
-					break;
-				}
-			}
-			
-			if (flag)
-				System.out.println("[Test"+testNum+": SUCCESS]");
-			else
-				System.out.println("[Test"+testNum+": FAILED]");	
-		} catch (IOException e) {
-			System.out.println("Nem található a két összehasonlítandó fájl");
-			e.printStackTrace();
-		}
-	}
-	
-	public static void outputCompareString(int testNum){
 		try {
 			String FILENAME = System.getProperty("user.dir");
 			List<String> f1 = Files.readAllLines(Paths.get(FILENAME+"\\res\\output.txt"));
@@ -143,7 +119,7 @@ public class Game {
 			
 			boolean flag = true;
 			for(int i=0;i<f1.size();i++){
-				if(f1.get(i) != f2.get(i)){
+				if(!f1.get(i).equals(f2.get(i))){
 					System.out.println("ERROR line: "+f1.get(i)+" vs "+f2.get(i));
 					flag = false;
 					break;

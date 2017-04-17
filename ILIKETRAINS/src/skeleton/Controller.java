@@ -95,10 +95,10 @@ public class Controller {
 		railCenter.moveEngines();
 		
 	      if(railCenter.getAnyCollided()){
-			  System.out.println("GAME OVER, YOU LOST!");
+	    	  Game.log("GAME OVER, YOU LOST!");
 		  }
 		  if(railCenter.getAllEmptyStatus()){
-			  System.out.println("SUCCESS, YOU WON!");
+			  Game.log("SUCCESS, YOU WON!");
 		  }
 	}
 	

@@ -1,0 +1,7 @@
+loadmap 5 success
+loadtrain 5-1 success
+loadtrain 5-2 success
+Engine(1): moves to TrackComponent(1)
+Engine(3): moves to TrackComponent(1)
+Engine(1): collides with Engine(3) at TrackComponent(1)
+GAME OVER, YOU LOST!

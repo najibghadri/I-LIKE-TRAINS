@@ -14,8 +14,7 @@ public class Tunnel {
 	/** Az aktív alagútbejárator listája */
 	private List<TunnelGate> activeGates;
 	
-	/** Az alagútat alkotó sínelemek listája */
-	private List<TrackComponent> tunnelTracks; //ha nem csak 1 hosszú lesz akkor szét kell választani őket
+	/** Az alagút létehozáshoz kellő id*/
 	private static int firstID;
 	private static Tunnel singleton;
 
@@ -26,7 +25,6 @@ public class Tunnel {
 	 */
 	private Tunnel(){
 		activeGates = new ArrayList<TunnelGate>();
-		tunnelTracks = new ArrayList<TrackComponent>();
 	}
 
 	/**
@@ -88,21 +86,36 @@ public class Tunnel {
 	}
 
 	/**
-	 * Alagút létrehzozó függvény
+	 * Alagút létrehzozó függvény, minimum 3 elem
+	 * Tesztelé lehetősége miatt pontosan 3 elem
 	 * @param in Az egyik alagútszáj
 	 * @param out A másik alagútszáj
-	 */
+	 */	
 	private void createTunnel(TunnelGate in, TunnelGate out) {
-		//TODO Csak egy hosszú lesz?
+		int localId=firstID;
+		int lenghtOfTunnel=3; 											//Később random lesz
+		List<TrackComponent> tunnellista=new ArrayList<TrackComponent>();
+		
+		for(int i=0;i<lenghtOfTunnel;i++){
+			TrackComponent temp= new TrackComponent(localId);
+			tunnellista.add(temp);
+			localId++;
+		}
+		
+		//elsőhöz másodikat és bemenetet, utolsóhoz utolsó előtti és kimenetet külön adjuk hozzá
+		tunnellista.get(0).addAdjacentTrack(in);
+		tunnellista.get(0).addAdjacentTrack(tunnellista.get(1));
+		tunnellista.get(tunnellista.size()-1).addAdjacentTrack(out);
+		tunnellista.get(tunnellista.size()-1).addAdjacentTrack(tunnellista.get(tunnellista.size()-2));
 
-		TrackComponent trackObj2= new TrackComponent(firstID);
-		tunnelTracks.add(trackObj2);
-
-		trackObj2.addAdjacentTrack(in);
-		trackObj2.addAdjacentTrack(out);
-
-		in.setTunnelTrack(trackObj2);
-		out.setTunnelTrack(trackObj2);
+		//Többihez az előtte és utána lévőt adja szomszédnak
+		for(int i=1;i<tunnellista.size()-1;i++){
+			tunnellista.get(i).addAdjacentTrack(tunnellista.get(i-1));
+			tunnellista.get(i).addAdjacentTrack(tunnellista.get(i+1));
+		}
+		
+		in.setTunnelTrack(tunnellista.get(0));
+		out.setTunnelTrack(tunnellista.get(tunnellista.size()-1));
 	}
 
 }

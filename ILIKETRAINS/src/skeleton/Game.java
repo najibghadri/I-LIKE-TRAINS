@@ -75,6 +75,7 @@ public class Game {
 			fw = new FileWriter(file.getAbsoluteFile(), true);
 			bw = new BufferedWriter(fw);
 			bw.write(s+"\n");
+
 		}
 		catch (IOException e) {
 			e.printStackTrace();
@@ -110,11 +111,8 @@ public class Game {
 	 * Jöhet a következő teszteset.
 	 */
 	public static void outputCompare(int testNum){
-		String FILENAME = System.getProperty("user.dir");
-		//File output = new File(FILENAME+"\\res\\output.txt");
-		//File test = new File(FILENAME+"\\res\\testOuts\\test"+testNum+".txt");
-		
 		try {
+			String FILENAME = System.getProperty("user.dir");
 			byte[] f1 = Files.readAllBytes(Paths.get(FILENAME+"\\res\\output.txt"));
 			byte[] f2 = Files.readAllBytes(Paths.get(FILENAME+"\\res\\testOuts\\test"+testNum+".txt"));
 			

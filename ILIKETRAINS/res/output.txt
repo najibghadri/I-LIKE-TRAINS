@@ -1,23 +1,10 @@
 loadmap 1 success
 loadtrain 1-1 success
-Engine(1): collides with deadend at TrackComponent(2)
-Engine(5): moves to TrackComponent(1)
-Engine(5): collides with Cart(2) at TrackComponent(1)
-next-> null
-| ENGI:1  |@ TrackComponent (2)
-| GREN:1  |@ TrackComponent (1)
-| COAL    |@ EntryPoint (3)
-| BLUE:0  |@ null
+Engine(1): moves to TrackComponent(1)
 next-> TrackComponent (2)
-| ENGI:5  |@ TrackComponent (1)
+| ENGI:1  |@ TrackComponent (1)
 | GREN:1  |@ EntryPoint (3)
 | COAL    |@ null
 | BLUE:0  |@ null
+Engine(1): moves to TrackComponent(2)
 Engine(1): collides with deadend at TrackComponent(2)
-Engine(5): moves to TrackComponent(2)
-Engine(1): collides with Engine(1) at TrackComponent(2)
-Engine(5): collides with Engine(1) at TrackComponent(2)
-Engine(1): collides with deadend at TrackComponent(2)
-Engine(5): collides with deadend at TrackComponent(2)
-Engine(1): collides with Engine(1) at TrackComponent(2)
-Engine(5): collides with Engine(1) at TrackComponent(2)

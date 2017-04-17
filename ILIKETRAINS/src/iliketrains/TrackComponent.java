@@ -8,7 +8,6 @@ import skeleton.Game;
 /**
  * TrackComponent
  * Álalános sín elem
- * @author Ágoston, Najib
  */
 public class TrackComponent {
 

@@ -7,7 +7,6 @@ import skeleton.Game;
 /**
  * Tunnel
  * Alagútkezelő típus
- * @author Najib
  */
 public class Tunnel {
 	

@@ -136,7 +136,10 @@ public class Controller {
 			System.out.println("6. teszt)");
 			System.out.println("7. teszt)");
 			System.out.println("8. teszt)");
+			
 			line = reader.nextLine();
+			int testNum = Integer.parseInt(line);
+			
 			File file = null;
 			String filename="";
 				switch (line){
@@ -227,7 +230,9 @@ public class Controller {
 					break;
 				}
 			}
+			Game.outputCompare(testNum);
 		}
+		
 	}
 
 

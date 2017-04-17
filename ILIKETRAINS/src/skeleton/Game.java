@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.io.InputStream;
@@ -108,7 +109,30 @@ public class Game {
 	 * Ha minden egyezik, kiírja a stdoutputra az egyezést és a teszteset sikeres lefutását.
 	 * Jöhet a következő teszteset.
 	 */
-	public static void outputCompare(){
+	public static void outputCompare(int testNum){
+		String FILENAME = System.getProperty("user.dir");
+		//File output = new File(FILENAME+"\\res\\output.txt");
+		//File test = new File(FILENAME+"\\res\\testOuts\\test"+testNum+".txt");
 		
+		try {
+			byte[] f1 = Files.readAllBytes(Paths.get(FILENAME+"\\res\\output.txt"));
+			byte[] f2 = Files.readAllBytes(Paths.get(FILENAME+"\\res\\testOuts\\test"+testNum+".txt"));
+			
+			boolean flag = true;
+			for(int i=0;i<f1.length;i++){
+				if(f1[i] != f2[i]){
+					flag = false;
+					break;
+				}
+			}
+			
+			if (flag)
+				System.out.println("[Test"+testNum+": SUCCESS]");
+			else
+				System.out.println("[Test"+testNum+": FAILED]");	
+		} catch (IOException e) {
+			System.out.println("Nem található a két összehasonlítandó fájl");
+			e.printStackTrace();
+		}
 	}
 }

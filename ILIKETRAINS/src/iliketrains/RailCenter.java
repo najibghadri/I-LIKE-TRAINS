@@ -143,13 +143,15 @@ public class RailCenter {
 			String currentPhase="";
 			
 			br = new BufferedReader(new FileReader(FILENAME));
-			
+
+            currentPhase = br.readLine();
 			while ((currentLine = br.readLine()) != null) {
 				if(currentLine.equals("")){
 					currentPhase = br.readLine();
-					if(currentPhase == null)
-					    break;
-				}else{
+                    if(currentPhase == null)
+                        break;
+				}
+				else{
 				switch (currentPhase) {
 				case "trackcomponent":
 					createTrackComponent(list, currentLine);

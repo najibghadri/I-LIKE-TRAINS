@@ -52,7 +52,7 @@ public class Tunnel {
 	 * @param gate A leválasztandó alagútszáj
 	 */
 	public void disconnect(TunnelGate gate) {
-		if(activeGates.size()==2) { //can not be more
+		if(activeGates.size()==2) { //cannot be more
 			activeGates.get(0).removeTunnelTrack();
 			activeGates.get(1).removeTunnelTrack();
 			Game.log("Tunnel: destroyed Tunnel");
@@ -94,28 +94,28 @@ public class Tunnel {
 	private void createTunnel(TunnelGate in, TunnelGate out) {
 		int localId=firstID;
 		int lenghtOfTunnel=3; 											//Később random lesz
-		List<TrackComponent> tunnellista=new ArrayList<TrackComponent>();
+		List<TrackComponent> tunnelTracks=new ArrayList<TrackComponent>();
 		
 		for(int i=0;i<lenghtOfTunnel;i++){
 			TrackComponent temp= new TrackComponent(localId);
-			tunnellista.add(temp);
+			tunnelTracks.add(temp);
 			localId++;
 		}
 		
 		//elsőhöz másodikat és bemenetet, utolsóhoz utolsó előtti és kimenetet külön adjuk hozzá
-		tunnellista.get(0).addAdjacentTrack(in);
-		tunnellista.get(0).addAdjacentTrack(tunnellista.get(1));
-		tunnellista.get(tunnellista.size()-1).addAdjacentTrack(out);
-		tunnellista.get(tunnellista.size()-1).addAdjacentTrack(tunnellista.get(tunnellista.size()-2));
+		tunnelTracks.get(0).addAdjacentTrack(in);
+		tunnelTracks.get(0).addAdjacentTrack(tunnelTracks.get(1));
+		tunnelTracks.get(tunnelTracks.size()-1).addAdjacentTrack(out);
+		tunnelTracks.get(tunnelTracks.size()-1).addAdjacentTrack(tunnelTracks.get(tunnelTracks.size()-2));
 
 		//Többihez az előtte és utána lévőt adja szomszédnak
-		for(int i=1;i<tunnellista.size()-1;i++){
-			tunnellista.get(i).addAdjacentTrack(tunnellista.get(i-1));
-			tunnellista.get(i).addAdjacentTrack(tunnellista.get(i+1));
+		for(int i=1;i<tunnelTracks.size()-1;i++){
+			tunnelTracks.get(i).addAdjacentTrack(tunnelTracks.get(i-1));
+			tunnelTracks.get(i).addAdjacentTrack(tunnelTracks.get(i+1));
 		}
 		
-		in.setTunnelTrack(tunnellista.get(0));
-		out.setTunnelTrack(tunnellista.get(tunnellista.size()-1));
+		in.setTunnelTrack(tunnelTracks.get(0));
+		out.setTunnelTrack(tunnelTracks.get(tunnelTracks.size()-1));
 	}
 	
 	/**

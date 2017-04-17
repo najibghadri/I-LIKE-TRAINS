@@ -1,6 +1,0 @@
-loadmap game1 success
-loadtrain train1 success
-Engine(1): moves to TunnelGate(6)
-loadmap game2 success
-loadtrain train2 success
-Engine(1): moves to TunnelGate(6)

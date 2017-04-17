@@ -24,6 +24,8 @@ public class Game {
     /** The file out. */
     static PrintWriter fileOut;
 
+    static Controller controller;
+
 	/**
 	 * The main method.
 	 *
@@ -34,7 +36,7 @@ public class Game {
 		fileWriter = null;
 		bufferedWriter = null;
 		
-		Controller controller=new Controller();
+		controller=new Controller();
 		controller.startGame();
 	}
 	
@@ -60,11 +62,12 @@ public class Game {
 	 * @param s A log információ kiírása
 	 */
 	public synchronized static void log(String s){
+        int testNum = controller.getTestNum();
 		System.out.println(s);
 		
 		try {
 			String FILENAME = System.getProperty("user.dir");
-			File file = new File(FILENAME+"\\res\\test_logs\\output.txt");
+			File file = new File(FILENAME+"\\res\\test_logs\\test_log_"+testNum+".txt");
 
 			if (!file.exists()) {
 				file.createNewFile();
@@ -94,9 +97,11 @@ public class Game {
 	 * Kiüríti a log output fájlját, hogy a következő teszteset kerülhessen bele
 	 */
 	public static void clearOutput(){
+        int testNum = controller.getTestNum();
+
 		try {
 			String FILENAME = System.getProperty("user.dir");
-			File file = new File(FILENAME+"\\res\\test_logs\\output.txt");
+			File file = new File(FILENAME+"\\res\\test_logs\\test_log_"+testNum+".txt");
 			PrintWriter writer = new PrintWriter(file);
 			writer.print("");
 			writer.close();
@@ -111,10 +116,12 @@ public class Game {
 	 * Ha minden egyezik, kiírja a stdoutputra az egyezést és a teszteset sikeres lefutását.
 	 * Jöhet a következő teszteset.
 	 */	
-	public static void outputCompare(int testNum){
+	public static void outputCompare(){
+	    int testNum = controller.getTestNum();
+
 		try {
 			String FILENAME = System.getProperty("user.dir");
-			List<String> f1 = Files.readAllLines(Paths.get(FILENAME+"\\res\\test_logs\\output.txt"));
+			List<String> f1 = Files.readAllLines(Paths.get(FILENAME+"\\res\\test_logs\\test_log_"+testNum+".txt"));
 			List<String> f2 = Files.readAllLines(Paths.get(FILENAME+"\\res\\test_expected_logs\\test_log_"+testNum+".txt"));
 			
 			boolean flag = true;

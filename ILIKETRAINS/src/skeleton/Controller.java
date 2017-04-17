@@ -32,8 +32,15 @@ public class Controller {
 	
 	/** Futást jelző flag */
 	private boolean running=false;
-	
-	/**
+
+    /** Aktuális tesztszám */
+    private int testNum;
+
+    public int getTestNum() {
+        return testNum;
+    }
+
+    /**
 	 * Jelenlegi térkép fájl
 	 */
 	private int numberOfMap=1;
@@ -140,8 +147,7 @@ public class Controller {
 		System.out.println("Játék vagy teszt? (1|2)");
 		String line = reader.nextLine();
 
-		//töröljük a meglévő teszt fileOutputját
-		Game.clearOutput();
+
 		
 		//Elindítja a játékot
 		if(line.equals("1")){
@@ -151,9 +157,15 @@ public class Controller {
 		//Ha nem indítunk, akkor tesztfájlt választunk
 		if(line.equals("2")){			
 			System.out.println("Válassz 1-33-ig:");
-			
+
+
+
+            //olvassuk a teszt számát
 			line = reader.nextLine();
-			int testNum = Integer.parseInt(line);
+			testNum = Integer.parseInt(line);
+
+            //töröljük a meglévő teszt fileOutputját
+            Game.clearOutput();
 			
 			File file = null;
 			String filename="";
@@ -206,7 +218,7 @@ public class Controller {
 						break;
 				}
 			}
-			Game.outputCompare(testNum);
+			Game.outputCompare();
 		}
 		else
 			System.out.println("Nincs ilyen parancs");

@@ -1,5 +1,7 @@
 package iliketrains;
 
+import skeleton.Game;
+
 /**
  * TunnelGate
  * Alagútszájat megvalósító típus
@@ -31,13 +33,16 @@ public class TunnelGate extends TrackComponent implements Controllable {
 	public void change() {
 		Tunnel tunnel=Tunnel.getInstance();
 		if(carts.size()!=0){
-            return;
+            Game.log(this.getType()+"("+this.getId()+") remains "+this.getActive());
+            return; //TODO: ez minek ide?
 		}else{
 			if(active){
+				Game.log(this.getType()+"("+this.getId()+"): disconnected");
 				tunnel.disconnect(this);
 				active = false;
 			}
 			else{
+				//a tunnel.register függvényen belül írjuk ki az erre a bejáratra vonatkozó logokat
 				active = tunnel.register(this); //Ha van másik kettő akkor nem fog sikerülni!
 			}
 		}
@@ -78,6 +83,13 @@ public class TunnelGate extends TrackComponent implements Controllable {
     @Override
     public String getType(){
         return "TunnelGate";
+    }
+    
+    private String getActive(){
+    	if (active)
+    		return "active";
+    	else
+    		return "inactive";
     }
 
 }

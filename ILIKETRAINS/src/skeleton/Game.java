@@ -13,12 +13,24 @@ import java.util.ArrayList;
  */
 public class Game {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws InterruptedException the interrupted exception
+	 */
 	//TODO gondolom így nincs kész
 	public static void main(String args[]) throws InterruptedException{
 		Controller controller=new Controller();
 		controller.startGame();
 	}
 	
+	/**
+	 * Generate filename.
+	 *
+	 * @param name the name
+	 * @return the string
+	 */
 	public static String generateFilename(String name) {
 		String FILENAME =System.getProperty("user.dir");
 		if(name.contains(".txt")){
@@ -29,6 +41,11 @@ public class Game {
 		return FILENAME;
 	}
 	
+	/**
+	 * Log.
+	 *
+	 * @param s the s
+	 */
 	public static void log(String s){
 		System.out.println(s);
 	}

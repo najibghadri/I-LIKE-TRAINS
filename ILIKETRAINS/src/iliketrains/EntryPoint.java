@@ -21,14 +21,16 @@ public class EntryPoint extends TrackComponent{
 	 * @return TrackComponent következő sín
 	 */
 	@Override
-	public TrackComponent getNext(TrackComponent previous){
-		if(previous==null){
-			return adjacentTracks.get(0);
-		}
-		if(previous.equals(adjacentTracks.get(0))){
-			return adjacentTracks.get(1);
-		}
-		else
-			return adjacentTracks.get(0);
-	}
+    public TrackComponent getNext(TrackComponent previous){
+        if(previous==null){
+            return adjacentTracks.get(0);
+        }
+        if(adjacentTracks.size()==1)
+            return null;
+        if(previous.equals(adjacentTracks.get(0))){
+            return adjacentTracks.get(1);
+        }
+        else
+            return adjacentTracks.get(0);
+    }
 }

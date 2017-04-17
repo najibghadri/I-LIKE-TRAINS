@@ -2,7 +2,8 @@ package iliketrains;
 
 import javax.management.RuntimeErrorException;
 
-// TODO: Auto-generated Javadoc
+import skeleton.Game;
+
 /**
  * Mozdony osztály.
  * @author Imi
@@ -40,13 +41,16 @@ public class Engine extends Cart {
 	 */
 	public void move() {
 		TrackComponent newPrev=currentTrack;
-		TrackComponent nextTrack= currentTrack.getNext(previous);
-		if(nextTrack==null)	//ha nincs tovább, vagyis zsákutcába kerültünk
+		TrackComponent nextTrack=currentTrack.getNext(previous);
+		if(nextTrack==null){	//ha nincs tovább, vagyis zsákutcába kerültünk
+			Game.log("Engine("+this.getId()+"): collides with deadend at "+currentTrack.getType()+"("+currentTrack.getId()+")");
 			center.reportCollided();
+		}
 		else{
 			checkCollison();
 			moveCart(nextTrack);	//engine (és ezáltal az egész szerelvény) mozgatása a következő pályaelemre
 			previous=newPrev;
+			Game.log("Engine("+this.getId()+"): moves to "+nextTrack.getType()+"("+nextTrack.getId()+")");
 			checkStation();
 		}
 	}
@@ -76,6 +80,7 @@ public class Engine extends Cart {
 				if(current.isNotEmpty()){	//ha nem üres a vizsgált
 					if(current.getColor().equals(s.getColor())){	//ha egyezik a szín az állomáséval
 						current.popPassengers();							//leszállnak (nincs előtte teli kocsi)
+						Game.log("passengers got off Cart("+current.getId()+") at "+s.getColor()+"Station ("+s.getId()+")");
 					}
 					break;	//ha megtaláltuk az első nem üres kocsit, biztosan be kell fejeznünk a keresést (színtől függetlenül)
 				}
@@ -89,6 +94,7 @@ public class Engine extends Cart {
 						if(current.getColor().equals(s.getColor())){	//ha egyezik a szín
 							current.addPassengers();							//felszállnak
 							s.popPassengers();									//az állomásról pedig eltűnnek
+							Game.log("passengers got on Cart("+current.getId()+") at "+s.getColor()+"Station ("+s.getId()+")");
 						}
 					current=current.nextCart;	//egyébként vizsgáljuk a következőt
 				}

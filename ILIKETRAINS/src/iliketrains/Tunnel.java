@@ -2,6 +2,8 @@
 
 import java.util.*;
 
+import skeleton.Game;
+
 /**
  * Tunnel
  * Alagútkezelő típus
@@ -55,6 +57,7 @@ public class Tunnel {
 		if(activeGates.size()==2) { //can not be more
 			activeGates.get(0).removeTunnelTrack();
 			activeGates.get(1).removeTunnelTrack();
+			Game.log("Tunnel: destroyed Tunnel");
 			//TODO ha nem csak egy hosszú az alagút, akkor itt szedjük szét
 		}
 		activeGates.remove(gate);
@@ -68,14 +71,20 @@ public class Tunnel {
 	public boolean register(TunnelGate gate) {
 		if(activeGates.size()==	0){
 			activeGates.add(gate);
+			Game.log(gate.getType()+"("+gate.getId()+"): registered");
 			return true;
 		}
 		else if(activeGates.size() == 1){
 			activeGates.add(gate);
+			Game.log(gate.getType()+"("+gate.getId()+"): registered");
+			
 			createTunnel(activeGates.get(0),activeGates.get(1));
+			Game.log("Tunnel: created Tunnel");
 			return true;
-		} else
+		} else{
+			Game.log(gate.getType()+"("+gate.getId()+"): not registered");
 			return false;
+		}
 	}
 
 	/**

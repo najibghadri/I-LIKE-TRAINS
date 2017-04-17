@@ -87,13 +87,13 @@ public class Controller {
 	private void gameTick() {
 		railCenter.moveEngines();
 	      if(railCenter.getAnyCollided()){
-			  System.out.println("You Lost");
+			  System.out.println("GAME OVER, YOU LOST!");
 			  //TODO pálya/train neve
 			  railCenter.loadMap("NextMap");
 			  railCenter.loadTrain("NewTrain");
 		  }
 		  if(railCenter.getAllEmptyStatus()){
-			  System.out.println("You Won");
+			  System.out.println("SUCCESS, YOU WON!");
 			  //TODO pálya/train neve
 			  railCenter.loadMap("NextMap");
 			  railCenter.loadTrain("NewTrain");

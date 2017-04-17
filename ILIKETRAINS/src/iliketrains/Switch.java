@@ -1,5 +1,7 @@
 package iliketrains;
 
+import skeleton.Game;
+
 /**
  * Switch
  * Váltó osztálya
@@ -24,6 +26,7 @@ public class Switch extends TrackComponent implements Controllable {
 	 */
 	public void change() {
 		if(carts.size()!=0){
+			Game.log(this.getType()+"("+this.getId()+"): remains at "+this.getDirTrack().getType()+"("+this.getDirTrack().getId()+")");
 		    return;
 		}else{
 			if(direction){
@@ -31,6 +34,7 @@ public class Switch extends TrackComponent implements Controllable {
 			}else{
                 direction = true; //Y szerint jobbra
 			}
+			Game.log(this.getType()+"("+this.getId()+"): set to "+this.getDirTrack().getType()+"("+this.getDirTrack().getId()+")");
 		}
 	}
 
@@ -80,6 +84,13 @@ public class Switch extends TrackComponent implements Controllable {
     @Override
     public String getType(){
         return "Switch";
+    }
+    
+    private TrackComponent getDirTrack(){
+    	if(direction)
+    		return adjacentTracks.get(2);
+    	else
+    		return adjacentTracks.get(1);
     }
 
 }

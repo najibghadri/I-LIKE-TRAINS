@@ -30,9 +30,7 @@ public class Game {
 	 *
 	 * @param args the arguments
 	 * @throws InterruptedException the interrupted exception
-	 * @throws IOException 
 	 */
-	//TODO gondolom így nincs kész
 	public static void main(String args[]) throws InterruptedException{
 		fw = null;
 		bw = null;

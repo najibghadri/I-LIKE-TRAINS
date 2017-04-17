@@ -33,7 +33,7 @@ public class TunnelGate extends TrackComponent implements Controllable {
 		Tunnel tunnel=Tunnel.getInstance();
 		if(carts.size()!=0){
             Game.log(this.getType()+"("+this.getId()+") remains "+this.getActive());
-            return; //TODO: ez minek ide?
+            return;
 		}else{
 			if(active){
 				Game.log(this.getType()+"("+this.getId()+"): disconnected");

@@ -465,8 +465,7 @@ public class RailCenter {
 			PassengerCart pc = (PassengerCart) c;
 			str += getPrintStyleColor(pc.getColor())+":"+getPrintStyleBool(pc.isNotEmpty());
 		}
-		//TODO: van asszem erre valami beépített java fgv, most nem találtam
-		//mindenestere, ha nincs meg hat karakter, akkor adunk még hozz whitespace-eket
+		//ha nincs meg hat karakter, akkor adunk még hozz whitespace-eket
 		for(int i = str.length(); i<=6;i++){
 			str += " ";
 		}

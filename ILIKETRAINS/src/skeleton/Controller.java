@@ -33,13 +33,18 @@ public class Controller {
 	/** Futást jelző flag */
 	private boolean running=false;
 	
+	/**
+	 * Jelenlegi térkép fájl
+	 */
+	private int numberOfMap=1;
+	
 	/** A kontroll szál, bemenetet olvassa, amíg meg nem szakítják. */
 	final Thread controlThread = new Thread(new Runnable() {
 		  public void run() {
 		    while (!Thread.interrupted()) {
 		      readInput();
 		    }
-		    System.out.println("ControlThread 1 stopped!");
+		    System.out.println("ControlThread stopped!");
 		  }
 		});
 	
@@ -108,9 +113,6 @@ public class Controller {
 			  System.out.println("Nyomj ENTER-t!");
 			  }
 
-			  //TODO pálya/train neve
-			  //railCenter.loadMap("NextMap");
-			  //railCenter.loadTrain("NewTrain");
 		  }
 		  if(railCenter.getAllEmptyStatus()){
 			  System.out.println("SUCCESS, YOU WON!");
@@ -118,9 +120,14 @@ public class Controller {
 			  timer.cancel();
 			  running=false;
 			  }
-			  //TODO pálya/train neve
-			  //railCenter.loadMap("NextMap");
-			  //railCenter.loadTrain("NewTrain");
+			  
+			  numberOfMap++;
+			  if(numberOfMap>2)
+				  System.out.println("Nincs több pálya");
+			  else{ 
+				  startAutomataGame();
+			  System.out.println("Nyomj ENTER-t!");
+			  }
 		  }
 	}
 	
@@ -205,9 +212,9 @@ public class Controller {
 	 * Real-Time működő játékot megvalósítő függvény
 	 */
 	private void startAutomataGame() {
-		railCenter.loadMap("1");
+		railCenter.loadMap("game"+numberOfMap);
 		controllables=railCenter.getControllables();
-		railCenter.loadTrain("1-1");
+		railCenter.loadTrain("train"+numberOfMap);
 		timer = new Timer();
 		timer=new Timer();
 		running=true;
@@ -216,7 +223,7 @@ public class Controller {
 			  public void run() {
 				  gameAutoTick();
 			  }
-			}, 0,1000);
+			}, 0,2000);
 	}
 
 

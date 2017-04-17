@@ -53,7 +53,8 @@ public class Controller {
 	 * @throws InterruptedException the interrupted exception
 	 */
 	public void startGame() throws InterruptedException{
-		railCenter=new RailCenter();
+		if(railCenter==null)
+			railCenter=new RailCenter();
 		while(!controlThread.isAlive()){
 			testOrGame();
 		}
@@ -90,16 +91,18 @@ public class Controller {
 		railCenter.moveEngines();
 	      if(railCenter.getAnyCollided()){
 			  System.out.println("GAME OVER, YOU LOST!");
-			  if(timer!=null)
+			  if(timer!=null){
 			  timer.cancel();
+			  }
 			  //TODO pálya/train neve
 			  //railCenter.loadMap("NextMap");
 			  //railCenter.loadTrain("NewTrain");
 		  }
 		  if(railCenter.getAllEmptyStatus()){
 			  System.out.println("SUCCESS, YOU WON!");
-			  if(timer!=null)
+			  if(timer!=null){
 			  timer.cancel();
+			  }
 			  //TODO pálya/train neve
 			  //railCenter.loadMap("NextMap");
 			  //railCenter.loadTrain("NewTrain");
@@ -130,7 +133,7 @@ public class Controller {
 				  public void run() {
 					  gameTick();
 				  }
-				}, 0,2000);
+				}, 0,1000);
 		}
 		//Ha nem indítunk, akkor tesztfájlt választunk
 		else{			

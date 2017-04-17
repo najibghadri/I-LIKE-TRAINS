@@ -35,6 +35,8 @@ public class Controller {
 	/** A beolvasáshoz szükséges objektum */
 	private Scanner reader = new Scanner(System.in);
 	
+	Timer timer;
+	
 	/** A kontroll szál, bemenetet olvassa, amíg meg nem szakítják. */
 	final Thread controlThread = new Thread(new Runnable() {
 		  public void run() {
@@ -52,7 +54,7 @@ public class Controller {
 	 */
 	public void startGame() throws InterruptedException{
 		railCenter=new RailCenter();
-		while(true){
+		while(!controlThread.isAlive()){
 			testOrGame();
 		}
 	}
@@ -68,23 +70,16 @@ public class Controller {
 			switch (commandpart[0]) {
 			case "stop":
 				controlThread.interrupt();	
-				//TODO: timer leállítása
+				timer.cancel();
 				break;
 			case "change":
 				change(commandpart[1]);
 				break;
-			case "loadmap":
-				railCenter.loadMap(commandpart[1]);
-				controllables=railCenter.getControllables();
-				break;
-			case "loadtrain":
-				railCenter.loadTrain(commandpart[1]);
+			case "print":
+				railCenter.printStatus();
 				break;
 			case "moveengines":
 				gameTick();
-				break;
-			case "print":
-				railCenter.printStatus();
 				break;
 			default:
 				break;
@@ -95,12 +90,16 @@ public class Controller {
 		railCenter.moveEngines();
 	      if(railCenter.getAnyCollided()){
 			  System.out.println("GAME OVER, YOU LOST!");
+			  if(timer!=null)
+			  timer.cancel();
 			  //TODO pálya/train neve
 			  //railCenter.loadMap("NextMap");
 			  //railCenter.loadTrain("NewTrain");
 		  }
 		  if(railCenter.getAllEmptyStatus()){
 			  System.out.println("SUCCESS, YOU WON!");
+			  if(timer!=null)
+			  timer.cancel();
 			  //TODO pálya/train neve
 			  //railCenter.loadMap("NextMap");
 			  //railCenter.loadTrain("NewTrain");
@@ -118,13 +117,20 @@ public class Controller {
 		
 		//Elindítja a játékot
 		if(line.equals("1")){
-			Timer timer = new Timer();
+			railCenter.loadMap("2");
+			controllables=railCenter.getControllables();
+			railCenter.loadTrain("2-1");
+			change("5");
+			change("6");
+			timer = new Timer();
+			controlThread.start();
+			timer=new Timer();
 			timer.schedule(new TimerTask() {
 				  @Override
 				  public void run() {
 					  gameTick();
 				  }
-				}, 3000);
+				}, 0,300);
 		}
 		//Ha nem indítunk, akkor tesztfájlt választunk
 		else{			
@@ -193,21 +199,6 @@ public class Controller {
 				}
 			}
 			
-			//TODO: ideiglenesen kiszedtük
-			//A kontroll szálat elindítja
-			//controlThread.start();
-			
-			//Beadja a tesztbemeneteket
-			//Nem rossz ötlet, de nem sikerült működésre bírnom ezt a módszerts
-	//		InputStream stdin = System.in;
-	//		for (String in: commands) {
-	//			try {
-	//			  System.setIn(new ByteArrayInputStream(in.getBytes()));
-	//			  reader=new Scanner(System.in);
-	//			} finally {
-	//			  System.setIn(stdin);
-	//			}
-	//		}
 			for(String in:commands){
 				String[] commandpart=in.split(" ");
 				switch (commandpart[0]) {

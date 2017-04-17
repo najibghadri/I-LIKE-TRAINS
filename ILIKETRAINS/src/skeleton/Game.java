@@ -62,7 +62,7 @@ public class Game {
 	 *
 	 * @param s A log információ kiírása
 	 */
-	public static void log(String s){
+	public synchronized static void log(String s){
 		System.out.println(s);
 		
 		try {
@@ -118,14 +118,15 @@ public class Game {
 			List<String> f2 = Files.readAllLines(Paths.get(FILENAME+"\\res\\testOuts\\test"+testNum+".txt"));
 			
 			boolean flag = true;
-			for(int i=0;i<f1.size();i++){
-				if(!f1.get(i).equals(f2.get(i))){
-					System.out.println("ERROR line: "+f1.get(i)+" vs "+f2.get(i));
-					flag = false;
-					break;
-				}
-			}
-			
+			if(f1.size() != f2.size())
+                flag = false;
+            
+            for(int i=0;i<f1.size();i++){
+                if((!f1.get(i).equals(f2.get(i)) || flag == false)){
+                    flag = false;
+                    break;
+                }
+            }
 			if (flag)
 				System.out.println("[Test"+testNum+": SUCCESS]");
 			else

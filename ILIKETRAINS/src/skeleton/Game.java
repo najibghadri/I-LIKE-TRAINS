@@ -127,9 +127,9 @@ public class Game {
 			}
 			
 			if (flag)
-				System.out.println("[Test"+testNum+": SUCCESS]S");
+				System.out.println("[Test"+testNum+": SUCCESS]");
 			else
-				System.out.println("[Test"+testNum+": FAILED]S");	
+				System.out.println("[Test"+testNum+": FAILED]");	
 		} catch (IOException e) {
 			System.out.println("Nem található a két összehasonlítandó fájl");
 			e.printStackTrace();

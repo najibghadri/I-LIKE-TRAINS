@@ -1,10 +1,20 @@
-loadmap 1 success
-loadtrain 1-1 success
-Engine(1): moves to TrackComponent(1)
-next-> TrackComponent (2)
-| ENGI:1  |@ TrackComponent (1)
-| GREN:1  |@ EntryPoint (3)
-| COAL    |@ null
-| BLUE:0  |@ null
-Engine(1): moves to TrackComponent(2)
-Engine(1): collides with deadend at TrackComponent(2)
+loadmap 2 success
+loadtrain 2-1 success
+TunnelGate(5): not registered
+TunnelGate(6): not registered
+Engine(1): moves to TunnelGate(6)
+Engine(3): moves to TrackComponent(1)
+Engine(1): collides with deadend at TunnelGate(6)
+Engine(3): moves to TrackComponent(2)
+Engine(1): collides with deadend at TunnelGate(6)
+Engine(3): moves to TrackComponent(3)
+Engine(1): collides with deadend at TunnelGate(6)
+Engine(3): moves to TrackComponent(4)
+next-> null
+| ENGI:1  |@ TunnelGate (6)
+| GREN:1  |@ EntryPoint (7)
+next-> TunnelGate (5)
+| ENGI:3  |@ TrackComponent (4)
+| COAL    |@ TrackComponent (3)
+Engine(1): collides with deadend at TunnelGate(6)
+Engine(3): moves to TunnelGate(5)

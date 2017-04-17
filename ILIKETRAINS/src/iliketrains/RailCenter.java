@@ -59,13 +59,14 @@ public class RailCenter {
 	 * Az Engineket (mozdony), és ezáltal a vonatokat mozgató fv.
 	 */
 	public void moveEngines() {
-		for(Engine e : engines){
-			e.move();
-		}
-		for(Engine e : engines){
-            e.checkCollison();
+        for(Engine e : engines){
+            e.move();
         }
-	}
+        for(Engine e : engines){
+            if(!collided)
+           e.checkCollison();
+       }
+    }
 	
 	/**
 	 * Ellenőrzi, hogy minden vonat és állomás kiürült-e.
@@ -126,10 +127,8 @@ public class RailCenter {
 	public void loadMap(String name){
 		highestCartId=1;
 		highestTrackId=1;
-		controllableList.clear();
-		engines.clear();
-		entryPoints.clear();
-		stations.clear();		
+		
+		resetGame();
 		
 		String FILENAME = generateFilename(name);		
 		BufferedReader br = null;
@@ -190,6 +189,18 @@ public class RailCenter {
 				ex.printStackTrace();				
 			}
 		}
+	}
+
+	/**
+	 * Alaphelyzetbe állítja a változókat.
+	 */
+	private void resetGame() {
+		controllableList.clear();
+		engines.clear();
+		entryPoints.clear();
+		stations.clear();
+		collided=false;
+        Tunnel.getInstance().clear();
 	}
 
 	/**

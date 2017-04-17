@@ -16,7 +16,6 @@ public class Tunnel {
 	/** Az alagút létehozáshoz kellő id*/
 	private static int firstID;
 	private static Tunnel singleton;
-
 	
 	/**
 	 * Constructor
@@ -116,5 +115,12 @@ public class Tunnel {
 		in.setTunnelTrack(tunnellista.get(0));
 		out.setTunnelTrack(tunnellista.get(tunnellista.size()-1));
 	}
+	
+	/**
+	 * Törli listát, amiben az aktív bejáratok vannak
+	 */
+	public void clear(){
+        activeGates.clear();
+    }
 
 }

@@ -28,6 +28,7 @@ public class Controller {
 	private Scanner reader = new Scanner(System.in);
 	
 	Timer timer;
+	private boolean running=false;
 	
 	/** A kontroll szál, bemenetet olvassa, amíg meg nem szakítják. */
 	final Thread controlThread = new Thread(new Runnable() {
@@ -40,16 +41,16 @@ public class Controller {
 		});
 	
 	/**
-	 * A kontroll szálat indítja el.
+	 * A kezdő kérdést veti fel
 	 *
 	 * @throws InterruptedException the interrupted exception
 	 */
 	public void startGame() throws InterruptedException{
 		if(railCenter==null)
 			railCenter=new RailCenter();
-		while(!controlThread.isAlive()){
-			testOrPlay();
-		}
+
+		controlThread.start();
+
 	}
 	
 	
@@ -57,22 +58,22 @@ public class Controller {
 	 * Beolvassa a bemenetet és a megfelelő parancsra megfelelő függvényt hív.
 	 */
 	private void readInput() {
+			while(!running){
+				testOrPlay();
+			}
 			String command=reader.nextLine();
-			String[] commandpart=command.split(" ");			
+			String[] commandParts=command.split(" ");
 			
-			switch (commandpart[0]) {
+			switch (commandParts[0]) {
 			case "stop":
 				controlThread.interrupt();	
 				timer.cancel();
 				break;
 			case "change":
-				change(commandpart[1]);
+				change(commandParts[1]);
 				break;
 			case "print":
 				railCenter.printStatus();
-				break;
-			case "moveengines":
-				gameTick();
 				break;
 			default:
 				break;
@@ -81,11 +82,14 @@ public class Controller {
 	
 	private void gameTick() {
 		railCenter.moveEngines();
+		
 	      if(railCenter.getAnyCollided()){
 			  System.out.println("GAME OVER, YOU LOST!");
 			  if(timer!=null){
 			  timer.cancel();
+			  running=false;
 			  }
+
 			  //TODO pálya/train neve
 			  //railCenter.loadMap("NextMap");
 			  //railCenter.loadTrain("NewTrain");
@@ -94,6 +98,7 @@ public class Controller {
 			  System.out.println("SUCCESS, YOU WON!");
 			  if(timer!=null){
 			  timer.cancel();
+			  running=false;
 			  }
 			  //TODO pálya/train neve
 			  //railCenter.loadMap("NextMap");
@@ -110,20 +115,7 @@ public class Controller {
 		
 		//Elindítja a játékot
 		if(line.equals("1")){
-			railCenter.loadMap("2");
-			controllables=railCenter.getControllables();
-			railCenter.loadTrain("2-1");
-			change("5");
-			change("6");
-			timer = new Timer();
-			controlThread.start();
-			timer=new Timer();
-			timer.schedule(new TimerTask() {
-				  @Override
-				  public void run() {
-					  gameTick();
-				  }
-				}, 0,1000);
+			startAutomataGame();
 		}
 
 		//Ha nem indítunk, akkor tesztfájlt választunk
@@ -173,20 +165,20 @@ public class Controller {
 						break;
 				}
 			//Beolvassa a tesztparancsokat
-			BufferedReader br = null;
+			BufferedReader reader = null;
 			ArrayList<String> commands = new ArrayList<String>();
 			try {
-				br = new BufferedReader(new FileReader(file));
+				reader = new BufferedReader(new FileReader(file));
 				String text = null;
-				while ((text = br.readLine()) != null) {
+				while ((text = reader.readLine()) != null) {
 					commands.add(text);
 				}
 			} catch (Exception e) {
 	
 			} finally {
-				if (br != null) {
+				if (reader != null) {
 						try {
-							br.close();
+							reader.close();
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -196,28 +188,46 @@ public class Controller {
 			for(String in:commands){
 				String[] commandpart=in.split(" ");
 				switch (commandpart[0]) {
-				case "print":
-					railCenter.printStatus();
-					break;
-				case "change":
-					change(commandpart[1]);
-					break;
-				case "loadmap":
-					railCenter.loadMap(commandpart[1]);
-					controllables=railCenter.getControllables();
-					break;
-				case "loadtrain":
-					railCenter.loadTrain(commandpart[1]);
-					break;
-				case "moveengines":
-					gameTick();
-				default:
-					break;
+					case "print":
+						railCenter.printStatus();
+						break;
+					case "change":
+						change(commandpart[1]);
+						break;
+					case "loadmap":
+						railCenter = new RailCenter();
+						railCenter.loadMap(commandpart[1]);
+						controllables=railCenter.getControllables();
+						break;
+					case "loadtrain":
+						railCenter.loadTrain(commandpart[1]);
+						break;
+					case "moveengines":
+						gameTick();
+					default:
+						break;
 				}
 			}
 			Game.outputCompare(testNum);
 		}
-		
+	}
+
+
+	private void startAutomataGame() {
+		railCenter.loadMap("2");
+		controllables=railCenter.getControllables();
+		railCenter.loadTrain("2-1");
+		change("5");
+		change("6");
+		timer = new Timer();
+		timer=new Timer();
+		running=true;
+		timer.schedule(new TimerTask() {
+			  @Override
+			  public void run() {
+				  gameTick();
+			  }
+			}, 0,1000);
 	}
 
 

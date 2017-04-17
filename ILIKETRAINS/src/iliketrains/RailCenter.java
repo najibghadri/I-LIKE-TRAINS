@@ -1,7 +1,6 @@
 package iliketrains;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -39,6 +38,7 @@ public class RailCenter {
 	 * Memóriaterületet foglal a listáknak.
 	 */
 	public RailCenter() {
+        Tunnel.setNewInstance();
 		controllableList=new ArrayList<Controllable>();
 		engines=new ArrayList<Engine>();
 		entryPoints=new ArrayList<EntryPoint>();
@@ -127,7 +127,7 @@ public class RailCenter {
 	public void loadMap(String name){
 		highestCartId=1;
 		highestTrackId=1;
-		
+
 		resetGame();
 		
 		String FILENAME = generateFilename(name);		
@@ -145,8 +145,10 @@ public class RailCenter {
 			br = new BufferedReader(new FileReader(FILENAME));
 			
 			while ((currentLine = br.readLine()) != null) {
-				if(currentLine.startsWith("ch")){
-					currentPhase=currentLine.split(" ")[1];
+				if(currentLine.equals("")){
+					currentPhase = br.readLine();
+					if(currentPhase == null)
+					    break;
 				}else{
 				switch (currentPhase) {
 				case "trackcomponent":
@@ -200,7 +202,7 @@ public class RailCenter {
 		entryPoints.clear();
 		stations.clear();
 		collided=false;
-        Tunnel.getInstance().clear();
+        Tunnel.setNewInstance();
 	}
 
 	/**

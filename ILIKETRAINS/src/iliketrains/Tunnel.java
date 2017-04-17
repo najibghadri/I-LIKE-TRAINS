@@ -119,10 +119,10 @@ public class Tunnel {
 	}
 	
 	/**
-	 * Törli listát, amiben az aktív bejáratok vannak
+	 * Új alagutat hoz létre, ezzel újrainicializálva
 	 */
-	public void clear(){
-        activeGates.clear();
+	public static void setNewInstance(){
+		singleton = new Tunnel();
     }
 
 }

@@ -52,7 +52,9 @@ public class Controller {
 	 */
 	public void startGame() throws InterruptedException{
 		railCenter=new RailCenter();
-		testOrGame();
+		while(true){
+			testOrGame();
+		}
 	}
 	
 	
@@ -94,133 +96,138 @@ public class Controller {
 	      if(railCenter.getAnyCollided()){
 			  System.out.println("GAME OVER, YOU LOST!");
 			  //TODO pálya/train neve
-			  railCenter.loadMap("NextMap");
-			  railCenter.loadTrain("NewTrain");
+			  //railCenter.loadMap("NextMap");
+			  //railCenter.loadTrain("NewTrain");
 		  }
 		  if(railCenter.getAllEmptyStatus()){
 			  System.out.println("SUCCESS, YOU WON!");
 			  //TODO pálya/train neve
-			  railCenter.loadMap("NextMap");
-			  railCenter.loadTrain("NewTrain");
+			  //railCenter.loadMap("NextMap");
+			  //railCenter.loadTrain("NewTrain");
 		  }
 	}
 	
 	private void testOrGame(){
-	System.out.println("Játék vagy teszt? (1|2)");
-	String line = null;
-
-	line = reader.nextLine();
+		System.out.println("Játék vagy teszt? (1|2)");
+		String line = null;
 	
-	//Elindítja a játékot
-	if(line.equals("1")){
-		Timer timer = new Timer();
-		timer.schedule(new TimerTask() {
-			  @Override
-			  public void run() {
-				  gameTick();
-			  }
-			}, 3000);
-	}
-	//Ha nem indítunk, akkor tesztfájlt választunk
-	else{
-		System.out.println("1. teszt)");
-		System.out.println("2. teszt)");
-		System.out.println("3. teszt)");
-		System.out.println("4. teszt)");
-		System.out.println("5. teszt)");
-		System.out.println("6. teszt)");
-		System.out.println("7. teszt)");
-		System.out.println("8. teszt)");
 		line = reader.nextLine();
-		File file = null;
-		String filename="";
-			switch (line){
-				case "1":
-					filename=Game.generateFilename("elso.txt");
-					file = new File(filename);
+		
+		//töröljük a meglévő teszt fileOutputját
+		Game.clearOutput();
+		
+		//Elindítja a játékot
+		if(line.equals("1")){
+			Timer timer = new Timer();
+			timer.schedule(new TimerTask() {
+				  @Override
+				  public void run() {
+					  gameTick();
+				  }
+				}, 3000);
+		}
+		//Ha nem indítunk, akkor tesztfájlt választunk
+		else{			
+			System.out.println("1. teszt)");
+			System.out.println("2. teszt)");
+			System.out.println("3. teszt)");
+			System.out.println("4. teszt)");
+			System.out.println("5. teszt)");
+			System.out.println("6. teszt)");
+			System.out.println("7. teszt)");
+			System.out.println("8. teszt)");
+			line = reader.nextLine();
+			File file = null;
+			String filename="";
+				switch (line){
+					case "1":
+						filename=Game.generateFilename("elso.txt");
+						file = new File(filename);
+						break;
+					case "2":
+						filename=Game.generateFilename("masodik.txt");
+						file = new File(filename);
+						break;
+					case "3":
+						file = new File("file.txt");
+						break;
+					case "4":
+						file = new File("file.txt");
+						break;
+					case "5":
+						file = new File("file.txt");
+						break;
+					case "6":
+						file = new File("file.txt");
+						break;
+					case "7":
+						file = new File("file.txt");
+						break;
+					case "8":
+						file = new File("file.txt");
+						break;
+					default:
+						break;
+				}
+			//Beolvassa a tesztparancsokat
+			BufferedReader br = null;
+			ArrayList<String> commands = new ArrayList<String>();
+			try {
+				br = new BufferedReader(new FileReader(file));
+				String text = null;
+				while ((text = br.readLine()) != null) {
+					commands.add(text);
+				}
+			} catch (Exception e) {
+	
+			} finally {
+				if (br != null) {
+						try {
+							br.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				}
+			}
+			
+			//TODO: ideiglenesen kiszedtük
+			//A kontroll szálat elindítja
+			//controlThread.start();
+			
+			//Beadja a tesztbemeneteket
+			//Nem rossz ötlet, de nem sikerült működésre bírnom ezt a módszerts
+	//		InputStream stdin = System.in;
+	//		for (String in: commands) {
+	//			try {
+	//			  System.setIn(new ByteArrayInputStream(in.getBytes()));
+	//			  reader=new Scanner(System.in);
+	//			} finally {
+	//			  System.setIn(stdin);
+	//			}
+	//		}
+			for(String in:commands){
+				String[] commandpart=in.split(" ");
+				switch (commandpart[0]) {
+				case "print":
+					railCenter.printStatus();
 					break;
-				case "2":
-					filename=Game.generateFilename("masodik.txt");
-					file = new File(filename);
+				case "change":
+					change(commandpart[1]);
 					break;
-				case "3":
-					file = new File("file.txt");
+				case "loadmap":
+					railCenter.loadMap(commandpart[1]);
+					controllables=railCenter.getControllables();
 					break;
-				case "4":
-					file = new File("file.txt");
+				case "loadtrain":
+					railCenter.loadTrain(commandpart[1]);
 					break;
-				case "5":
-					file = new File("file.txt");
-					break;
-				case "6":
-					file = new File("file.txt");
-					break;
-				case "7":
-					file = new File("file.txt");
-					break;
-				case "8":
-					file = new File("file.txt");
-					break;
+				case "moveengines":
+					gameTick();
 				default:
 					break;
-			}
-		//Beolvassa a tesztparancsokat
-		BufferedReader br = null;
-		ArrayList<String> commands = new ArrayList<String>();
-		try {
-			br = new BufferedReader(new FileReader(file));
-			String text = null;
-			while ((text = br.readLine()) != null) {
-				commands.add(text);
-			}
-		} catch (Exception e) {
-
-		} finally {
-			if (br != null) {
-					try {
-						br.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+				}
 			}
 		}
-		
-		//A kontroll szálat elindítja
-		controlThread.start();
-		//Beadja a tesztbemeneteket
-		//Nem rossz ötlet, de nem sikerült működésre bírnom ezt a módszerts
-//		InputStream stdin = System.in;
-//		for (String in: commands) {
-//			try {
-//			  System.setIn(new ByteArrayInputStream(in.getBytes()));
-//			  reader=new Scanner(System.in);
-//			} finally {
-//			  System.setIn(stdin);
-//			}
-//		}
-		for(String in:commands){
-			String[] commandpart=in.split(" ");
-			switch (commandpart[0]) {
-			case "print":
-				railCenter.printStatus();
-				break;
-			case "change":
-				change(commandpart[1]);
-				break;
-			case "loadmap":
-				railCenter.loadMap(commandpart[1]);
-				controllables=railCenter.getControllables();
-				break;
-			case "loadtrain":
-				railCenter.loadTrain(commandpart[1]);
-				break;
-			case "moveengines":
-				gameTick();
-			default:
-				break;
-			}
-		}
-	}
 	}
 
 

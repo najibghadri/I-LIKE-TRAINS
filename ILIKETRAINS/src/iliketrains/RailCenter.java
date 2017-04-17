@@ -470,6 +470,11 @@ public class RailCenter {
 			return "BRWN";
 	}
 	
+	/**
+	 * A print függvényhez szükséges formátumra alakítja a boolt
+	 * @param c Kívánt bool
+	 * @return Átalakított formátum
+	 */
 	private int getPrintStyleBool(boolean c){
 		if(c)
 			return 1;

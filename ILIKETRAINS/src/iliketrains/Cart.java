@@ -31,6 +31,22 @@ public class Cart {
 	public final int getId(){
 		return id;
 	}
+	
+	/**
+     * Saját típusát sztringben
+     * @return "TrackComponent"
+     */
+    public String getType(){
+        return "Cart";
+    }
+    
+    /**
+     * Visszaadja a következő kocsi referenciáját
+     * @return Következő kocsi referenciája
+     */
+    public Cart getNext(){
+    	return next;
+    }
 
 	/**
 	 * A vonatkocsit mozgató függvény, a paraméteréül kapott objektumra mozgat

@@ -62,6 +62,9 @@ public class RailCenter {
 		for(Engine e : engines){
 			e.move();
 		}
+		for(Engine e : engines){
+            e.checkCollison();
+        }
 	}
 	
 	/**
@@ -401,6 +404,64 @@ public class RailCenter {
 				ex.printStackTrace();				
 			}
 		}
+	}
+	
+	/**
+	 * Kiírja a vonatok állapotát a log outputjaira
+	 */
+	public void printStatus(){
+		for(Engine e : engines){
+			Game.log("next-> "+e.currentTrack.getNext(e.getPrevious()));
+			Cart temp = e;
+			do{
+			Game.log("| "+getPrintStyleName(temp)+" |@ "+temp.currentTrack.getType()+ " ("+temp.currentTrack.getId()+"");
+			temp = temp.getNext();
+			}while(temp != null);
+		}
+	}
+	
+	/**
+	 * A printStatus függvényhez szükséges formátumú kocsi nevekkel tér vissza
+	 * @param c Kívánt kocsi referneciája
+	 * @return Jól formázott név
+	 */
+	private String getPrintStyleName(Cart c){
+		String str = "";
+		if(c.getType() == "Engine" ){
+			str += "ENGI:"+c.getId();
+		}
+		else if(c.getType() == "CoalCart"){
+			str += "COAL  ";
+		}
+		else if(c.getType() == "Cart"){
+			PassengerCart pc = (PassengerCart) c;
+			str += getPrintStyleColor(pc.getColor())+":"+pc.getId();
+		}
+		//TODO: van asszem erre valami beépített java fgv, most nem találtam
+		//mindenestere, ha nincs meg hat karakter, akkor adunk még hozz whitespace-eket
+		for(int i = str.length(); i<=6;i++){
+			str += " ";
+		}
+		
+		return str;
+	}
+	
+	/**
+	 * A printStatus függvényhez szükséges színszüvegformátummal tér vissza
+	 * @param c Kívánt szín
+	 * @return Jól formázott szín string
+	 */
+	private String getPrintStyleColor(Color c){
+		if(c.equals(Color.Red))
+			return "RED";
+		else if(c.equals(Color.Blue))
+			return "BLUE";
+		else if(c.equals(Color.Green))
+			return "GREN";
+		else if(c.equals(Color.Yellow))
+			return "YLLW";
+		else /*if(c.equals(Color.Brown))*/
+			return "BRWN";
 	}
 
 }

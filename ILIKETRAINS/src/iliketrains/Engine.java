@@ -47,7 +47,7 @@ public class Engine extends Cart {
 			center.reportCollided();
 		}
 		else{
-			checkCollison();
+			//checkCollison();
 			moveCart(nextTrack);	//engine (és ezáltal az egész szerelvény) mozgatása a következő pályaelemre
 			previous=newPrev;
 			Game.log("Engine("+this.getId()+"): moves to "+nextTrack.getType()+"("+nextTrack.getId()+")");
@@ -60,7 +60,13 @@ public class Engine extends Cart {
 	 * ígyhát ennek az osztálynak a felelõssége az ütközések detektálása
 	 */
 	public void checkCollison() {
+		TrackComponent nextTrack = currentTrack.getNext(previous);
+		
 		if(currentTrack.getCarts().size()>1) //ha a következő pályaelemen van kocsi, ütközés lesz
+			//A log fix-en a track-en lévők kocsik közül a listában lévő legelsőt írja ütközésnek
+			Game.log("Engine("+this.getId()+"): collides with "
+					+nextTrack.getCarts().get(0).getType() +"("+nextTrack.getCarts().get(0).getId()+") at "
+					+nextTrack.getType()+"("+nextTrack.getId()+")");
 			center.reportCollided();
 	}
 
@@ -125,4 +131,17 @@ public class Engine extends Cart {
 		}
 		return true;
 	}
+	
+	/**
+     * Saját típusát sztringben
+     * @return "Engine"
+     */
+    @Override
+    public String getType(){
+        return "Engine";
+    }
+    
+    public TrackComponent getPrevious(){
+    	return previous;
+    }
 }

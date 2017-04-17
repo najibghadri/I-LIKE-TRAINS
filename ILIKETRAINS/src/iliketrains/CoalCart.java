@@ -14,4 +14,13 @@ public class CoalCart extends Cart{
 	public CoalCart(int id){
 		super(id);
 	}
+	
+	/**
+     * Saját típusát sztringben
+     * @return "CoalCart"
+     */
+    @Override
+    public String getType(){
+        return "CoalCart";
+    }
 }

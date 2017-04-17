@@ -64,8 +64,9 @@ public class Controller {
 			String[] commandpart=command.split(" ");			
 			
 			switch (commandpart[0]) {
-			case "exit":
-				controlThread.interrupt();				
+			case "stop":
+				controlThread.interrupt();	
+				//TODO: timer leállítása
 				break;
 			case "change":
 				change(commandpart[1]);
@@ -79,6 +80,10 @@ public class Controller {
 				break;
 			case "moveengines":
 				gameTick();
+				break;
+			case "print":
+				railCenter.printStatus();
+				break;
 			default:
 				break;
 			}
@@ -228,6 +233,5 @@ public class Controller {
 			}
 		}
 	}
-	
 	
 }

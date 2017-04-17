@@ -120,9 +120,17 @@ public class RailCenter {
 	/**
 	 * A paraméter egy fájl neve, a megfelelő térképet tölti be.
 	 * Létrehozza az összes objektumot és a listákba elhelyezi.
+	 * Az előző pálya elemeit (ha volt) törli
 	 * @param name the name
 	 */
 	public void loadMap(String name){
+		highestCartId=1;
+		highestTrackId=1;
+		controllableList.clear();
+		engines.clear();
+		entryPoints.clear();
+		stations.clear();		
+		
 		String FILENAME = generateFilename(name);		
 		BufferedReader br = null;
 		FileReader fr = null;

@@ -231,6 +231,7 @@ public class Controller {
 				}
 			}
 			Game.outputCompare(testNum);
+			Game.outputCompareString(testNum);
 		}
 		
 	}

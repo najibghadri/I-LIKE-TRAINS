@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Game, keretosztály a játék működéséhez, stdout logoláshoz a teszteléshez
@@ -128,6 +129,31 @@ public class Game {
 				System.out.println("[Test"+testNum+": SUCCESS]");
 			else
 				System.out.println("[Test"+testNum+": FAILED]");	
+		} catch (IOException e) {
+			System.out.println("Nem található a két összehasonlítandó fájl");
+			e.printStackTrace();
+		}
+	}
+	
+	public static void outputCompareString(int testNum){
+		try {
+			String FILENAME = System.getProperty("user.dir");
+			List<String> f1 = Files.readAllLines(Paths.get(FILENAME+"\\res\\output.txt"));
+			List<String> f2 = Files.readAllLines(Paths.get(FILENAME+"\\res\\testOuts\\test"+testNum+".txt"));
+			
+			boolean flag = true;
+			for(int i=0;i<f1.size();i++){
+				if(f1.get(i) != f2.get(i)){
+					System.out.println("ERROR line: "+f1.get(i));
+					flag = false;
+					break;
+				}
+			}
+			
+			if (flag)
+				System.out.println("[Test"+testNum+": SUCCESS]S");
+			else
+				System.out.println("[Test"+testNum+": FAILED]S");	
 		} catch (IOException e) {
 			System.out.println("Nem található a két összehasonlítandó fájl");
 			e.printStackTrace();

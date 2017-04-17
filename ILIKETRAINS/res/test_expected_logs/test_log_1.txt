@@ -1,9 +1,9 @@
 loadmap 1 success
 loadtrain 1-1 success
-next-> Track (1)
-|Engine|@ EntryPoint (3)
-|Blue:1|@ null
-Engine(1): moves to Track(1)
-next-> Track (2)
-|Engine|@ Track (1)
-|Blue:1|@ EntryPoint (3)
+next-> TrackComponent (1)
+| ENGI:1  |@ EntryPoint (3)
+| GREN:1  |@ null
+Engine(1): moves to TrackComponent(1)
+next-> TrackComponent (2)
+| ENGI:1  |@ TrackComponent (1)
+| GREN:1  |@ EntryPoint (3)

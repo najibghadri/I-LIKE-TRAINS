@@ -122,8 +122,10 @@ public class Controller {
 			  }
 			  
 			  numberOfMap++;
-			  if(numberOfMap>2)
+			  if(numberOfMap>2){
 				  System.out.println("Nincs több pálya");
+				  numberOfMap=1;
+			  }
 			  else{ 
 				  startAutomataGame();
 			  System.out.println("Nyomj ENTER-t!");

@@ -483,7 +483,7 @@ public class RailCenter {
 			return "GREN";
 		else if(c.equals(Color.Yellow))
 			return "YLLW";
-		else /*if(c.equals(Color.Brown))*/
+		else //Color.Brown
 			return "BRWN";
 	}
 	

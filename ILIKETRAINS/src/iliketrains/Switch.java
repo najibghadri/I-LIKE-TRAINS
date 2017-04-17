@@ -5,7 +5,6 @@ import skeleton.Game;
 /**
  * Switch
  * Váltó osztálya
- * @author Najib
  */
 public class Switch extends TrackComponent implements Controllable {
 
@@ -86,6 +85,11 @@ public class Switch extends TrackComponent implements Controllable {
         return "Switch";
     }
     
+    /**
+     * Visszaadja, azt a sínelemet, ami felé éppen áll a váltó
+     *
+     * @return Az aktív sínelem referenciája
+     */
     private TrackComponent getDirTrack(){
     	if(direction)
     		return adjacentTracks.get(2);

@@ -10,6 +10,11 @@ public interface Controllable {
 	 * Általános változtatás (control-funkcionalitás) absztrakt függvénye.
 	 */
 	void change();
+	
+	
+	/**
+	 * Az azonosító függvényt abszrakt verziója
+	 */
 	int getId();
 
 }

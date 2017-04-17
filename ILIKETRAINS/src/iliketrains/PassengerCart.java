@@ -2,7 +2,6 @@ package iliketrains;
 
 /**
  * Utaskocsi osztály
- * @author Imi
  */
 public class PassengerCart extends Cart {
 

@@ -1,12 +1,9 @@
 package iliketrains;
 
-import javax.management.RuntimeErrorException;
-
 import skeleton.Game;
 
 /**
  * Mozdony osztály.
- * @author Imi
  */
 public class Engine extends Cart {
 
@@ -20,7 +17,7 @@ public class Engine extends Cart {
 	private TrackComponent previous;
 
 	/**
-	 * konstruktor.
+	 * Konstruktor.
 	 *
 	 * @param id the id
 	 * @param center A pályához tartozó RailCenter referenciája
@@ -140,6 +137,11 @@ public class Engine extends Cart {
         return "Engine";
     }
     
+    /**
+     * Visszaadja az előző sín referenciáját
+     *
+     * @return Előző sín referenciája
+     */
     public TrackComponent getPrevious(){
     	return previous;
     }

@@ -5,7 +5,6 @@ import skeleton.Game;
 /**
  * TunnelGate
  * Alagútszájat megvalósító típus
- * @author Najib
  */
 public class TunnelGate extends TrackComponent implements Controllable {
 
@@ -85,6 +84,11 @@ public class TunnelGate extends TrackComponent implements Controllable {
         return "TunnelGate";
     }
     
+    /**
+     * Visszaadja szövegesen, hogy aktív-e a kapu
+     * A logoláshoz haszons függvény
+     * @return String az aktivitásról
+     */
     private String getActive(){
     	if (active)
     		return "active";

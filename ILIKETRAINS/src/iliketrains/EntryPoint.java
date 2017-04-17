@@ -14,7 +14,6 @@ public class EntryPoint extends TrackComponent{
 		super(id);
 	}
 	
-
 	/**
      * Saját típusát sztringben
      * @return "EntryPoint"

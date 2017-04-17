@@ -3,7 +3,6 @@ package iliketrains;
 /**
  * A vonatkocsi ősosztály
  * Nem absztrakt, mert a származtatott osztályok közös része itt kerül megvalósításra
- * @author Imi
  */
 public class Cart {
 

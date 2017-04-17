@@ -1,4 +1,4 @@
-	package iliketrains;
+package iliketrains;
 
 import java.util.*;
 
@@ -15,10 +15,12 @@ public class Tunnel {
 	
 	/** Az alagút létehozáshoz kellő id*/
 	private static int firstID;
+	
+	/** A singleton referencia */
 	private static Tunnel singleton;
 	
 	/**
-	 * Constructor
+	 * Konstructor
 	 * Létrehoz egy tunnel elemet
 	 */
 	private Tunnel(){

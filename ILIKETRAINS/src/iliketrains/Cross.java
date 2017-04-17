@@ -22,7 +22,6 @@ public class Cross extends TrackComponent{
         return "Cross";
     }
 	
-	
 	/**
 	 * A haladási irány szerinti következő pálya elemet adja vissza.
      * Figyelembe veszi, hogy a kereszteződésből honnan érkeznek.

@@ -14,7 +14,6 @@ public class Station {
 	/**  Állomás azonosítója. */
 	private int id;
 	
-	
 	/**
 	 * Konstruktor
 	 *
@@ -60,21 +59,4 @@ public class Station {
 	public void popPassengers(){
 		passengers=false;
 	}
-
-	/**
-	 * Leírást ad magáról.
-	 * @return the string
-	 */
-	@Override
-	public String toString() {
-		String temp= new String("Station: ");
-		temp+=getColor().toString();
-		temp+=", ";
-		if(passengers)
-			temp+="Has passengers";
-		else
-			temp+="Has no passengers";
-		return temp;
-	}
-
 }

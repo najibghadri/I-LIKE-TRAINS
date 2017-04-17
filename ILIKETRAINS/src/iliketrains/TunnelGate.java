@@ -63,18 +63,7 @@ public class TunnelGate extends TrackComponent implements Controllable {
         removeAdjacentTrack(tunnelTrack);
         tunnelTrack = null;
     }
-
-    /**
-     * Leírást ad magáról
-     * @return
-     */
-    @Override
-    public String getInfo() {
-        String ret = "";
-        ret +=  active ? "active, set to" + tunnelTrack.getType() + " " + tunnelTrack.getId() : "inactive" ;
-        return  ret + ", ";
-    }
-
+    
     /**
      * Saját típusát sztringben
      * @return "TunnelGate"
@@ -95,5 +84,4 @@ public class TunnelGate extends TrackComponent implements Controllable {
     	else
     		return "inactive";
     }
-
 }

@@ -153,27 +153,27 @@ public class RailCenter {
 				}
 				else{
 				switch (currentPhase) {
-				case "trackcomponent":
-					createTrackComponent(list, currentLine);
-					break;
-				case "cross":
-					createCross(list, currentLine);
-					break;
-				case "switch":
-					createSwitch(list, currentLine);
-					break;
-				case "entrypoint":
-					createEntryPoint(list,currentLine);
-					break;
-				case "tunnelgate":
-					createTunnelGate(list,currentLine);
-					break;
-				case "connections":
-					createConnections(list,currentLine);
-					break;
-				default:
-					break;
-				}
+                    case "trackcomponent":
+                        createTrackComponent(list, currentLine);
+                        break;
+                    case "cross":
+                        createCross(list, currentLine);
+                        break;
+                    case "switch":
+                        createSwitch(list, currentLine);
+                        break;
+                    case "entrypoint":
+                        createEntryPoint(list,currentLine);
+                        break;
+                    case "tunnelgate":
+                        createTunnelGate(list,currentLine);
+                        break;
+                    case "connections":
+                        createConnections(list,currentLine);
+                        break;
+                    default:
+                        break;
+                    }
 				}
 			}
 
@@ -237,8 +237,7 @@ public class RailCenter {
 			list.get(connectionPartNumbers[0]-1).addAdjacentTrack(list.get(connectionPartNumbers[i]-1));
 		}
 	}
-
-
+    
 	/**
 	 * Létrehozza a váltókat
 	 *
@@ -256,7 +255,6 @@ public class RailCenter {
 		controllableList.add(sw);
 		highestTrackId++;
 	}
-
 
 	/**
 	 * Létrehozza a TrackComponenteket

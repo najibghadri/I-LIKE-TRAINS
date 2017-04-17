@@ -130,7 +130,7 @@ public class Controller {
 				  public void run() {
 					  gameTick();
 				  }
-				}, 0,300);
+				}, 0,2000);
 		}
 		//Ha nem indítunk, akkor tesztfájlt választunk
 		else{			

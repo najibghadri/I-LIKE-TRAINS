@@ -74,7 +74,7 @@ public class Engine extends Cart {
 		if(currentTrack.hasStation()==null)		//ha nem halad át állomáson
 			return;
 		else{														//ha igen
-			Station s=currentTrack.getNext(previous).hasStation();
+			Station s=currentTrack.hasStation();
 			
 			/*leszállítás*/
 			PassengerCart current= firstPassengerCart;

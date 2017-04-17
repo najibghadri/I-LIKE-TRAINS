@@ -86,6 +86,7 @@ public class Controller {
 			  if(timer!=null){
 			  timer.cancel();
 			  running=false;
+			  System.out.println("Nyomj ENTER-t!");
 			  }
 			  //TODO pálya/train neve
 			  //railCenter.loadMap("NextMap");
@@ -212,11 +213,11 @@ public class Controller {
 
 
 	private void startAutomataGame() {
-		railCenter.loadMap("2");
+		railCenter.loadMap("1");
 		controllables=railCenter.getControllables();
-		railCenter.loadTrain("2-1");
-		change("5");
-		change("6");
+		railCenter.loadTrain("1-1");
+//		change("5");
+//		change("6");
 		timer = new Timer();
 		timer=new Timer();
 		running=true;

@@ -29,8 +29,7 @@ public class Station {
 		else if (passengers.equals(1))
 			this.passengers=true;
 
-		this.color=iliketrains.Color.valueOf(color);
-	}
+		this.color=Color.values()[Integer.parseInt(color)];	}
 
 	/**
 	 * Az állomás színének lekérdezésére szolgáló fv.

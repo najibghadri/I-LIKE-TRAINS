@@ -1,0 +1,17 @@
+trackcomponent
+0
+0
+
+switch
+0,1
+
+entrypoint
+0
+0
+
+connections
+1,3,5
+2,3,null
+3,4,2,1
+4,3,null,null
+5,1,null,null

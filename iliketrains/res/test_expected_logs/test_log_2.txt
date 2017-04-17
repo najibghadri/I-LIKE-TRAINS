@@ -1,0 +1,4 @@
+loadmap 2 success
+loadtrain 2-1 success
+Engine(1): moves to Switch(3)
+Engine(1): moves to Track(1)

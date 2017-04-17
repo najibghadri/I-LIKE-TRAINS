@@ -47,10 +47,10 @@ public class Game {
 	public static String generateFilename(String name) {
 		String FILENAME =System.getProperty("user.dir");
 		if(name.contains(".txt")){
-			FILENAME=FILENAME+"\\res\\testIn\\"+name;
+			FILENAME=FILENAME+"\\res\\test_inputs\\"+name;
 		}
 		else
-			FILENAME=FILENAME+"\\res\\testIn\\"+name+".txt";
+			FILENAME=FILENAME+"\\res\\test_inputs\\"+name+".txt";
 		return FILENAME;
 	}
 	
@@ -64,7 +64,7 @@ public class Game {
 		
 		try {
 			String FILENAME = System.getProperty("user.dir");
-			File file = new File(FILENAME+"\\res\\output.txt");
+			File file = new File(FILENAME+"\\res\\test_logs\\output.txt");
 
 			if (!file.exists()) {
 				file.createNewFile();
@@ -96,7 +96,7 @@ public class Game {
 	public static void clearOutput(){
 		try {
 			String FILENAME = System.getProperty("user.dir");
-			File file = new File(FILENAME+"\\res\\output.txt");
+			File file = new File(FILENAME+"\\res\\test_logs\\output.txt");
 			PrintWriter writer = new PrintWriter(file);
 			writer.print("");
 			writer.close();
@@ -114,8 +114,8 @@ public class Game {
 	public static void outputCompare(int testNum){
 		try {
 			String FILENAME = System.getProperty("user.dir");
-			List<String> f1 = Files.readAllLines(Paths.get(FILENAME+"\\res\\output.txt"));
-			List<String> f2 = Files.readAllLines(Paths.get(FILENAME+"\\res\\testOuts\\test"+testNum+".txt"));
+			List<String> f1 = Files.readAllLines(Paths.get(FILENAME+"\\res\\test_logs\\output.txt"));
+			List<String> f2 = Files.readAllLines(Paths.get(FILENAME+"\\res\\test_expected_logs\\test"+testNum+".txt"));
 			
 			boolean flag = true;
 			if(f1.size() != f2.size())

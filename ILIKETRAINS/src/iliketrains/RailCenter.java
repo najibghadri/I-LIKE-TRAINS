@@ -124,7 +124,7 @@ public class RailCenter {
 
 		resetGame();
 		
-		String FILENAME = generateFilename("map",name);		
+		String FILENAME = generateFilename("maps",name);		
 		BufferedReader br = null;
 		FileReader fr = null;
 		List<TrackComponent> list=new ArrayList<TrackComponent>();
@@ -348,7 +348,7 @@ public class RailCenter {
 	 * @param name the name
 	 */
 	public void loadTrain(String name){
-		String FILENAME = generateFilename("train",name);		
+		String FILENAME = generateFilename("trains",name);		
 		BufferedReader br = null;
 		FileReader fr = null;
 		

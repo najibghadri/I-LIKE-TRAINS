@@ -44,7 +44,6 @@ public class Engine extends Cart {
 			center.reportCollided();
 		}
 		else{
-			//checkCollison();
 			moveCart(nextTrack);	//engine (és ezáltal az egész szerelvény) mozgatása a következő pályaelemre
 			previous=newPrev;
 			Game.log("Engine("+this.getId()+"): moves to "+nextTrack.getType()+"("+nextTrack.getId()+")");

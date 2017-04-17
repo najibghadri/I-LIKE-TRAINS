@@ -14,8 +14,14 @@ import java.util.List;
  * Game, keretosztály a játék működéséhez, stdout logoláshoz a teszteléshez
  */
 public class Game {
+	
+	/** The file writer. */
 	static FileWriter fileWriter;
+    
+    /** The buffered writer. */
     static BufferedWriter bufferedWriter;
+    
+    /** The file out. */
     static PrintWriter fileOut;
 
 	/**
@@ -84,6 +90,9 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Kiüríti a log output fájlját, hogy a következő teszteset kerülhessen bele
+	 */
 	public static void clearOutput(){
 		try {
 			String FILENAME = System.getProperty("user.dir");

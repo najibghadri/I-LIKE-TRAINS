@@ -56,7 +56,6 @@ public class Tunnel {
 			activeGates.get(0).removeTunnelTrack();
 			activeGates.get(1).removeTunnelTrack();
 			Game.log("Tunnel: destroyed Tunnel");
-			//TODO ha nem csak egy hosszú az alagút, akkor itt szedjük szét
 		}
 		activeGates.remove(gate);
 	}

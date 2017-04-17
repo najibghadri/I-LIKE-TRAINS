@@ -27,7 +27,10 @@ public class Controller {
 	/** A beolvasáshoz szükséges objektum */
 	private Scanner reader = new Scanner(System.in);
 	
+	/** Időzítő objektum */
 	Timer timer;
+	
+	/** Futást jelző flag */
 	private boolean running=false;
 	
 	/** A kontroll szál, bemenetet olvassa, amíg meg nem szakítják. */
@@ -80,6 +83,9 @@ public class Controller {
 			}
 	}
 	
+	/**
+	 * Játékban működő időzítőt valósítja meg
+	 */
 	private void gameTick() {
 		railCenter.moveEngines();
 		
@@ -107,6 +113,9 @@ public class Controller {
 		  }
 	}
 	
+	/**
+	 * Főmenü függvénye
+	 */
 	private void testOrPlay(){
 		System.out.println("Játék vagy teszt? (1|2)");
 		String line = reader.nextLine();
@@ -215,12 +224,13 @@ public class Controller {
 	}
 
 
+	/**
+	 * Real-Time működő játékot megvalósítő függvény
+	 */
 	private void startAutomataGame() {
 		railCenter.loadMap("1");
 		controllables=railCenter.getControllables();
 		railCenter.loadTrain("1-1");
-//		change("5");
-//		change("6");
 		timer = new Timer();
 		timer=new Timer();
 		running=true;

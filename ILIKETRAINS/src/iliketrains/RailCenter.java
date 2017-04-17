@@ -45,7 +45,6 @@ public class RailCenter {
 		stations=new ArrayList<Station>();
 	}
 	
-	
 	/**
 	 * Visszaadja a állítható elemek listáját
 	 *
@@ -86,11 +85,6 @@ public class RailCenter {
 			if(!engines.get(i).checkEmpty())
 				emptyness=false;
 		}
-//		for(Engine e : engines){
-//			if(e.checkEmpty()){
-//				emptyness = false;
-//				}
-//		}
 		return emptyness;
 	}
 	
@@ -504,5 +498,4 @@ public class RailCenter {
 		else
 			return 0;
 	}
-
 }

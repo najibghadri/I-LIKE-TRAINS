@@ -441,7 +441,7 @@ public class RailCenter {
 		}
 		else if(c.getType() == "Cart"){
 			PassengerCart pc = (PassengerCart) c;
-			str += getPrintStyleColor(pc.getColor())+":"+pc.getId();
+			str += getPrintStyleColor(pc.getColor())+":"+getPrintStyleBool(pc.isNotEmpty());
 		}
 		//TODO: van asszem erre valami beépített java fgv, most nem találtam
 		//mindenestere, ha nincs meg hat karakter, akkor adunk még hozz whitespace-eket
@@ -468,6 +468,13 @@ public class RailCenter {
 			return "YLLW";
 		else /*if(c.equals(Color.Brown))*/
 			return "BRWN";
+	}
+	
+	private int getPrintStyleBool(boolean c){
+		if(c)
+			return 1;
+		else
+			return 0;
 	}
 
 }

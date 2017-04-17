@@ -14,6 +14,11 @@ public class EntryPoint extends TrackComponent{
 		super(id);
 	}
 	
+	@Override
+    public String getType() {
+        return "EntryPoint";
+    }
+	
 	/**
 	 * Amennyiben a 0-s szomszéd felől közeledünk, akkor az 1-eset adjuk vissza,
 	 * különben a 0-ásat. Így nem lehet a 2-es felé menni, ami az entryPoint

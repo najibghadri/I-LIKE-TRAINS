@@ -1,5 +1,5 @@
-loadmap StationTestMap1.txt success
-loadtrain StationTestTrain1.txt success
+loadmap StationTestMap1 success
+loadtrain StationTestTrain1 success
 Engine(1): moves to TrackComponent(1)
 Engine(1): moves to TrackComponent(2)
 passengers got off Cart(2) at Green Station (2)

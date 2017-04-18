@@ -1,5 +1,5 @@
-loadmap StationTestMap1.txt
-loadtrain StationTestTrain8.txt
+loadmap StationTestMap1
+loadtrain StationTestTrain8
 moveengines
 moveengines
 print

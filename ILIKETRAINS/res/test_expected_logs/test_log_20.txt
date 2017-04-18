@@ -1,9 +1,14 @@
 loadmap 10 success
 loadtrain 10-1 success
 loadtrain 10-2 success
+TunnelGate(1): registered
 TunnelGate(2): registered
+Tunnel: created Tunnel
 Engine(1): moves to TunnelGate(1)
 Engine(3): moves to TunnelGate(2)
-Engine(1): collides with deadend at TunnelGate(1)
-Engine(3): collides with deadend at TunnelGate(2)
+Engine(1): moves to TrackComponent(5)
+Engine(3): moves to TrackComponent(7)
+Engine(1): moves to TrackComponent(6)
+Engine(3): moves to TrackComponent(6)
+Engine(1): collides with Engine(3) at TrackComponent(6)
 GAME OVER, YOU LOST!

@@ -1,5 +1,5 @@
-loadmap StationTestMap1.txt success
-loadtrain StationTestTrain8.txt success
+loadmap StationTestMap1 success
+loadtrain StationTestTrain8 success
 Engine(1): moves to TrackComponent(1)
 Engine(1): moves to TrackComponent(2)
 next-> null

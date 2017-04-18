@@ -3,3 +3,9 @@ loadtrain 4-1 success
 TunnelGate(3): registered
 TunnelGate(5): registered
 Tunnel: created Tunnel
+Engine(1): moves to TunnelGate(5)
+Engine(1): moves to TrackComponent(9)
+Engine(1): moves to TrackComponent(8)
+Engine(1): moves to TrackComponent(7)
+Engine(1): moves to TunnelGate(3)
+Engine(1): moves to TrackComponent(1)

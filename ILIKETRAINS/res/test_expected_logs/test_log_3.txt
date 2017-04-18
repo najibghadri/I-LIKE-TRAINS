@@ -1,5 +1,5 @@
 loadmap 2 success
 loadtrain 2-1 success
-Switch(3): set to Track(2)
+Switch(3): set to TrackComponent(2)
 Engine(1): moves to Switch(3)
-Engine(1): moves to Track(2)
+Engine(1): moves to TrackComponent(2)

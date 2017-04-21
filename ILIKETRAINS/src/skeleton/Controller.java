@@ -68,7 +68,6 @@ public class Controller {
 			railCenter=new RailCenter();
 
 		controlThread.start();
-
 	}
 	
 	
@@ -149,85 +148,83 @@ public class Controller {
 	/**
 	 * Főmenü függvénye
 	 */
-	private void testOrPlay(){
+	private void testOrPlay() {
 		System.out.println("Játék vagy teszt? (1|2)");
 		String line = reader.nextLine();
 
-
-		
 		//Elindítja a játékot
-		if(line.equals("1")){
+		if (line.equals("1")) {
 			startAutomataGame();
 		}
+		else{
+			//Ha nem indítunk, akkor tesztfájlt választunk
+			if (line.equals("2")) {
 
-		//Ha nem indítunk, akkor tesztfájlt választunk
-		if(line.equals("2")){			
-            
-            //olvassuk a teszt számát
-            testNum = 0;
-            while(testNum < 1 || testNum > 33 ){
-                System.out.println("Válassz 1-33-ig:");
-                line = reader.nextLine();
-                testNum = Integer.parseInt(line);
-            }
-
-            //töröljük a meglévő teszt fileOutputját
-            Game.clearOutput();
-			
-			File file = null;
-			String filename="";
-			filename=Game.generateFilename("test_input_"+line+".txt");
-			file = new File(filename);
-
-			//Beolvassa a tesztparancsokat
-			BufferedReader reader = null;
-			ArrayList<String> commands = new ArrayList<String>();
-			try {
-				reader = new BufferedReader(new FileReader(file));
-				String text = null;
-				while ((text = reader.readLine()) != null) {
-					commands.add(text);
+				//olvassuk a teszt számát
+				testNum = 0;
+				while (testNum < 1 || testNum > 33) {
+					System.out.println("Válassz 1-33-ig:");
+					line = reader.nextLine();
+					testNum = Integer.parseInt(line);
 				}
-			} catch (Exception e) {
-	
-			} finally {
-				if (reader != null) {
+
+				//töröljük a meglévő teszt fileOutputját
+				Game.clearOutput();
+
+				File file = null;
+				String filename = "";
+				filename = Game.generateFilename("test_input_" + line + ".txt");
+				file = new File(filename);
+
+				//Beolvassa a tesztparancsokat
+				BufferedReader fileReader = null;
+				ArrayList<String> commands = new ArrayList<String>();
+				try {
+					fileReader = new BufferedReader(new FileReader(file));
+					String text = null;
+					while ((text = fileReader.readLine()) != null) {
+						commands.add(text);
+					}
+				} catch (Exception e) {
+
+				} finally {
+					if (fileReader != null) {
 						try {
-							reader.close();
+							fileReader.close();
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
+					}
 				}
-			}
-			
-			for(String in:commands){
-				String[] commandpart=in.split(" ");
-				switch (commandpart[0]) {
-					case "print":
-						railCenter.printStatus();
-						break;
-					case "change":
-						change(commandpart[1]);
-						break;
-					case "loadmap":
-						railCenter = new RailCenter();
-						railCenter.loadMap(commandpart[1]);
-						controllables=railCenter.getControllables();
-						break;
-					case "loadtrain":
-						railCenter.loadTrain(commandpart[1]);
-						break;
-					case "moveengines":
-						if(!railCenter.getAnyCollided())
-						gameManualTick();
-					default:
-						break;
+
+				for (String in : commands) {
+					String[] commandpart = in.split(" ");
+					switch (commandpart[0]) {
+						case "print":
+							railCenter.printStatus();
+							break;
+						case "change":
+							change(commandpart[1]);
+							break;
+						case "loadmap":
+							railCenter = new RailCenter();
+							railCenter.loadMap(commandpart[1]);
+							controllables = railCenter.getControllables();
+							break;
+						case "loadtrain":
+							railCenter.loadTrain(commandpart[1]);
+							break;
+						case "moveengines":
+							if (!railCenter.getAnyCollided())
+								gameManualTick();
+						default:
+							break;
+					}
 				}
-			}
-			Game.outputCompare();
+				Game.outputCompare();
+			} else
+				System.out.println("Nincs ilyen parancs");
 		}
-		else
-			System.out.println("Nincs ilyen parancs");
 	}
 
 

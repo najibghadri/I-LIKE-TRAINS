@@ -121,8 +121,6 @@ public class RailCenter {
 	public void loadMap(String name){
 		highestCartId=1;
 		highestTrackId=1;
-
-		resetGame();
 		
 		String FILENAME = generateFilename("maps",name);		
 		BufferedReader br = null;
@@ -187,18 +185,6 @@ public class RailCenter {
 				ex.printStackTrace();				
 			}
 		}
-	}
-
-	/**
-	 * Alaphelyzetbe állítja a változókat.
-	 */
-	private void resetGame() {
-		controllableList.clear();
-		engines.clear();
-		entryPoints.clear();
-		stations.clear();
-		collided=false;
-        Tunnel.setNewInstance();
 	}
 
 	/**

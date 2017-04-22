@@ -1,4 +1,4 @@
-id,coordinates,skin
+id,coordinates,skin,rotation
 1,0:0,curve,90
 2,10:0,straight,90
 3,20:0,switch,90

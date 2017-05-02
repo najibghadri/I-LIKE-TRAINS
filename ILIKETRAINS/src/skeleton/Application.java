@@ -57,10 +57,7 @@ public class Application extends JFrame{
 		menu.setVisible(false);
 		win.setVisible(false);
 		gameOver.setVisible(false);
-		gamegui.validate();
-		gamegui.repaint();
 		gamegui.setVisible(true);
-
 		controller.startAutomataGame();
 		gamegui.loadGraphicsMap();
 		gamegui.start();

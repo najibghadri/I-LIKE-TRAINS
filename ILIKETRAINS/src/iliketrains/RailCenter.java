@@ -32,7 +32,12 @@ public class RailCenter {
 	
 	/** A legnagyobb vonatkocsi azonosító sorszáma */
 	private int highestCartId=1;
-
+	
+	/**
+	 * Kocsik listája, a grafika beállításához át kell adni
+	 */
+	private List<Cart> carts;
+	
 	/**
 	 * Konstruktor
 	 * Memóriaterületet foglal a listáknak.
@@ -230,6 +235,7 @@ public class RailCenter {
 		if(commandParts[0].equals("1")){
 			Station s=new Station(highestTrackId,commandParts[2],commandParts[1]);
 			sw.setStation(s);
+			stations.add(s);
 		}
 		list.add(sw);
 		controllableList.add(sw);
@@ -347,7 +353,7 @@ public class RailCenter {
 			br = new BufferedReader(new FileReader(FILENAME));
 			
 			while ((currentLine = br.readLine()) != null) {
-				List<Cart> carts=new ArrayList<Cart>();
+				carts=new ArrayList<Cart>();
 				List<PassengerCart> passenger=new ArrayList<PassengerCart>();
 				
 				//Szétdarabolni a kocsilistát
@@ -483,5 +489,13 @@ public class RailCenter {
 			return 1;
 		else
 			return 0;
+	}
+	
+	public List<Station> getStations(){
+		return stations;
+	}
+	
+	public List<Cart> getCarts() {
+		return carts;
 	}
 }

@@ -1,12 +1,16 @@
 package skeleton;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import iliketrains.Cart;
 import iliketrains.Controllable;
 import iliketrains.RailCenter;
+import iliketrains.Station;
+import iliketrains.TrackComponent;
 
 /**
  * A Kontroller osztály valósítja meg az kapcsolható elemek kapcsolhatóságát
@@ -31,15 +35,17 @@ public class Controller {
     /** Jelenlegi térkép fájl*/
 	private int numberOfMap=1;
 
-//	
-//	/**
-//	 * Létrehoz egy új railCentert
-//	 */
-//	public void startGame() {
-//		if(railCenter==null)
-//			railCenter=new RailCenter();
-//	}
+	/**
+	 * Applicationra referencia, arra kell hogy szóljunk,
+	 *  ha nyer vagy veszít a játékos
+	 */
+	private Application app;
 	
+	public Controller(Application application) {
+		app=application;
+	}
+
+
 	/**
 	 * Játék alatt működő időzítőt valósítja meg (bizonyos időközönként lép)
 	 */
@@ -48,15 +54,16 @@ public class Controller {
 		
 	      if(railCenter.getAnyCollided()){
 			  System.out.println("GAME OVER, YOU LOST!");
+			  app.gameOver();
 			  if(timer!=null){
 			  timer.cancel();
 			  running=false;
-			  System.out.println("Nyomj ENTER-t!");
 			  }
 
 		  }
 		  if(railCenter.getAllEmptyStatus()){
 			  System.out.println("SUCCESS, YOU WON!");
+			  app.win();
 			  if(timer!=null){
 			  timer.cancel();
 			  running=false;
@@ -66,10 +73,6 @@ public class Controller {
 			  if(numberOfMap>2){
 				  System.out.println("Nincs több pálya");
 				  numberOfMap=1;
-                  System.out.println("Nyomj ENTER-t!");
-			  }
-			  else{ 
-				  startAutomataGame();
 			  }
 		  }
 	}
@@ -77,6 +80,7 @@ public class Controller {
 
 	/**
 	 * Real-Time működő játékot elindító függvény
+	 * Új railCentert hoz létre, mert minden elem új
 	 */
 	public void startAutomataGame() {
 		railCenter=new RailCenter();
@@ -129,6 +133,21 @@ public class Controller {
 	 */
 	public void stop() {
 		timer.cancel();
+	}
+
+
+	public List<Controllable> getControllables() {
+		return controllables;
+	}
+
+
+	public List<Cart> getCarts() {
+		return railCenter.getCarts();
+	}
+
+
+	public List<Station> getStations() {
+		return railCenter.getStations();
 	}
 	
 	

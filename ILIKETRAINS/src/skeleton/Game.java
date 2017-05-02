@@ -20,9 +20,6 @@ public class Game {
     /** Filebaíráshoz szükséges objektum */
     static PrintWriter fileOut;
 
-    /** Controller referencia */
-    static Controller controller;
-
 	/**
 	 * The main method.
 	 *
@@ -33,8 +30,7 @@ public class Game {
 		fileWriter = null;
 		bufferedWriter = null;
 		
-		controller=new Controller();
-		Application app=new Application(controller);
+		Application app=new Application();
 	}
 	
 	/**

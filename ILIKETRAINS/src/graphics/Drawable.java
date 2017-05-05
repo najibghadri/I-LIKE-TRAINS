@@ -17,6 +17,7 @@ public abstract class Drawable {
 	
 	public Drawable(String line){}
 	
+	// ezt a fv-t majd a játékpanel @override paintComponent()-jének fv-ébe kell meghívni, előtte egy super.paintcomponent() utána egy repaint() hívással (valszeg :))
 	public abstract void draw(Graphics g);
 	
 	public void setTrackReference(TrackComponent track) {

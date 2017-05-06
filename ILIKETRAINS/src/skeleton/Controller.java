@@ -104,8 +104,7 @@ public class Controller {
 	 * Megkeresi a listában a megfelelő id-jú elemet
 	 * @param string Szövegként megkapott sorszám
 	 */
-	public void change(String string) {
-		int id = Integer.parseInt(string);
+	public void change(Integer id) {
 		for(int i=0;i<controllables.size();i++){
 			if(controllables.get(i).getId()==id){
 				controllables.get(i).change();

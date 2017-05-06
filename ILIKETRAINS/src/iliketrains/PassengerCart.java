@@ -78,8 +78,6 @@ public class PassengerCart extends Cart {
 	@Override
 	public String getType() {
 		return "PassengerCart";
-	}
-	
-	
+	}	
 
 }

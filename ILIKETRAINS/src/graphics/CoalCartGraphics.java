@@ -5,7 +5,11 @@ import iliketrains.CoalCart;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+
+import skeleton.IliketrainsGUI;
 
 public class CoalCartGraphics extends Drawable {
 
@@ -14,11 +18,13 @@ public class CoalCartGraphics extends Drawable {
 	public CoalCartGraphics(int x, int y, int rotation) {
 		super(x, y, rotation);
 		// TODO: coalcart textura
-		textures.add(Resources.getTexture("coalCart"));
+		textures.add(Resources.getTexture("CoalCart"));
 	}
 
 	@Override
 	public void draw(Graphics g) {
+		move();
+
 		// Most az első képet kéri le
 		BufferedImage img = textures.get(0);
 
@@ -29,5 +35,22 @@ public class CoalCartGraphics extends Drawable {
 
 	public void setCartReference(Cart cart) {
 		coalCart = (CoalCart) cart;
+	}
+	
+	protected void move() {
+		if(coalCart.getCurrentTrack()==null){
+			return;
+		}
+		AffineTransform tr = new AffineTransform();
+
+		Drawable current=IliketrainsGUI.getTrackMap().get(coalCart.getCurrentTrack().getId());
+		Point p=current.getPos();
+		
+        // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
+        tr.rotate((Math.PI*current.getRotation())/180, p.x+30,p.y+30);
+        
+        // a megfelelő pontra való mozgatás
+        tr.translate(p.getX(), p.getY());
+        transform=tr;
 	}
 }

@@ -6,7 +6,11 @@ import iliketrains.PassengerCart;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+
+import skeleton.IliketrainsGUI;
 
 public class PassengerCartGraphics extends Drawable {
 
@@ -18,6 +22,7 @@ public class PassengerCartGraphics extends Drawable {
 
 	@Override
 	public void draw(Graphics g) {
+		move();
 
 		// lekérdezzük a PC utasait (van/nincs)
 		int picNum;
@@ -38,10 +43,25 @@ public class PassengerCartGraphics extends Drawable {
 		textures.clear();
 		passengerCart = (PassengerCart)pcart;
 		Color c=passengerCart.getColor();
-		// TODO: passengercart texturák színnek megfelelő
-		// utaso van-e rajta vagy nincs
-		textures.add(Resources.getTexture(c.toString()+"PassengerCartFull"));
 		textures.add(Resources.getTexture(c.toString()+"PassengerCartEmpty"));
+		textures.add(Resources.getTexture(c.toString()+"PassengerCartFull"));
+	}
+	
+	protected void move() {
+		if(passengerCart.getCurrentTrack()==null){
+			return;
+		}
+		AffineTransform tr = new AffineTransform();
+
+		Drawable current=IliketrainsGUI.getTrackMap().get(passengerCart.getCurrentTrack().getId());
+		Point p=current.getPos();
+		
+        // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
+        tr.rotate((Math.PI*current.getRotation())/180, p.x+30,p.y+30);
+        
+        // a megfelelő pontra való mozgatás
+        tr.translate(p.getX(), p.getY());
+        transform=tr;
 	}
 
 }

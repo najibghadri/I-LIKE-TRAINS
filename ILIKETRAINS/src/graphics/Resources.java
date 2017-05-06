@@ -18,6 +18,8 @@ public class Resources {
 			loadTexture("straightTrackComponent");
 			loadTexture("switchActive");
 			loadTexture("switchInactive");
+			loadTexture("switch2Active");
+			loadTexture("switch2Inactive");
 			loadTexture("tunnelGateActive");
 			loadTexture("tunnelGateInactive");
 			loadTexture("turnTrackComponent");
@@ -32,6 +34,17 @@ public class Resources {
 			loadTexture("BrownStationFull");
 			loadTexture("BrownStationEmpty");
 			loadTexture("engine");
+			loadTexture("BluePassengerCartEmpty");
+			loadTexture("BluePassengerCartFull");
+			loadTexture("RedPassengerCartEmpty");
+			loadTexture("RedPassengerCartFull");
+			loadTexture("GreenPassengerCartEmpty");
+			loadTexture("GreenPassengerCartFull");
+			loadTexture("BrownPassengerCartEmpty");
+			loadTexture("BrownPassengerCartFull");
+			loadTexture("YellowPassengerCartEmpty");
+			loadTexture("YellowPassengerCartFull");
+			loadTexture("CoalCart");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

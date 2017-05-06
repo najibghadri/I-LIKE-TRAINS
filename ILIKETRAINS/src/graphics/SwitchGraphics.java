@@ -12,10 +12,15 @@ public class SwitchGraphics extends Drawable {
 
 	private Switch switchy;
 
-	public SwitchGraphics(int x, int y, int rotation) {
+	public SwitchGraphics(int x, int y, int rotation, int i) {
 		super(x, y, rotation);
+		if(i==1){
+			textures.add(Resources.getTexture("switch2Active"));
+			textures.add(Resources.getTexture("switch2Inactive"));	
+		}else{
 		textures.add(Resources.getTexture("switchActive"));
 		textures.add(Resources.getTexture("switchInactive"));
+		}
 	}
 
 	@Override

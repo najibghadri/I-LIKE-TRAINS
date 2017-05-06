@@ -22,6 +22,8 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -43,9 +45,10 @@ public class IliketrainsGUI extends JPanel {
 	private static Map<Integer, Drawable> trackMap = new HashMap<Integer, Drawable>();
 	private static Map<Integer, Drawable> trainMap = new HashMap<Integer, Drawable>();
 	private static Map<Integer, Drawable> stationMap = new HashMap<Integer, Drawable>();
+	private Map<Integer,Drawable> controllableGraphics=new HashMap<Integer, Drawable>();
 	private Timer timer;
 
-	public IliketrainsGUI(Application application, Controller controller) {
+	public IliketrainsGUI(Application application, final Controller controller) {
 		app = application;
 		this.controller = controller;
 		setLayout(null);
@@ -61,6 +64,40 @@ public class IliketrainsGUI extends JPanel {
 		});
 		setOpaque(true);
 		setBackground(new Color(0, 120, 40));
+		
+		addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {	
+				int mx=arg0.getX();
+				int my=arg0.getY();
+				for (Map.Entry<Integer, Drawable> control : controllableGraphics.entrySet())
+				{
+				    Point p=control.getValue().getPos();
+				    if(mx>p.x && mx<p.x+60){
+				    	if(my>p.y && my< p.y+60){
+				    		controller.change(control.getKey());
+				    		repaint();
+				    	}
+				    }
+				}
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {				
+			}
+		});
 	}
 
 	/**
@@ -104,12 +141,14 @@ public class IliketrainsGUI extends JPanel {
 					trackMap.put(componentId,stcg);
 					break;
 				case "switch":
-					SwitchGraphics sg=new SwitchGraphics(x,y,rotation);
+					SwitchGraphics sg=new SwitchGraphics(x,y,rotation,Integer.parseInt(line[4]));
 					trackMap.put(componentId,sg);
+					controllableGraphics.put(componentId, sg);
 					break;
 				case "tunnel":
 					TunnelGateGraphics tgg=new TunnelGateGraphics(x,y,rotation);
 					trackMap.put(componentId, tgg);
+					controllableGraphics.put(componentId, tgg);
 					break;
 				case "entry":
 					EntryPointGraphics epg=new EntryPointGraphics(x, y, rotation);
@@ -187,7 +226,6 @@ public class IliketrainsGUI extends JPanel {
 			sg.setStationReference(s);
 			stationMap.put(s.getId(), sg);
 		}
-		
 	}
 
 	/**

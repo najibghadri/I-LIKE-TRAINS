@@ -1,44 +1,33 @@
 package graphics;
 
+import iliketrains.Cart;
 import iliketrains.CoalCart;
 
 import java.awt.Graphics;
-import java.awt.geom.AffineTransform;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
-public class CoalCartGraphics extends Drawable{
-	
+public class CoalCartGraphics extends Drawable {
+
 	private CoalCart coalCart;
 
-	public CoalCartGraphics(String line) {
-		super(line);
-		
+	public CoalCartGraphics(int x, int y, int rotation) {
+		super(x, y, rotation);
+		// TODO: coalcart textura
+		textures.add(Resources.getTexture(""));
 	}
 
 	@Override
 	public void draw(Graphics g) {
-        AffineTransform at = new AffineTransform();
-        img = textures.get(0);
-        
-        // a megfelelő pontra való mozgatás
-        at.translate(pos.getX(), pos.getY());
+		// Most az első képet kéri le
+		BufferedImage img = textures.get(0);
 
-        // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
-        // az utolsó két paraméter a forgópont (középpont)
-        at.rotate(Math.PI/(rotation/180), img.getWidth()/2, img.getHeight()/2);
-
-        // átméretezés
-        // TODO milyen legyen a méretezés? Honnan kéne tudni?
-        // (alapvetően két Drawable elem középpontjainak távolságától függ, illetve attól, hogy alapvetően mekkora egy textúra)
-        // at.scale(x-koordináta szerinti arányszám, y-koordináta szerinti arányszám);
-
-        // kirajzolás
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(img, at, null);
-	}
-	
-	@override
-	public void setCartReference(Cart cart){
-		coalCart= (CoalCart) cart;
+		// kirajzolás
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.drawImage(img, transform, null);
 	}
 
+	public void setCartReference(Cart cart) {
+		coalCart = (CoalCart) cart;
+	}
 }

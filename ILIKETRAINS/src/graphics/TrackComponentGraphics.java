@@ -3,6 +3,8 @@ package graphics;
 import iliketrains.TrackComponent;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 
 public class TrackComponentGraphics extends Drawable{
 	

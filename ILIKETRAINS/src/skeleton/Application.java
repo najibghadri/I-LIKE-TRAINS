@@ -1,11 +1,13 @@
 package skeleton;
 
+import graphics.Resources;
 import iliketrains.Cart;
 import iliketrains.Controllable;
 import iliketrains.Station;
 import iliketrains.TrackComponent;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +33,7 @@ public class Application extends JFrame{
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		setVisible(true);
+		Resources res=new Resources("");
 		controller=new Controller(this);
 		gamegui=new IliketrainsGUI(this, controller);
 		menu=new Menu(this);

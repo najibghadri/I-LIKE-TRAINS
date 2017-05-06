@@ -1,8 +1,12 @@
 package graphics;
 
 import iliketrains.Switch;
+import iliketrains.TrackComponent;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
 
 public class SwitchGraphics extends Drawable{
 	
@@ -16,7 +20,7 @@ public class SwitchGraphics extends Drawable{
 	@Override
 	public void draw(Graphics g) {
         AffineTransform at = new AffineTransform();
-        img = textures.get(0);
+        Image img = textures.get(0);
         
         // a megfelelő pontra való mozgatás
         at.translate(pos.getX(), pos.getY());
@@ -35,7 +39,7 @@ public class SwitchGraphics extends Drawable{
         g2d.drawImage(img, at, null);
 	}
 	
-	@override
+	@Override
 	public void setTrackReference(TrackComponent track) {
 		myswitch = (Switch) track;
 	}

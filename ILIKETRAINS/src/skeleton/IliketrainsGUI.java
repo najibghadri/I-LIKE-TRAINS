@@ -1,17 +1,24 @@
 package skeleton;
 
 import graphics.Drawable;
+import graphics.EntryPointGraphics;
 import iliketrains.Cart;
 import iliketrains.Controllable;
 import iliketrains.Station;
 import iliketrains.TrackComponent;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 public class IliketrainsGUI extends JPanel{
@@ -34,6 +41,8 @@ public class IliketrainsGUI extends JPanel{
 				app.stop();	
 			}
 		});
+		setOpaque(true);
+		setBackground(new Color(0,120,40));
 	}
 
 	/**
@@ -60,4 +69,11 @@ public class IliketrainsGUI extends JPanel{
 	public void stop() {
 		// TODO kirajzoló timert leállítani		
 	}
+	
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+    }
+
 }

@@ -6,12 +6,13 @@ import iliketrains.TrackComponent;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 public abstract class Drawable {
 	
 	protected Point pos;
-	protected List<Image> textures;
+	protected List<BufferedImage> textures;
 	protected int rotation;
 	protected static Resources resources;
 	

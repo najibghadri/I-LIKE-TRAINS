@@ -3,6 +3,7 @@ package graphics;
 import iliketrains.CoalCart;
 
 import java.awt.Graphics;
+import java.awt.geom.AffineTransform;
 
 public class CoalCartGraphics extends Drawable{
 	

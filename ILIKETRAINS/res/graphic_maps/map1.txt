@@ -1,0 +1,6 @@
+id,coordinates,skin,rotation
+1,0:0,curve,90
+2,10:0,straight,90
+3,20:0,switch,90
+4,30:0,tunnel,90
+5,40:0,entry,90

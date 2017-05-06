@@ -183,8 +183,10 @@ public class IliketrainsGUI extends JPanel {
 			Point pos=trackMap.get(s.getId()).getPos();
 			int rot=trackMap.get(s.getId()).getRotation();
 			StationGraphics sg=new StationGraphics(pos.x,pos.y, rot);
+			sg.setStationReference(s);
 			stationMap.put(s.getId(), sg);
 		}
+		
 	}
 
 	/**
@@ -203,6 +205,14 @@ public class IliketrainsGUI extends JPanel {
 		super.paintComponent(g);
 		
 		for (Map.Entry<Integer, Drawable> entry : trackMap.entrySet())
+		{
+		    entry.getValue().draw(g);
+		}
+		for (Map.Entry<Integer, Drawable> entry : trainMap.entrySet())
+		{
+		    entry.getValue().draw(g);
+		}
+		for (Map.Entry<Integer, Drawable> entry : stationMap.entrySet())
 		{
 		    entry.getValue().draw(g);
 		}

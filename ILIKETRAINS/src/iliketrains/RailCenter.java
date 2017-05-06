@@ -255,6 +255,7 @@ public class RailCenter {
 		if(station[0].equals("1")){
 			Station s=new Station(highestTrackId,station[2],station[1]);
 			t.setStation(s);
+			stations.add(s);
 		}
 		list.add(t);
 		highestTrackId++;
@@ -273,6 +274,7 @@ public class RailCenter {
 		if(station[0].equals("1")){
 			Station s=new Station(highestTrackId,station[2],station[1]);
 			t.setStation(s);
+			stations.add(s);
 		}
 		list.add(t);
 		highestTrackId++;
@@ -291,6 +293,7 @@ public class RailCenter {
 		if(station[0].equals("1")){
 			Station s=new Station(highestTrackId,station[2],station[1]);
 			t.setStation(s);
+			stations.add(s);
 		}
 		list.add(t);
 		entryPoints.add(t);
@@ -310,6 +313,7 @@ public class RailCenter {
 		if(station[0].equals("1")){
 			Station s=new Station(highestTrackId,station[2],station[1]);
 			t.setStation(s);
+			stations.add(s);
 		}
 		list.add(t);
 		controllableList.add(t);

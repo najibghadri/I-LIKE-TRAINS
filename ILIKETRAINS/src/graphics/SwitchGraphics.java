@@ -5,6 +5,7 @@ import iliketrains.Switch;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 public class SwitchGraphics extends Drawable {
@@ -22,9 +23,9 @@ public class SwitchGraphics extends Drawable {
 		// lekérdezzük a váltó állását
 		int picNum;
 		if (switchy.getState())
-			picNum = 1;
-		else
 			picNum = 0;
+		else
+			picNum = 1;
 		// ez alapján a megfelelő képet töltjük be
 		BufferedImage img = textures.get(picNum);
 

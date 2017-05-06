@@ -22,8 +22,8 @@ public class PassengerCartGraphics extends Drawable {
 		textures.add(Resources.getTexture("passengerCartGreenFull"));
 		textures.add(Resources.getTexture("passengerCartRedEmpty"));
 		textures.add(Resources.getTexture("passengerCartRedFull"));
-		textures.add(Resources.getTexture("passengerCartBlackEmpty"));
-		textures.add(Resources.getTexture("passengerCartBlackFull"));
+		textures.add(Resources.getTexture("passengerCartYellowEmpty"));
+		textures.add(Resources.getTexture("passengerCartYellowFull"));
 		textures.add(Resources.getTexture("passengerCartBrownEmpty"));
 		textures.add(Resources.getTexture("passengerCartBrownFull"));
 

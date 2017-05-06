@@ -36,7 +36,7 @@ public class StationGraphics extends Drawable{
 		textures.clear();
 		station= s;
 		Color c=station.getColor();
-		textures.add(Resources.getTexture(c.toString()+"StationFull"));
 		textures.add(Resources.getTexture(c.toString()+"StationEmpty"));
+		textures.add(Resources.getTexture(c.toString()+"StationFull"));
 	}
 }

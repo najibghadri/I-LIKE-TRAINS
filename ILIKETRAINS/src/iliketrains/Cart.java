@@ -33,7 +33,7 @@ public class Cart {
 	
 	/**
      * Saját típusát sztringben
-     * @return "TrackComponent"
+     * @return "string"
      */
     public String getType(){
         return "Cart";

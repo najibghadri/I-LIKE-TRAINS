@@ -11,8 +11,8 @@ public class PassengerCartGraphics extends Drawable{
 	
 	private PassengerCart passengerCart;
 
-	public PassengerCartGraphics(int x, int y, int rotation) {
-		super(x, y, rotation);
+	public PassengerCartGraphics() {
+		super(0,0,0);
 		
 		// TODO: passengercart texturák színnek megfelelő
 		// utaso van-e rajta vagy nincs

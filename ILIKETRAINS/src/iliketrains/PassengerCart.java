@@ -72,4 +72,14 @@ public class PassengerCart extends Cart {
 			nextCart=pCart;
 	}
 
+	/** (non-Javadoc)
+	 * @see iliketrains.Cart#getType()
+	 */
+	@Override
+	public String getType() {
+		return "PassengerCart";
+	}
+	
+	
+
 }

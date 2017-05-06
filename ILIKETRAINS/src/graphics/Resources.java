@@ -18,7 +18,8 @@ public class Resources {
 			loadTexture("straightTrackComponent");
 			loadTexture("switchActive");
 			loadTexture("switchInactive");
-			loadTexture("tunnelGate");
+			loadTexture("tunnelGateActive");
+			loadTexture("tunnelGateInactive");
 			loadTexture("turnTrackComponent");
 		} catch (IOException e) {
 			e.printStackTrace();

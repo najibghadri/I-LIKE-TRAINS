@@ -11,8 +11,8 @@ public class CoalCartGraphics extends Drawable {
 
 	private CoalCart coalCart;
 
-	public CoalCartGraphics(int x, int y, int rotation) {
-		super(x, y, rotation);
+	public CoalCartGraphics() {
+		super(0,0,0);
 		// TODO: coalcart textura
 		textures.add(Resources.getTexture("coalCart"));
 	}

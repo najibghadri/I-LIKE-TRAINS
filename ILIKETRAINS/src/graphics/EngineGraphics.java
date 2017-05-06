@@ -39,13 +39,14 @@ public class EngineGraphics extends Drawable {
 	protected void move() {
 		AffineTransform tr = new AffineTransform();
 
-		Point current=IliketrainsGUI.getTrackMap().get(engine.getCurrentTrack().getId()).getPos();
+		Drawable current=IliketrainsGUI.getTrackMap().get(engine.getCurrentTrack().getId());
+		Point p=current.getPos();
 		
         // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
-        tr.rotate((Math.PI*rotation)/180, current.x+30,current.y+30);
+        tr.rotate((Math.PI*current.getRotation())/180, p.x+30,p.y+30);
         
         // a megfelelő pontra való mozgatás
-        tr.translate(current.getX(), current.getY());
+        tr.translate(p.getX(), p.getY());
         transform=tr;
 	}
 }

@@ -12,13 +12,21 @@ public class StationGraphics extends Drawable{
 
 	public StationGraphics(int x, int y, int rotation) {
 		super(x, y, rotation);
-		
+		// TODO: station texturák
+		textures.add(Resources.getTexture("stationEmpty"));
+		textures.add(Resources.getTexture("stationFull"));
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		// Most az első képet kéri le
-		BufferedImage img = textures.get(0);
+		// lekérdezzük a station várakozó utasait (van/nincs)
+		int picNum;
+		if (station.getPassengers())
+			picNum = 1;
+		else
+			picNum = 0;
+		// ez alapján a megfelelő képet töltjük be
+		BufferedImage img = textures.get(picNum);
 
 		// kirajzolás
 		Graphics2D g2d = (Graphics2D) g;

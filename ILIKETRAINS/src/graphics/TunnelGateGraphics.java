@@ -19,7 +19,7 @@ public class TunnelGateGraphics extends Drawable {
 
 	@Override
 	public void draw(Graphics g) {
-		// lekérdezzük a váltó állását
+		// lekérdezzük a tunnelGate állapotát
 		int picNum;
 		if (tunnelGate.getState())
 			picNum = 1;

@@ -14,7 +14,7 @@ public class EngineGraphics extends Drawable {
 	public EngineGraphics(int x, int y, int rotation) {
 		super(x, y, rotation);
 		// TODO: engine textura
-		textures.add(Resources.getTexture(""));
+		textures.add(Resources.getTexture("engine"));
 	}
 
 	@Override

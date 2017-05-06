@@ -16,14 +16,40 @@ public class PassengerCartGraphics extends Drawable{
 		
 		// TODO: passengercart texturák színnek megfelelő
 		// utaso van-e rajta vagy nincs
-		textures.add(Resources.getTexture(""));
+		textures.add(Resources.getTexture("passengerCartBlueEmpty"));
+		textures.add(Resources.getTexture("passengerCartBlueFull"));	
+		textures.add(Resources.getTexture("passengerCartGreenEmpty"));
+		textures.add(Resources.getTexture("passengerCartGreenFull"));
+		textures.add(Resources.getTexture("passengerCartRedEmpty"));
+		textures.add(Resources.getTexture("passengerCartRedFull"));
+		textures.add(Resources.getTexture("passengerCartBlackEmpty"));
+		textures.add(Resources.getTexture("passengerCartBlackFull"));
+		textures.add(Resources.getTexture("passengerCartBrownEmpty"));
+		textures.add(Resources.getTexture("passengerCartBrownFull"));
+		
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		// Most az első képet kéri le
-		BufferedImage img = textures.get(0);
-
+		int colorNum;
+		switch(passengerCart.getColor()){
+		case Blue: 		colorNum=0; break;
+		case Green: 	colorNum=2; break;
+		case Red: 		colorNum=4; break;
+		case Yellow:	colorNum=6; break;
+		case Brown:		colorNum=8; break;
+		default: break;
+		}
+				
+		// lekérdezzük a PC utasait (van/nincs)
+		int picNum;
+		if (passangerCart.isNotEmpty())
+			picNum = 1 + colorNum;
+		else
+			picNum = 0 + colorNum;
+		// ez alapján a megfelelő képet töltjük be
+		BufferedImage img = textures.get(picNum);
+		
 		// kirajzolás
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(img, transform, null);

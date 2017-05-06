@@ -1,4 +1,0 @@
-loadmap 2
-loadtrain 2-1
-moveengines
-moveengines

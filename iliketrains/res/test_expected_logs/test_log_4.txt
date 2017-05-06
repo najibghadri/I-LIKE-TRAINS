@@ -1,5 +1,0 @@
-loadmap 2 success
-loadtrain 2-2 success
-Engine(1): moves to TrackComponent(2)
-Engine(1): moves to Switch(3)
-Engine(1): moves to EntryPoint(4)

@@ -37,15 +37,15 @@ public abstract class Drawable {
 		AffineTransform tr = new AffineTransform();
 
 		//Méretezi a képet
-        tr.scale(0.1,0.1);
+        //tr.scale(0.1,0.1);
 
         // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
         // az utolsó két paraméter a forgópont (középpont)
         //Középpont: pozíció*1/scale+kép szélesség/2*1/scale
-        tr.rotate((Math.PI*rotation)/180, pos.x*10+300,pos.y*10+300);
+        tr.rotate((Math.PI*rotation)/180, pos.x+30,pos.y+30);
         
         // a megfelelő pontra való mozgatás
-        tr.translate(pos.getX()*10, pos.getY()*10);
+        tr.translate(pos.getX(), pos.getY());
         return tr;
 	}
 }

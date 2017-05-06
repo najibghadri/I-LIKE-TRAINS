@@ -9,7 +9,7 @@ public class CrossGraphics extends Drawable{
 	public CrossGraphics(int x,int y,int rotation) {
 		super(x, y, rotation);
 		//TODO: cross erőforrás
-		textures.add(Resources.getTexture(""));
+		textures.add(Resources.getTexture("cross"));
 	}
 
 	@Override

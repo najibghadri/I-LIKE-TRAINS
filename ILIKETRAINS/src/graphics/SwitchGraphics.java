@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 
 public class SwitchGraphics extends Drawable{
 	
-	private Switch myswitch;
+	private Switch switchy;
 
 	public SwitchGraphics(int x,int y,int rotation) {
 		super(x, y, rotation);
@@ -21,7 +21,7 @@ public class SwitchGraphics extends Drawable{
 	public void draw(Graphics g) {
 		//lekérdezzük a váltó állását
 		int picNum;
-		if(myswitch.getState())
+		if(switchy.getState())
 			picNum = 1;
 		else
 			picNum = 0;
@@ -34,7 +34,7 @@ public class SwitchGraphics extends Drawable{
 	}
 	
 	public void setTrackReference(Controllable controllable) {
-		myswitch = (Switch) controllable;
+		switchy = (Switch) controllable;
 	}
 
 }

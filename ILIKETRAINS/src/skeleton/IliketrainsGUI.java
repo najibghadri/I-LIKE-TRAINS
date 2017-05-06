@@ -160,17 +160,17 @@ public class IliketrainsGUI extends JPanel {
 			String type=c.getType();
 			switch (type) {
 			case "Engine":
-				EngineGraphics eg=new EngineGraphics();
+				EngineGraphics eg=new EngineGraphics(0,0,0);
 				eg.setCartReference(c);
 				trainMap.put(c.getId(), eg);
 				break;
 			case "PassengerCart":
-				PassengerCartGraphics pcg=new PassengerCartGraphics();
+				PassengerCartGraphics pcg=new PassengerCartGraphics(0,0,0);
 				pcg.setCartReference(c);
 				trainMap.put(c.getId(), pcg);
 				break;
 			case "CoalCart":
-				CoalCartGraphics ccg=new CoalCartGraphics();
+				CoalCartGraphics ccg=new CoalCartGraphics(0,0,0);
 				ccg.setCartReference(c);
 				trainMap.put(c.getId(), ccg);
 				break;

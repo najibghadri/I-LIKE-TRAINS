@@ -33,11 +33,11 @@ public class PassengerCartGraphics extends Drawable {
 		g2d.drawImage(img, transform, null);
 	}
 
-	public void setCartReference(PassengerCart pcart) {
+	public void setCartReference(Cart pcart) {
 		// ha átállítjuk a referenciát, akkor a régi textúrák helyett újakat kell betölteni
 		textures.clear();
-		passengerCart = pcart;
-		Color c=pcart.getColor();
+		passengerCart = (PassengerCart)pcart;
+		Color c=passengerCart.getColor();
 		// TODO: passengercart texturák színnek megfelelő
 		// utaso van-e rajta vagy nincs
 		textures.add(Resources.getTexture(c.toString()+"PassengerCartFull"));

@@ -26,7 +26,7 @@ public abstract class Drawable {
 		pos.y=y;
 		this.rotation=rotation;
 		textures=new ArrayList<BufferedImage>();
-		transform();
+		transform=transform();
 	}
 	
 	// ezt a fv-t majd a játékpanel @override paintComponent()-jének fv-ébe kell meghívni, előtte egy super.paintcomponent() utána egy repaint() hívással (valszeg :))
@@ -45,18 +45,19 @@ public abstract class Drawable {
 	 * Ezt elég egyszer számolni a síneknél, helyük nem változik
 	 * @return
 	 */
-	protected void transform() {
-		transform = new AffineTransform();
+	protected AffineTransform transform() {
+		AffineTransform tr = new AffineTransform();
 
 		//Méretezi a képet
-        transform.scale(0.1,0.1);
+        tr.scale(0.1,0.1);
 
         // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
         // az utolsó két paraméter a forgópont (középpont)
         //Középpont: pozíció*1/scale+kép szélesség/2*1/scale
-        transform.rotate((Math.PI*rotation)/180, pos.x*10+300,pos.y*10+300);
+        tr.rotate((Math.PI*rotation)/180, pos.x*10+300,pos.y*10+300);
         
         // a megfelelő pontra való mozgatás
-        transform.translate(pos.getX()*10, pos.getY()*10);
+        tr.translate(pos.getX()*10, pos.getY()*10);
+        return tr;
 	}
 }

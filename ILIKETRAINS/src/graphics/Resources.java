@@ -13,14 +13,22 @@ public class Resources {
 	private static Map<String, BufferedImage> textures;
 	
 	public Resources(String filepath){
-		//TODO textures feltöltése
 		textures=new HashMap<String, BufferedImage>();
 		try {
-			BufferedImage im=ImageIO.read(new File(generateFilename("turn_side_active")));
-			textures.put("entry", im);
+			loadTexture("entryPoint");
+			loadTexture("straightTrackComponent");
+			loadTexture("switchActive");
+			loadTexture("switchInactive");
+			loadTexture("tunnelGate");
+			loadTexture("turnTrackComponent");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void loadTexture(String name) throws IOException{
+		BufferedImage im=ImageIO.read(new File(generateFilename(name)));
+		textures.put(name, im);
 	}
 	
 	public static BufferedImage getTexture(String name){

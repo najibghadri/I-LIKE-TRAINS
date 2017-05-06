@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
@@ -25,7 +26,7 @@ public class IliketrainsGUI extends JPanel{
 
 	private Application app;
 	private Controller controller;
-	private Map<Integer,Drawable> map;
+	private static Map<Integer,Drawable> map=new HashMap<Integer, Drawable>();
 	
 	public IliketrainsGUI(Application application, Controller controller) {
 		app=application;
@@ -50,6 +51,7 @@ public class IliketrainsGUI extends JPanel{
 	 * A controllertől lekéri a szükséges referenciákat a logikára
 	 */
 	public void loadGraphicsMap(){
+		map.clear();
 		//TODO load graphics map
 		int id=controller.getNumberOfMap();
 		List<Controllable> controllables=controller.getControllables();

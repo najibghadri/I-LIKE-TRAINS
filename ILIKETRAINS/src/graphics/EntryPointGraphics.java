@@ -19,11 +19,8 @@ public class EntryPointGraphics extends Drawable{
 	
 	private EntryPoint entryPoint;
 
-	public EntryPointGraphics(String line) {
-		super(line);
-		pos=new Point();
-		textures=new ArrayList<BufferedImage>();
-		affinGod();
+	public EntryPointGraphics(int x,int y,int rotation) {
+		super(x,y,rotation);
 	}
 
 	@Override
@@ -33,7 +30,7 @@ public class EntryPointGraphics extends Drawable{
 
         // kirajzolás
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(img, at, null);
+        g2d.drawImage(img, transform, null);
 	}
 
 

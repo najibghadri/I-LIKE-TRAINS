@@ -21,6 +21,16 @@ public class Resources {
 			loadTexture("tunnelGateActive");
 			loadTexture("tunnelGateInactive");
 			loadTexture("turnTrackComponent");
+			loadTexture("BlueStationFull");
+			loadTexture("BlueStationEmpty");
+			loadTexture("RedStationFull");
+			loadTexture("RedStationEmpty");
+			loadTexture("GreenStationFull");
+			loadTexture("GreenStationEmpty");
+			loadTexture("YellowStationFull");
+			loadTexture("YellowStationEmpty");
+			loadTexture("BrownStationFull");
+			loadTexture("BrownStationEmpty");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

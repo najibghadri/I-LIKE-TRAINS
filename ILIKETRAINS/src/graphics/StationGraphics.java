@@ -1,5 +1,6 @@
 package graphics;
 
+import iliketrains.Color;
 import iliketrains.Station;
 
 import java.awt.Graphics;
@@ -12,9 +13,6 @@ public class StationGraphics extends Drawable{
 
 	public StationGraphics(int x, int y, int rotation) {
 		super(x, y, rotation);
-		// TODO: station texturák
-		textures.add(Resources.getTexture("stationEmpty"));
-		textures.add(Resources.getTexture("stationFull"));
 	}
 
 	@Override
@@ -35,5 +33,8 @@ public class StationGraphics extends Drawable{
 	
 	public void setStationReference(Station s){
 		station= s;
+		Color c=station.getColor();
+		textures.add(Resources.getTexture(c.toString()+"StationFull"));
+		textures.add(Resources.getTexture(c.toString()+"StationEmpty"));
 	}
 }

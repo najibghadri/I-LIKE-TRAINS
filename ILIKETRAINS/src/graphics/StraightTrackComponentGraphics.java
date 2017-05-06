@@ -4,11 +4,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-public class EntryPointGraphics extends Drawable{
+public class StraightTrackComponentGraphics extends Drawable{
 
-	public EntryPointGraphics(int x,int y,int rotation) {
-		super(x,y,rotation);
-		textures.add(Resources.getTexture("entryPoint"));
+	public StraightTrackComponentGraphics(int x,int y,int rotation) {
+		super(x, y, rotation);
+		textures.add(Resources.getTexture("straightTrackComponent"));
 	}
 
 	@Override
@@ -20,6 +20,5 @@ public class EntryPointGraphics extends Drawable{
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(img, transform, null);
 	}
-
 
 }

@@ -84,4 +84,8 @@ public class TunnelGate extends TrackComponent implements Controllable {
     	else
     		return "inactive";
     }
+
+	public boolean getState() {
+		return active;
+	}
 }

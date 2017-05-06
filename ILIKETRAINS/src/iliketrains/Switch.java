@@ -80,4 +80,8 @@ public class Switch extends TrackComponent implements Controllable {
     	else
     		return adjacentTracks.get(1);
     }
+    
+    public boolean getState(){
+    	return direction;
+    }
 }

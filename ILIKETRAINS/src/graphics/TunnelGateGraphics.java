@@ -1,43 +1,40 @@
 package graphics;
 
+import iliketrains.Controllable;
 import iliketrains.TunnelGate;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 public class TunnelGateGraphics extends Drawable{
 	
 	private TunnelGate tunnelGate;
 
-	public TunnelGateGraphics(String line) {
-		super(line);
-		
+	public TunnelGateGraphics(int x,int y,int rotation) {
+		super(x, y, rotation);
+		textures.add(Resources.getTexture("tunnelGateActive"));
+		textures.add(Resources.getTexture("tunnelGateInactive"));
 	}
 
 	@Override
 	public void draw(Graphics g) {
-        AffineTransform at = new AffineTransform();
-        img = textures.get(0);
-        
-        // a megfelelő pontra való mozgatás
-        at.translate(pos.getX(), pos.getY());
-
-        // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
-        // az utolsó két paraméter a forgópont (középpont)
-        at.rotate(Math.PI/(rotation/180), img.getWidth()/2, img.getHeight()/2);
-
-        // átméretezés
-        // TODO milyen legyen a méretezés? Honnan kéne tudni?
-        // (alapvetően két Drawable elem középpontjainak távolságától függ, illetve attól, hogy alapvetően mekkora egy textúra)
-        // at.scale(x-koordináta szerinti arányszám, y-koordináta szerinti arányszám);
-
+		//lekérdezzük a váltó állását
+		int picNum;
+		if(tunnelGate.getState())
+			picNum = 1;
+		else
+			picNum = 0;
+		//ez alapján a megfelelő képet töltjük be
+		BufferedImage img = textures.get(picNum);
+		
         // kirajzolás
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(img, at, null);
+        g2d.drawImage(img, transform, null);
        
 	}
-	 @override
- 	public void setTrackReference(TrackComponent track) {
- 		tunnelGate = (TunnelGate) track;
- 	}
 
+ 	public void setTrackReference(Controllable controllable) {
+ 		tunnelGate = (TunnelGate) controllable;
+ 	}
 }

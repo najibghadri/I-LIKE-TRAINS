@@ -1,10 +1,6 @@
 package graphics;
 
-import iliketrains.Cart;
-import iliketrains.TrackComponent;
-
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;

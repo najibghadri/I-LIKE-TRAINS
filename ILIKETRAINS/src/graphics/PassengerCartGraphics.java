@@ -39,7 +39,6 @@ public class PassengerCartGraphics extends Drawable{
         g2d.drawImage(img, at, null);
 	}
 	
-	@Override
 	public void setCartReference(Cart cart){
 		passengerCart= (PassengerCart) cart;
 	}

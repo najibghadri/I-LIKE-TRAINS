@@ -32,14 +32,6 @@ public abstract class Drawable {
 	// ezt a fv-t majd a játékpanel @override paintComponent()-jének fv-ébe kell meghívni, előtte egy super.paintcomponent() utána egy repaint() hívással (valszeg :))
 	public abstract void draw(Graphics g);
 	
-	public void setTrackReference(TrackComponent track) {
-		//Csak switchben és TunnelGateben kell felülírni, többinél nem kell ref
-	}
-	
-	public void setCartReference(Cart cart){
-		//Csak Kocsikat megjelenítő osztályban kell
-	}
-	
 	/**
 	 * Affin transzformációkkal meghatározza a kép helyét a panelen. 
 	 * Ezt elég egyszer számolni a síneknél, helyük nem változik

@@ -26,7 +26,9 @@ public class IliketrainsGUI extends JPanel{
 
 	private Application app;
 	private Controller controller;
-	private static Map<Integer,Drawable> map=new HashMap<Integer, Drawable>();
+	private static Map<Integer,Drawable> trackMap=new HashMap<Integer, Drawable>();
+	private static Map<Integer,Drawable> trainMap=new HashMap<Integer, Drawable>();
+	private static Map<Integer,Drawable> stationMap=new HashMap<Integer, Drawable>();
 	
 	public IliketrainsGUI(Application application, Controller controller) {
 		app=application;
@@ -51,7 +53,9 @@ public class IliketrainsGUI extends JPanel{
 	 * A controllertől lekéri a szükséges referenciákat a logikára
 	 */
 	public void loadGraphicsMap(){
-		map.clear();
+		trackMap.clear();
+		trainMap.clear();
+		stationMap.clear();
 		//TODO load graphics map
 		int id=controller.getNumberOfMap();
 		List<Controllable> controllables=controller.getControllables();
@@ -59,6 +63,9 @@ public class IliketrainsGUI extends JPanel{
 		List<Station> stations=controller.getStations();
 		//controllables-ből id alapján kivenni és beállítani a megfelelő Drawablenek
 		//stationok litából szín és id alapján lehet sín helye alapján beállítani
+		
+		EntryPointGraphics ep=new EntryPointGraphics(200, 200, -90);
+		trackMap.put(1, ep);
 	}
 
 	/**
@@ -75,7 +82,7 @@ public class IliketrainsGUI extends JPanel{
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        trackMap.get(1).draw(g);
     }
 
 }

@@ -168,10 +168,12 @@ public class IliketrainsGUI extends JPanel {
 				PassengerCartGraphics pcg=new PassengerCartGraphics();
 				pcg.setCartReference(c);
 				trainMap.put(c.getId(), pcg);
+				break;
 			case "CoalCart":
 				CoalCartGraphics ccg=new CoalCartGraphics();
 				ccg.setCartReference(c);
 				trainMap.put(c.getId(), ccg);
+				break;
 			default:
 				break;
 			}

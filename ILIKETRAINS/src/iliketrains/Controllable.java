@@ -16,4 +16,5 @@ public interface Controllable {
 	 */
 	int getId();
 
+	String getType();
 }

@@ -48,4 +48,20 @@ public abstract class Drawable {
         tr.translate(pos.getX(), pos.getY());
         return tr;
 	}
+
+	/**
+	 * @return the pos
+	 */
+	public Point getPos() {
+		return pos;
+	}
+
+	/**
+	 * @return the rotation
+	 */
+	public int getRotation() {
+		return rotation;
+	}
+	
+	
 }

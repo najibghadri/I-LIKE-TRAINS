@@ -31,6 +31,7 @@ public class Resources {
 			loadTexture("YellowStationEmpty");
 			loadTexture("BrownStationFull");
 			loadTexture("BrownStationEmpty");
+			loadTexture("engine");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

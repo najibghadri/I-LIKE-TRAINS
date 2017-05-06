@@ -43,6 +43,7 @@ public class IliketrainsGUI extends JPanel {
 	private static Map<Integer, Drawable> trackMap = new HashMap<Integer, Drawable>();
 	private static Map<Integer, Drawable> trainMap = new HashMap<Integer, Drawable>();
 	private static Map<Integer, Drawable> stationMap = new HashMap<Integer, Drawable>();
+	private Timer timer;
 
 	public IliketrainsGUI(Application application, Controller controller) {
 		app = application;
@@ -193,11 +194,18 @@ public class IliketrainsGUI extends JPanel {
 	 * Elindítja a kirajzolás időzítőjét
 	 */
 	public void start() {
-		// TODO elindítás
+		timer=new Timer();
+		timer.schedule(new TimerTask() {
+			
+			@Override
+			public void run() {
+				repaint();				
+			}
+		}, 0,1000);
 	}
 
 	public void stop() {
-		// TODO kirajzoló timert leállítani
+		timer.cancel();
 	}
 
 	@Override
@@ -218,4 +226,12 @@ public class IliketrainsGUI extends JPanel {
 		}
 	}
 
+	/**
+	 * @return the trackMap
+	 */
+	public static Map<Integer, Drawable> getTrackMap() {
+		return trackMap;
+	}
+
+	
 }

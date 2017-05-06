@@ -79,4 +79,13 @@ public class Cart {
 			this.next=cart;
 	}
 
+	/**
+	 * @return the currentTrack
+	 */
+	public TrackComponent getCurrentTrack() {
+		return currentTrack;
+	}
+	
+	
+
 }

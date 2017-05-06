@@ -95,7 +95,7 @@ public class Controller {
 			  public void run() {
 				  gameAutoTick();
 			  }
-			}, 0,2000);
+			}, 0,1000);
 	}
 
 

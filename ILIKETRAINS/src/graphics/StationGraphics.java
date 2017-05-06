@@ -32,6 +32,8 @@ public class StationGraphics extends Drawable{
 	}
 	
 	public void setStationReference(Station s){
+		// ha átállítjuk a referenciát, akkor a régi textúrák helyett újakat kell betölteni
+		textures.clear();
 		station= s;
 		Color c=station.getColor();
 		textures.add(Resources.getTexture(c.toString()+"StationFull"));

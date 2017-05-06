@@ -6,8 +6,8 @@ import java.awt.image.BufferedImage;
 
 public class EntryPointGraphics extends Drawable{
 
-	public EntryPointGraphics(int x,int y,int rotation) {
-		super(x,y,rotation);
+	public EntryPointGraphics(int x, int y, int rotation) {
+		super(x, y, rotation);
 		textures.add(Resources.getTexture("entryPoint"));
 	}
 

@@ -11,8 +11,8 @@ public class EngineGraphics extends Drawable {
 
 	private Engine engine;
 
-	public EngineGraphics() {
-		super(0,0,0);
+	public EngineGraphics(int x, int y, int rotation) {
+		super(x, y, rotation);
 		// TODO: engine textura
 		textures.add(Resources.getTexture("engine"));
 	}

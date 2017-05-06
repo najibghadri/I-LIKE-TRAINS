@@ -1,6 +1,7 @@
 package graphics;
 
 import iliketrains.Cart;
+import iliketrains.Color;
 import iliketrains.PassengerCart;
 
 import java.awt.Graphics;
@@ -11,53 +12,19 @@ public class PassengerCartGraphics extends Drawable {
 
 	private PassengerCart passengerCart;
 
-	public PassengerCartGraphics() {
-		super(0, 0, 0);
-
-		// TODO: passengercart texturák színnek megfelelő
-		// utaso van-e rajta vagy nincs
-		textures.add(Resources.getTexture("passengerCartBlueEmpty"));
-		textures.add(Resources.getTexture("passengerCartBlueFull"));
-		textures.add(Resources.getTexture("passengerCartGreenEmpty"));
-		textures.add(Resources.getTexture("passengerCartGreenFull"));
-		textures.add(Resources.getTexture("passengerCartRedEmpty"));
-		textures.add(Resources.getTexture("passengerCartRedFull"));
-		textures.add(Resources.getTexture("passengerCartYellowEmpty"));
-		textures.add(Resources.getTexture("passengerCartYellowFull"));
-		textures.add(Resources.getTexture("passengerCartBrownEmpty"));
-		textures.add(Resources.getTexture("passengerCartBrownFull"));
-
+	public PassengerCartGraphics(int x, int y, int rotation) {
+		super(x, y, rotation);
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		int colorNum = 0;
-		switch (passengerCart.getColor()) {
-		case Blue:
-			colorNum = 0;
-			break;
-		case Green:
-			colorNum = 2;
-			break;
-		case Red:
-			colorNum = 4;
-			break;
-		case Yellow:
-			colorNum = 6;
-			break;
-		case Brown:
-			colorNum = 8;
-			break;
-		default:
-			break;
-		}
 
 		// lekérdezzük a PC utasait (van/nincs)
 		int picNum;
 		if (passengerCart.isNotEmpty())
-			picNum = 1 + colorNum;
+			picNum = 1;
 		else
-			picNum = 0 + colorNum;
+			picNum = 0;
 		// ez alapján a megfelelő képet töltjük be
 		BufferedImage img = textures.get(picNum);
 
@@ -66,8 +33,15 @@ public class PassengerCartGraphics extends Drawable {
 		g2d.drawImage(img, transform, null);
 	}
 
-	public void setCartReference(Cart cart) {
-		passengerCart = (PassengerCart) cart;
+	public void setCartReference(PassengerCart pcart) {
+		// ha átállítjuk a referenciát, akkor a régi textúrák helyett újakat kell betölteni
+		textures.clear();
+		passengerCart = pcart;
+		Color c=pcart.getColor();
+		// TODO: passengercart texturák színnek megfelelő
+		// utaso van-e rajta vagy nincs
+		textures.add(Resources.getTexture(c.toString()+"PassengerCartFull"));
+		textures.add(Resources.getTexture(c.toString()+"PassengerCartEmpty"));
 	}
 
 }

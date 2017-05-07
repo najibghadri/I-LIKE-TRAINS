@@ -1,0 +1,7 @@
+1,60:120,straight,90
+2,60:180,straight,90
+3,60:240,curve,0
+4,120:300,straight,0
+5,120:240,tunnel,180
+6,60:300,tunnel,0
+7,60:60,entry,90

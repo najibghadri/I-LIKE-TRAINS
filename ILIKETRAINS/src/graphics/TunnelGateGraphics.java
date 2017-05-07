@@ -13,8 +13,8 @@ public class TunnelGateGraphics extends Drawable {
 
 	public TunnelGateGraphics(int x, int y, int rotation) {
 		super(x, y, rotation);
-		textures.add(Resources.getTexture("tunnelGateActive"));
 		textures.add(Resources.getTexture("tunnelGateInactive"));
+		textures.add(Resources.getTexture("tunnelGateActive"));
 	}
 
 	@Override

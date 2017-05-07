@@ -15,9 +15,11 @@ import iliketrains.Cart;
 import iliketrains.Controllable;
 import iliketrains.Station;
 import iliketrains.TrackComponent;
+import iliketrains.Tunnel;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -36,6 +38,7 @@ import java.util.TimerTask;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class IliketrainsGUI extends JPanel {
@@ -43,11 +46,18 @@ public class IliketrainsGUI extends JPanel {
 	private Application app;
 	private Controller controller;
 	private static Map<Integer, Drawable> trackMap = new HashMap<Integer, Drawable>();
-	private static Map<Integer, Drawable> trainMap = new HashMap<Integer, Drawable>();
-	private static Map<Integer, Drawable> stationMap = new HashMap<Integer, Drawable>();
+	private Map<Integer, Drawable> trainMap = new HashMap<Integer, Drawable>();
+	private Map<Integer, Drawable> stationMap = new HashMap<Integer, Drawable>();
 	private Map<Integer,Drawable> controllableGraphics=new HashMap<Integer, Drawable>();
 	private Timer timer;
+	private JLabel tunnelLength;
 
+	/**
+	 * Konstruktor létrehozza a Stop gombot, az alagút hosszát jelző szöveget, 
+	 * illetve a kattintást kezelő függvény itt van implementálva
+	 * @param application
+	 * @param controller
+	 */
 	public IliketrainsGUI(Application application, final Controller controller) {
 		app = application;
 		this.controller = controller;
@@ -62,6 +72,15 @@ public class IliketrainsGUI extends JPanel {
 				app.stop();
 			}
 		});
+		
+		//Alagút hosszát írja ki egy JLabelre, 25-ös méret, fehér szín
+		tunnelLength= new JLabel();
+		tunnelLength.setFont(new Font("Serif", Font.PLAIN, 25));
+		tunnelLength.setForeground(Color.WHITE);
+		tunnelLength.setBounds(400, 10,200, 30);
+		add(tunnelLength);
+		tunnelLength.setText("Alagút hossza: "+String.valueOf(Tunnel.getInstance().getLength()));
+		
 		setOpaque(true);
 		setBackground(new Color(0, 120, 40));
 		
@@ -239,7 +258,7 @@ public class IliketrainsGUI extends JPanel {
 			public void run() {
 				repaint();				
 			}
-		}, 0,1000);
+		}, 0,500);
 	}
 
 	public void stop() {
@@ -249,7 +268,7 @@ public class IliketrainsGUI extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+		tunnelLength.setText("Alagút hossza: "+String.valueOf(Tunnel.getInstance().getLength()));
 		for (Map.Entry<Integer, Drawable> entry : trackMap.entrySet())
 		{
 		    entry.getValue().draw(g);

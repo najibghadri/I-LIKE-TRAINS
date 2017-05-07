@@ -20,10 +20,16 @@ public class Tunnel {
 	private static Tunnel singleton;
 	
 	/**
+	 * A jelenlegi alagút hossza
+	 */
+	private int lengthOfTunnel=0;
+	
+	/**
 	 * Konstructor
 	 * Létrehoz egy tunnel elemet
 	 */
 	private Tunnel(){
+		lengthOfTunnel=0;
 		activeGates = new ArrayList<TunnelGate>();
 	}
 
@@ -56,6 +62,7 @@ public class Tunnel {
 			activeGates.get(0).removeTunnelTrack();
 			activeGates.get(1).removeTunnelTrack();
 			Game.log("Tunnel: destroyed Tunnel");
+			lengthOfTunnel=0;
 		}
 		activeGates.remove(gate);
 	}
@@ -92,10 +99,11 @@ public class Tunnel {
 	 */	
 	private void createTunnel(TunnelGate in, TunnelGate out) {
 		int localId=firstID;
-		int lenghtOfTunnel=3; 											//Később random lesz
+		Random rand = new Random();
+		lengthOfTunnel=rand.nextInt(7) + 3;; 											//Később random lesz
 		List<TrackComponent> tunnelTracks=new ArrayList<TrackComponent>();
 		
-		for(int i=0;i<lenghtOfTunnel;i++){
+		for(int i=0;i<lengthOfTunnel;i++){
 			TrackComponent temp= new TrackComponent(localId);
 			tunnelTracks.add(temp);
 			localId++;
@@ -123,5 +131,9 @@ public class Tunnel {
 	public static void setNewInstance(){
 		singleton = new Tunnel();
     }
+
+	public int getLength() {
+		return lengthOfTunnel;
+	}
 
 }

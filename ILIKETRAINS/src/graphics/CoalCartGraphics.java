@@ -44,6 +44,11 @@ public class CoalCartGraphics extends Drawable {
 		AffineTransform tr = new AffineTransform();
 
 		Drawable current=IliketrainsGUI.getTrackMap().get(coalCart.getCurrentTrack().getId());
+		if(current==null){
+			tr.scale(0, 0);
+			transform=tr;
+			return;
+		}
 		Point p=current.getPos();
 		
         // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)

@@ -68,7 +68,8 @@ public class Controller {
 			  timer.cancel();
 			  running=false;
 			  }
-			  
+
+			  //Proceed on to the next maps
 			  numberOfMap++;
 			  if(numberOfMap>2){
 				  System.out.println("Nincs több pálya");
@@ -76,8 +77,7 @@ public class Controller {
 			  }
 		  }
 	}
-
-
+    
 	/**
 	 * Real-Time működő játékot elindító függvény
 	 * Új railCentert hoz létre, mert minden elem új
@@ -102,7 +102,7 @@ public class Controller {
 	/**
 	 * A paraméterben megkapott id-jú elem change függvényét hívja meg
 	 * Megkeresi a listában a megfelelő id-jú elemet
-	 * @param string Szövegként megkapott sorszám
+	 * @param id Szövegként megkapott sorszám
 	 */
 	public void change(Integer id) {
 		for(int i=0;i<controllables.size();i++){

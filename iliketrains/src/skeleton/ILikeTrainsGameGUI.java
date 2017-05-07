@@ -22,24 +22,53 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ *  Játékot kirajzolás logikát megvalósító osztály.
+ */
 public class ILikeTrainsGameGUI {
 
+	/** JFrame referencia */
 	private Application app;
+	
+	/** Controller referencia*/
 	private Controller controller;
 
+	/** Pályaelemek tárolója */
 	private static Map<Integer, TrackDrawable> trackMap = new HashMap<>();
+	
+	/** Vonatok tárolója */
 	private Map<Integer, Drawable> trainMap = new HashMap<>();
+	
+	/** Állomások tárolója */
 	private Map<Integer, Drawable> stationMap = new HashMap<>();
+	
+	/** Állítható elemek tárolója */
 	private Map<Integer,Drawable> controllableGraphics=new HashMap<>();
 
+	/** Megjelenítendő panel */
 	private GUIPanel panel;
 
+	/**
+	 * Visszaadja a panel referenciáját
+	 *
+	 * @return panel referenciája
+	 */
 	public JPanel panel() {
 		return panel;
 	}
 
+	/**
+	 * JPanel osztály
+	 */
+	@SuppressWarnings("serial")
 	private class GUIPanel extends JPanel {
+		
+		/** alagút hossza */
 		private JLabel tunnelLengthLabel;
+		
+		/**
+		 * Konstruktor
+		 */
 		public GUIPanel(){
 			setLayout(null);
 			JButton btnStop = new JButton("Stop");
@@ -101,6 +130,8 @@ public class ILikeTrainsGameGUI {
 		/**
 		 * A kirajzolás metódusa. Előszot a szöveget rajzolja, majd a síneket, erre a vonatokat,
 		 * utoljára az állomásokat.
+		 *
+		 * @param g Amire rajzolni fogunk
 		 */
 		@Override
 		public void paintComponent(Graphics g) {
@@ -124,9 +155,10 @@ public class ILikeTrainsGameGUI {
 
 	/**
 	 * Konstruktor létrehozza a Panelt benne Stop gombot, az alagút hosszát jelző szöveget,
-	 * illetve a kattintást kezelő függvény itt van implementálva
-	 * @param application
-	 * @param controller
+	 * illetve a kattintást kezelő függvény itt van implementálva.
+	 *
+	 * @param application the application
+	 * @param controller the controller
 	 */
 	public ILikeTrainsGameGUI(Application application, final Controller controller) {
 		app = application;
@@ -138,7 +170,7 @@ public class ILikeTrainsGameGUI {
 	 * Pálya grafikájának betöltése A controllertől lekéri a szükséges
 	 * referenciákat a logikára
 	 * Külön map-be tölti be a síneket, a kattintható objektumokat, vonatokat és állomásokat
-	 * A logikára mutató referenciákat beállítja a grafikai elemeknek, ahol kell 
+	 * A logikára mutató referenciákat beállítja a grafikai elemeknek, ahol kell.
 	 */
 	public void loadGraphicsMap() {
 		trackMap.clear();
@@ -277,7 +309,9 @@ public class ILikeTrainsGameGUI {
 	}
 
 	/**
-	 * @return the trackMap
+	 * Visszaadja a pályaelemeket tartalmazó listát.
+	 *
+	 * @return pályaelem lista
 	 */
 	public static Map<Integer, TrackDrawable> getTrackMap() {
 		return trackMap;

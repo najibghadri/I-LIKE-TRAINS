@@ -61,7 +61,4 @@ public class PassengerCartGraphics extends CartDrawable {
 		textures.add(Resources.getTexture(c.toString()+"PassengerCartEmpty"));
 		textures.add(Resources.getTexture(c.toString()+"PassengerCartFull"));
 	}
-	
-
-
 }

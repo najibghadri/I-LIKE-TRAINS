@@ -23,6 +23,9 @@ public class CrossGraphics extends TrackDrawable {
 		textures.add(Resources.getTexture("cross"));
 	}
 
+	/* (non-Javadoc)
+	 * @see graphics.TrackDrawable#getCartRotation(iliketrains.TrackComponent)
+	 */
 	@Override
 	public int getCartRotation(TrackComponent previous) {
 		return 0;

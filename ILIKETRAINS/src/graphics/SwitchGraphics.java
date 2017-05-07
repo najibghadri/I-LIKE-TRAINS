@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
  */
 public class SwitchGraphics extends TrackDrawable {
 
-	/** A váltó referenciája, switch szó nem hasdználható... */
+	/** A váltó referenciája, switch szó nem használható... */
 	private Switch switchy;
 
 	/**
@@ -65,6 +65,9 @@ public class SwitchGraphics extends TrackDrawable {
 		switchy = (Switch) controllable;
 	}
 
+	/* (non-Javadoc)
+	 * @see graphics.TrackDrawable#getCartRotation(iliketrains.TrackComponent)
+	 */
 	@Override
 	public int getCartRotation(TrackComponent previous) {
 		return 0;

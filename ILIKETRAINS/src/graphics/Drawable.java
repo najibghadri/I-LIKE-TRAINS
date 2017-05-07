@@ -92,7 +92,5 @@ public abstract class Drawable {
 	 */
 	public int getRotation() {
 		return rotation;
-	}
-	
-	
+	}	
 }

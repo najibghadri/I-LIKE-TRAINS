@@ -19,6 +19,9 @@ public class Controller {
     /** Jelenlegi térkép fájl*/
 	private int numberOfMap=1;
 	
+	/**
+	 * Konstruktor
+	 */
 	public Controller() {
 
     }
@@ -83,24 +86,43 @@ public class Controller {
 		return numberOfMap;
 	}
 
+	/**
+	 * Visszaadja az állítható elemek listáját
+	 *
+	 * @return kapcsolható elemek listája
+	 */
 	public List<Controllable> getControllables() {
 		return controllables;
 	}
 
 
+	/**
+	 * Visszaadja a vonatkocsik listáját
+	 *
+	 * @return vonatkocsi lista
+	 */
 	public List<Cart> getCarts() {
 		return railCenter.getCarts();
 	}
 
 
+	/**
+	 * Visszaadja az állomások listáját
+	 *
+	 * @return állomások listája
+	 */
 	public List<Station> getStations() {
 		return railCenter.getStations();
 	}
 
 
+    /**
+     * Visszaadj a grafikus sínelem listát
+     *
+     * @return sínelem lista
+     */
     public Map<Integer,TrackComponent> getTrackComponents() {
         return railCenter.getTrackComponents();
     }
-	
 	
 }

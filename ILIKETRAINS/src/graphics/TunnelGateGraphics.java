@@ -8,16 +8,17 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+// TODO: Auto-generated Javadoc
 /**
- * Alagútbejárat kirajzolását végző osztály
+ * Alagútbejárat kirajzolását végző osztály.
  */
 public class TunnelGateGraphics extends TrackDrawable {
 
-	/** Referencia az alagútosztályra */
+	/**  Referencia az alagútosztályra. */
 	private TunnelGate tunnelGate;
 
 	/**
-	 * Konstruktor
+	 * Konstruktor.
 	 *
 	 * @param x pozíció
 	 * @param y pozíció
@@ -29,14 +30,17 @@ public class TunnelGateGraphics extends TrackDrawable {
 		textures.add(Resources.getTexture("tunnelGateActive"));
 	}
 
+	/* (non-Javadoc)
+	 * @see graphics.TrackDrawable#getCartRotation(iliketrains.TrackComponent)
+	 */
 	@Override
 	public int getCartRotation(TrackComponent previous) {
 		return 0;
 	}
 
 	/**
-	 * Kirajzolást végző függvény
-	 * 
+	 * Kirajzolást végző függvény.
+	 *
 	 * @param g Amire a rajzolást végezük
 	 */
 	@Override
@@ -57,7 +61,7 @@ public class TunnelGateGraphics extends TrackDrawable {
 	}
 
 	/**
-	 * Eltárolja a kapott referenciát
+	 * Eltárolja a kapott referenciát.
 	 *
 	 * @param controllable Alagútbejárat referencia
 	 */

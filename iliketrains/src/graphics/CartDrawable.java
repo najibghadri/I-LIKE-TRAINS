@@ -12,15 +12,22 @@ import java.awt.geom.AffineTransform;
  */
 public abstract class CartDrawable extends Drawable {
 
-    /** Kocsi referencia */
+    /**  Kocsi referencia. */
     protected Cart cart;
 
+    /**
+     * Konstruktor
+     *
+     * @param x korodináta
+     * @param y koordináta
+     * @param rotation elforgatás szöge
+     */
     public CartDrawable(int x,int y,int rotation){
         super(x,y,rotation);
     }
 
     /**
-     * Beállítja a paraméterben megadott kocsi referenciáját magának
+     * Beállítja a paraméterben megadott kocsi referenciáját magának.
      *
      * @param cart Egy kocsi referenciája
      */
@@ -29,7 +36,7 @@ public abstract class CartDrawable extends Drawable {
     }
 
     /**
-     * Mozgatás kirajzolásának logikája
+     * Mozgatás kirajzolásának logikája.
      */
     protected void move() {
         AffineTransform tr = new AffineTransform();

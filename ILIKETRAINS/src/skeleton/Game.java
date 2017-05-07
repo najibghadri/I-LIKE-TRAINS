@@ -2,7 +2,6 @@ package skeleton;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.File;
 import java.io.FileWriter;
 
@@ -18,10 +17,10 @@ public class Game {
     static BufferedWriter bufferedWriter;
 
 	/**
-	 * The main method.
+	 * Main metódus
 	 *
-	 * @param args the arguments
-	 * @throws InterruptedException the interrupted exception
+	 * @param args Alapértelmezett argumentumok
+	 * @throws InterruptedException Megszakító hibakezeléshez
 	 */
 	public static void main(String args[]) throws InterruptedException{
 		fileWriter = null;

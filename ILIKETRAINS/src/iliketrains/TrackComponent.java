@@ -69,6 +69,12 @@ public class TrackComponent {
             return null;
 	}
 
+	/**
+	 * Visszaadja a következő elem irányát
+	 *
+	 * @param previous Előző sínelem
+	 * @return következő sínelem
+	 */
 	public int getNextDir(TrackComponent previous){
 		if(previous==null)
 			return 0;

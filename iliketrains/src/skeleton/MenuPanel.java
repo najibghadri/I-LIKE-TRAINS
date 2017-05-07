@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 /**
  * Menüablakot megvalósító osztály
  */
+@SuppressWarnings("serial")
 public class MenuPanel extends JPanel{
 
     /** Az applikációra mutató referencia */

@@ -23,6 +23,9 @@ public class TurnTrackComponentGraphics extends TrackDrawable {
 		textures.add(Resources.getTexture("turnTrackComponent"));
 	}
 
+	/* (non-Javadoc)
+	 * @see graphics.TrackDrawable#getCartRotation(iliketrains.TrackComponent)
+	 */
 	@Override
 	public int getCartRotation(TrackComponent previous) {
 		return trackComponent.getNextDir(previous) * 180 + 45;

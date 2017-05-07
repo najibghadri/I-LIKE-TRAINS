@@ -11,17 +11,23 @@ import javax.swing.*;
 /**
  * Az alkalmazás konstruktora, létrehozza, beállítja a paneleket, és
  * Controllert példányosít, átadja a gamegui-nak
- * Végül csak a menüt teszi láthatóvá
+ * Végül csak a menüt teszi láthatóvá.
  */
 public class Application{
+	
+	/** Játékfelület objektuma */
 	private ILikeTrainsGameGUI gamegui;
+	
+	/** Controller objektum */
 	private Controller controller;
 
+	/** Hang objektum */
 	private Sound sound;
 
-    /** Időzítő objektum */
+    /**  Időzítő objektum. */
     private Timer timer;
 
+    /** Főpanel objektum */
     private ApplicationPanel panel;
 
     /**
@@ -29,12 +35,24 @@ public class Application{
      * Az Application alkalmazás kezelőnek könnyít az ablakkezelésben úgy hogy nézeteket hoz létre.
      * Az ablakot 600x600-asra állítja
      */
-    private class ApplicationPanel extends JFrame {
+    @SuppressWarnings("serial")
+	private class ApplicationPanel extends JFrame {
+        
+        /** Kártya layout objektum */
         private CardLayout cardLayout;
+        
+        /** Menu panel. */
         private MenuPanel menuPanel;
+        
+        /** Veszített panel */
         private JPanel gameOver;
+        
+        /** Győzött panel */
         private JPanel win;
 
+        /**
+         * Konstruktor az alkalmazáspanelhez
+         */
         public ApplicationPanel (){
             super();
             setTitle("I LIKE TRAINS");
@@ -61,7 +79,7 @@ public class Application{
         }
 
         /**
-         * Játék nézet
+         * Játék nézet.
          */
         public void newGameView(){
             menuPanel.setVisible(false);
@@ -70,21 +88,21 @@ public class Application{
         }
 
         /**
-         * Menünézet/Stop nézet
+         * Menünézet/Stop nézet.
          */
         public void stopView() {
             menuPanel.setVisible(true);
         }
 
         /**
-         * Nyerésnél előjövő nézet
+         * Nyerésnél előjövő nézet.
          */
         public void winView(){
             win.setVisible(true);
         }
 
         /**
-         * Vesztés nézet
+         * Vesztés nézet.
          */
         public void gameOverView(){
             gameOver.setVisible(true);
@@ -92,7 +110,7 @@ public class Application{
 
         /**
          * Elkészíti a játék végét jelző JPanelt,ami egy szöveg, plusz egy "New Game" gomb
-         * ami elindítja újra a pályát
+         * ami elindítja újra a pályát.
          */
         private void initGameOver(){
             gameOver=new JPanel(new FlowLayout());
@@ -118,7 +136,7 @@ public class Application{
 
         /**
          * A nyerésnél megjelenített panelt készíti el, egy szöveg és egy "Start Next Map" gomb
-         * ami indítja a következő pályát
+         * ami indítja a következő pályát.
          */
         private void initWin() {
             win=new JPanel();
@@ -144,7 +162,7 @@ public class Application{
     }
 
     /**
-     * Panel manager
+     * Panel menedzser
      */
     public Application(){
         panel = new ApplicationPanel();
@@ -206,7 +224,7 @@ public class Application{
 
     /**
      * Leállítja a contorllert és a gamegui-t is, egyik sem rajzol/mozgat tovább
-     * A menü lesz látható
+     * A menü lesz látható.
      */
     public void stop() {
 	    timer.stop();
@@ -216,7 +234,7 @@ public class Application{
 	}
 
     /**
-     * Bezárja az alkalmazást
+     * Bezárja az alkalmazást.
      */
 	public void exit() {
 		panel.setVisible(false);
@@ -227,7 +245,7 @@ public class Application{
 	}
 
 	/**
-	 * Vesztett a játékos, ehhez tartozó jpanelt jeleníti meg
+	 * Vesztett a játékos, ehhez tartozó jpanelt jeleníti meg.
 	 */
 	public void gameOver() {
         timer.stop();
@@ -236,7 +254,7 @@ public class Application{
 	}
 	
 	/**
-	 * Nyert a játékos, ehhez tartozó jpanel jelenik meg
+	 * Nyert a játékos, ehhez tartozó jpanel jelenik meg.
 	 */
 	public void win(){
         timer.stop();

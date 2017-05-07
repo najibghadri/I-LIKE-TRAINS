@@ -322,12 +322,14 @@ public class RailCenter {
 	}
 
 	/**
-	 * Generate filename.
+	 * Fájlnévhez hozzáfűzi a jelenlegi elérési utat és a mappa nevét
 	 *
-	 * @param name the name
-	 * @return the string
+	 * @param name fájlnév
+	 * @param dir mappannév
+	 * 
+	 * @return elérési útvonal
 	 */
-	//Fájlnévhez hozzáfűzi a jelenlegi elérési utat és a mappa nevét
+	
 	private String generateFilename(String dir,String name) {
 		String FILENAME =System.getProperty("user.dir");
 		if(name.contains(".txt")){
@@ -497,10 +499,20 @@ public class RailCenter {
 			return 0;
 	}
 	
+	/**
+	 * Visszaadja az állomáslistát
+	 *
+	 * @return Állomások listája
+	 */
 	public List<Station> getStations(){
 		return stations;
 	}
 	
+	/**
+	 * Visszaadja a vonatkocsik listáját
+	 *
+	 * @return Vonatkocsik listája
+	 */
 	public List<Cart> getCarts() {
 		return carts;
 	}

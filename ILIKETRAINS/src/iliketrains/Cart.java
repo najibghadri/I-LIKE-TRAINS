@@ -85,7 +85,4 @@ public class Cart {
 	public TrackComponent getCurrentTrack() {
 		return currentTrack;
 	}
-	
-	
-
 }

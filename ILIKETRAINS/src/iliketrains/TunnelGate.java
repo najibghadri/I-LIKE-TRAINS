@@ -85,6 +85,11 @@ public class TunnelGate extends TrackComponent implements Controllable {
     		return "inactive";
     }
 
+	/**
+	 * Visszaadja az alagútbejárat állapotát
+	 *
+	 * @return Állapot
+	 */
 	public boolean getState() {
 		return active;
 	}

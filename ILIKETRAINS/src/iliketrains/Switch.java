@@ -81,6 +81,11 @@ public class Switch extends TrackComponent implements Controllable {
     		return adjacentTracks.get(1);
     }
     
+    /**
+     * Visszaadja a váltó állását
+     *
+     * @return Váltó állása
+     */
     public boolean getState(){
     	return direction;
     }

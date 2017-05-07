@@ -16,5 +16,10 @@ public interface Controllable {
 	 */
 	int getId();
 
+	/**
+	 * A típust visszaadó függvény absztrakt verziója
+	 *
+	 * @return Típus
+	 */
 	String getType();
 }

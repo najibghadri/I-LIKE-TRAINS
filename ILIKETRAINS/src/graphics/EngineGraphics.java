@@ -11,15 +11,31 @@ import java.awt.image.BufferedImage;
 
 import skeleton.IliketrainsGUI;
 
+/**
+ * Mozdony kirajzolását segítő függvény
+ */
 public class EngineGraphics extends Drawable {
 
+	/** Mozdony referenciája */
 	private Engine engine;
 
+	/**
+	 * Konstruktor
+	 *
+	 * @param x Kép x koordinátája
+	 * @param y Kép y koordinátája
+	 * @param rotation Elforgatás szöge
+	 */
 	public EngineGraphics(int x, int y, int rotation) {
 		super(x, y, rotation);
 		textures.add(Resources.getTexture("engine"));
 	}
 
+	/**
+	 * Kirajzolást végző függvény
+	 * 
+	 * @param g Amin a kirajzolást végezzük
+	 */
 	@Override
 	public void draw(Graphics g) {
 		move();
@@ -31,10 +47,19 @@ public class EngineGraphics extends Drawable {
 		g2d.drawImage(img, transform, null);
 	}
 
+	/**
+	 * Beállítja a referenciáját a paraméterben megadott
+	 * mozdonynak
+	 *
+	 * @param cart Mozdonyreferencia
+	 */
 	public void setCartReference(Cart cart) {
 		engine = (Engine) cart;
 	}
 
+	/**
+	 * Lépést megvalósító függvény
+	 */
 	protected void move() {
 		AffineTransform tr = new AffineTransform();
 

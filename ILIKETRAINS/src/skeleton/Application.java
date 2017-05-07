@@ -8,6 +8,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+/**
+ * Az alkalmazás konstruktora, létrehozza, beállítja a paneleket, és
+ * Controllert példányosít, átadja a gamegui-nak
+ * Végül csak a menüt teszi láthatóvá
+ */
 public class Application{
 	private IliketrainsGUI gamegui;
 	private Controller controller;
@@ -19,6 +24,11 @@ public class Application{
 
     private ApplicationPanel panel;
 
+    /**
+     * Alkalmazás panelezéséért felelős. Egy cardLayout segítségével rendezi a paneleket
+     * Az Application alkalmazás kezelőnek könnyít az ablakkezelésben úgy hogy nézeteket hoz létre.
+     * Az ablakot 600x600-asra állítja
+     */
     private class ApplicationPanel extends JFrame {
         private CardLayout cardLayout;
         private MenuPanel menuPanel;
@@ -50,26 +60,39 @@ public class Application{
             win.setVisible(false);
         }
 
+        /**
+         * Játék nézet
+         */
         public void newGameView(){
             menuPanel.setVisible(false);
             win.setVisible(false);
             gameOver.setVisible(false);
         }
 
+        /**
+         * Menünézet/Stop nézet
+         */
         public void stopView() {
             menuPanel.setVisible(true);
         }
 
+        /**
+         * Nyerésnél előjövő nézet
+         */
         public void winView(){
             win.setVisible(true);
         }
 
+        /**
+         * Vesztés nézet
+         */
         public void gameOverView(){
             gameOver.setVisible(true);
         }
 
         /**
-         * Elkészíti a játék végét jelző JPanelt, szöveg, plusz egy "Újra" gomb
+         * Elkészíti a játék végét jelző JPanelt,ami egy szöveg, plusz egy "New Game" gomb
+         * ami elindítja újra a pályát
          */
         private void initGameOver(){
             gameOver=new JPanel(new FlowLayout());
@@ -93,7 +116,8 @@ public class Application{
         }
 
         /**
-         * A nyerésnél megjelenített panelt készíti el
+         * A nyerésnél megjelenített panelt készíti el, egy szöveg és egy "Start Next Map" gomb
+         * ami indítja a következő pályát
          */
         private void initWin() {
             win=new JPanel();
@@ -109,7 +133,6 @@ public class Application{
             btnNewGame.setVerticalAlignment(JLabel.CENTER);
             win.add(btnNewGame);
             btnNewGame.addActionListener(new ActionListener() {
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     startNewGame();
@@ -139,8 +162,11 @@ public class Application{
 	}
 
 	/**
-	 * Betöltteti a soron következő pályát, lekéri a grafikához szükséges elemeket
-	 * és a grafikai elemeket is létrehozatja a gamegui-val
+     * Játékot indít:
+     * Előkészíti a jéték nézetet (gamegui) majd
+     * A controller-el új játékot inicializál
+     * Előkészíti a hang effekteket
+     * És Elkezdi a játékot egy szinkronizált swing timer-el.
 	 */
 	public void startNewGame(){
         panel.newGameView();
@@ -164,7 +190,8 @@ public class Application{
 	}
 
     /**
-     * Stops the game
+     * Leállítja a contorllert és a gamegui-t is, egyik sem rajzol/mozgat tovább
+     * A menü lesz látható
      */
     public void stop() {
 	    timer.stop();
@@ -175,7 +202,7 @@ public class Application{
 	}
 
     /**
-     * Exit from the game
+     * Bezárja az alkalmazást
      */
 	public void exit() {
 		panel.setVisible(false);

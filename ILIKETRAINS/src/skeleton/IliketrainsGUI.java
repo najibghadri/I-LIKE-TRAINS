@@ -111,6 +111,10 @@ public class IliketrainsGUI {
 			});
 		}
 
+		/**
+		 * A kirajzolás metódusa. Előszot a szöveget rajzolja, majd a síneket, erre a vonatokat,
+		 * utoljára az állomásokat.
+		 */
 		@Override
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
@@ -146,6 +150,8 @@ public class IliketrainsGUI {
 	/**
 	 * Pálya grafikájának betöltése A controllertől lekéri a szükséges
 	 * referenciákat a logikára
+	 * Külön map-be tölti be a síneket, a kattintható objektumokat, vonatokat és állomásokat
+	 * A logikára mutató referenciákat beállítja a grafikai elemeknek, ahol kell 
 	 */
 	public void loadGraphicsMap() {
 		trackMap.clear();
@@ -165,12 +171,15 @@ public class IliketrainsGUI {
 			while ((currentLine = br.readLine()) != null) {
 				String[] line = currentLine.split(",");
 				
-				int componentId = Integer.parseInt(line[0]);
+				int componentId = Integer.parseInt(line[0]);	//sín id
 				
-				String[] pos = line[1].split(":");
+				String[] pos = line[1].split(":");				//sín pozíciója a pályán
 				int x = Integer.parseInt(pos[0]);
 				int y = Integer.parseInt(pos[1]);
-				int rotation = Integer.parseInt(line[3]);
+				int rotation = Integer.parseInt(line[3]);		//sín forgatási értéke fokban
+				
+				//Eldönti hogy ebben a sorban milyen típusú sínt kell példányosítani
+				//Ezt behelyezi a trackMap-ba
 				switch (line[2]) {
 				case "curve":
 					TurnTrackComponentGraphics ttcg = new TurnTrackComponentGraphics(
@@ -214,13 +223,13 @@ public class IliketrainsGUI {
 			}
 		}
 
+		//Logikában betöltött elemek lekérése
 		List<Controllable> controllables = controller.getControllables();
 		List<Cart> carts = controller.getCarts();
 		List<Station> stations = controller.getStations();
 		
 		
-		// controllables-ből id alapján kivenni és beállítani a megfelelő Drawablenek
-		// stationok litából szín és id alapján lehet sín helye alapján  beállítani
+		// controllables-ből id alapján kivenni és beállítani a megfelelő Drawablenek a sínelemet
 		for(Controllable c : controllables){
 			String type=c.getType();
 			switch (type) {
@@ -237,6 +246,8 @@ public class IliketrainsGUI {
 			}
 		}
 		
+		//Az összes kocsin végigiterál, mindhez megfelelő Drawable leszármazottat példányosít
+		//Beállítja nekik a referenciát, és behelyezi pket a trainMap-ba
 		for(Cart c : carts){
 			String type=c.getType();
 			switch (type) {
@@ -260,6 +271,8 @@ public class IliketrainsGUI {
 			}
 		}
 		
+		// stationok litát feldolgozza, mindhez létrehoz grafikai megfelelőt, és megkeresí a sínt ahol van
+		//Ennek a helyét állítja be magának is
 		for(Station s:stations){
 			Point pos=trackMap.get(s.getId()).getPos();
 			int rot=trackMap.get(s.getId()).getRotation();

@@ -100,7 +100,8 @@ public class Tunnel {
 	private void createTunnel(TunnelGate in, TunnelGate out) {
 		int localId=firstID;
 		Random rand = new Random();
-		lengthOfTunnel=rand.nextInt(2) + 3;; 											//random alagút, 3-5 között
+		//random alagút, 3-5 között
+		lengthOfTunnel=rand.nextInt(2) + 3;											
 		List<TrackComponent> tunnelTracks=new ArrayList<TrackComponent>();
 		
 		for(int i=0;i<lengthOfTunnel;i++){
@@ -132,6 +133,11 @@ public class Tunnel {
 		singleton = new Tunnel();
     }
 
+	/**
+	 * Visszaadja az alagút hosszát
+	 *
+	 * @return Alagút hossza
+	 */
 	public int getLength() {
 		return lengthOfTunnel;
 	}

@@ -10,11 +10,19 @@ import javax.imageio.ImageIO;
 
 /**
  * {@link Resources}
- * Static utility class to use game textures
+ * Statikus osztály az erőforrások tárolására
  */
 public class Resources {
+	
+	/** Textúrákat tároló lista */
 	private static Map<String, BufferedImage> textures;
 
+    /**
+     * Egy texturaelem lekérését végző osztály
+     *
+     * @param name textura neve
+     * @return the visszaadott textura
+     */
     public static BufferedImage getTexture(String name){
         return textures.get(name);
     }
@@ -60,11 +68,23 @@ public class Resources {
 		}
 	}
 	
+	/**
+	 * Textura betöltését végző függvény
+	 *
+	 * @param name textura neve
+	 * @throws IOException I/O művelet során dobhat hibát
+	 */
 	private static void loadTexture(String name) throws IOException{
 		BufferedImage im=ImageIO.read(new File(generateFilename(name)));
 		textures.put(name, im);
 	}
 	
+	/**
+	 * Fájlnév generáló a megfelelő fájlnév+elérési útvonalhoz
+	 *
+	 * @param name Kívánt textura
+	 * @return Elérési útvonal
+	 */
 	private static String generateFilename(String name) {
 		String FILENAME =System.getProperty("user.dir");
 		if(name.contains(".png")){

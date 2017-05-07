@@ -4,10 +4,20 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Menüablakot megvalósító osztály
+ */
 public class MenuPanel extends JPanel{
-	
+
+    /** Az applikációra mutató referencia */
 	private Application app;
-	
+
+    /**
+     * Menü panel csak 2 gombból áll, egyik az új játékot indítja, másik kilép az alkalmazásból.
+     * Az Application függvényeit hívják a gombnyomások
+     *
+     * @param application the application
+     */
 	public MenuPanel(Application application) {
 		super();
 		app=application;

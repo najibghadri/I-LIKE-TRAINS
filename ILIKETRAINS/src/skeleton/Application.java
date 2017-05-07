@@ -196,9 +196,8 @@ public class Application{
     public void stop() {
 	    timer.stop();
         sound.stop();
+        gamegui.panel().setVisible(false);
 		panel.stopView();
-		gamegui.panel().setVisible(false);
-
 	}
 
     /**
@@ -217,6 +216,7 @@ public class Application{
 	 */
 	public void gameOver() {
         timer.stop();
+        gamegui.panel().setVisible(false);
 		panel.gameOverView();
 	}
 	
@@ -225,6 +225,7 @@ public class Application{
 	 */
 	public void win(){
         timer.stop();
+        gamegui.panel().setVisible(false);
 		panel.winView();
 	}
 

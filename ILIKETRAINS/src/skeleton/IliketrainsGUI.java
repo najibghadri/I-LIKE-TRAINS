@@ -175,7 +175,9 @@ public class IliketrainsGUI extends JPanel {
 					break;
 				case "cross":
 					CrossGraphics cross = new CrossGraphics(x, y, rotation);
-					trackMap.put(id, cross);
+					trackMap.put(componentId, cross);
+					break;
+				default:
 					break;
 				}
 			}
@@ -245,6 +247,7 @@ public class IliketrainsGUI extends JPanel {
 			sg.setStationReference(s);
 			stationMap.put(s.getId(), sg);
 		}
+		
 	}
 
 	/**

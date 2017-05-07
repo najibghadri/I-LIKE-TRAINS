@@ -358,6 +358,7 @@ public class RailCenter {
 			br = new BufferedReader(new FileReader(FILENAME));
 			
 			while ((currentLine = br.readLine()) != null) {
+				List<Cart> trainCarts=new ArrayList<Cart>();
 				List<PassengerCart> passenger=new ArrayList<PassengerCart>();
 				
 				//Szétdarabolni a kocsilistát
@@ -373,7 +374,7 @@ public class RailCenter {
 				
 				//Létrehoz mozdonyt, listákhoz adja
 				Engine engine=new Engine(highestCartId,this,e, null);
-				carts.add(engine);
+				trainCarts.add(engine);
 				engines.add(engine);
 				highestCartId++;
 				
@@ -382,8 +383,8 @@ public class RailCenter {
 					//Ha szeneskocsi
 					if(trainPart[i].equals("0")){
 						CoalCart c=new CoalCart(highestCartId);
-						carts.add(c);
-						carts.get(i-1).setNextCart(c);
+						trainCarts.add(c);
+						trainCarts.get(i-1).setNextCart(c);
 					}
 					//Ha nem szenes, akkor utas
 					else{
@@ -396,11 +397,12 @@ public class RailCenter {
 							passenger.get(passenger.size()-1).addNext(p);				//Különben az előző utaskocsihoz
 						
 						passenger.add(p);
-						carts.add(p);
-						carts.get(i-1).setNextCart(p);
+						trainCarts.add(p);
+						trainCarts.get(i-1).setNextCart(p);
 					}
 					highestCartId++;
 				}
+				carts.addAll(trainCarts);
 			}	
 			Game.log("loadtrain "+name+" success");
 		} catch (IOException e) {			

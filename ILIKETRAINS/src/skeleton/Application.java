@@ -33,7 +33,8 @@ public class Application extends JFrame{
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 		setVisible(true);
-		Resources res=new Resources("");
+
+		//Resources loaded statically
 		controller=new Controller(this);
 		gamegui=new IliketrainsGUI(this, controller);
 		menu=new Menu(this);

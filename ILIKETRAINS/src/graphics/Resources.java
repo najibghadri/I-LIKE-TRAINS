@@ -8,10 +8,19 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+/**
+ * {@link Resources}
+ * Static utility class to use game textures
+ */
 public class Resources {
 	private static Map<String, BufferedImage> textures;
-	
-	public Resources(String filepath){
+
+    public static BufferedImage getTexture(String name){
+        return textures.get(name);
+    }
+
+	//Static execution, no need to call
+	static {
 		textures=new HashMap<String, BufferedImage>();
 		try {
 			loadTexture("entryPoint");
@@ -50,16 +59,12 @@ public class Resources {
 		}
 	}
 	
-	private void loadTexture(String name) throws IOException{
+	private static void loadTexture(String name) throws IOException{
 		BufferedImage im=ImageIO.read(new File(generateFilename(name)));
 		textures.put(name, im);
 	}
 	
-	public static BufferedImage getTexture(String name){
-		return textures.get(name);
-	}
-	
-	public String generateFilename(String name) {
+	private static String generateFilename(String name) {
 		String FILENAME =System.getProperty("user.dir");
 		if(name.contains(".png")){
 			FILENAME=FILENAME+"\\res\\textures\\"+name;

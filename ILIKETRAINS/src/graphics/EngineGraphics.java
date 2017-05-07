@@ -1,15 +1,8 @@
 package graphics;
 
-import iliketrains.Cart;
-import iliketrains.Engine;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-
-import skeleton.IliketrainsGUI;
 
 /**
  * Mozdony kirajzolását segítő függvény

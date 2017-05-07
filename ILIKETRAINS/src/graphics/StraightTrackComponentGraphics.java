@@ -1,5 +1,7 @@
 package graphics;
 
+import iliketrains.TrackComponent;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -7,7 +9,7 @@ import java.awt.image.BufferedImage;
 /**
  * Egyenes sínelem kirajzolását segítő osztály
  */
-public class StraightTrackComponentGraphics extends Drawable{
+public class StraightTrackComponentGraphics extends TrackDrawable {
 
 	/**
 	 * Konstruktor
@@ -19,6 +21,16 @@ public class StraightTrackComponentGraphics extends Drawable{
 	public StraightTrackComponentGraphics(int x,int y,int rotation) {
 		super(x, y, rotation);
 		textures.add(Resources.getTexture("straightTrackComponent"));
+	}
+
+    /**
+     * Visszaadja az elforgatási értéket és irányt hogy a haladási iránynak megfelelő legyen
+     * @param previous érkezési trackcomponent
+     * @return elforgratási irány
+     */
+	@Override
+	public int getCartRotation(TrackComponent previous) {
+		return trackComponent.getNextDir(previous) * 180;
 	}
 
 	/**

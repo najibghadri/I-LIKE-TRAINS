@@ -41,7 +41,7 @@ public class TrackComponent {
 
     /**
      * Megszűnteti az a sínhez való csatlakozást
-     * @param track A szomszédos pályaelem referenciája
+     * @param tunnelTrack A szomszédos pályaelem referenciája
      */
     public void removeAdjacentTrack(TrackComponent tunnelTrack) {
         adjacentTracks.remove(tunnelTrack);
@@ -67,6 +67,13 @@ public class TrackComponent {
         }
 		else
             return null;
+	}
+
+	public int getNextDir(TrackComponent previous){
+		if(previous==null)
+			return 0;
+
+		return adjacentTracks.indexOf(previous);
 	}
 
 	/**

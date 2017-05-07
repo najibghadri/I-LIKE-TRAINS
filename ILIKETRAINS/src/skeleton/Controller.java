@@ -1,11 +1,9 @@
 package skeleton;
 
 import java.util.List;
+import java.util.Map;
 
-import iliketrains.Cart;
-import iliketrains.Controllable;
-import iliketrains.RailCenter;
-import iliketrains.Station;
+import iliketrains.*;
 
 /**
  * A Kontroller osztály valósítja meg az kapcsolható elemek kapcsolhatóságát
@@ -20,16 +18,10 @@ public class Controller {
 
     /** Jelenlegi térkép fájl*/
 	private int numberOfMap=1;
-
-	/**
-	 * Applicationra referencia, arra kell hogy szóljunk,
-	 *  ha nyer vagy veszít a játékos
-	 */
-	private Application app;
 	
-	public Controller(Application application) {
-	    app=application;
-	}
+	public Controller() {
+
+    }
 
 	/**
 	 * Játék alatt működő időzítőt valósítja meg (bizonyos időközönként lép)
@@ -37,17 +29,16 @@ public class Controller {
 	 * Leállítja a timer objektumot, már nem kell lépni többet
 	 * Ha nyer, akkor a következő pályát állítja be
 	 */
-	public void gameTick() {
+	public EventResult gameTick() {
 		railCenter.moveEngines();
 		
 	      if(railCenter.getAnyCollided()){
 			  System.out.println("GAME OVER, YOU LOST!");
-			  app.gameOver();
+			  return EventResult.LOSE;
 
 		  }
 		  if(railCenter.getAllEmptyStatus()){
 			  System.out.println("SUCCESS, YOU WON!");
-			  app.win();
 
 			  //Proceed on to the next maps
 			  numberOfMap++;
@@ -55,7 +46,10 @@ public class Controller {
 				  System.out.println("Nincs több pálya");
 				  numberOfMap=1;
 			  }
+
+			  return EventResult.WIN;
 		  }
+        return EventResult.CONTINUE;
 	}
     
 	/**
@@ -102,6 +96,11 @@ public class Controller {
 	public List<Station> getStations() {
 		return railCenter.getStations();
 	}
+
+
+    public Map<Integer,TrackComponent> getTrackComponents() {
+        return railCenter.getTrackComponents();
+    }
 	
 	
 }

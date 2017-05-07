@@ -8,6 +8,17 @@ public class Cart {
 
 	/** A sín elem, amin aktuálisan tartózkodik */
 	protected TrackComponent currentTrack;
+
+	/**
+	 * Visszaadja az előző sín referenciáját
+	 * @return Előző sín pozíció
+	 */
+	public TrackComponent getPrevious() {
+		return previous;
+	}
+
+	/**  A korábbi sínelem referneciáját tárolja az előrehaladás miatt. */
+	protected TrackComponent previous;
 	
 	/** Vonatkocsi azonosítója */
 	private int id;
@@ -43,9 +54,11 @@ public class Cart {
      * Visszaadja a következő kocsi referenciáját
      * @return Következő kocsi referenciája
      */
-    public Cart getNext(){
+    public Cart getNextCart(){
     	return next;
     }
+
+
 
 	/**
 	 * A vonatkocsit mozgató függvény, a paraméteréül kapott objektumra mozgat
@@ -55,17 +68,28 @@ public class Cart {
 		if(whereTo==null){
 			return;
 		}
+
+		//Előző beállítása
+		TrackComponent newPrev=currentTrack;
+
 		//Ha ez még pályán kívül volt akkor a következőt nem próbálja üres helyre rakni
 		if(currentTrack==null){
 			whereTo.putCart(this);		
 			currentTrack=whereTo;
+			previous = newPrev;
 			return;
 		}
+
+		//mozgás maga
 		currentTrack.removeCart(this);
-		whereTo.putCart(this);		
+		whereTo.putCart(this);
+
 		if(next!=null)	//ha nem utolsó kocsiról van szó
 			next.moveCart(currentTrack);	//következő kocsi mozgatása
+
+		//mozgás véglegesítésa
 		currentTrack=whereTo;
+		previous = newPrev;
 	}
 	
 	/**

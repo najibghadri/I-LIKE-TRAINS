@@ -1,5 +1,7 @@
 package graphics;
 
+import iliketrains.TrackComponent;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -7,7 +9,7 @@ import java.awt.image.BufferedImage;
 /**
  * A kanyar sínelem kirajzolását végző osztály
  */
-public class TurnTrackComponentGraphics extends Drawable {
+public class TurnTrackComponentGraphics extends TrackDrawable {
 
 	/**
 	 * Konstruktor
@@ -19,6 +21,11 @@ public class TurnTrackComponentGraphics extends Drawable {
 	public TurnTrackComponentGraphics(int x, int y, int rotation) {
 		super(x, y, rotation);
 		textures.add(Resources.getTexture("turnTrackComponent"));
+	}
+
+	@Override
+	public int getCartRotation(TrackComponent previous) {
+		return trackComponent.getNextDir(previous) * 180 + 45;
 	}
 
 	/**

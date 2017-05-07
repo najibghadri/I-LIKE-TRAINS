@@ -12,9 +12,6 @@ public class Engine extends Cart {
 	
 	/**  Első utaskocsi referenciáját tárolja. */
 	private PassengerCart firstPassengerCart;
-	
-	/**  A korábbi sínelem referneciáját tárolja az előrehaladás miatt. */
-	private TrackComponent previous;
 
 	/**
 	 * Konstruktor.
@@ -37,7 +34,6 @@ public class Engine extends Cart {
 	 * Ha a 7-es teszteset van, akkor ez kimarad (csak ismétlés lenne) és csak az állomás ellenõrzés történik meg
 	 */
 	public void move() {
-		TrackComponent newPrev=currentTrack;
 		TrackComponent nextTrack=currentTrack.getNext(previous);
 		if(nextTrack==null){	//ha nincs tovább, vagyis zsákutcába kerültünk
 			Game.log("Engine("+this.getId()+"): collides with deadend at "+currentTrack.getType()+"("+currentTrack.getId()+")");
@@ -45,7 +41,6 @@ public class Engine extends Cart {
 		}
 		else{
 			moveCart(nextTrack);	//engine (és ezáltal az egész szerelvény) mozgatása a következő pályaelemre
-			previous=newPrev;
 			Game.log("Engine("+this.getId()+"): moves to "+nextTrack.getType()+"("+nextTrack.getId()+")");
 			checkStation();
 		}
@@ -135,13 +130,5 @@ public class Engine extends Cart {
     public String getType(){
         return "Engine";
     }
-    
-    /**
-     * Visszaadja az előző sín referenciáját
-     *
-     * @return Előző sín referenciája
-     */
-    public TrackComponent getPrevious(){
-    	return previous;
-    }
+
 }

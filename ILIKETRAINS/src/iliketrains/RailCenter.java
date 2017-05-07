@@ -20,6 +20,9 @@ public class RailCenter {
 	
 	/**  Az állomások listája. */
 	private List<Station> stations;
+
+    /**Sínek hash mapja */
+	private Map<Integer,TrackComponent> trackComponents = new HashMap<>();
 	
 	/**  A belépési pontok listája. */
 	private List<EntryPoint> entryPoints;
@@ -131,7 +134,7 @@ public class RailCenter {
 		String FILENAME = generateFilename("maps",name);		
 		BufferedReader br = null;
 		FileReader fr = null;
-		List<TrackComponent> list=new ArrayList<TrackComponent>();
+		List<TrackComponent> list=new ArrayList<>();
 		
 		try {
 			fr = new FileReader(FILENAME);
@@ -173,6 +176,7 @@ public class RailCenter {
                         break;
                     }
 				}
+                trackComponents.put(list.size(),list.get(list.size()-1));
 			}
 
 			//Set the highest track ID to the TC generating tunnel
@@ -246,7 +250,7 @@ public class RailCenter {
 	/**
 	 * Létrehozza a TrackComponenteket
 	 *
-	 * @param list Pályaelem lista 
+	 * @param list Pályaelem lista
 	 * @param currentLine Az aktuálisan beolvasott pályaelem adatait tartalmazó input string
 	 */
 	private void createTrackComponent(List<TrackComponent> list,
@@ -284,7 +288,7 @@ public class RailCenter {
 	/**
 	 * Létrehozza a belépési pontokat
 	 *
-	 * @param list Pályaelem lista 
+	 * @param list Pályaelem lista
 	 * @param currentLine Az aktuálisan beolvasott belépési pont adatait tartalmazó input string
 	 */
 	private void createEntryPoint(List<TrackComponent> list,
@@ -304,7 +308,7 @@ public class RailCenter {
 	/**
 	 * Létrehozza a alagútszájakat
 	 *
-	 * @param list Pályaelem lista 
+	 * @param list Pályaelem lista
 	 * @param currentLine Az aktuálisan beolvasott alagútszáj adatait tartalmazó input string
 	 */
 	private void createTunnelGate(List<TrackComponent> list,
@@ -439,7 +443,7 @@ public class RailCenter {
                     Game.log("| "+getPrintStyleName(temp)+" |@ null");
                 else
                     Game.log("| "+getPrintStyleName(temp)+" |@ "+temp.currentTrack.getType()+ " ("+temp.currentTrack.getId()+")");
-                temp = temp.getNext();
+                temp = temp.getNextCart();
             }while(temp != null);
         }
     }
@@ -516,4 +520,13 @@ public class RailCenter {
 	public List<Cart> getCarts() {
 		return carts;
 	}
+
+    /**
+     * Visszaadja a sínek listáját
+     *
+     * @return sínek listája
+     */
+    public Map<Integer, TrackComponent> getTrackComponents() {
+        return trackComponents;
+    }
 }

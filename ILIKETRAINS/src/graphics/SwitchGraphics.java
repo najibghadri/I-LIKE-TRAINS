@@ -2,6 +2,7 @@ package graphics;
 
 import iliketrains.Controllable;
 import iliketrains.Switch;
+import iliketrains.TrackComponent;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -10,7 +11,7 @@ import java.awt.image.BufferedImage;
 /**
  * Váltó kirajzolásást végző függvény
  */
-public class SwitchGraphics extends Drawable {
+public class SwitchGraphics extends TrackDrawable {
 
 	/** A váltó referenciája, switch szó nem hasdználható... */
 	private Switch switchy;
@@ -64,4 +65,8 @@ public class SwitchGraphics extends Drawable {
 		switchy = (Switch) controllable;
 	}
 
+	@Override
+	public int getCartRotation(TrackComponent previous) {
+		return 0;
+	}
 }

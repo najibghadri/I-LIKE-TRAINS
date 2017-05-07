@@ -1,6 +1,7 @@
 package graphics;
 
 import iliketrains.Controllable;
+import iliketrains.TrackComponent;
 import iliketrains.TunnelGate;
 
 import java.awt.Graphics;
@@ -10,7 +11,7 @@ import java.awt.image.BufferedImage;
 /**
  * Alagútbejárat kirajzolását végző osztály
  */
-public class TunnelGateGraphics extends Drawable {
+public class TunnelGateGraphics extends TrackDrawable {
 
 	/** Referencia az alagútosztályra */
 	private TunnelGate tunnelGate;
@@ -26,6 +27,11 @@ public class TunnelGateGraphics extends Drawable {
 		super(x, y, rotation);
 		textures.add(Resources.getTexture("tunnelGateInactive"));
 		textures.add(Resources.getTexture("tunnelGateActive"));
+	}
+
+	@Override
+	public int getCartRotation(TrackComponent previous) {
+		return 0;
 	}
 
 	/**

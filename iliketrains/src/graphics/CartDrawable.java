@@ -1,7 +1,7 @@
 package graphics;
 
 import iliketrains.Cart;
-import skeleton.IliketrainsGUI;
+import skeleton.ILikeTrainsGameGUI;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -40,22 +40,24 @@ public abstract class CartDrawable extends Drawable {
             return;
         }
 
-        Drawable current= IliketrainsGUI.getTrackMap().get(cart.getCurrentTrack().getId());
+        TrackDrawable currentTrackGraphics = ILikeTrainsGameGUI.getTrackMap().get(cart.getCurrentTrack().getId());
 
-        if(current == null){
+        if(currentTrackGraphics == null){
             tr.scale(0, 0);
             transform=tr;
             return;
         }
 
-        Point p=current.getPos();
+        Point trackPos = currentTrackGraphics.getPos();
+
+        int cartRot =  currentTrackGraphics.getCartRotation(cart.getPrevious());
 
         // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
-        tr.rotate((Math.PI*current.getRotation())/180, p.x+30,p.y+30);
+        tr.rotate((Math.PI*(currentTrackGraphics.getRotation() + cartRot))/180, trackPos.x+30,trackPos.y+30);
 
 
         // a megfelelő pontra való mozgatás
-        tr.translate(p.getX(), p.getY());
+        tr.translate(trackPos.getX(), trackPos.getY());
         transform=tr;
     }
 

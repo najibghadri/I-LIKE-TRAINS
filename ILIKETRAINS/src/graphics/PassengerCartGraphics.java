@@ -6,11 +6,7 @@ import iliketrains.PassengerCart;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-
-import skeleton.IliketrainsGUI;
 
 /**
  * Utaskocsi kirajzolásást segítő osztály

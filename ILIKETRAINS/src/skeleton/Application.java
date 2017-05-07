@@ -14,7 +14,7 @@ import javax.swing.*;
  * Végül csak a menüt teszi láthatóvá
  */
 public class Application{
-	private IliketrainsGUI gamegui;
+	private ILikeTrainsGameGUI gamegui;
 	private Controller controller;
 
 	private Sound sound;
@@ -96,6 +96,7 @@ public class Application{
          */
         private void initGameOver(){
             gameOver=new JPanel(new FlowLayout());
+            //gameOver.setBackground(new Color(0,0,0,0));
             JLabel label1 = new JLabel();
             label1.setText("<html><h1>GAME OVER, YOU LOST!</h1></html>");
             label1.setBounds(0, 0, 200, 50);
@@ -121,6 +122,7 @@ public class Application{
          */
         private void initWin() {
             win=new JPanel();
+            //win.setBackground(new Color(0,0,0,0));
             JLabel label1 = new JLabel();
             label1.setText("<html><h1>SUCCESS, YOU WON!</h1></html>");
             label1.setBounds(0, 0, 200, 50);
@@ -151,10 +153,10 @@ public class Application{
         sound = new Sound();
 
         //Game logic controller
-		controller=new Controller(this);
+		controller=new Controller();
 
 		//Game canvas
-        gamegui=new IliketrainsGUI(this, controller);
+        gamegui=new ILikeTrainsGameGUI(this, controller);
         panel.add(gamegui.panel());
         gamegui.panel().setVisible(false);
 
@@ -181,8 +183,21 @@ public class Application{
 		//Start the timer
         ActionListener taskPerformer = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                controller.gameTick();
+                EventResult result = controller.gameTick();
                 gamegui.panel().repaint();
+
+                switch (result){
+                    case CONTINUE:
+                        break;
+                    case WIN:
+                        win();
+                        break;
+                    case LOSE:
+                        gameOver();
+                        break;
+                    default:
+                        break;
+                }
             }
         };
         timer = new Timer(750, taskPerformer);

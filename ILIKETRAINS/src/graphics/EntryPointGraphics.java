@@ -1,5 +1,7 @@
 package graphics;
 
+import iliketrains.TrackComponent;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -7,7 +9,7 @@ import java.awt.image.BufferedImage;
 /**
  * Belépési pontokat kirajzoló osztály
  */
-public class EntryPointGraphics extends Drawable{
+public class EntryPointGraphics extends TrackDrawable{
 
 	/**
 	 * Konstruktor
@@ -19,6 +21,11 @@ public class EntryPointGraphics extends Drawable{
 	public EntryPointGraphics(int x, int y, int rotation) {
 		super(x, y, rotation);
 		textures.add(Resources.getTexture("entryPoint"));
+	}
+
+	@Override
+	public int getCartRotation(TrackComponent previous) {
+		return 0;
 	}
 
 	/**

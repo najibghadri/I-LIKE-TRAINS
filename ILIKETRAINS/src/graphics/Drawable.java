@@ -7,15 +7,34 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Absztrakt grafikuselem osztály (közös ősnek)
+ */
 public abstract class Drawable {
 	
+	/** pozíció */
 	protected Point pos;
+	
+	/** Hozzátartozó textúrák */
 	protected List<BufferedImage> textures;
+	
+	/** Elforgatás szöge */
 	protected int rotation;
+	
+	/** Az erőforrásokat tároló objektumra mutató referencia */
 	protected static Resources resources;
+	
+	/** A transzformációhoz szügéges objektum */
 	protected AffineTransform transform;
 
 	
+	/**
+	 * Konstruktor (transzformációt is végez)
+	 *
+	 * @param x koordináta
+	 * @param y koordináta
+	 * @param rotation elforgatás szöge
+	 */
 	public Drawable(int x,int y,int rotation){
 		pos=new Point();
 		pos.x=x;
@@ -25,13 +44,21 @@ public abstract class Drawable {
 		transform=transform();
 	}
 	
-	// ezt a fv-t majd a játékpanel @override paintComponent()-jének fv-ébe kell meghívni, előtte egy super.paintcomponent() utána egy repaint() hívással (valszeg :))
+	/**
+	 * Kirajzolás abszrakt függvény
+	 * Ezt valósítja meg minden leszármazott.
+	 * Ezt a fv-t majd a játékpanel @override paintComponent()-jének fv-ébe 
+	 * kell meghívni, előtte egy super.paintcomponent() utána egy repaint() hívással)
+	 * 
+	 * @param g Referenciaértéke arra az objektumra, amire rajzolni fogunk
+	 */
 	public abstract void draw(Graphics g);
 	
 	/**
 	 * Affin transzformációkkal meghatározza a kép helyét a panelen. 
 	 * Ezt elég egyszer számolni a síneknél, helyük nem változik
-	 * @return
+	 *
+	 * @return A transzormált objektummal tér vissza
 	 */
 	protected AffineTransform transform() {
 		AffineTransform tr = new AffineTransform();
@@ -50,14 +77,18 @@ public abstract class Drawable {
 	}
 
 	/**
-	 * @return the pos
+	 * Visszaadja a pozíciót
+	 *
+	 * @return Pozíció
 	 */
 	public Point getPos() {
 		return pos;
 	}
 
 	/**
-	 * @return the rotation
+	 * Visszaadja az elforgatás szögét
+	 *
+	 * @return Elforgatás szöge
 	 */
 	public int getRotation() {
 		return rotation;

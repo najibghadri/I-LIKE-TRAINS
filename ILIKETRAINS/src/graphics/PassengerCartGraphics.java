@@ -12,14 +12,30 @@ import java.awt.image.BufferedImage;
 
 import skeleton.IliketrainsGUI;
 
+/**
+ * Utaskocsi kirajzolásást segítő osztály
+ */
 public class PassengerCartGraphics extends Drawable {
 
+	/** Utaskocsi referencia */
 	private PassengerCart passengerCart;
 
+	/**
+	 * Konstruktor
+	 *
+	 * @param x X koordináta
+	 * @param y Y koordináta
+	 * @param rotation Elforgatás szöge
+	 */
 	public PassengerCartGraphics(int x, int y, int rotation) {
 		super(x, y, rotation);
 	}
 
+	/**
+	 * Kirajzolást végző függvény
+	 * 
+	 * @param g Amin a kirajzolást végezzük
+	 */
 	@Override
 	public void draw(Graphics g) {
 		move();
@@ -38,6 +54,11 @@ public class PassengerCartGraphics extends Drawable {
 		g2d.drawImage(img, transform, null);
 	}
 
+	/**
+	 * Beállítja az utaskocsi referenciáját és a megfelelő texturát betölti
+	 *
+	 * @param pcart A kocsi referenciája
+	 */
 	public void setCartReference(Cart pcart) {
 		// ha átállítjuk a referenciát, akkor a régi textúrák helyett újakat kell betölteni
 		textures.clear();
@@ -47,6 +68,9 @@ public class PassengerCartGraphics extends Drawable {
 		textures.add(Resources.getTexture(c.toString()+"PassengerCartFull"));
 	}
 	
+	/**
+	 * Mozgatás kirajzolásának logikája
+	 */
 	protected void move() {
 		if(passengerCart.getCurrentTrack()==null){
 			return;

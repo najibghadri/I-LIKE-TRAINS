@@ -100,7 +100,7 @@ public class Tunnel {
 	private void createTunnel(TunnelGate in, TunnelGate out) {
 		int localId=firstID;
 		Random rand = new Random();
-		lengthOfTunnel=rand.nextInt(7) + 3;; 											//Később random lesz
+		lengthOfTunnel=rand.nextInt(2) + 3;; 											//random alagút, 3-5 között
 		List<TrackComponent> tunnelTracks=new ArrayList<TrackComponent>();
 		
 		for(int i=0;i<lengthOfTunnel;i++){

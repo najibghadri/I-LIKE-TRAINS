@@ -48,6 +48,7 @@ public class RailCenter {
 		engines=new ArrayList<Engine>();
 		entryPoints=new ArrayList<EntryPoint>();
 		stations=new ArrayList<Station>();
+		carts=new ArrayList<Cart>();
 	}
 	
 	/**
@@ -357,7 +358,6 @@ public class RailCenter {
 			br = new BufferedReader(new FileReader(FILENAME));
 			
 			while ((currentLine = br.readLine()) != null) {
-				carts=new ArrayList<Cart>();
 				List<PassengerCart> passenger=new ArrayList<PassengerCart>();
 				
 				//Szétdarabolni a kocsilistát

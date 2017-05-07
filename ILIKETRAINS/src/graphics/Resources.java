@@ -54,6 +54,7 @@ public class Resources {
 			loadTexture("YellowPassengerCartEmpty");
 			loadTexture("YellowPassengerCartFull");
 			loadTexture("CoalCart");
+			loadTexture("cross");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

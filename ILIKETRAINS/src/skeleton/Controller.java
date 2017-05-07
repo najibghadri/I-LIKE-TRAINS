@@ -71,7 +71,7 @@ public class Controller {
 
 			  //Proceed on to the next maps
 			  numberOfMap++;
-			  if(numberOfMap>2){
+			  if(numberOfMap>3){
 				  System.out.println("Nincs több pálya");
 				  numberOfMap=1;
 			  }

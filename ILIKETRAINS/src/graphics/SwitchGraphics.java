@@ -5,13 +5,24 @@ import iliketrains.Switch;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
+/**
+ * Váltó kirajzolásást végző függvény
+ */
 public class SwitchGraphics extends Drawable {
 
+	/** A váltó referenciája, switch szó nem hasdználható... */
 	private Switch switchy;
 
+	/**
+	 * Konstruktor
+	 *
+	 * @param x x pozíció
+	 * @param y y pozíció
+	 * @param rotation elforgatás szöge
+	 * @param i Tükrözéshez szükséges paraméter
+	 */
 	public SwitchGraphics(int x, int y, int rotation, int i) {
 		super(x, y, rotation);
 		if(i==1){
@@ -23,6 +34,11 @@ public class SwitchGraphics extends Drawable {
 		}
 	}
 
+	/**
+	 * Rajzolást végző függvény
+	 * 
+	 * @param g Amire a rajzolást végezzük
+	 */
 	@Override
 	public void draw(Graphics g) {
 		// lekérdezzük a váltó állását
@@ -39,6 +55,11 @@ public class SwitchGraphics extends Drawable {
 		g2d.drawImage(img, transform, null);
 	}
 
+	/**
+	 * Beállítja a referenciát a paraméterben kapottra
+	 *
+	 * @param controllable Paraméterben kapott referencia
+	 */
 	public void setTrackReference(Controllable controllable) {
 		switchy = (Switch) controllable;
 	}

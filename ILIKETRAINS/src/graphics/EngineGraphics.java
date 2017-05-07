@@ -22,11 +22,10 @@ public class EngineGraphics extends Drawable {
 
 	@Override
 	public void draw(Graphics g) {
-		// Most az első képet kéri le
-		BufferedImage img = textures.get(0);
-
 		move();
-		
+
+        // Most az első képet kéri le
+        BufferedImage img = textures.get(0);
 		// kirajzolás
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(img, transform, null);
@@ -39,12 +38,19 @@ public class EngineGraphics extends Drawable {
 	protected void move() {
 		AffineTransform tr = new AffineTransform();
 
-		Drawable current=IliketrainsGUI.getTrackMap().get(engine.getCurrentTrack().getId());
-		if(current==null){
+		if(engine.getCurrentTrack()==null){
 			tr.scale(0, 0);
 			transform=tr;
 			return;
 		}
+        Drawable current=IliketrainsGUI.getTrackMap().get(engine.getCurrentTrack().getId());
+
+        if(current == null){
+            tr.scale(0, 0);
+            transform=tr;
+            return;
+        }
+
 		Point p=current.getPos();
 		
         // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)

@@ -45,7 +45,6 @@ public class Controller {
 		app=application;
 	}
 
-
 	/**
 	 * Játék alatt működő időzítőt valósítja meg (bizonyos időközönként lép)
 	 */

@@ -38,17 +38,22 @@ public class CoalCartGraphics extends Drawable {
 	}
 	
 	protected void move() {
-		if(coalCart.getCurrentTrack()==null){
-			return;
-		}
 		AffineTransform tr = new AffineTransform();
 
-		Drawable current=IliketrainsGUI.getTrackMap().get(coalCart.getCurrentTrack().getId());
-		if(current==null){
+		if(coalCart.getCurrentTrack()==null ){
 			tr.scale(0, 0);
 			transform=tr;
 			return;
 		}
+
+        Drawable current=IliketrainsGUI.getTrackMap().get(coalCart.getCurrentTrack().getId());
+
+        if(current == null){
+            tr.scale(0, 0);
+            transform=tr;
+            return;
+        }
+
 		Point p=current.getPos();
 		
         // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)

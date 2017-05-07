@@ -18,6 +18,7 @@ public class PassengerCartGraphics extends Drawable {
 
 	public PassengerCartGraphics(int x, int y, int rotation) {
 		super(x, y, rotation);
+
 	}
 
 	@Override
@@ -48,22 +49,29 @@ public class PassengerCartGraphics extends Drawable {
 	}
 	
 	protected void move() {
-		if(passengerCart.getCurrentTrack()==null){
-			return;
-		}
 		AffineTransform tr = new AffineTransform();
 
-		Drawable current=IliketrainsGUI.getTrackMap().get(passengerCart.getCurrentTrack().getId());
-		if(current==null){
+		if(passengerCart.getCurrentTrack()==null){
 			tr.scale(0, 0);
 			transform=tr;
 			return;
 		}
-		Point p=current.getPos();
+
+        Drawable current=IliketrainsGUI.getTrackMap().get(passengerCart.getCurrentTrack().getId());
+
+        if(current == null){
+            tr.scale(0, 0);
+            transform=tr;
+            return;
+        }
+
+        Point p=current.getPos();
 		
         // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
         tr.rotate((Math.PI*current.getRotation())/180, p.x+30,p.y+30);
-        
+
+
+
         // a megfelelő pontra való mozgatás
         tr.translate(p.getX(), p.getY());
         transform=tr;

@@ -20,5 +20,4 @@ public class StraightTrackComponentGraphics extends Drawable{
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(img, transform, null);
 	}
-
 }

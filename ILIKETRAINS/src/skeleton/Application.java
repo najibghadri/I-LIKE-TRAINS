@@ -6,9 +6,7 @@ import iliketrains.Controllable;
 import iliketrains.Station;
 import iliketrains.TrackComponent;
 
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -129,6 +127,7 @@ public class Application extends JFrame{
 	 */
 	private void initWin() {
 		win=new JPanel();
+		win.setBackground(new Color(0,0,0,0));
 		JLabel label1 = new JLabel();
 		label1.setText("<html><h1>SUCCESS, YOU WON</h1></html>");	
 		label1.setBounds(0, 0, 200, 50);

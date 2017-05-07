@@ -29,7 +29,13 @@ public class Application extends JFrame{
 	private CardLayout cardLayout;
 	private Sound sound;
 
-	
+	/**
+	 * Az alkalmazás konstruktora, létrehozza, beállítja a paneleket, és
+	 * egy cardLayout segítségével váltogatja majd őket
+	 * Az ablakot 600x600-asra állítja
+	 * Controllert példányosít, átadja a gamegui-nak
+	 * Végül csak a menüt teszi láthatóvá
+	 */
 	public Application(){
 		super();
 		cardLayout = new CardLayout();
@@ -59,6 +65,7 @@ public class Application extends JFrame{
 	/**
 	 * Betöltteti a soron következő pályát, lekéri a grafikához szükséges elemeket
 	 * és a grafikai elemeket is létrehozatja a gamegui-val
+	 * A játék paneljét (gamegui) teszi láthatóvá, többit elrejti
 	 */
 	public void newGame(){
 		menu.setVisible(false);
@@ -71,6 +78,10 @@ public class Application extends JFrame{
 		sound.start();
 	}
 
+	/**
+	 * Leállítja a contorllert és a gamegui-t is, egyik sem rajzol/mozgat tovább
+	 * A menü lesz látható
+	 */
 	public void stop() {
 		menu.setVisible(true);
 		gamegui.setVisible(false);
@@ -79,6 +90,9 @@ public class Application extends JFrame{
 		sound.stop();
 	}
 
+	/**
+	 * Bezárja az alkalmazást
+	 */
 	public void exit() {
 		setVisible(false);
 		dispose();
@@ -106,7 +120,8 @@ public class Application extends JFrame{
 	}
 	
 	/**
-	 * Elkészíti a játék végét jelző JPanelt, szöveg, plusz egy "Újra" gomb
+	 * Elkészíti a játék végét jelző JPanelt,ami egy szöveg, plusz egy "New Game" gomb
+	 * ami elindítja újra a pályát
 	 */
 	private void initGameOver(){
 		gameOver=new JPanel(new FlowLayout());
@@ -130,7 +145,8 @@ public class Application extends JFrame{
 	}
 	
 	/**
-	 * A nyerésnél megjelenített panelt készíti el
+	 * A nyerésnél megjelenített panelt készíti el, egy szöveg és egy "Start Next Map" gomb
+	 * ami indítja a következő pályát
 	 */
 	private void initWin() {
 		win=new JPanel();

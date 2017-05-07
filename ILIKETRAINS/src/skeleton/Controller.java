@@ -48,6 +48,9 @@ public class Controller {
 
 	/**
 	 * Játék alatt működő időzítőt valósítja meg (bizonyos időközönként lép)
+	 * Vesztés vagy nyerés esetén hívja az Application megfelelő metódusát
+	 * Leállítja a timer objektumot, már nem kell lépni többet
+	 * Ha nyer, akkor a következő pályát állítja be
 	 */
 	private void gameAutoTick() {
 		railCenter.moveEngines();

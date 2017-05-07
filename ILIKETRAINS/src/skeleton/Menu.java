@@ -8,6 +8,11 @@ public class Menu extends JPanel{
 	
 	private Application app;
 	
+	/**
+	 * Menü panel csak 2 gombból áll, egyik az új játékot indítja, másik kilép az alkalmazásból.
+	 * Az Application függvényeit hívják a gombnyomások
+	 * @param application
+	 */
 	public Menu(Application application) {
 		super();
 		app=application;

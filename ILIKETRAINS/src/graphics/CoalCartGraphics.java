@@ -14,10 +14,7 @@ import skeleton.IliketrainsGUI;
 /**
  * Szenes kocsi grafikájáhzo
  */
-public class CoalCartGraphics extends Drawable {
-
-	/** Referencia a logikai kocsihoz */
-	private CoalCart coalCart;
+public class CoalCartGraphics extends CartDrawable {
 
 	/**
 	 * Konstruktor
@@ -48,42 +45,4 @@ public class CoalCartGraphics extends Drawable {
 		g2d.drawImage(img, transform, null);
 	}
 
-	/**
-	 * Beállítja a paraméterben megadott kocsi referenciáját magának
-	 *
-	 * @param cart Egy kocsi referenciája
-	 */
-	public void setCartReference(Cart cart) {
-		coalCart = (CoalCart) cart;
-	}
-	
-	/**
-	 * Lépés megvalósítása
-	 */
-	protected void move() {
-		AffineTransform tr = new AffineTransform();
-
-		if(coalCart.getCurrentTrack()==null ){
-			tr.scale(0, 0);
-			transform=tr;
-			return;
-		}
-
-        Drawable current=IliketrainsGUI.getTrackMap().get(coalCart.getCurrentTrack().getId());
-
-        if(current == null){
-            tr.scale(0, 0);
-            transform=tr;
-            return;
-        }
-
-		Point p=current.getPos();
-		
-        // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
-        tr.rotate((Math.PI*current.getRotation())/180, p.x+30,p.y+30);
-        
-        // a megfelelő pontra való mozgatás
-        tr.translate(p.getX(), p.getY());
-        transform=tr;
-	}
 }

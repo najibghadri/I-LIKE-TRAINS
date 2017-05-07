@@ -15,11 +15,7 @@ import skeleton.IliketrainsGUI;
 /**
  * Utaskocsi kirajzolásást segítő osztály
  */
-public class PassengerCartGraphics extends Drawable {
-
-	/** Utaskocsi referencia */
-	private PassengerCart passengerCart;
-
+public class PassengerCartGraphics extends CartDrawable {
 	/**
 	 * Konstruktor
 	 *
@@ -43,7 +39,7 @@ public class PassengerCartGraphics extends Drawable {
 
 		// lekérdezzük a PC utasait (van/nincs)
 		int picNum;
-		if (passengerCart.isNotEmpty())
+		if (((PassengerCart)cart).isNotEmpty())
 			picNum = 1;
 		else
 			picNum = 0;
@@ -58,47 +54,18 @@ public class PassengerCartGraphics extends Drawable {
 	/**
 	 * Beállítja az utaskocsi referenciáját és a megfelelő texturát betölti
 	 *
-	 * @param pcart A kocsi referenciája
+	 * @param cart A kocsi referenciája
 	 */
-	public void setCartReference(Cart pcart) {
+	@Override
+	public void setCartReference(Cart cart) {
 		// ha átállítjuk a referenciát, akkor a régi textúrák helyett újakat kell betölteni
+        super.setCartReference(cart);
 		textures.clear();
-		passengerCart = (PassengerCart)pcart;
-		Color c=passengerCart.getColor();
+		Color c= ((PassengerCart)cart).getColor();
 		textures.add(Resources.getTexture(c.toString()+"PassengerCartEmpty"));
 		textures.add(Resources.getTexture(c.toString()+"PassengerCartFull"));
 	}
 	
-	/**
-	 * Mozgatás kirajzolásának logikája
-	 */
-	protected void move() {
-		AffineTransform tr = new AffineTransform();
 
-		if(passengerCart.getCurrentTrack()==null){
-			tr.scale(0, 0);
-			transform=tr;
-			return;
-		}
-
-        Drawable current=IliketrainsGUI.getTrackMap().get(passengerCart.getCurrentTrack().getId());
-
-        if(current == null){
-            tr.scale(0, 0);
-            transform=tr;
-            return;
-        }
-
-        Point p=current.getPos();
-		
-        // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
-        tr.rotate((Math.PI*current.getRotation())/180, p.x+30,p.y+30);
-
-
-
-        // a megfelelő pontra való mozgatás
-        tr.translate(p.getX(), p.getY());
-        transform=tr;
-	}
 
 }

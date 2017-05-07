@@ -14,10 +14,7 @@ import skeleton.IliketrainsGUI;
 /**
  * Mozdony kirajzolását segítő függvény
  */
-public class EngineGraphics extends Drawable {
-
-	/** Mozdony referenciája */
-	private Engine engine;
+public class EngineGraphics extends CartDrawable {
 
 	/**
 	 * Konstruktor
@@ -45,44 +42,5 @@ public class EngineGraphics extends Drawable {
 		// kirajzolás
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(img, transform, null);
-	}
-
-	/**
-	 * Beállítja a referenciáját a paraméterben megadott
-	 * mozdonynak
-	 *
-	 * @param cart Mozdonyreferencia
-	 */
-	public void setCartReference(Cart cart) {
-		engine = (Engine) cart;
-	}
-
-	/**
-	 * Lépést megvalósító függvény
-	 */
-	protected void move() {
-		AffineTransform tr = new AffineTransform();
-
-		if(engine.getCurrentTrack()==null){
-			tr.scale(0, 0);
-			transform=tr;
-			return;
-		}
-        Drawable current=IliketrainsGUI.getTrackMap().get(engine.getCurrentTrack().getId());
-
-        if(current == null){
-            tr.scale(0, 0);
-            transform=tr;
-            return;
-        }
-
-		Point p=current.getPos();
-		
-        // forgatás (a szög (rotation) a negatív irányba való eltérést jelzi)
-        tr.rotate((Math.PI*current.getRotation())/180, p.x+30,p.y+30);
-        
-        // a megfelelő pontra való mozgatás
-        tr.translate(p.getX(), p.getY());
-        transform=tr;
 	}
 }

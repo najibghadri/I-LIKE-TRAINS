@@ -16,8 +16,7 @@ public class Sound {
 		soundFile = new File("res/iliketrains.wav");
         audioIn = AudioSystem.getAudioInputStream(soundFile);              
         clip = AudioSystem.getClip();
-        
-			clip.open(audioIn);
+        clip.open(audioIn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

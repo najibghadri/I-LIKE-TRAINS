@@ -14,11 +14,9 @@ import graphics.TurnTrackComponentGraphics;
 import iliketrains.Cart;
 import iliketrains.Controllable;
 import iliketrains.Station;
-import iliketrains.TrackComponent;
 import iliketrains.Tunnel;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -29,31 +27,112 @@ import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class IliketrainsGUI extends JPanel {
+public class IliketrainsGUI {
 
 	private Application app;
 	private Controller controller;
+
 	private static Map<Integer, Drawable> trackMap = new HashMap<Integer, Drawable>();
 	private Map<Integer, Drawable> trainMap = new HashMap<Integer, Drawable>();
 	private Map<Integer, Drawable> stationMap = new HashMap<Integer, Drawable>();
 	private Map<Integer,Drawable> controllableGraphics=new HashMap<Integer, Drawable>();
-	private Timer timer;
-	private JLabel tunnelLength;
+
+	private GUIPanel panel;
+
+	public JPanel panel() {
+		return panel;
+	}
+
+	private class GUIPanel extends JPanel {
+		private JLabel tunnelLengthLabel;
+		public GUIPanel(){
+			setLayout(null);
+			JButton btnStop = new JButton("Stop");
+			btnStop.setBounds(10, 10, 100, 20);
+			add(btnStop);
+			btnStop.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					app.stop();
+				}
+			});
+
+			//Alagút hosszát írja ki egy JLabelre, 25-ös méret, fehér szín
+			tunnelLengthLabel = new JLabel();
+			tunnelLengthLabel.setFont(new Font("Serif", Font.PLAIN, 25));
+			tunnelLengthLabel.setForeground(Color.WHITE);
+			tunnelLengthLabel.setBounds(400, 10,200, 30);
+			add(tunnelLengthLabel);
+			tunnelLengthLabel.setText("Alagút hossza: "+String.valueOf(Tunnel.getInstance().getLength()));
+
+			setOpaque(true);
+			setBackground(new Color(0, 120, 40));
+
+			addMouseListener(new MouseListener() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					int mx=arg0.getX();
+					int my=arg0.getY();
+					for (Map.Entry<Integer, Drawable> control : controllableGraphics.entrySet())
+					{
+						Point p=control.getValue().getPos();
+						if(mx>p.x && mx<p.x+60){
+							if(my>p.y && my< p.y+60){
+								controller.change(control.getKey());
+								repaint();
+							}
+						}
+					}
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+				}
+
+				@Override
+				public void mouseReleased(MouseEvent e) {
+				}
+			});
+		}
+
+		@Override
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			tunnelLengthLabel.setText("Alagút hossza: "+String.valueOf(Tunnel.getInstance().getLength()));
+			for (Map.Entry<Integer, Drawable> entry : trackMap.entrySet())
+			{
+				entry.getValue().draw(g);
+			}
+			for (Map.Entry<Integer, Drawable> entry : trainMap.entrySet())
+			{
+				entry.getValue().draw(g);
+			}
+			for (Map.Entry<Integer, Drawable> entry : stationMap.entrySet())
+			{
+				entry.getValue().draw(g);
+			}
+		}
+
+	}
 
 	/**
-	 * Konstruktor létrehozza a Stop gombot, az alagút hosszát jelző szöveget, 
+	 * Konstruktor létrehozza a Panelt benne Stop gombot, az alagút hosszát jelző szöveget,
 	 * illetve a kattintást kezelő függvény itt van implementálva
 	 * @param application
 	 * @param controller
@@ -61,62 +140,7 @@ public class IliketrainsGUI extends JPanel {
 	public IliketrainsGUI(Application application, final Controller controller) {
 		app = application;
 		this.controller = controller;
-		setLayout(null);
-		JButton btnStop = new JButton("Stop");
-		btnStop.setBounds(10, 10, 100, 20);
-		add(btnStop);
-		btnStop.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				app.stop();
-			}
-		});
-		
-		//Alagút hosszát írja ki egy JLabelre, 25-ös méret, fehér szín
-		tunnelLength= new JLabel();
-		tunnelLength.setFont(new Font("Serif", Font.PLAIN, 25));
-		tunnelLength.setForeground(Color.WHITE);
-		tunnelLength.setBounds(400, 10,200, 30);
-		add(tunnelLength);
-		tunnelLength.setText("Alagút hossza: "+String.valueOf(Tunnel.getInstance().getLength()));
-		
-		setOpaque(true);
-		setBackground(new Color(0, 120, 40));
-		
-		addMouseListener(new MouseListener() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {	
-				int mx=arg0.getX();
-				int my=arg0.getY();
-				for (Map.Entry<Integer, Drawable> control : controllableGraphics.entrySet())
-				{
-				    Point p=control.getValue().getPos();
-				    if(mx>p.x && mx<p.x+60){
-				    	if(my>p.y && my< p.y+60){
-				    		controller.change(control.getKey());
-				    		repaint();
-				    	}
-				    }
-				}
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {				
-			}
-		});
+		panel = new GUIPanel();
 	}
 
 	/**
@@ -128,12 +152,10 @@ public class IliketrainsGUI extends JPanel {
 		trainMap.clear();
 		stationMap.clear();
 
-		// TODO load graphics map
 		int id = controller.getNumberOfMap();
 		String file = System.getProperty("user.dir")
 				+ "\\res\\graphic_maps\\map" + id+".txt";
 		BufferedReader br = null;
-		FileReader fr = null;
 
 		try {
 			br = new BufferedReader(new FileReader(file));
@@ -187,8 +209,6 @@ public class IliketrainsGUI extends JPanel {
 			try {
 				if (br != null)
 					br.close();
-				if (fr != null)
-					fr.close();
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
@@ -251,47 +271,10 @@ public class IliketrainsGUI extends JPanel {
 	}
 
 	/**
-	 * Elindítja a kirajzolás időzítőjét
-	 */
-	public void start() {
-		timer=new Timer();
-		timer.schedule(new TimerTask() {
-			
-			@Override
-			public void run() {
-				repaint();				
-			}
-		}, 0,500);
-	}
-
-	public void stop() {
-		timer.cancel();
-	}
-
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		tunnelLength.setText("Alagút hossza: "+String.valueOf(Tunnel.getInstance().getLength()));
-		for (Map.Entry<Integer, Drawable> entry : trackMap.entrySet())
-		{
-		    entry.getValue().draw(g);
-		}
-		for (Map.Entry<Integer, Drawable> entry : trainMap.entrySet())
-		{
-		    entry.getValue().draw(g);
-		}
-		for (Map.Entry<Integer, Drawable> entry : stationMap.entrySet())
-		{
-		    entry.getValue().draw(g);
-		}
-	}
-
-	/**
 	 * @return the trackMap
 	 */
 	public static Map<Integer, Drawable> getTrackMap() {
 		return trackMap;
 	}
 
-	
 }

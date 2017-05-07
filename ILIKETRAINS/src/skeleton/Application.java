@@ -5,6 +5,7 @@ import iliketrains.Cart;
 import iliketrains.Controllable;
 import iliketrains.Station;
 import iliketrains.TrackComponent;
+import sound.Sound;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -26,6 +27,7 @@ public class Application extends JFrame{
 	private JPanel gameOver;
 	private JPanel win;
 	private CardLayout cardLayout;
+	private Sound sound;
 
 	
 	public Application(){
@@ -51,6 +53,7 @@ public class Application extends JFrame{
 		win.setVisible(false);
 		setTitle("ILIKETRAINS");
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    sound = new Sound();
 	}
 
 	/**
@@ -65,6 +68,7 @@ public class Application extends JFrame{
 		controller.startAutomataGame();
 		gamegui.loadGraphicsMap();
 		gamegui.start();
+		sound.start();
 	}
 
 	public void stop() {
@@ -72,6 +76,7 @@ public class Application extends JFrame{
 		gamegui.setVisible(false);
 		gamegui.stop();
 		controller.stop();
+		sound.stop();
 	}
 
 	public void exit() {

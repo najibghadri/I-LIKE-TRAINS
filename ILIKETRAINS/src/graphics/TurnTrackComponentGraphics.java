@@ -28,7 +28,7 @@ public class TurnTrackComponentGraphics extends TrackDrawable {
 	 */
 	@Override
 	public int getCartRotation(TrackComponent previous) {
-		return trackComponent.getNextDir(previous) * 180 + 45;
+		return rotation+(trackComponent.getNextDir(previous) * 180 + 45);
 	}
 
 	/**
